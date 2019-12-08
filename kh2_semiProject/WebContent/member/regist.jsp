@@ -12,7 +12,7 @@
 </div>
 <div align ="center">
 	<h2>회원가입</h2>
-	<form action="#" method = "post">
+	<form action="regist.do" method = "post">
 	<table>
 		<tr>
 			<th>아이디</th>

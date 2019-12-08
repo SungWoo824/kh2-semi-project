@@ -29,7 +29,7 @@ public class MemberRegistServlet extends HttpServlet{
 			
 			boolean isCheck = dao.regist(dto);
 			if(isCheck) {
-				resp.sendRedirect("regist_success.jsp");
+				resp.sendRedirect("regist_success.jsp?grade="+dto.getGrade());
 			} else {
 				resp.sendRedirect("regist_fail.jsp");
 			}
