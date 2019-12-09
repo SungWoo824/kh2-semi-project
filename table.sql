@@ -271,3 +271,18 @@ insert into region values(region_no_seq.nextval,'제주도','제주시','');
 insert into region values(region_no_seq.nextval,'제주도','서귀포시','');
 
 select * from region;
+                                        
+create table hostel(
+hostel_no number primary key,
+owner_no number not null CONSTRAINT fk_hostel_member_no references member(member_no),
+region_no number not null constraint fk_hoste_region_no references region(region_no),
+hostel_name varchar2(50) not null,
+hostel_phone varchar2(11) not null,
+hostel_detail_addr varchar2(255),
+hostel_latitude varchar2(10),
+hostel_longitude varchar2(10),
+hostel_content varchar2(4000),
+hostel_kind_name varchar2(21) not null
+);
+
+select * from hostel;
