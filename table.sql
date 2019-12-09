@@ -275,7 +275,7 @@ select * from region;
 create table hostel(
 hostel_no number primary key,
 owner_no number not null CONSTRAINT fk_hostel_member_no references member(member_no),
-region_no number not null constraint fk_hoste_region_no references region(region_no),
+region_no number not null constraint fk_hostel_region_no references region(region_no),
 hostel_name varchar2(50) not null,
 hostel_phone varchar2(11) not null,
 hostel_detail_addr varchar2(255),
