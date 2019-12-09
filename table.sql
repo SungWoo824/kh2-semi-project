@@ -286,3 +286,17 @@ hostel_kind_name varchar2(21) not null
 );
 
 select * from hostel;
+                                        
+create table room_info(
+room_no number primary key,
+hostel_no number constraint fk_room_hostel_no references hostel(hostel_no),
+region_no number constraint fk_room_region_no references region(region_no),
+room_price number not null,
+room_standard_people number,
+room_max_people number,
+room_bed number,
+room_bath number,
+room_spa varchar2(1),
+room_cook varchar2(1),
+room_content varchar2(4000)
+);
