@@ -284,9 +284,7 @@ hostel_longitude varchar2(10),
 hostel_content varchar2(4000),
 hostel_kind_name varchar2(21) not null
 );
-
-select * from hostel;
-                                        
+create sequence hostel_no_seq;
 create table room_info(
 room_no number primary key,
 hostel_no number constraint fk_room_hostel_no references hostel(hostel_no),
@@ -300,3 +298,48 @@ room_spa varchar2(1),
 room_cook varchar2(1),
 room_content varchar2(4000)
 );
+create sequence room_no_seq;
+create table qa(
+qa_no number primary key,
+room_no number constraint fk_qa_room_no references room_info(room_no),
+member_no number constraint fk_qa_member_no references member(member_no),
+qa_head varchar2(6),
+qa_title varchar2(60) not null,
+qa_content varchar2(4000) not null,
+qa_wdate date default sysdate
+);
+create sequence qa_no_seq;
+create table qa_reply(
+qa_reply_no number primary key,
+qa_no number constraint fk_reply_qa_no references qa(qa_no),
+member_no number constraint fk_reply_member_no references member(member_no),
+qa_reply_content varchar2(4000) not null,
+qa_reply_wdate date default sysdate not null
+);
+create sequence qa_reply_no_seq;
+
+create table couponlist(
+coupon_no number primary key,
+coupon_name varchar2(255) not null,
+coupon_rate number not null,
+coupon_date date not null,
+coupon_explain varchar2(255) not null
+);
+
+create table havecoupon(
+coupon_no number constraint fk_havecoupon_couponlist_no references couponlist(coupon_no),
+member_no number constraint fk_havecoupon_member_no references member(member_no)
+);
+
+create table interest_room(
+hostel_no number constraint fk_interest_hostel_no references hostel(hostel_no),
+member_no number constraint fk_interest_member_no references member(member_no)
+);
+
+create table reservation_list(
+reservation_no number primary key,
+room_no number constraint fk_reservation_room_no references room_info(room_no),
+customer_no number constraint fk_reservation_member_no references member(member_no),
+customer_request varchar2(4000)
+);
+create sequence reservation_no_seq;
