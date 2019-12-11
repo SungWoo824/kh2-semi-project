@@ -1,3 +1,6 @@
+create user hostel identified by hostel;
+grant connect,resource, create view to hostel;
+
 create table member(
 member_no number primary key,
 member_id varchar2(20) unique not null,
@@ -10,10 +13,10 @@ member_email varchar2(30)
 );
 
 create sequence member_no_seq;
-
+drop table member;
 
 insert into member values(member_no_seq.nextval,'admin','admin','관리자','관리자',sysdate,'01012345678','kh2@gmail.com');
-
+select * from member;
 
 create table region(
 region_no number primary key,
@@ -266,6 +269,8 @@ insert into region values(region_no_seq.nextval,'경상남도','합천군','');
 
 insert into region values(region_no_seq.nextval,'제주도','제주시','');
 insert into region values(region_no_seq.nextval,'제주도','서귀포시','');
+
+select * from region;
                                         
 create table hostel(
 hostel_no number primary key,
@@ -335,7 +340,6 @@ create table reservation_list(
 reservation_no number primary key,
 room_no number constraint fk_reservation_room_no references room_info(room_no),
 customer_no number constraint fk_reservation_member_no references member(member_no),
-customer_count number not null,
 customer_request varchar2(4000)
 );
 create sequence reservation_no_seq;
