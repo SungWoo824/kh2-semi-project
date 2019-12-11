@@ -13,10 +13,10 @@ member_email varchar2(30)
 );
 
 create sequence member_no_seq;
-drop table member;
+
 
 insert into member values(member_no_seq.nextval,'admin','admin','관리자','관리자',sysdate,'01012345678','kh2@gmail.com');
-select * from member;
+
 
 create table region(
 region_no number primary key,
@@ -269,8 +269,6 @@ insert into region values(region_no_seq.nextval,'경상남도','합천군','');
 
 insert into region values(region_no_seq.nextval,'제주도','제주시','');
 insert into region values(region_no_seq.nextval,'제주도','서귀포시','');
-
-select * from region;
                                         
 create table hostel(
 hostel_no number primary key,
