@@ -12,30 +12,34 @@ import beans.MemberDao;
 import beans.MemberDto;
 
 @WebServlet (urlPatterns = "/member/regist.do")
-public class MemberRegistServlet extends HttpServlet{
+	public class MemberRegistServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		try {
-			MemberDao dao = new MemberDao();
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException{
+			try {
+			req.setCharacterEncoding("UTF-8");
 			MemberDto dto = new MemberDto();
 			
-			dto.setId(req.getParameter("id"));
-			dto.setPw(req.getParameter("pw"));
-			dto.setName(req.getParameter("name"));
-			dto.setGrade(req.getParameter("grade"));
-			dto.setBirthday(req.getParameter("birthday"));
-			dto.setPhone(req.getParameter("phone"));
-			dto.setEmail(req.getParameter("email"));
+			dto.setId(req.getParameter("member_id"));
+			dto.setPw(req.getParameter("member_pw"));
+			dto.setName(req.getParameter("member_name"));
+			dto.setPhone(req.getParameter("member_phone"));
+			dto.setEmail(req.getParameter("member_email"));
 			
-			boolean isCheck = dao.regist(dto);
-			if(isCheck) {
-				resp.sendRedirect("regist_success.jsp?grade="+dto.getGrade());
-			} else {
-				resp.sendRedirect("regist_fail.jsp");
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			resp.sendError(500);
-		}
+			MemberDao dao = new MemberDao();
+			dao.regist(dto);
+			resp.sendRedirect("regist_success.jsp");
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+				resp.sendError(500);
+			}	
 	}
 }
+			
+			
+			
+			
+			
+				
+				
+

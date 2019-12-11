@@ -24,30 +24,25 @@ public class MemberDao {
 	public Connection getConnection() throws Exception{
 		return source.getConnection();
 	}
-	
-	public boolean regist(MemberDto dto) throws Exception {
-		Connection con = this.getConnection();
-		int result=0;
-		String sql = "insert into member values(member_no_seq.nexval,?,?,?,?,?,?,?)";
+////////////////////////////////////////////////////////////////
+//							회원가입							  //
+////////////////////////////////////////////////////////////////	
+	public void regist(MemberDto dto)throws Exception{
+		Connection con = getConnection();
 		
-		if(idCheck(dto.getId())) {
-			result = 0;
-		} else {
+		String sql="insert into member values("
+				+ "member_no_seq.nextval,?,?,?,'사용자',sysdate,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());
 		ps.setString(3, dto.getName());
-		ps.setString(4, dto.getGrade());
-		ps.setString(5, dto.getBirthday());
-		ps.setString(6, dto.getPhone());
-		ps.setString(7, dto.getEmail());
-		result = ps.executeUpdate();
+		ps.setString(4, dto.getPhone());
+		ps.setString(5, dto.getEmail());
+		
+		ps.execute();
 		
 		con.close();
-		}
-		return result>0;
 	}
-	
 	public boolean idCheck(String id) throws Exception{
 		Connection con = this.getConnection();
 		int result;
@@ -60,3 +55,7 @@ public class MemberDao {
 		return result>0;
 	}
 }
+		
+		
+		
+	
