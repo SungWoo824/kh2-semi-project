@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- server에서 읽어들일 context 내부 설정-->
+<Context>
+	<!-- 서버에 필요한 자원 정보들을 등록 -->
+	<Resource     name = "jdbc/oracle"
+				  type = "javax.sql.DataSource"
+				  auth = "Container"
+				  
+				  driverClassName = "oracle.jdbc.OracleDriver"
+				  url = "jdbc:oracle:thin:@www.sysout.co.kr:1521:xe"
+				  username = "kh24"
+				  password = "kh24"
+				  
+				  maxActive="20"
+				  maxIdle="10"
+				  maxWait="3000"/>	
+</Context>
+	
+	
+	
+	
