@@ -1,6 +1,3 @@
-create user hostel identified by hostel;
-grant connect,resource, create view to hostel;
-
 create table member(
 member_no number primary key,
 member_id varchar2(20) unique not null,
@@ -338,6 +335,7 @@ create table reservation_list(
 reservation_no number primary key,
 room_no number constraint fk_reservation_room_no references room_info(room_no),
 customer_no number constraint fk_reservation_member_no references member(member_no),
+customer_count number not null,
 customer_request varchar2(4000)
 );
 create sequence reservation_no_seq;
