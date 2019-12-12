@@ -1,0 +1,12 @@
+쿠폰등록, 수정, 삭제
+
+coupon	- regist(쿠폰등록)
+			servlet:"/grandmaster/couponregist.do"
+		- give(사용자에게 쿠폰부여)
+			servlet:"/grandmaster/coupongive.do"
+		- delete(쿠폰 자체를 삭제)
+			servlet:"/grandmaster/coupondelete.do"
+		- update(쿠폰 자체를 수정)
+			servlet:"/grandmaster/couponupdate.do"
+		- remove(사용자에게서 쿠폰삭제)
+			servlet:"/grandmaster/couponremove.do"

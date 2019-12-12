@@ -7,13 +7,11 @@
 <title>회원 가입 페이지</title>
 </head>
 <body>
-<div>
 
-</div>
 <div align ="center">
-	<h2>회원가입</h2>
+	<h2 align>회원가입</h2>
 	<form action="regist.do" method = "post">
-	<table>
+	<table border="1">
 		<tr>
 			<th>아이디</th>
 			<th><input type = "text" name="member_id"></th>
@@ -45,7 +43,7 @@
 			<option>판매자</option>
 		</select></th>
 		</tr>
-		<tr><td colspan = "2" align = "right">
+		<tr><td colspan = "2" align = "center">
 		<input type = "submit" value = "회원 가입">
 		</td></tr>
 	</table>
