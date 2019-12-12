@@ -36,13 +36,14 @@ public class QaDao {
 		
 		boolean regist = false;
 		Connection con = getConnection();
-		String sql = "insert into qa VALUES(QA_NO_SEQ.nextval,?,?,?,?,?,sysdate)";
+		String sql = "insert into qa VALUES(?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setInt(1, dto.getRoom_no());
-		ps.setInt(2, dto.getMember_no());
-		ps.setString(3, dto.getQa_head());
-		ps.setString(4, dto.getQa_title());
-		ps.setString(5, dto.getQa_content());
+		ps.setInt(1, dto.getQa_no());
+		ps.setInt(2, dto.getRoom_no());
+		ps.setInt(3, dto.getMember_no());
+		ps.setString(4, dto.getQa_head());
+		ps.setString(5, dto.getQa_title());
+		ps.setString(6, dto.getQa_content());
 
 		ps.execute();
 //		int result = ps.getUpdateCount();
@@ -96,6 +97,18 @@ public class QaDao {
 		}
 		con.close();
 		return list;	
+	}
+	
+	public int getSequence() throws Exception{
+		Connection con = getConnection();
+		String sql  = "select qa_no_seq.nextval from dual";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int seq = rs.getInt(1);
+		con.close();
+		
+		return seq;
 	}
 	//QA_NO로 글가져오기
 	public QaDto get(int qa_no) throws Exception{
