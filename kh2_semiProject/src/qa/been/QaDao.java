@@ -31,7 +31,7 @@ public class QaDao {
 	public Connection getConnection() throws Exception{
 		return source.getConnection();
 	}
-	
+	//글쓰기
 	public boolean write(QaDto dto) throws Exception{
 		
 		boolean regist = false;
@@ -46,24 +46,13 @@ public class QaDao {
 
 		ps.execute();
 //		int result = ps.getUpdateCount();
-//		System.out.println(result);
 //		if(result>0) {
 //			regist=true;
 //		}
 		con.close();
 		return regist;
 	}
-	public int getSequence() throws Exception{
-		Connection con = getConnection();
-		String sql  = "select qa_no_seq from dual";
-		PreparedStatement ps = con.prepareStatement(sql);
-		ResultSet rs = ps.executeQuery();
-		rs.next();
-		int seq = rs.getInt(1);
-		con.close();
-		
-		return seq;
-	}
+//Q&A목록 가져오기
 	public List<QaDto> list() throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
@@ -85,7 +74,7 @@ public class QaDao {
 		con.close();
 		return list;	
 	}
-
+	//검색한 목록 가져오기
 	public List<QaDto> search(String type,String keyword) throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
@@ -108,7 +97,7 @@ public class QaDao {
 		con.close();
 		return list;	
 	}
-	
+	//QA_NO로 글가져오기
 	public QaDto get(int qa_no) throws Exception{
 		
 		QaDto dto = new QaDto();
@@ -129,7 +118,7 @@ public class QaDao {
 		con.close();
 		return dto;	
 	}
-	
+	//글 수정하기
 	public void Edit(QaDto dto) throws Exception {
 		Connection con = getConnection();
 		String sql = "update qa set head = ?,title= ?,content=? where no=?";
@@ -141,7 +130,7 @@ public class QaDao {
 		ps.execute();
 		con.close();
 	}
-	
+	//글 삭제하기
 	public void delete(int qa_no) throws Exception {
 		Connection con = getConnection();
 		String sql = "delete from qa where qa_no = ?";
