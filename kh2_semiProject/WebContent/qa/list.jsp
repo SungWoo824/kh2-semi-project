@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+	String id = "김운기";
 	QaDao dao = new QaDao();
 	List<QaDto> list = dao.list();
 	String type = request.getParameter("type");
@@ -37,9 +38,7 @@
 
 		<%} %>
 </table>
-<%if(session.getAttribute("id")!=null){ %>
 <a href="write.jsp">글쓰기</a>	
-	<%} %>
 	<h4>[이전] 1 2 3 4 5 6 7 8 9 10 [다음]</h4>
 
 <form action="list.jsp">

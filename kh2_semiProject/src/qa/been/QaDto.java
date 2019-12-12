@@ -55,7 +55,4 @@ public class QaDto {
 	public void setRoom_no(int room_no) {
 		this.room_no = room_no;
 	}
-	
-	
-	
 }
