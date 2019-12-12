@@ -45,6 +45,7 @@ public class MemberDao {
 		
 		con.close();
 	}
+	
 	public boolean idCheck(String id) throws Exception{
 		Connection con = this.getConnection();
 		int result;
@@ -54,6 +55,7 @@ public class MemberDao {
 		ps.setString(1, id);
 		result = ps.executeUpdate();
 		
+		con.close();
 		return result>0;
 	}
 	
@@ -80,6 +82,7 @@ public class MemberDao {
 			
 			list.add(dto);
 		}
+		con.close();
 		return list;
 	}
 	
@@ -97,7 +100,32 @@ public class MemberDao {
 		rs.next();
 		int memberCouponNumber = rs.getInt(1);
 		
+		con.close();
 		return memberCouponNumber;
+	}
+////////////////////////////////////////////////////////////////
+//					관리자 회원 상세정보 확인						  //
+////////////////////////////////////////////////////////////////
+	public MemberDto memberInfomation(int member_no) throws Exception{
+		Connection con = this.getConnection();
+		String sql ="select * from member where member_no = ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, member_no);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		MemberDto dto = new MemberDto();
+		dto.setNo(rs.getInt("member_no"));
+		dto.setId(rs.getString("member_id"));
+		dto.setName(rs.getString("member_name"));
+		dto.setGrade(rs.getString("member_grade"));
+		dto.setBirthday(rs.getString("member_birthday"));
+		dto.setPhone(rs.getString("member_phone"));
+		dto.setEmail(rs.getString("member_email"));
+		
+		con.close();
+		return dto;
 	}
 }
 		
