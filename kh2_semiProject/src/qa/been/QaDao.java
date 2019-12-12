@@ -134,12 +134,13 @@ public class QaDao {
 	//글 수정하기
 	public void Edit(QaDto dto) throws Exception {
 		Connection con = getConnection();
-		String sql = "update qa set head = ?,title= ?,content=? where no=?";
+		String sql = "update qa set room_no=? ,qa_head = ?,qa_title= ?,qa_content=? where qa_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, dto.getQa_head());
-		ps.setString(2, dto.getQa_title());
-		ps.setString(3, dto.getQa_content());
-		ps.setInt(4, dto.getQa_no());
+		ps.setInt(1, dto.getRoom_no());
+		ps.setString(2, dto.getQa_head());
+		ps.setString(3, dto.getQa_title());
+		ps.setString(4, dto.getQa_content());
+		ps.setInt(5, dto.getQa_no());
 		ps.execute();
 		con.close();
 	}

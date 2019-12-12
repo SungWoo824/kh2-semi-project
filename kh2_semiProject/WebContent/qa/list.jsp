@@ -27,8 +27,8 @@
 		</tr>
 	<%for(QaDto dto : list){ %>
 	<tr>
-		<td><%=dto.getQa_no() %></td>
-		<td><%=dto.getRoom_no() %></td>
+		<td><%=dto.getQa_no() %></td><!-- member get으로 아이디를 가져와야함 -->
+		<td><%=dto.getRoom_no() %></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
 		<td align="left"><a href="content.jsp?no=<%= dto.getQa_no() %>" ><%= dto.getQa_content() %></a></td>
 		<td><%=dto.getMember_no() %></td>

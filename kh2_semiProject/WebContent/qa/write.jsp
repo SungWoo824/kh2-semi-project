@@ -5,7 +5,7 @@
 <% request.setCharacterEncoding("UTF-8");%>
 <h1>글쓰기</h1>
 		<form action="write.do" method="post" >
-		<input type="text" name="room_no" placeholder="room_no">
+		<input type="text" name="room_no" placeholder="room_no"><!--룸정보를 옵션으로 만듦  -->
 			<select name="qa_head" style="width:100px;height:40px;font-size:20px">
 			<option value="공지">공지</option>	
 			<option value="유머">유머</option>
