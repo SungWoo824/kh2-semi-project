@@ -16,14 +16,27 @@
 	}
 	else{
 		list = null;
-	}
-	
+	}	
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 관리 페이지</title>
+<script type="text/javascript">
+	function keyword_check(){
+   	 	var input = document.querySelector("input[name=keyword]");
+    	var text = input.value;
+    	if(!text){
+        	var div = document.querySelector("input[type=submit] + div");
+        	div.innerText = "검색어를 입력해주세요";
+    	}
+    	else{
+        	var div = document.querySelector("input[type=submit] + div");
+        	div.innerText = "";
+    	}
+	}
+</script>
 </head>
 <body>
 	<div>header</div>
@@ -36,19 +49,69 @@
 		<form action="coupon_itself.jsp" method="get">
 		
 			<select name="type">
-				<option value="name">이름</option>
-				<option value="no">번호</option>
-				<option value="rate">할인율(검색값 이상)</option>
-				<option value="date">사용가능여부(유효기간)</option>
+				<option value="coupon_name">이름</option>
+				<option value="coupon_no">번호</option>
+				<option value="coupon_rate">할인율(검색값 이상)</option>
 			</select>
 			
-			<input type="text" name="keyword">
-			
+			<input type="text" name="keyword" onblur="keyword_check();">
 			<input type="submit" value="검색">
+			<div></div>
 		
 		</form>
 		
+<!-- 		<h3> -->
+<%-- 			type = <%=request.getParameter("type") %>, --%>
+<%-- 			keyword = <%=request.getParameter("keyword") %> --%>
+<!-- 		</h3> -->
+		
+		<%if(list != null){%>
+		
+			<table border="1" width="80%">
+			
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>이름</th>
+						<th>할인율</th>
+						<th>유효기간</th>
+						<th>상세설명</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<%for(CouponDto dto:list){ %>
+					<tr>
+						<td><%=dto.getCoupon_no() %></td>
+						<td><%=dto.getCoupon_name() %></td>
+						<td><%=dto.getCoupon_rate() %></td>
+						<td><%=dto.getCoupon_date() %></td>
+						<td><%=dto.getCoupon_explain() %></td>
+					</tr>
+					<%} %>
+				</tbody>
+				
+			</table>
+		<%} %>	
 	</div>
 	<div>footer</div>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

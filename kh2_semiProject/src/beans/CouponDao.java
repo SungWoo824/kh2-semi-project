@@ -85,17 +85,14 @@ public class CouponDao {
 		
 		String sql;
 		
-		if(type.equals("no")||type.equals("name")) {
-			sql = "select * from coupon "
+		if(type.equals("coupon_no")||type.equals("coupon_name")) {
+			sql = "select * from couponlist "
 					+ "where "+type+" like '%'||?||'%' "
 							+ "order by coupon_no asc";			
-		}else if(type.equals("rate")) {
-			sql = "select * from coupon "
-					+ "where "+type+">= ? "
-							+ "order by coupon_no asc";
 		}else {
-			sql = "select * from coupon "
-					+ "where "+type+" ";
+			sql = "select * from couponlist "
+					+ "where "+type+" coupon_rate >= ? "
+							+ "order by coupon_no asc";
 		}
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
