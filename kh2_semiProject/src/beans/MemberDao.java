@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -33,17 +34,36 @@ public class MemberDao {
 		Connection con = getConnection();
 		
 		String sql="insert into member values("
-				+ "member_no_seq.nextval,?,?,?,'사용자',sysdate,?,?)";
+				+ "member_no_seq.nextval,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());
 		ps.setString(3, dto.getName());
-		ps.setString(4, dto.getPhone());
-		ps.setString(5, dto.getEmail());
+		ps.setString(4, dto.getGrade());
+		ps.setString(5, dto.getBirthday());
+		ps.setString(6, dto.getPhone());
+		ps.setString(7, dto.getEmail());
 		
 		ps.execute();
 		
 		con.close();
+	}
+
+////////////////////////////////////////////////////////////////
+//							멤버로그인							  //
+////////////////////////////////////////////////////////////////	
+	public boolean login(String id, String pw)throws Exception{
+		Connection con = getConnection();
+    String sql = "select * from member where member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, pw);
+		ResultSet rs = ps.executeQuery();
+		
+		boolean result= rs.next();
+		
+		con.close();
+  return result;
 	}
 	
 	public boolean idCheck(String id) throws Exception{
@@ -51,11 +71,9 @@ public class MemberDao {
 		int result;
 		String sql = "select * from member where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, id);
-		result = ps.executeUpdate();
-		
-		con.close();
+    result = ps.executeUpdate();
+    
+    con.close();
 		return result>0;
 	}
 	
@@ -127,7 +145,13 @@ public class MemberDao {
 		con.close();
 		return dto;
 	}
+
 }
+		
+		
+		
+		
+		
 		
 		
 		

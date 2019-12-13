@@ -5,6 +5,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+	String id = "김운기";
 	QaDao dao = new QaDao();
 	List<QaDto> list = dao.list();
 	String type = request.getParameter("type");
@@ -26,8 +27,8 @@
 		</tr>
 	<%for(QaDto dto : list){ %>
 	<tr>
-		<td><%=dto.getQa_no() %></td>
-		<td><%=dto.getRoom_no() %></td>
+		<td><%=dto.getQa_no() %></td><!-- member get으로 아이디를 가져와야함 -->
+		<td><%=dto.getRoom_no() %></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
 		<td align="left"><a href="content.jsp?no=<%= dto.getQa_no() %>" ><%= dto.getQa_content() %></a></td>
 		<td><%=dto.getMember_no() %></td>
@@ -37,9 +38,7 @@
 
 		<%} %>
 </table>
-<%if(session.getAttribute("id")!=null){ %>
 <a href="write.jsp">글쓰기</a>	
-	<%} %>
 	<h4>[이전] 1 2 3 4 5 6 7 8 9 10 [다음]</h4>
 
 <form action="list.jsp">
