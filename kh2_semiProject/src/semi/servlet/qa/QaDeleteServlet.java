@@ -1,4 +1,4 @@
-package semi.selvlet.qa;
+package semi.servlet.qa;
 
 import java.io.IOException;	
 
