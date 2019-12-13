@@ -36,8 +36,8 @@
 		</tr>
 		<tr>
 			<td>
-				<a href="#">아이디찾기</a>
-				<a href="#">비밀번호찾기</a>
+				<a href="find_id.jsp">아이디찾기</a>
+				<a href="find_pw.jsp">비밀번호찾기</a>
 				<a href="regist.jsp">회원가입</a>
 			</td>
 		</tr>
