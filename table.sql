@@ -269,7 +269,7 @@ insert into region values(region_no_seq.nextval,'제주도','서귀포시','');
                                         
 create table hostel(
 hostel_no number primary key,
-owner_no number not null CONSTRAINT fk_hostel_member_no references member(member_no),
+owner_no number not null CONSTRAINT fk_hostel_member_no references member(member_no) on delete cascade,
 region_no number not null constraint fk_hostel_region_no references region(region_no),
 hostel_name varchar2(50) not null,
 hostel_phone varchar2(11) not null,
@@ -282,7 +282,7 @@ hostel_kind_name varchar2(21) not null
 create sequence hostel_no_seq;
 create table room_info(
 room_no number primary key,
-hostel_no number constraint fk_room_hostel_no references hostel(hostel_no),
+hostel_no number constraint fk_room_hostel_no references hostel(hostel_no)  on delete cascade,
 region_no number constraint fk_room_region_no references region(region_no),
 room_price number not null,
 room_standard_people number,
@@ -296,8 +296,8 @@ room_content varchar2(4000)
 create sequence room_no_seq;
 create table qa(
 qa_no number primary key,
-room_no number constraint fk_qa_room_no references room_info(room_no),
-member_no number constraint fk_qa_member_no references member(member_no),
+room_no number constraint fk_qa_room_no references room_info(room_no)  on delete set null,
+member_no number constraint fk_qa_member_no references member(member_no)  on delete set null,
 qa_head varchar2(6),
 qa_title varchar2(60) not null,
 qa_content varchar2(4000) not null,
@@ -306,8 +306,8 @@ qa_wdate date default sysdate
 create sequence qa_no_seq;
 create table qa_reply(
 qa_reply_no number primary key,
-qa_no number constraint fk_reply_qa_no references qa(qa_no),
-member_no number constraint fk_reply_member_no references member(member_no),
+qa_no number constraint fk_reply_qa_no references qa(qa_no)  on delete cascade,
+member_no number constraint fk_reply_member_no references member(member_no)  on delete set null,
 qa_reply_content varchar2(4000) not null,
 qa_reply_wdate date default sysdate not null
 );
@@ -322,19 +322,19 @@ coupon_explain varchar2(255) not null
 );
 
 create table havecoupon(
-coupon_no number constraint fk_havecoupon_couponlist_no references couponlist(coupon_no),
-member_no number constraint fk_havecoupon_member_no references member(member_no)
+coupon_no number constraint fk_havecoupon_couponlist_no references couponlist(coupon_no)  on delete cascade,
+member_no number constraint fk_havecoupon_member_no references member(member_no)  on delete cascade
 );
 
 create table interest_room(
-hostel_no number constraint fk_interest_hostel_no references hostel(hostel_no),
-member_no number constraint fk_interest_member_no references member(member_no)
+hostel_no number constraint fk_interest_hostel_no references hostel(hostel_no)  on delete set null,
+member_no number constraint fk_interest_member_no references member(member_no)  on delete cascade
 );
 
 create table reservation_list(
 reservation_no number primary key,
-room_no number constraint fk_reservation_room_no references room_info(room_no),
-customer_no number constraint fk_reservation_member_no references member(member_no),
+room_no number constraint fk_reservation_room_no references room_info(room_no)  on delete set null,
+customer_no number constraint fk_reservation_member_no references member(member_no)  on delete cascade,
 customer_count number not null,
 customer_request varchar2(4000)
 );
