@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.*;
 
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -33,27 +34,46 @@ public class MemberDao {
 		Connection con = getConnection();
 		
 		String sql="insert into member values("
-				+ "member_no_seq.nextval,?,?,?,'사용자',sysdate,?,?)";
+				+ "member_no_seq.nextval,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());
 		ps.setString(3, dto.getName());
-		ps.setString(4, dto.getPhone());
-		ps.setString(5, dto.getEmail());
+		ps.setString(4, dto.getGrade());
+		ps.setString(5, dto.getBirthday());
+		ps.setString(6, dto.getPhone());
+		ps.setString(7, dto.getEmail());
 		
 		ps.execute();
 		
 		con.close();
 	}
+
+////////////////////////////////////////////////////////////////
+//							멤버로그인							  //
+////////////////////////////////////////////////////////////////	
+	public boolean login(String id, String pw)throws Exception{
+		Connection con = getConnection();
+    String sql = "select * from member where member_id = ? and member_pw = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, pw);
+		ResultSet rs = ps.executeQuery();
+		
+		boolean result= rs.next();
+		
+		con.close();
+  return result;
+	}
+	
 	public boolean idCheck(String id) throws Exception{
 		Connection con = this.getConnection();
 		int result;
 		String sql = "select * from member where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, id);
-		result = ps.executeUpdate();
-		
+    result = ps.executeUpdate();
+    
+    con.close();
 		return result>0;
 	}
 	
@@ -80,6 +100,7 @@ public class MemberDao {
 			
 			list.add(dto);
 		}
+		con.close();
 		return list;
 	}
 	
@@ -97,9 +118,40 @@ public class MemberDao {
 		rs.next();
 		int memberCouponNumber = rs.getInt(1);
 		
+		con.close();
 		return memberCouponNumber;
 	}
+////////////////////////////////////////////////////////////////
+//					관리자 회원 상세정보 확인						  //
+////////////////////////////////////////////////////////////////
+	public MemberDto memberInfomation(int member_no) throws Exception{
+		Connection con = this.getConnection();
+		String sql ="select * from member where member_no = ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, member_no);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		MemberDto dto = new MemberDto();
+		dto.setNo(rs.getInt("member_no"));
+		dto.setId(rs.getString("member_id"));
+		dto.setName(rs.getString("member_name"));
+		dto.setGrade(rs.getString("member_grade"));
+		dto.setBirthday(rs.getString("member_birthday"));
+		dto.setPhone(rs.getString("member_phone"));
+		dto.setEmail(rs.getString("member_email"));
+		
+		con.close();
+		return dto;
+	}
+
 }
+		
+		
+		
+		
+		
 		
 		
 		

@@ -37,6 +37,7 @@
 		<tbody>
 			<%for(MemberDto mdto : list){ %>
 			<tr>
+			
 				<th><%=mdto.getNo() %></th>
 				<th><%=mdto.getId() %></th>
 				<th><%=mdto.getName() %></th>
@@ -45,6 +46,9 @@
 				<th><%=mdto.getPhone() %></th>
 				<th><%=mdto.getEmail() %></th>
 				<th><%=mdao.memberCouponNumber(mdto.getNo()) %></th>
+				<th><a href="master_member_detail.jsp?member_no=<%=mdto.getNo() %>">
+				상세보기</a></th>
+			
 			</tr>
 			<%} %>
 		</tbody>
