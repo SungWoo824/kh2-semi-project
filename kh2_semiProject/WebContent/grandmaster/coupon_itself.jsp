@@ -17,26 +17,13 @@
 	else{
 		list = null;
 	}	
+	System.out.println(list);
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 관리 페이지</title>
-<script type="text/javascript">
-	function keyword_check(){
-   	 	var input = document.querySelector("input[name=keyword]");
-    	var text = input.value;
-    	if(!text){
-        	var div = document.querySelector("input[type=submit] + div");
-        	div.innerText = "검색어를 입력해주세요";
-    	}
-    	else{
-        	var div = document.querySelector("input[type=submit] + div");
-        	div.innerText = "";
-    	}
-	}
-</script>
 </head>
 <body>
 	<div>header</div>
@@ -54,7 +41,7 @@
 				<option value="coupon_rate">할인율(검색값 이상)</option>
 			</select>
 			
-			<input type="text" name="keyword" onblur="keyword_check();">
+			<input type="text" name="keyword">
 			<input type="submit" value="검색">
 			<div></div>
 		
@@ -65,7 +52,9 @@
 <%-- 			keyword = <%=request.getParameter("keyword") %> --%>
 <!-- 		</h3> -->
 		
-		<%if(list != null){%>
+		<% if(list.isEmpty()){ %>
+			<h3>검색결과가 없습니다</h3>
+		<%}else{ %>
 		
 			<table border="1" width="80%">
 			
