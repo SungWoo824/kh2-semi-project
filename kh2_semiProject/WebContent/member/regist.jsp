@@ -9,7 +9,7 @@
 <body>
 
 <div align ="center">
-	<h2 align><font color="red">★회원가입★</font></h2>
+	<h2 align><font color="brown">회원가입</font></h2>
 	<form action="regist.do" method = "post">
 	<table border="1">
 		<tr>
