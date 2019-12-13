@@ -1,4 +1,4 @@
-package qa;
+package semi.selvlet.qa;
 
 import java.io.IOException;	
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import qa.been.QaDao;
-import qa.been.QaDto;
+import beans.QaDao;
+import beans.QaDto;
 
 @WebServlet(urlPatterns = "/qa/edit.do")
 public class QaEditServlet extends HttpServlet{

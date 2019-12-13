@@ -1,5 +1,5 @@
-<%@page import="qa.been.QaDto"%>
-<%@page import="qa.been.QaDao"%>
+<%@page import="beans.QaDto"%>
+<%@page import="beans.QaDao"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
