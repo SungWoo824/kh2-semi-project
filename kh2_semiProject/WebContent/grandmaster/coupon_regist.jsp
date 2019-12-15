@@ -12,9 +12,9 @@
 	<div align="center">
 	<h2>쿠폰 등록</h2>
 		<form action="<%=request.getContextPath() %>/grandmaster/couponregist.do" method="post">
-			<table border="1" width="50%">
+			<table border="1" width="60%">
 				<tr>
-					<th width="30%">쿠폰이름</th>
+					<th>쿠폰이름</th>
 					<td>
 						<input type="text" name="coupon_id" required>		
 					</td>
@@ -34,7 +34,7 @@
 				<tr>
 					<th>상세설명</th>
 					<td>
-						<textarea name="content" required rows="15" cols="100" 
+						<textarea name="coupon_explain" required rows="15" cols="62" 
 						style="resize:vertical;"></textarea>		
 					</td>
 				</tr>

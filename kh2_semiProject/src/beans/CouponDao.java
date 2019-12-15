@@ -203,6 +203,22 @@ public class CouponDao {
 		
 		con.close();
 	}
+
+	public void regist(CouponDto dto) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "insert into couponlist "
+				+ "values(coupon_no_seq.nextval, ?, ?, ?, ?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, dto.getCoupon_name());
+		ps.setInt(2, dto.getCoupon_rate());
+		ps.setString(3, dto.getCoupon_date());
+		ps.setString(4, dto.getCoupon_explain());
+		
+		ps.execute();
+		
+		con.close();
+	}
 }
 
 
