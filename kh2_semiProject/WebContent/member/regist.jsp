@@ -9,20 +9,20 @@
 <body>
 
 <div align ="center">
-	<h2 align>회원가입</h2>
+	<h2 align><font color="brown">회원가입</font></h2>
 	<form action="regist.do" method = "post">
 	<table border="1">
 		<tr>
 			<th>아이디</th>
-			<th><input type = "text" name="member_id"></th>
+			<th><input type = "text" name="member_id" required></th>
 		</tr>
 		<tr>
 			<th>비밀번호</th>
-			<th><input type = "password" name="member_pw"></th>
+			<th><input type = "password" name="member_pw" required></th>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<th><input type = "text" name="member_name"></th>
+			<th><input type = "text" name="member_name" required></th>
 		</tr>
 		<tr>
 			<th>생년월일</th>
@@ -38,7 +38,7 @@
 		</tr>
 		<tr>
 		<th>사용유형</th>
-		<th><select>
+		<th><select name="member_grade">
 			<option>사용자</option>
 			<option>판매자</option>
 		</select></th>

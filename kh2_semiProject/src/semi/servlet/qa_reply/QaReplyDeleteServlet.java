@@ -1,4 +1,4 @@
-package qa.reply;
+package semi.servlet.qa_reply;
 
 import java.io.IOException;	
 
@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import qa.been.QaDao;
-import qa.been.QaReplyDao;
-import qa.been.QaReplyDto;
+import beans.QaDao;
+import beans.QaReplyDao;
+import beans.QaReplyDto;
 
 @WebServlet(urlPatterns = "/qa/qa_reply_delete.do")
 public class QaReplyDeleteServlet extends HttpServlet{

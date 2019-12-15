@@ -1,10 +1,10 @@
-<%@page import="qa.been.QaReplyDao"%>
-<%@page import="qa.been.QaReplyDto"%>
+<%@page import="beans.QaReplyDao"%>
+<%@page import="beans.QaReplyDto"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashSet"%>
 <%@page import="java.util.Set"%>
-<%@page import="qa.been.QaDto"%>
-<%@page import="qa.been.QaDao"%>
+<%@page import="beans.QaDto"%>
+<%@page import="beans.QaDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

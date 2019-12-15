@@ -1,4 +1,4 @@
-package member;
+package semi.servlet.member;
 
 import java.io.IOException;
 
@@ -22,6 +22,8 @@ import beans.MemberDto;
 			dto.setId(req.getParameter("member_id"));
 			dto.setPw(req.getParameter("member_pw"));
 			dto.setName(req.getParameter("member_name"));
+			dto.setGrade(req.getParameter("member_grade"));
+			dto.setBirthday(req.getParameter("member_birthday"));
 			dto.setPhone(req.getParameter("member_phone"));
 			dto.setEmail(req.getParameter("member_email"));
 			
@@ -29,9 +31,10 @@ import beans.MemberDto;
 			dao.regist(dto);
 			resp.sendRedirect("regist_success.jsp");
 			
-			} catch (Exception e) {
+			} 
+			catch (Exception e) {
 				e.printStackTrace();
-				resp.sendError(500);
+				resp.sendRedirect("regist_fail.jsp");
 			}	
 	}
 }

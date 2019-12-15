@@ -1,4 +1,4 @@
-package qa.been;
+package beans;
 
 public class QaDto {
 	
