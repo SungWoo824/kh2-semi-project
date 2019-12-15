@@ -80,22 +80,40 @@ public class CouponDao {
 	}
 	
 //쿠폰 검색결과 메소드
-	public List<CouponDto> search(String type,String keyword) throws Exception{
+	public List<CouponDto> search(String type,String keyword,int start, int finish) throws Exception{
 		Connection con = getConnection();
 		
 		String sql;
 		
-		if(type.equals("coupon_no")||type.equals("coupon_name")) {
-			sql = "select * from couponlist "
+		if(type.equals("coupon_name")) {
+			sql = "select * from( "
+					+ "select rownum rn, A.* from( "
+					+ "select * from couponlist "
 					+ "where "+type+" like '%'||?||'%' "
-							+ "order by coupon_no asc";			
+					+ "order by coupon_no asc "
+					+ ")A "
+					+ ") where rn between ? and ?";			
+		}else if(type.equals("coupon_no")){
+			sql = "select * from( "
+					+ "select rownum rn, A.* from( "
+					+ "select * from couponlist "
+					+ "where "+type+" =? "
+					+ "order by coupon_no asc "
+					+ ")A "
+					+ ") where rn between ? and ?";
 		}else {
-			sql = "select * from couponlist "
-					+ "where "+type+" coupon_rate >= ? "
-							+ "order by coupon_no asc";
+			sql = "select * from("
+					+ "select rownum rn, A.* from( "
+					+ "select * from couponlist "
+					+ "where "+type+" >= ? "
+					+ "order by coupon_no asc "
+					+ ")A "
+					+ ") where rn between ? and ?";
 		}
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
 		ResultSet rs = ps.executeQuery();
 		
 		List<CouponDto> list = new ArrayList<>();
@@ -112,6 +130,67 @@ public class CouponDao {
 		con.close();
 		
 		return list;
+	}
+	
+	//목록
+	public List<CouponDto> getList(int start, int finish) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "select * from( "
+				+ "select rownum rn, A.* from ( "
+				+ "select * from couponlist order by coupon_no asc "
+				+ ")A "
+				+ ")where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<CouponDto> list = new ArrayList<>();
+		
+		while(rs.next()) {
+			int rn = rs.getInt("rn");
+			int coupon_no = rs.getInt("coupon_no");
+			String coupon_name = rs.getString("coupon_name");
+			int coupon_rate = rs.getInt("coupon_rate");
+			String coupon_date = rs.getString("coupon_date");
+			String coupon_explain = rs.getString("coupon_explain");
+			
+			CouponDto dto = new CouponDto(rn, coupon_no, coupon_name, coupon_rate, coupon_date, coupon_explain);
+			list.add(dto);
+		}
+		con.close();
+		
+		return list;
+	}
+	
+	//쿠폰 개수 구하기
+	public int getCount(String type, String keyword) throws Exception{
+		Connection con = getConnection();
+		
+		boolean isSearch = type!=null && keyword!=null;
+		
+		String sql = "select count(*) from couponlist";
+		if(isSearch) {
+			if(type.equals("coupon_name")) {
+				sql +=" where "+type+" like '%'||?||'%'";
+			}else if(type.equals("coupon_no")) {
+				sql +=" where "+type+" = ?";
+			}
+			else {
+				sql +=" where "+type+" >= ?";
+			}
+		}
+		PreparedStatement ps = con.prepareStatement(sql);
+		if(isSearch) {
+			ps.setString(1, keyword);
+		}
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt("count(*)");
+		
+		con.close();
+		return count;
 	}
 }
 
