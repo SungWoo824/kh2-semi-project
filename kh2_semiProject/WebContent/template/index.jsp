@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-<!DOCTYPE html>
 <jsp:include page="header.jsp"></jsp:include>
  <body>
     <main id="main">
@@ -157,4 +156,5 @@
       <!-- 홈 리스트 2번 끝 -->
     </main>
   </body>
-  <jsp:include page="footer.jsp"></jsp:include>
+  </html>
+  
