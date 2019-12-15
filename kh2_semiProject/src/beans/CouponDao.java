@@ -192,7 +192,7 @@ public class CouponDao {
 		con.close();
 		return count;
 	}
-
+	//쿠폰 삭제
 	public void delete(int coupon_no) throws Exception{
 		Connection con = getConnection();
 		
@@ -203,7 +203,7 @@ public class CouponDao {
 		
 		con.close();
 	}
-
+	//쿠폰 등록
 	public void regist(CouponDto dto) throws Exception{
 		Connection con = getConnection();
 		
