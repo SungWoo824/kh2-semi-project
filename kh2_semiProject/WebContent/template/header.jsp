@@ -7,9 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="css/header-style.css" />
-    <link rel="stylesheet" href="css/index-style.css" />
-    <link rel="stylesheet" href="css/hover-min.css" />
+    <link rel="stylesheet" href="template/css/header-style.css" />
+    <link rel="stylesheet" href="template/css/index-style.css" />
+    <link rel="stylesheet" href="template/css/hover-min.css" />
   </head>
   <body>
     <header id="header">
