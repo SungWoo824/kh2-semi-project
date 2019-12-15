@@ -192,6 +192,17 @@ public class CouponDao {
 		con.close();
 		return count;
 	}
+
+	public void delete(int coupon_no) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "delete couponlist where no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, coupon_no);
+		ps.execute();
+		
+		con.close();
+	}
 }
 
 

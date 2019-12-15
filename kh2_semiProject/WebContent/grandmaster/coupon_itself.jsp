@@ -57,6 +57,7 @@
 						<th>할인율</th>
 						<th>유효기간</th>
 						<th width="45%">상세설명</th>
+						<th>관리메뉴</th>
 					</tr>
 				</thead>
 				<tbody align="center">
@@ -64,15 +65,19 @@
 						<tr>
 							<td><%=dto.getCoupon_no() %></td>
 							<td><%=dto.getCoupon_name() %></td>
-							<td><%=dto.getCoupon_rate() %></td>
-							<td><%=dto.getCoupon_date() %></td>
+							<td><%=dto.getCoupon_rate() %>%</td>
+							<td><%=dto.getCoupon_date().substring(0, 10) %></td>
 							<td><%=dto.getCoupon_explain() %></td>
+							<td>
+								<a href="coupon_change.jsp?coupon_no=<%=dto.getCoupon_no()%>"">수정</a> |
+								<a href="<%=request.getContextPath() %>/grandmaster/coupondelete.do?coupon_no=<%=dto.getCoupon_no()%>"">삭제</a>
+							</td>
 						</tr>
 					<%} %>
 				</tbody>
 				<tfoot>		
 					<tr>		
-						<td colspan="5" align="right">		
+						<td colspan="6" align="right">		
 							<a href="coupon_regist.jsp">쿠폰 등록</a>	
 						</td>		
 					</tr>		
