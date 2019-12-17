@@ -11,7 +11,6 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.sun.xml.internal.ws.wsdl.writer.document.Types;
 
 public class QaDao {
 
