@@ -49,5 +49,11 @@
 	</table>
 	</form>
 </div>
+	<div align="center">
+		<img src="../image/bike.gif">
+		<img src="../image/bike.gif">
+		<img src="../image/bike.gif">
+		
+	</div>
 </body>
 </html>

@@ -46,9 +46,16 @@
 </div>
 </head>
 <body>
-
+	<div align="center">
+		<img src="../image/image11-1.gif">
+		<img src="../image/image11-1.gif">
+		<img src="../image/image11-1.gif">
+		<img src="../image/image11-1.gif">
+	</div>	
 </body>
 </html>
+
+
 		
 	
 	

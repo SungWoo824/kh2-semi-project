@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String id = request.getParameter("member_id");
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,30 +17,31 @@
 			<tr>
 				<td>
 				<input type="text" name="member_name" placeholder="이름" required>
-				<input type="submit" value="확인">
+				
 				</td>
 			</tr>
 			<tr>
 				<td>
 				<input type="text" name="member_birthday" placeholder="생년월일" required>
-				<input type="submit" value="확인">
+				
 				</td>
 			</tr>
 			<tr>
 				<td>
 				<input type="text" name="member_phone" placeholder="핸드폰번호" required>
-				<input type="submit" value="확인">
+				
 				</td>
 			</tr>
 					
 			<tr align="center">
 				<td>
-				<input type="submit" value="찾기">
+				<input type="submit" value="확인">
 				</td>	
 			</tr>
 		</table>	
 		</form>
 	</div>
+	
 
 </body>
 </html>
