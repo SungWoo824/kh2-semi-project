@@ -10,6 +10,7 @@ public class CouponDto {
 	private String coupon_explain;
 	//view : coupon 사용을 위한 변수
 	private int havecoupon_no;
+	private int member_no;
 	private String member_id;
 	private String member_name;
 	private String member_phone;
@@ -83,9 +84,18 @@ public class CouponDto {
 		this.member_phone = member_phone;
 	}
 
+	
 	public int getRn() {
 		return rn;
 	}
+	public CouponDto(int coupon_no, int havecoupon_no, int member_no, String member_id) {
+		super();
+		this.coupon_no = coupon_no;
+		this.havecoupon_no = havecoupon_no;
+		this.member_no = member_no;
+		this.member_id = member_id;
+	}
+
 	public void setRn(int rn) {
 		this.rn = rn;
 	}		
@@ -151,6 +161,16 @@ public class CouponDto {
 	public void setHavecoupon_no(int havecoupon_no) {
 		this.havecoupon_no = havecoupon_no;
 	}
+
+	public int getMember_no() {
+		return member_no;
+	}
+
+	public void setMember_no(int member_no) {
+		this.member_no = member_no;
+	}
+	
+	
 	
 	
 }

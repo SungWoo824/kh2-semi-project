@@ -75,7 +75,7 @@
 						<td><%=cdto.getCoupon_rate() %></td>
 						<td><%=cdto.getCoupon_date().substring(0, 10) %></td>
 						<td>
-							<a href="#">삭제</a>
+							<a href="<%=request.getContextPath() %>/grandmaster/couponremove.do?havecoupon_no=<%=cdto.getHavecoupon_no()%>">삭제</a>
 						</td>
 					</tr>
 					<%} %>

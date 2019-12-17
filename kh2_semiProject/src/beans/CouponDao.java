@@ -164,13 +164,14 @@ public class CouponDao {
 		return list;
 	}
 	
-	//목록
+	//보유쿠폰목록
 		public List<CouponDto> getCouponList(int start, int finish) throws Exception{
 			Connection con = getConnection();
 			
 			String sql = "select * from( "
 					+ "select rownum rn, A.* from ( "
 					+ "select * from coupon "
+					+ "order by havecoupon_no "
 					+ ")A "
 					+ ")where rn between ? and ?";
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -313,12 +314,14 @@ public class CouponDao {
 					+ "select rownum rn, A.* from( "
 					+ "select * from coupon "
 					+ "where "+type+" like '%'||?||'%' "
+					+ "order by havecoupon_no "
 					+ ")A "
 					+ ") where rn between ? and ?";			
 		}else if(type.equals("coupon_no")){
 			sql = "select * from( "
 					+ "select rownum rn, A.* from( "
 					+ "select * from coupon "
+					+ "order by havecoupon_no "
 					+ "where "+type+" =? "
 					+ ")A "
 					+ ") where rn between ? and ?";
@@ -326,6 +329,7 @@ public class CouponDao {
 			sql = "select * from("
 					+ "select rownum rn, A.* from( "
 					+ "select * from coupon "
+					+ "order by havecoupon_no "
 					+ "where "+type+" >= ? "
 					+ ")A "
 					+ ") where rn between ? and ?";
@@ -382,6 +386,31 @@ public class CouponDao {
 			
 			con.close();
 			return count;
+		}
+	
+	//쿠폰 삭제
+	public void couponDelete(int havecoupon_no) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "delete coupon where havecoupon_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, havecoupon_no);
+		ps.execute();
+		
+		con.close();
+	}
+	
+	//쿠폰 수여
+		public void couponGive(int member_no, String keyword2) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "insert into havecoupon values(havecoupon_no_seq.nextval, ?, ?)";			
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword2);
+			ps.setInt(2, member_no);
+			ps.execute();
+			
+			con.close();
 		}
 }
 
