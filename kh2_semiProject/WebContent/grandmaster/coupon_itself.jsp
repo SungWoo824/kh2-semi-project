@@ -76,7 +76,7 @@
 				</tbody>
 				<tfoot>		
 					<tr>		
-						<td colspan="6" align="right">		
+						<td colspan="5" align="right">		
 							<a href="coupon_regist.jsp">쿠폰 등록</a>
 							<%if(isSearch) {%>
 							<a href="coupon_itself.jsp">전체목록 보기</a>
