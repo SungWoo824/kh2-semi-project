@@ -15,6 +15,24 @@
   left: 15px;
   background-color: black;
 } */
+.nav-container {
+  padding: 0;
+  height: 70px;
+  /* border: 1px solid black; */
+}
+
+.nav-menu {
+  width: 100%;
+  top: 0px;
+  left: 0;
+  position: fixed;
+  font-size: 15px;
+  padding-bottom: 10px;
+  height: 70px;
+  background-color: rgba(229, 231, 235, 0.3);
+  margin: 0;
+  /* border: 1px solid black; */
+}
 
 .top-bar {
   position: absolute;
