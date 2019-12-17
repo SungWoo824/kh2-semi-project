@@ -2,6 +2,7 @@ package beans;
 
 public class QaDto {
 	
+	private int rn;
 	private int qa_no;
 	private int room_no;
 	private int member_no;
@@ -11,6 +12,12 @@ public class QaDto {
 	private String qa_wdate;
 	
 	
+	public int getRn() {
+		return rn;
+	}
+	public void setRn(int rn) {
+		this.rn = rn;
+	}
 	public int getQa_no() {
 		return qa_no;
 	}
