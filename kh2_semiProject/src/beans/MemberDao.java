@@ -10,6 +10,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+
+
 public class MemberDao {
 	
 	private static DataSource source;
@@ -146,7 +148,11 @@ public class MemberDao {
 		return dto;
 	}
 
+
+	
+	//아이디로 조회
 	public MemberDto memberInfomation(String member_id) throws Exception{
+
 		Connection con = this.getConnection();
 		String sql ="select * from member where member_id = ?";
 		
