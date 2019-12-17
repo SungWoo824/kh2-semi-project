@@ -9,9 +9,7 @@
 	QaDao dao = new QaDao();
 	List<QaDto> list = dao.list();
 	String type = request.getParameter("type");
-	System.out.println(type);
 	String keyword = request.getParameter("keyword");
-	System.out.println(keyword);
 	
 	if(keyword!=null){
 		list = dao.search(type, keyword);
