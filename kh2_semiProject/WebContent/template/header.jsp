@@ -6,8 +6,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <link rel="stylesheet" href="template/css/header-style.css" />
+    <title>묵고 더블로가</title>
+    <link rel="stylesheet" href="/template/css/header-style.css" />
     <link rel="stylesheet" href="template/css/index-style.css" />
     <link rel="stylesheet" href="template/css/hover-min.css" />
   </head>
@@ -20,7 +20,7 @@
             <img class="logo-image" src="http://placehold.it/60x60"
           /></a>
         </div>
-        <div class="top-bar__menu">
+        <div class="top-bar__menu">	
           <ul>
             <li><a class="top-bar__menu-item" href="">공지사항</a></li>
             <li><a class="top-bar__menu-item" href="">도움말</a></li>
