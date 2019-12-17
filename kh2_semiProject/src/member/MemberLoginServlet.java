@@ -26,7 +26,8 @@ public class MemberLoginServlet extends HttpServlet{
 				if(result) {
 				
 					resp.sendRedirect(req.getContextPath());
-				}else {
+				}
+				else {
 					resp.sendRedirect("login.jsp?error=");
 				}
 				
