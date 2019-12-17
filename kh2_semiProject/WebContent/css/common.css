@@ -1,11 +1,4 @@
-@font-face{
-    font-family:notosanskr;
-    src:url("../font/NotoSansCJKkr-Regular.otf");
-    }
-    @font-face{
-    font-family:notosanskrblack;
-    src:url("../font/NotoSansCJKkr-Black.otf");
-    }
+
     @font-face{
     font-family:notosanskrmedium;
     src:url("../font/NotoSansCJKkr-Medium.otf");
