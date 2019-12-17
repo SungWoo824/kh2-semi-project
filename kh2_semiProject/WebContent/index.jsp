@@ -28,6 +28,7 @@
         <div class="list-container hvr-fade">
           <div class="item1 popular-list">
             <div class="list-item1">
+
               <div class="list-item1__imageBox">
                 <a href=""><img src="image/고양이.jpg"/></a>
                 <span class="imageBox__text">부산</span>

@@ -16,6 +16,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 </head>
 <body>
 	<div>
@@ -59,5 +60,6 @@
 		<%=cdto.getCoupon_explain() %>
 	<%} %>
 	</div>
+	<div><a href="#">회원탈퇴</a><br><a href="#">등급변경</a><br><a href="#">쿠폰추가</a></div>
 </body>
 </html>
