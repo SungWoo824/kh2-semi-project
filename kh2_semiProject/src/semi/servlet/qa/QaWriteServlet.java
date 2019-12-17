@@ -26,7 +26,7 @@ public class QaWriteServlet extends HttpServlet{
 			QaDto dto = new QaDto();
 			req.setCharacterEncoding("UTF-8");
 			int qa_no = dao.getSequence();
-			int member_no = 1;//나중에 세션으로 받음
+			int member_no = 23;//나중에 세션으로 받음
 			int room_no = Integer.parseInt(req.getParameter("room_no"));
 			String qa_head = req.getParameter("qa_head");
 			String qa_title = req.getParameter("qa_title");

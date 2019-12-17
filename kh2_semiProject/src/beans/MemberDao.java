@@ -148,9 +148,11 @@ public class MemberDao {
 		return dto;
 	}
 
+
 	
 	//아이디로 조회
-	public MemberDto get(String member_id) throws Exception{
+	public MemberDto memberInfomation(String member_id) throws Exception{
+
 		Connection con = this.getConnection();
 		String sql ="select * from member where member_id = ?";
 		

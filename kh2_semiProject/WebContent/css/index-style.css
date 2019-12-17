@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+/* 경계선 */
+#main {
+  width: 100%;
+  height: auto;
+}
+#home-item1 {
+  margin-bottom: 100px;
+}
+.home-item {
+  width: 1200px;
+  margin: 0 auto;
+}
+.list-container {
+  float: left;
+  width: 33.3333%;
+  height: auto;
+  padding: 10px;
+}
+.list-container > div:hover {
+  /* background-color: rgba(0, 0, 0, 0.1); */
+  transition: fade;
+}
+
+.row {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.item1 {
+  text-align: center;
+  /* border: 1px solid black; */
+}
+
+.list-item1__imageBox {
+  padding-top: 15px;
+}
+
+.contentBox > a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.imageBox__text {
+  position: absolute;
+  font-size: 40px;
+  color: white;
+  margin-top: 10px;
+  margin-left: -370px;
+}
