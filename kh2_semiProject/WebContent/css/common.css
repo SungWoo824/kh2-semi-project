@@ -30,10 +30,32 @@
         color: black;
         text-decoration: none;
     }
+    .master-title{
+    	text-align: center;
+    }
+    .master{
     
+    }
+    .master .master::after{
+    	content:"";
+    	dispaly:block;
+    	clear:both;
+    }
+    .master .master-index{
+    	float:left;
+    	width:50%;
+    	padding:10px;
+    }
+    .master .master-index div{
+    	width:100%;
+    }
     div{
         margin:auto;
     }
+    .row{
+    margin:10px 0px;
+    text-align: center;
+}
     .w-100 {
         width: 100%;
     }
