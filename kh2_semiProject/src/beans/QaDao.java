@@ -76,7 +76,7 @@ public class QaDao {
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from qa where"+type+"= ?";
+		String sql = "select * from (select m.member_id,q.* from member m,qa q where m.member_no = q.member_no) where "+type+" like '%'||?||'%' ";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ResultSet rs = ps.executeQuery();
