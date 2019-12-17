@@ -12,11 +12,11 @@
 	<div align="center">
 	<h2>쿠폰 등록</h2>
 		<form action="<%=request.getContextPath() %>/grandmaster/couponregist.do" method="post">
-			<table border="1" width="60%">
+			<table border="1">
 				<tr>
 					<th>쿠폰이름</th>
 					<td>
-						<input type="text" name="coupon_id" required>		
+						<input type="text" name="coupon_name" required>		
 					</td>
 				</tr>
 				<tr>

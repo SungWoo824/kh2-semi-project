@@ -56,7 +56,6 @@
 						<th>이름</th>
 						<th>할인율</th>
 						<th>유효기간</th>
-						<th width="45%">상세설명</th>
 						<th>관리메뉴</th>
 					</tr>
 				</thead>
@@ -67,10 +66,10 @@
 							<td><%=dto.getCoupon_name() %></td>
 							<td><%=dto.getCoupon_rate() %>%</td>
 							<td><%=dto.getCoupon_date().substring(0, 10) %></td>
-							<td><%=dto.getCoupon_explain() %></td>
 							<td>
-								<a href="coupon_change.jsp?coupon_no=<%=dto.getCoupon_no()%>"">수정</a> |
-								<a href="<%=request.getContextPath() %>/grandmaster/coupondelete.do?coupon_no=<%=dto.getCoupon_no()%>"">삭제</a>
+								<a href="coupon_change.jsp?coupon_no=<%=dto.getCoupon_no()%>">수정</a> |
+								<a href="<%=request.getContextPath() %>/grandmaster/coupondelete.do?coupon_no=<%=dto.getCoupon_no()%>">삭제</a> |
+								<a href="coupon_detail.jsp?coupon_no=<%=dto.getCoupon_no()%>">상세보기</a>
 							</td>
 						</tr>
 					<%} %>
@@ -78,7 +77,10 @@
 				<tfoot>		
 					<tr>		
 						<td colspan="6" align="right">		
-							<a href="coupon_regist.jsp">쿠폰 등록</a>	
+							<a href="coupon_regist.jsp">쿠폰 등록</a>
+							<%if(isSearch) {%>
+							<a href="coupon_itself.jsp">전체목록 보기</a>
+							<%} %>	
 						</td>		
 					</tr>		
 				</tfoot>

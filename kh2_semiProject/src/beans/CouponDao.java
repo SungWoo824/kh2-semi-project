@@ -196,7 +196,7 @@ public class CouponDao {
 	public void delete(int coupon_no) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "delete couponlist where no = ?";
+		String sql = "delete couponlist where coupon_no = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, coupon_no);
 		ps.execute();
@@ -214,6 +214,52 @@ public class CouponDao {
 		ps.setInt(2, dto.getCoupon_rate());
 		ps.setString(3, dto.getCoupon_date());
 		ps.setString(4, dto.getCoupon_explain());
+		
+		ps.execute();
+		
+		con.close();
+	}
+	
+	//쿠폰 단일조회
+	public CouponDto get(int coupon_no) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "select * from couponlist where coupon_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, coupon_no);
+		ResultSet rs = ps.executeQuery();
+		
+		CouponDto dto;
+		if(rs.next()) {
+			int coupon_no2 = rs.getInt("coupon_no");
+			String coupon_name = rs.getString("coupon_name");
+			int coupon_rate = rs.getInt("coupon_rate");
+			String coupon_date = rs.getString("coupon_date");
+			String coupon_explain = rs.getString("coupon_explain");
+			
+			dto = new CouponDto(
+					coupon_no, coupon_name, coupon_rate, coupon_date, coupon_explain);
+			
+		}
+		else {
+			dto = null;
+		}
+		
+		con.close();
+		return dto;
+	}
+
+	//쿠폰 정보수정
+	public void couponChange(CouponDto dto) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "update couponlist set coupon_name=? , coupon_rate=?, coupon_date=?, coupon_explain=? where coupon_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, dto.getCoupon_name());
+		ps.setInt(2, dto.getCoupon_rate());
+		ps.setString(3, dto.getCoupon_date());
+		ps.setString(4, dto.getCoupon_explain());
+		ps.setInt(5, dto.getCoupon_no());
 		
 		ps.execute();
 		
