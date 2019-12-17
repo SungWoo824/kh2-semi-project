@@ -12,6 +12,13 @@
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 수정 페이지</title>
+<style>
+.explain textarea{
+	width:99%;
+	height:200px;
+	resize:vertical;
+}
+</style>
 </head>
 <body>
 	<div>header</div>
@@ -23,7 +30,7 @@
 	
 	<input type="hidden" name="coupon_no" value="<%=dto.getCoupon_no() %>">
 	
-	<table border="1">
+	<table border="1" width="40%">
 	<tbody>
 		<tr>
 			<th>쿠폰이름</th>
@@ -40,14 +47,13 @@
 		<tr>
 			<th>만료일</th>
 			<td align="left">
-				<input type="date" name="coupon_date" value="<%=dto.getCoupon_date() %>" required>		
+				<input type="date" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required>		
 			</td>
 		</tr>
-		<tr>
+		<tr height="200px">
 			<th>상세설명</th>
-			<td>
-				<textarea name="coupon_explain" required rows="15" cols="62" 
-				style="resize:vertical;"><%=dto.getCoupon_explain() %></textarea>		
+			<td class="explain">
+				<textarea name="coupon_explain" required><%=dto.getCoupon_explain() %></textarea>		
 			</td>
 		</tr>
 		<tr>

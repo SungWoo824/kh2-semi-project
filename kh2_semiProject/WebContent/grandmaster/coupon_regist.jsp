@@ -5,6 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 등록</title>
+<style>
+.explain textarea{
+	width:99%;
+	height:200px;
+	resize:vertical;
+}
+</style>
 </head>
 <body>
 	<div>header</div>
@@ -12,7 +19,7 @@
 	<div align="center">
 	<h2>쿠폰 등록</h2>
 		<form action="<%=request.getContextPath() %>/grandmaster/couponregist.do" method="post">
-			<table border="1">
+			<table border="1" width="40%">
 				<tr>
 					<th>쿠폰이름</th>
 					<td>
@@ -31,11 +38,10 @@
 						<input type="date" name="coupon_date" required>		
 					</td>
 				</tr>
-				<tr>
+				<tr height="200px">
 					<th>상세설명</th>
-					<td>
-						<textarea name="coupon_explain" required rows="15" cols="62" 
-						style="resize:vertical;"></textarea>		
+					<td class="explain">
+						<textarea name="coupon_explain" required></textarea>		
 					</td>
 				</tr>
 				<tr>

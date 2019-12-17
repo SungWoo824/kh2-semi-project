@@ -12,6 +12,13 @@ CouponDto dto = dao.get(coupon_no);
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 상세보기</title>
+<style>
+.explain textarea{
+	width:99%;
+	height:200px;
+	resize:vertical;
+}
+</style>
 </head>
 <body>
 	<div>header</div>
@@ -19,37 +26,36 @@ CouponDto dto = dao.get(coupon_no);
 	<div align="center">
 	<h2>쿠폰 상세보기</h2>
 	
-	<table border="1">
+	<table border="1" width="40%">
 	<tbody>
 		<tr>
 			<th>쿠폰번호</th>
 			<td align="left">
-				<input type="text" name="coupon_name" value="<%=dto.getCoupon_no() %>" required>		
+				<%=dto.getCoupon_no() %>	
 			</td>
 		</tr>
 		<tr>
 			<th>쿠폰이름</th>
 			<td align="left">
-				<input type="text" name="coupon_name" value="<%=dto.getCoupon_name() %>" required>		
+				<%=dto.getCoupon_name() %>	
 			</td>
 		</tr>
 		<tr>
 			<th>할인율</th>
 			<td align="left">
-				<input type="text" name="coupon_rate" value="<%=dto.getCoupon_rate() %>" required>		
+				<%=dto.getCoupon_rate() %>	
 			</td>
 		</tr>
 		<tr>
 			<th>만료일</th>
 			<td align="left">
-				<input type="text" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required>		
+				<%=dto.getCoupon_date().substring(0, 10) %>	
 			</td>
 		</tr>
-		<tr>
+		<tr height="200px">
 			<th>상세설명</th>
-			<td>
-				<textarea name="coupon_explain" required rows="15" cols="62" 
-				style="resize:vertical;"><%=dto.getCoupon_explain() %></textarea>		
+			<td class="explain">
+				<textarea><%=dto.getCoupon_explain() %></textarea>		
 			</td>
 		</tr>
 		<tr>
