@@ -1,5 +1,5 @@
-<%@page import="qa.been.QaDto"%>
-<%@page import="qa.been.QaDao"%>
+<%@page import="beans.QaDto"%>
+<%@page import="beans.QaDao"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -14,9 +14,12 @@
 		list = dao.search(type, keyword);
 	}
 %>
-<h2>리스트 목록</h2>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<article class="w-100">
+<div class="row-title">리스트 목록</div>
+<div class="row">
 <% if(true){ %>
-	<table border="1" align = "center">
+	<table class="table" >
 	<tr>
 		<th>번호</th>
 		<th>방번호</th>
@@ -37,7 +40,10 @@
 	<%} %>
 
 		<%} %>
+
 </table>
+</div>
+</article>
 <a href="write.jsp">글쓰기</a>	
 	<h4>[이전] 1 2 3 4 5 6 7 8 9 10 [다음]</h4>
 

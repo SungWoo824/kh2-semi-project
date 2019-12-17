@@ -1,4 +1,4 @@
-package qa.been;
+package beans;
 
 import java.sql.Connection;		
 import java.sql.DriverManager;
@@ -12,8 +12,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.sun.xml.internal.ws.wsdl.writer.document.Types;
-
-import beans.MemberDto;
 
 public class QaDao {
 

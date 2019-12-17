@@ -1,38 +1,160 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>KH2Í∏∞ ÏÑ∏ÎØ∏ÌîÑÎ°úÏ†ù</title>
-</head>
-<body>
-<div>
-	<div align ="right">
-		<a href = "#">Î©îÎâ¥</a> <a href = #>ÏòàÏïΩ</a> <a href = "#">ÎÑ§ÎπÑ</a>
-	</div>
-	<div align = "center">
-		<img src="#">
-	</div>
-	
-	<div>
-		<div>
-			ÏÑ§Î™Ö
-		</div>
-		<div>
-			ÏÜåÍ∞ú
-		</div>
-		<div>
-			Ï∂îÏ≤ú
-		</div>
-	</div>
-	
-	
-	<div>
-		footer ÏÜåÏÖúÏïÑÏù¥
-	</div>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<jsp:include page="/template/header.jsp"></jsp:include>
+ <body>
+    <main id="main">
+      <!-- »® ∏ÆΩ∫∆Æ 1π¯ Ω√¿€ -->
+      <section id="home-item1" class="home-item">
+        <!-- ¡¶∏Ò  -->
+        <div class="item1 popular-title">
+          <h2>¿Œ±‚ø©«‡¡ˆ</h2>
+          <h4>º≥∏Ì¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4>
+        </div>
+        <!-- ∏ÆΩ∫∆Æ ∞°¡ÆøÕº≠ ªÃæ∆¡Ÿ ∞¯∞£ #####################-->
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">º≠øÔ</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ###################################################### -->
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">∫ŒªÍ</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">¡¶¡÷</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">¥Î±∏</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">¿Œ√µ</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">∫Œ√µ</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+                <span class="imageBox__text">∫Œ√µ</span>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row"></div>
+      </section>
+      <!-- »® ∏ÆΩ∫∆Æ 1π¯ ≥° -->
 
-</div>
-
-</body>
-</html>
+      <!-- »® ∏ÆΩ∫∆Æ 2π¯ Ω√¿€ -->
+      <section id="home-item2" class="home-item">
+        <!-- ¡¶∏Ò  -->
+        <div class="item1 review-title">
+          <h2>∏Æ∫‰ ¿‘¥œ¥Ÿ</h2>
+          <h4>º≥∏Ì¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4>
+        </div>
+        <!-- ∏ÆΩ∫∆Æ ∞°¡ÆøÕº≠ ªÃæ∆¡Ÿ ∞¯∞£ #####################-->
+        <div class="list-container hvr-fade">
+          <div class="item1 review-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- ###################################################### -->
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="list-container hvr-fade">
+          <div class="item1 popular-list">
+            <div class="list-item1">
+              <div class="list-item1__imageBox">
+                <a href=""><img src="image/∞ÌæÁ¿Ã.jpg"/></a>
+              </div>
+              <div class="list-item1__contentBox contentBox">
+                <a href=""><h4>≥ªøÎ¿Ã¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥ŸøÏ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ¥Ÿ</h4></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- »® ∏ÆΩ∫∆Æ 2π¯ ≥° -->
+    </main>
+  </body>
+  </html>
+  

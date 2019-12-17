@@ -1,4 +1,4 @@
-package qa.been;
+package beans;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

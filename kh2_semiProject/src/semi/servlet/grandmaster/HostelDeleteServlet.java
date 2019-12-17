@@ -1,4 +1,4 @@
-package semi.selvlet.grandmaster;
+package semi.servlet.grandmaster;
 
 import java.io.IOException;
 
