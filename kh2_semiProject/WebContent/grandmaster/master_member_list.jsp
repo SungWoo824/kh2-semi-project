@@ -12,6 +12,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<style>
+
+    
+</style>
 </head>
 <body>
 	<div>헤더</div>
@@ -20,8 +25,8 @@
 	<div><br></div>
 	<div><br></div>
 	<div>회원 목록 보기</div>
-	<div align="center">
-	<table>
+	<div class="w-80">
+    <table class="w-100 member-table">
 		<thead>
 			<tr>
 				<th>회원번호</th>
