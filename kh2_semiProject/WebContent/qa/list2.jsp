@@ -50,6 +50,8 @@
 		finishBlock = pagecount;
 	}
 %>
+<html>
+<head>
 <style>
 @charset "UTF-8";
 
@@ -82,62 +84,13 @@
 	padding: 0.5rem;
 }
 
-.custom-list {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-	width: 150px;
-}
-
-.custom-list>li {
-	background-color: black;
-	color: white;
-	padding: 15px;
-	cursor: pointer;
-}
-
-.custom-list li:hover {
-	background-color: gray;
-	color: black;
-}
-
-/* 2차 이상의 메뉴 스타일 */
-.custom-list ul {
-	list-style: none;
-	padding: 0;
-	margin: 0;
-	position: absolute;
-	margin-left: 135px;
-	margin-top: -36px;
-	/* 2차 이상의 메뉴는 처음에 숨김 처리 */
-	display: none;
-}
-
-.custom-list ul>li {
-	background-color: black;
-	color: white;
-	padding: 15px;
-	width: 150px;
-}
-
-.custom-list li:hover>ul {
-	display: block;
-}
-
-.custom-list li {
-	overflow: hidden;
-	white-space: nowrap;
-	text-overflow: ellipsis;
-}
-
 article {
 	margin: auto;
 }
 
 .gallary {
 	text-align: center;
-	margin: 10px;
+	margin: 0px;
 	border: 1px dotted black;
 }
 
@@ -154,7 +107,7 @@ article {
 }
 
 .gallary>.gallary-place>a>img {
-	width: 90%;
+	width: 100%;
 	height: 60%;
 	border-bottom-left-radius: 40%;
 	border-bottom-right-radius: 50%;
@@ -164,7 +117,7 @@ article {
 }
 .gallary>.gallary-place>.gallary-table td,
 .gallary>.gallary-place>.gallary-table>td{
-	width:50%;
+	width:100%;
 	text-align:left;
 
 }
@@ -180,6 +133,7 @@ article {
 text-align: left;
 }
 .row {
+	width:100%;
 	text-align: center;
 }
 
@@ -238,28 +192,12 @@ a {
 	text-decoration: none;
 	color: #000000
 }
-}
-}
 </style>
-<body style="background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);">
-<div style="width: 90%;">
-pagesize:<%=pagesize %>&spades;
-navsize:<%=navsize %>&spades;
-startblock:<%=startBlock %>&spades;
-finishblock:<%=finishBlock %>&spades;
-start:<%=start %>&spades;
-finish:<%=finish %>&spades;
-pagecont:<%=pagecount %>
-<article>
-<form action="list2.jsp">
-<!-- <div>페이지 넓이</div>
-	<select name ="list_width">
-		<option>1</option>
-		<option>2</option>
-		<option>3</option>
-		<option>4</option>
-		<option>5</option>
-		</select> -->
+</head>
+<body style="width: 80%; background-color: #ededef">
+<article >
+<div class="row-title"><a href="list.jsp">리스트 목록</a></div>
+<form action="list.jsp">
 	<div>페이지 높이</div>
 		<select name ="list_count">
 		<option><%=15%></option>
@@ -269,7 +207,12 @@ pagecont:<%=pagecount %>
 	</select>
 	<input type="submit">
 </form>
-
+<div class="row">
+<div align="right">
+	<form action="list.jsp">
+	<input type="submit" value="갤러리 리스트">
+	</form>
+	</div>
 <div class="gallary">
 	<%int j = 0;%>
 	<%
@@ -292,7 +235,6 @@ pagecont:<%=pagecount %>
 				</div>
 	<%} %>
 
-</div>
 </div>
 <div align="right">
 <a href="write.jsp">글쓰기</a>	
@@ -336,5 +278,7 @@ pagecont:<%=pagecount %>
 	<input type="search" name = "keyword">
 	<input type="submit">
 </form>
+</div>
 </article>
 </body>
+</html>
