@@ -12,35 +12,42 @@ import beans.MemberDao;
 import beans.MemberDto;
 @WebServlet(urlPatterns = "/member/login.do")
 public class MemberLoginServlet extends HttpServlet{
-		@Override
-		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			try {
-				req.setCharacterEncoding("UTF-8");
-				
-				String member_id = req.getParameter("member_id");
-				String pw = req.getParameter("member_pw");
-				
-				MemberDao dao = new MemberDao();
-				boolean result = dao.login(member_id, pw);
-				
-				if(result) {
-				
-					req.getSession().setAttribute("member_id",member_id);
-					
-					resp.sendRedirect(req.getContextPath());
-				}else {
-					
-					
-					
-					resp.sendRedirect("login.jsp?error=");
-				}
-				
-			} 
-			catch (Exception e) {
-				e.printStackTrace();
-				resp.sendError(500);
-			}
+	
+	
+	
+	@Override
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	try {
+		req.setCharacterEncoding("UTF-8");
+		
+		String id = req.getParameter("member_id");
+		String pw = req.getParameter("member_pw");
+		
+		MemberDao dao = new MemberDao();
+		boolean result = dao.login(id, pw);
+		
+		if(result) {
+		
+			System.out.println(id);
+			req.getSession().setAttribute("id", id);
+			
+			
+			resp.sendRedirect(req.getContextPath());
+		}else {
+			
+			
+			
+			resp.sendRedirect("login.jsp?error=");
 		}
+	} 
+	catch (Exception e) {
+		e.printStackTrace();
+		resp.sendError(500);
+	}
+		
+		
+	}
+
 }
 			
 			

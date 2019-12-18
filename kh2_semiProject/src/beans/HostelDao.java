@@ -73,4 +73,43 @@ public class HostelDao {
 		con.close();
 	}
 	
+	
+	////////////////룸넘버로 호스텔 정보 만들기
+	
+	public HostelDto hostelinfomation(int room_no) throws Exception{
+		Connection con = this.getConnection();
+		String sql ="select * from hostel where hostel_no=(select hostel_no from room_info where room_no=?)";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, room_no);
+		ResultSet rs = ps.executeQuery();
+		
+		HostelDto dto;
+		if(rs.next()) {
+			dto = new HostelDto();
+			
+			dto.setHostel_no(rs.getInt("hostel_no"));
+			dto.setOwner_no(rs.getInt("owner_no"));
+			dto.setRegion_no(rs.getInt("region_no"));
+			dto.setHostel_name(rs.getString("hostel_name"));
+			dto.setHostel_phone(rs.getString("hostel_phone"));
+			dto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
+			dto.setHostel_latitude(rs.getString("hostel_latitude"));
+			dto.setHostel_longitude(rs.getString("hostel_longitude"));
+			dto.setHostel_content(rs.getString("hostel_content"));
+			dto.setHostel_kind_name(rs.getString("hostel_kind_name"));
+		
+			
+			
+		
+		}
+		else {
+			dto = null;
+		}
+		
+		con.close();
+		
+		return dto;
+	}
+	
 }

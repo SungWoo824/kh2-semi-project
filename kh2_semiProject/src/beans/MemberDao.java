@@ -72,9 +72,9 @@ public class MemberDao {
 		String sql = "select * from member where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		result = ps.executeUpdate();
-
 		con.close();
 		return result > 0;
+
 	}
 
 ////////////////////////////////////////////////////////////////
@@ -149,7 +149,28 @@ public class MemberDao {
 		return dto;
 	}
 
-	// 아이디로 조회
+////////////////////////////////////////////////////////////////
+//					회원 아이디 찾기						  		  //
+////////////////////////////////////////////////////////////////
+	public String find(String name, String birthday, String phone) throws Exception {
+		Connection con = getConnection();
+		String sql = "select member_id from member "
+				+ "where member_name =? and member_birthday = ? and member_phone = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, name);
+		ps.setString(2, birthday);
+		ps.setString(3, phone);
+		ResultSet rs = ps.executeQuery();
+
+		String id = null;
+		if (rs.next()) {
+			id = rs.getString("member_id");
+		}
+		con.close();
+		return id;
+	}
+
+//아이디로 조회
 	public MemberDto memberInfomation(String member_id) throws Exception {
 
 		Connection con = this.getConnection();
@@ -174,6 +195,35 @@ public class MemberDao {
 		return dto;
 	}
 
+/////////단일조회
+	public MemberDto get(String member_id) throws Exception {
+
+		Connection con = this.getConnection();
+		String sql = "select * from member where member_id = ?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, member_id);
+		ResultSet rs = ps.executeQuery();
+		MemberDto dto;
+		if (rs.next()) {
+			dto = new MemberDto();
+			dto.setNo(rs.getInt("member_no"));
+			dto.setId(rs.getString("member_id"));
+			dto.setName(rs.getString("member_name"));
+			dto.setGrade(rs.getString("member_grade"));
+			dto.setBirthday(rs.getString("member_birthday"));
+			dto.setPhone(rs.getString("member_phone"));
+			dto.setEmail(rs.getString("member_email"));
+
+		} else {
+			dto = null;
+		}
+
+		con.close();
+
+		return dto;
+	}
+
 ////////////////////////////////////////////////////////////////
 //					관리자 -	 사용자 가입일 조회					  //
 ////////////////////////////////////////////////////////////////
@@ -194,7 +244,7 @@ public class MemberDao {
 		String yesterdayFormat = formatter.format(yest);
 
 		String[] arr;
-		
+
 		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
 			arr = new String[2];
 			arr[0] = todayFormat;
@@ -247,7 +297,7 @@ public class MemberDao {
 		String yesterdayFormat = formatter.format(yest);
 
 		String[] arr;
-		
+
 		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
 			arr = new String[2];
 			arr[0] = todayFormat;

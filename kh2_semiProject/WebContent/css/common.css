@@ -121,3 +121,131 @@
     .w-10 {
         width: 10%
     }
+    .couponmember-table{
+    font-family: notosanskrmedium;
+    color:#666;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+    border:#ccc 1px solid;
+    border-radius: 3px;
+    }
+    .couponmember-table>tbody tr{
+        background: #fff;
+    }
+    .couponmember-table>tfoot tr{
+        background: #fff;
+    }
+    .couponmember-table tr{
+        text-align: center;
+    }
+    .couponmember-table a{
+        color: #666666;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+    .couponmember-table a:hover{
+        color: black;
+        text-decoration: none;
+    }
+    .navigator{
+    	font-family: notosanskrmedium;
+    	color:#666;
+    	text-shadow: 1px 1px 0px #fff;
+    	background:#fff;
+    	border-radius: 3px;
+    	text-align: center;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    .navigator a{
+    	color:#c0c0c0;
+    	text-decoration: none;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    .navigator a:hover{
+    	color: black;
+    	text-decoration: none;
+    }
+    .navigator .navigator-choice{
+    	color: #666;
+    	text-decoration: none;
+    }
+    .form-choice{
+    	border:#ccc 1px solid;
+    	border-radius: 3px;
+    }
+    .form-choice option:hover{
+    	background:#666;
+    	color:#fff;
+    }
+    .select-icon{
+		width: 200px;
+		padding: .8em .5em; 
+		font-family: inherit;
+		background: url(../image/select_icon.jpg) no-repeat 95% 50%; 
+		border: 1px solid #666; 
+		-webkit-appearance: none;
+		-moz-appearance: none; 
+		appearance: none;
+		outline:none;
+    }
+    .select-icon option:hover{
+    	background-color:#666;
+    }
+    .search-input{
+    	width: 200px;
+    	padding: .8em .5em;
+    	font-family: inherit;
+    	border: 1px solid #666;
+    }
+    .button-design{
+    	margin:-4px; 
+    	border: 1px solid #666; 
+    	background-color: #666; 
+    	color: #fff; 
+    	padding: .8em .5em; 
+    	font-family: inherit;
+    }
+   .button-design button:hover{ 
+   	    border: 1px solid #fff;
+	    color:#666; 
+	    background-color: #fff; 
+	}
+	.coupon-under-table{
+		font-family: notosanskrmedium;
+    	color:#666;
+    	text-shadow: 1px 1px 0px #fff;
+    	background:#eaebec;
+    	border:#ccc 1px solid;
+    	border-radius: 3px;
+	}
+	.coupon-under-table td{
+		background:#fff;
+	}
+	.coupon-under-table input{
+		outline:none;
+		border: 1px solid #fff;
+		width:100%;
+	}
+	.coupon-under-table input#date{
+		background:#fff;
+		outline:none;
+		border: 1px solid #fff;
+		width: 130px;
+	}	
+	.input-button input{
+		width:60px;
+		background-color: #fff;
+	}
+	.input-button input:hover{
+		color:#666;
+	}
+	.input-button a{
+		text-decoration: none;
+	}
+	.input-button a#a > input{
+		margin:0;
+		padding:1px 0px;
+	}
+	

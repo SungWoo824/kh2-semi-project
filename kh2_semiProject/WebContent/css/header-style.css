@@ -5,7 +5,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: "NotoSansKR-Light";
+  font-family: "NotoSansCJKkr-Medium";
 }
 body {
   margin: 0;
@@ -80,7 +80,7 @@ body {
 /******************************************/
 
 #header {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 700px;
   background-image: url("../image/home-image-2.jpg");
   background-size: 100% 100%;
@@ -93,7 +93,7 @@ body {
   margin: 0 auto;
 }
 
-.search-background {
+.search-background:hover {
   background-color: rgba(229, 231, 235, 0.3);
 }
 
@@ -184,7 +184,7 @@ body {
   width: 20%;
   background-color: rgba(34, 50, 84, 0);
   border: 0;
-  border-bottom: 1px solid black;
+  /* border-bottom: 1px solid black; */
   color: rgb(104, 101, 101);
 }
 

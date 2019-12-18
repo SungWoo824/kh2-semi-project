@@ -79,7 +79,7 @@ public class QaDao {
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from (select rownum rn,A.* from (select * from (select m.member_id,q.* from member m,qa q where m.member_no = q.member_no) where "+type+" like '%'||?||'%')A order by qa_no desc)where rn between ? and ?";
+		String sql = "select * from (select rownum rn,A.* from (select * from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no) where "+type+" like '%'||?||'%')A order by qa_no desc)where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ps.setInt(2, start);
@@ -158,7 +158,7 @@ public class QaDao {
 	public int getCount(String type,String keyword) throws Exception{
 		Connection con = getConnection();
 		
-		String sql = "select count(*) from qa";
+		String sql = "select count(*) from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no)";
 //		sql = "select count(*) from board where"+type+"like '%'||?||'%'";
 		boolean isSearch = type != null && keyword != null;
 		if(isSearch) {
