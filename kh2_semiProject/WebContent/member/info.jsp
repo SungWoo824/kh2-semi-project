@@ -1,5 +1,23 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    <%
+	//회원 정보를 불러오는 코드
+	//1. session에서 id에 들어있는 데이터를 꺼낸다
+	//2. id를 주고 dao를 이용하여 회원정보(MemberDto)를 꺼낸다
+	//3. 원하는 위치에 출력한다.
+	
+	String id = (String)session.getAttribute("id");
+	MemberDao dao = new MemberDao();
+	MemberDto dto = dao.get(id);
+%>
+    
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,14 +55,14 @@
             <tr>
                 <th>아이디</th>
                 <td>
-                    아이디값
+                    <%=dto.getId()%>
                 </td>
             </tr>
 
             <tr>
                 <th>현재 비밀번호</th>
                 <td>
-                    <input type="text" name="phone" required="required">
+                    <input type="text" name="phone" required="required" >
                 </td>
             </tr>
 
@@ -65,14 +83,14 @@
             <tr>
                 <th>이름</th>
                 <td>
-                    이름값
+                   <%=dto.getName() %>
                 </td>
             </tr>
 
             <tr>
                 <th>전화번호</th>
                 <td>
-                    <input type="text" name="phone"  required="required">
+                    <input type="text" name="phone"  required="required" placeholder="<%=dto.getPhone()%>">
                 </td>
             </tr>
 
@@ -80,14 +98,14 @@
             <tr>
                 <th>이메일</th>
                 <td>
-                    <input type="text" name="phone" required="required">
+                    <input type="text" name="phone" required="required" placeholder="<%=dto.getEmail()%>">
                 </td>
             </tr>
 
             <tr>
                 <th>생일</th>
                 <td>
-                    <input type="text" name="phone" required="required">
+                    <input type="text" name="phone" required="required" placeholder="<%=dto.getBirthday() %>"> 
                 </td>
             </tr>
 
