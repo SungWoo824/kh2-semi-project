@@ -65,7 +65,7 @@ public class MemberDao {
 		boolean result= rs.next();
 		
 		con.close();
-  return result;
+		return result;
 	}
 	
 	public boolean idCheck(String id) throws Exception{
@@ -73,9 +73,9 @@ public class MemberDao {
 		int result;
 		String sql = "select * from member where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-    result = ps.executeUpdate();
+		result = ps.executeUpdate();
     
-    con.close();
+		con.close();
 		return result>0;
 	}
 	
@@ -146,6 +146,26 @@ public class MemberDao {
 		
 		con.close();
 		return dto;
+	}
+////////////////////////////////////////////////////////////////
+//					회원 아이디 찾기						  		  //
+////////////////////////////////////////////////////////////////
+	public String find(String name,String birthday,String phone) throws Exception{
+		Connection con = getConnection();
+		String sql = "select member_id from member "
+				+ "where member_name =? and member_birthday = ? and member_phone = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, name);
+		ps.setString(2, birthday);
+		ps.setString(3, phone);
+		ResultSet rs = ps.executeQuery();
+		
+		String id = null;
+		if(rs.next()) {
+			id = rs.getString("member_id");
+		}
+		con.close();
+		return id;
 	}
 
 
