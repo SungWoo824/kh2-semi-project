@@ -191,6 +191,36 @@ public class MemberDao {
 		con.close();
 		return dto;
 	}
+	
+	/////////단일조회
+	public MemberDto get(String member_id) throws Exception{
+
+		Connection con = this.getConnection();
+		String sql ="select * from member where member_id = ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, member_id);
+		ResultSet rs = ps.executeQuery();
+		MemberDto dto;
+		if(rs.next()) {
+			dto = new MemberDto();
+			dto.setNo(rs.getInt("member_no"));
+			dto.setId(rs.getString("member_id"));
+			dto.setName(rs.getString("member_name"));
+			dto.setGrade(rs.getString("member_grade"));
+			dto.setBirthday(rs.getString("member_birthday"));
+			dto.setPhone(rs.getString("member_phone"));
+			dto.setEmail(rs.getString("member_email"));
+		
+		}
+		else {
+			dto = null;
+		}
+		
+		con.close();
+		
+		return dto;
+	}
 }
 		
 		
