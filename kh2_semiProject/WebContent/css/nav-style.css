@@ -37,11 +37,18 @@
 .top-bar {
   position: absolute;
   width: 100%;
+  min-width: 1200px;
   top: 0px;
   font-size: 20px;
   background-color: rgba(229, 231, 235, 0.3);
   color: black;
   padding-bottom: 5px;
+  font-weight: 500;
+}
+
+.top-bar:hover,
+.menu-fixed:hover {
+  background-color: rgba(95, 93, 93, 0.2);
 }
 
 .menu-fixed {
@@ -50,6 +57,7 @@
   padding-bottom: 10px;
   height: 70px;
   background-color: rgba(229, 231, 235, 0.3);
+  font-weight: 600;
 }
 
 .top-bar > .top-bar__logo {
@@ -80,5 +88,5 @@
 }
 
 .top-bar > .top-bar__menu > ul > li > a:hover {
-  background-color: red;
+  color: white;
 }
