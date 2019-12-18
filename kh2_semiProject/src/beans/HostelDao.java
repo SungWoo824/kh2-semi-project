@@ -9,6 +9,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import beans.HostelDto;
+
 public class HostelDao {
 	
 	private static DataSource source;
@@ -72,5 +74,30 @@ public class HostelDao {
 		
 		con.close();
 	}
+	
+	//등록하기
+	// 등록 기능
+
+		public void regist(HostelDto dto) throws Exception {
+
+			Connection con = getConnection();
+
+			String sql = "insert into hostel values(hostel_no_seq.nextval,1,1,?,?,?,?,?,?,?,sysdate)";
+
+			PreparedStatement ps = con.prepareStatement(sql);
+
+			ps.setString(1, dto.getHostel_name());
+			ps.setString(2, dto.getHostel_phone());
+			ps.setString(3, dto.getHostel_detail_addr());
+			ps.setString(4, dto.getHostel_latitude());
+			ps.setString(5, dto.getHostel_longitude());
+			ps.setString(6, dto.getHostel_content());
+			ps.setString(7, dto.getHostel_kind_name());
+
+			ps.execute();
+
+			con.close();
+
+		}
 	
 }

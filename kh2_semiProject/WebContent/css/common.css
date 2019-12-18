@@ -1,0 +1,122 @@
+
+    @font-face{
+    font-family:notosanskrmedium;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
+    }
+     *{
+    box-sizing: border-box;
+    font-family: notosanskrmedium;
+    }
+    
+    .member-table{
+    font-family: notosanskrmedium;
+    color:#666;
+    text-shadow: 1px 1px 0px #fff;
+    background:#eaebec;
+    border:#ccc 1px solid;
+    border-radius: 3px;
+    }
+    .member-table>tbody tr{
+        background: #fff;
+    }
+    .member-table tr{
+        text-align: center;
+    }
+    .member-table a{
+        color: #666666;
+        text-decoration: none;
+    }
+    .member-table a:hover{
+        color: black;
+        text-decoration: none;
+    }
+    .master-title{
+    	text-align: center;
+    }
+    .master-list::after{
+	    content:"";
+	    display: block;
+	    clear:both;
+	}
+	.master-list{
+	    float:left;
+	    width:50%;
+	    padding:10px;
+	}
+	.master-list div{
+	    width:100%;
+	    text-align:center;
+	}
+	.master-menu{
+            background-color: #565960;
+        }
+    .master-menu .master-menu-item{
+            padding: 1rem;
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+        .master-menu .master-menu-item>a{
+        	color : #fff;
+        	text-decoration: none;
+        	
+        }
+        .master-menu .master-menu-item>a:hover{
+        	color : #999999;
+        	
+        }
+        .master-menu::after{
+            content:"";
+            display: block;
+            clear:both;
+        }
+    div{
+        margin:auto;
+    }
+    .row{
+	    margin:10px 0px;
+	    text-align: center;
+	}
+	.row-big{
+		margin:50px 0px;
+		text-align: center;
+	}
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-90 {
+        width: 90%
+    }
+
+    .w-80 {
+        width: 80%
+    }
+
+    .w-70 {
+        width: 70%
+    }
+
+    .w-60 {
+        width: 60%
+    }
+
+    .w-50 {
+        width: 50%
+    }
+
+    .w-40 {
+        width: 40%
+    }
+
+    .w-30 {
+        width: 30%
+    }
+
+    .w-20 {
+        width: 20%
+    }
+
+    .w-10 {
+        width: 10%
+    }

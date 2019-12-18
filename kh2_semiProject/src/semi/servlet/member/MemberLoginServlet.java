@@ -17,16 +17,21 @@ public class MemberLoginServlet extends HttpServlet{
 			try {
 				req.setCharacterEncoding("UTF-8");
 				
-				String id = req.getParameter("member_id");
+				String member_id = req.getParameter("member_id");
 				String pw = req.getParameter("member_pw");
 				
 				MemberDao dao = new MemberDao();
-				boolean result = dao.login(id, pw);
+				boolean result = dao.login(member_id, pw);
 				
 				if(result) {
 				
+					req.getSession().setAttribute("member_id",member_id);
+					
 					resp.sendRedirect(req.getContextPath());
 				}else {
+					
+					
+					
 					resp.sendRedirect("login.jsp?error=");
 				}
 				
