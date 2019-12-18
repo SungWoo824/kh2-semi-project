@@ -223,37 +223,6 @@ article {
 <a href="write.jsp">글쓰기</a>	
 </div>
 </article>
-
-	<div align="center">
-	<%-- <h4>
-	<%if(startBlock>1){ %>
-		<%if(isSearch){ %>
-	<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=startBlock-1%>">[이전]</a>
-	<%}else{ %>
-		<a href="list.jsp?pno="<%=startBlock-1 %>>[이전]</a>
-		<%} %>
-	<%} %>
-	<%for(int i = startBlock;i<finishBlock+1;i++){ %>
-		 	<%if(pno==i){ %>
-	 		<%=i %>
-	 	<%}else{ %>
-	 	<%if(isSearch){ %>
-	 		<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=i%>"><%=i %></a>
-	 		<%}else{ %>
-	 		 <a href="list.jsp?pno=<%=i %>" ><%=i %></a>
-	 		 <%} %>
-	 <%} %>
-	 <%} %>
-	  <%if(pagecount>finishBlock){ %>
-	  <%if(isSearch){ %>
-	 	<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=finishBlock+1%>">[다음]</a>
-	 <%}else{ %>
-	  	 <a href="list.jsp?pno=<%=finishBlock+1 %>">[다음]</a> 
-	  	 <%} %>
-	  	 <%} %>
-	  	 </h4>
-	</div> --%>
-	
 	<ul class="page-navigator">
 	<%if(startBlock>1){ %>
 		<%if(isSearch){ %>
@@ -281,8 +250,6 @@ article {
 	  	 <%} %>
 	  	 <%} %>
 	  	 </ul>
-	  	 </div>
-
 
 <form action="list.jsp">
 	<select name ="type">
