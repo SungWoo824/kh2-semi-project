@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -9,19 +9,19 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/header-style.css" />
     <link rel="stylesheet" href="css/nav-style.css" />
-    <link rel="stylesheet" href="css/index-style.css" />
     <script src="datepicker/jquery-1.12.4.js"></script>
     <script src="datepicker/jquery-ui.js"></script>
-    <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="datepicker/jquery-ui.css" />
+    <script src="js/top-bar.js"></script>
+    <link rel="stylesheet" href="css/index-style.css" />
   </head>
-   <body onscroll="scroll()">
+  <body onscroll="scroll()">
     <nav>
       <!-- 상단바 시작 -->
       <div class="top-bar">
         <div class="top-bar__logo">
           <a class="logo-box" href="">
-            <p class="logo-image">로고로고로고</p>
+            <img src="image/logo2.png" />
           </a>
         </div>
         <div class="top-bar__menu">
@@ -132,104 +132,37 @@
       </form>
       <!-- 검색창 끝 -->
     </header>
+
     <main id="main">
       <!-- 홈 리스트 1번 시작 -->
       <section id="home-item1" class="home-item">
         <!-- 제목  -->
         <div class="item1 popular-title">
-          <h2>인기여행지</h2>
-          <h4>설명이다다다다다다우다다다다다다</h4>
+          <h2>인기 여행지</h2>
         </div>
-        <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">서울</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
+        <div class="item1 popular-list">
+          <div class="pupular-image__background">
+            <div class="popular-image image-left-top">
+              <a class="popular-imageBox" href="">
+                <img src="image/seoul.jpg" alt="" />
+                <span class="image-title1">서울</span>
+              </a>
             </div>
           </div>
-        </div>
-        <!-- ###################################################### -->
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">부산</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
+          <div class="pupular-image__background">
+            <div class="popular-image image-right-top">
+              <a class="popular-imageBox" href="">
+                <img src="image/전주.jpg" alt="" />
+                <span class="image-title2">전주</span>
+              </a>
             </div>
           </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">제주</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">대구</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">인천</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">부천</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-                <span class="imageBox__text">부천</span>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
+          <div class="pupular-image__background">
+            <div class="popular-image image-right-bottom">
+              <a class="popular-imageBox" href="">
+                <img src="image/부산.jpg" alt="" />
+                <span class="image-title3">부산</span>
+              </a>
             </div>
           </div>
         </div>
@@ -240,6 +173,7 @@
       <!-- 홈 리스트 2번 시작 -->
       <section id="home-item2" class="home-item">
         <!-- 제목  -->
+        <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
         <div class="item1 review-title">
           <h2>리뷰 입니다</h2>
           <h4>설명이다다다다다다우다다다다다다</h4>
@@ -249,7 +183,7 @@
           <div class="item1 review-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
+                <a href=""><img src="image/고양이1.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
@@ -262,7 +196,7 @@
           <div class="item1 popular-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
+                <a href=""><img src="image/고양이1.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
@@ -274,7 +208,7 @@
           <div class="item1 popular-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
+                <a href=""><img src="image/고양이1.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
