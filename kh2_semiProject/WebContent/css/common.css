@@ -164,3 +164,40 @@
 	    color:#666; 
 	    background-color: #fff; 
 	}
+	.coupon-under-table{
+		font-family: notosanskrmedium;
+    	color:#666;
+    	text-shadow: 1px 1px 0px #fff;
+    	background:#eaebec;
+    	border:#ccc 1px solid;
+    	border-radius: 3px;
+	}
+	.coupon-under-table td{
+		background:#fff;
+	}
+	.coupon-under-table input{
+		outline:none;
+		border: 1px solid #fff;
+		width:100%;
+	}
+	.coupon-under-table input#date{
+		background:#fff;
+		outline:none;
+		border: 1px solid #fff;
+		width: 130px;
+	}	
+	.input-button input{
+		width:60px;
+		background-color: #fff;
+	}
+	.input-button input:hover{
+		color:#666;
+	}
+	.input-button a{
+		text-decoration: none;
+	}
+	.input-button a#a > input{
+		margin:0;
+		padding:1px 0px;
+	}
+	
