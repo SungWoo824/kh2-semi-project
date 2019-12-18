@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 </head>
 <body>
+	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 	<div>
 	회원정보
 	</div>
