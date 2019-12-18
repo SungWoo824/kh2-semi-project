@@ -14,7 +14,7 @@
 	}catch(Exception e){
 		pno=1;
 	}
-	int pagesize = 10;
+	int pagesize = 15;
 	int navsize = 10;
 	int startBlock = (pno-1)/navsize*navsize+1;
 	int finishBlock = startBlock+9;
