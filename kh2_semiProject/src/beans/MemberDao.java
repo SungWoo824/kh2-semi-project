@@ -167,8 +167,6 @@ public class MemberDao {
 		con.close();
 		return id;
 	}
-
-
 	
 	//아이디로 조회
 	public MemberDto memberInfomation(String member_id) throws Exception{
