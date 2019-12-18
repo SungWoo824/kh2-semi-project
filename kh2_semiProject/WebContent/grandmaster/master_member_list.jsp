@@ -20,12 +20,12 @@
 </head>
 <body>
 	<div>헤더</div>
-	<div>매뉴</div>
-	<div><br></div>
-	<div><br></div>
-	<div><br></div>
-	<div>회원 목록 보기</div>
+	<div>메뉴</div>
+	<div class="row"></div>
+	<div class="row"></div>
 	<div class="w-80">
+	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+	<div class="master-title w-100"><h2>회원 목록</h2></div>
     <table class="w-100 member-table">
 		<thead>
 			<tr>

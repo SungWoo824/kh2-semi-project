@@ -16,8 +16,8 @@
 </head>
 <body>
 	<div>헤더</div>
-	<div>매뉴</div>
-	<div><br></div>
+	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+	<div></div>
 	<div><br></div>
 	<div><br></div>
 	<div>호텔 목록 보기</div>
