@@ -5,49 +5,87 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
+<style type="text/css">
+	* {
+		box-sizing: border-box;
+		border-collapse: collapse; 
+	}
+	.regist{
+		background-image: url("../image/regist2.jpg");
+		height: 800px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size: 98% 100%;
+	}
+	.menu-item{
+		border: 0;
+		
+		background-color: #b09f8d;
+	}
+	.logo-image img{
+		text-align:left;
+		width: 150px;
+		height: 150px;
+		margin: auto;
+	}
+</style>
 </head>
 <body>
+	<div class="login" align="center">
+		<div class="top-bar">
+        <div class="top-bar__logo">
+        	<a class="logo-box" href="">
+        	<div class="logo-image">
+        	<img src="../image/LOGO.png" align="left"><br><br><br><br><br><br><br><br>
+        	</div>
+        	</a>
+        </div>
 
-<div align ="center">
-	<h2 align><font color="brown">회원가입</font></h2>
+
+<div class="regist" align ="center">
+	<h2><font color="black">S I G N UP</font></h2>
 	<form action="regist.do" method = "post">
-	<table border="1">
+	<table border="0">
 		<tr>
-			<th>아이디</th>
-			<th><input type = "text" name="member_id" required></th>
+			<th>I D</th>
+			<th><input class="menu-item" type = "text" name="member_id" required></th>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
-			<th><input type = "password" name="member_pw" required></th>
+			<th>P A S S W O R D</th>
+			<th><input class="menu-item" type = "password" name="member_pw" required></th>
 		</tr>
 		<tr>
-			<th>이름</th>
-			<th><input type = "text" name="member_name" required></th>
+			<th>N A M E</th>
+			<th><input class="menu-item" type = "text" name="member_name" required></th>
 		</tr>
 		<tr>
-			<th>생년월일</th>
-			<th><input type = "date" name="member_birthday"></th>
+			<th>B I R T H</th>
+			<th><input class="menu-item" type = "date" name="member_birthday"></th>
 		</tr>
 		<tr>
-			<th>전화번호</th>
-			<th><input type = "text" name="member_phone"></th>
+			<th>P H O N E</th>
+			<th><input class="menu-item" type = "text" name="member_phone"></th>
 		</tr>
 		<tr>
-			<th>이메일</th>
-			<th><input type = "text" name="member_email"></th>
+			<th>E - M A I L</th>
+			<th><input class="menu-item" type = "text" name="member_email"></th>
 		</tr>
 		<tr>
-		<th>사용유형</th>
-		<th><select name="member_grade">
+		<th>T Y P E</th>
+		<th><select class="menu-item" name="member_grade">
 			<option>사용자</option>
 			<option>판매자</option>
 		</select></th>
 		</tr>
 		<tr><td colspan = "2" align = "center">
-		<input type = "submit" value = "회원 가입">
+		<input class="menu-item" type = "submit" value = "회원 가입">
 		</td></tr>
 	</table>
 	</form>
 </div>
+	</div>
+
 </body>
 </html>
