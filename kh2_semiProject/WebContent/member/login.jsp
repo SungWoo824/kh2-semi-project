@@ -5,25 +5,93 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
-<div align="center">
-	<h2><font color="brown">로그인 페이지</font></h2>
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	.title{
+		
+		border-collapse: collapse; 
+		
+	}
+	.title th{
+		
+	}
+	.login{
+		background-image: url("../image/login5.jpg");
+		height: 800px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size: 98% 100%;
+		
+	}
+	.id{
+		border: 0;
+		background-color: #ededef;
+		
+	}
+		
+	.pw{
+		border: 0;
+		background-color: #ededef;
+		
+	}
+	.log_in{
+		border: 0;
+		background-color: #ededef;
+		
+	}
+	.menu-item{
+		border: 0;
+		background-color: #ededef;
+		
+	}
+	.logo-image img{
+		text-align:left;
+		width: 150px;
+		height: 150px;
+		margin: auto;
+		
+	}
+
+
+
+</style>
+</head>
+<body>
+
+
+	<div class="login" align="center">
+		<div class="top-bar">
+        <div class="top-bar__logo">
+        	<a class="logo-box" href="">
+        	<div class="logo-image">
+        	<img src="../image/LOGO.png" align="left"><br><br><br><br><br><br><br><br>
+        	</div>
+        	</a>
+        </div>
+
+
+	<h2><font color="black">L O G I N</font></h2>
 		
 	<form action="/kh2_semiProject/member/login.do" method="post">
-	<table border="0">
+	<table class="title">
 		<tr>
 			<th align="center">
-				<input type="text" name="member_id" placeholder="ID">
+				<input class="id" type="text" name="member_id" placeholder="ID">
 			</th>
 		</tr>
 
 		<tr>
 			<th align="center">
-				<input type="password" name="member_pw" placeholder="Password">
+				<input class="pw" type="password" name="member_pw" placeholder="Password">
 			</th>
 		</tr>
 		<tr>
 			<th align="center">
-				<input type="submit" value="로그인">
+				<input class="log_in" type="submit" value="확 인">
 			</th>
 		</tr>
 		
@@ -31,27 +99,24 @@
 		<tr>
 			<th>
 				<input type="checkbox">
-				<font color="brown">저장하기</font>
+				<font color="black">ID 저장</font>
 			</th>
 		</tr>
 		<tr>
 			<td>
-				<a href="find_id.jsp">아이디찾기</a>
-				<a href="find_pw.jsp">비밀번호찾기</a>
-				<a href="regist.jsp">회원가입</a>
+				<a class="menu-item" href="find_id.jsp">아이디찾기</a>
+				<a class="menu-item" href="find_pw.jsp">비밀번호찾기</a>
+				<a class="menu-item" href="regist.jsp">회원가입</a>
 			</td>
 		</tr>
 	</table>
 	</form>
 </div>
-</head>
-<body>
-	<div align="center">
-		<img src="../image/image11-1.gif">
-		<img src="../image/image11-1.gif">
-		<img src="../image/image11-1.gif">
-		<img src="../image/image11-1.gif">
-	</div>	
+          </div>
+
+
+
+
 </body>
 </html>
 
