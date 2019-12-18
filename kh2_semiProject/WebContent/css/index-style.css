@@ -1,28 +1,44 @@
-* {
-  box-sizing: border-box;
+@font-face {
+  font-family: "NotoSansCJKkr-Medium";
+  src: url("font/NotoSansCJKkr-Medium.otf");
 }
 
+* {
+  box-sizing: border-box;
+  font-family: "NotoSansCJKkr-Medium";
+}
 /* 경계선 */
 #main {
   width: 100%;
   height: auto;
+  margin-top: 30px;
 }
+
 #home-item1 {
   margin-bottom: 100px;
 }
+
 .home-item {
   width: 1200px;
   margin: 0 auto;
 }
+
+.popular-title {
+  border-top: 1px solid rgba(34, 50, 84, 0.4);
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.popular-title > h2 {
+  text-align: left;
+  margin-bottom: 0;
+}
+
 .list-container {
   float: left;
   width: 33.3333%;
   height: auto;
   padding: 10px;
-}
-.list-container > div:hover {
-  /* background-color: rgba(0, 0, 0, 0.1); */
-  transition: fade;
 }
 
 .row {
@@ -36,10 +52,6 @@
   /* border: 1px solid black; */
 }
 
-.list-item1__imageBox {
-  padding-top: 15px;
-}
-
 .contentBox > a {
   text-decoration: none;
 }
@@ -49,10 +61,76 @@ img {
   height: auto;
 }
 
-.imageBox__text {
-  position: absolute;
-  font-size: 40px;
-  color: white;
+.popular-list {
+  width: 100%;
+}
+
+.popular-image {
+  font-size: 30px;
+  font-weight: 900;
+  text-align: left;
+  padding: 0;
+}
+
+.popular-image > .popular-imageBox > p {
+  margin: 0;
+  padding: 0;
+}
+
+.image-left-top {
+  float: left;
+  width: 65%;
+  height: 500px;
+  /* background-image: url("../image/고양이1.jpg"); */
+  /* background-size: 100% auto; */
+}
+
+.image-right-top {
+  float: right;
+  width: 34%;
+  height: 245px;
+  /* background-image: url("../image/고양이1.jpg"); */
+  /* background-size: 100% auto; */
+}
+
+.image-right-bottom {
+  float: right;
+  width: 34%;
+  height: 245px;
   margin-top: 10px;
-  margin-left: -370px;
+  /* background-image: url("../image/고양이1.jpg"); */
+  /* background-size: 100% auto; */
+}
+
+.popular-imageBox > img {
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.image-title1 {
+  position: absolute;
+  left: 200px;
+  top: auto;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+}
+
+.image-title2 {
+  position: absolute;
+  right: 200px;
+  top: auto;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
+}
+
+.image-title3 {
+  position: absolute;
+  right: 200px;
+  top: auto;
+  margin-top: 20px;
+  color: white;
+  font-size: 40px;
 }
