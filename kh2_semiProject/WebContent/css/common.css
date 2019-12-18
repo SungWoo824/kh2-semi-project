@@ -123,3 +123,44 @@
     	color: #666;
     	text-decoration: none;
     }
+    .form-choice{
+    	border:#ccc 1px solid;
+    	border-radius: 3px;
+    }
+    .form-choice option:hover{
+    	background:#666;
+    	color:#fff;
+    }
+    .select-icon{
+		width: 200px;
+		padding: .8em .5em; 
+		font-family: inherit;
+		background: url(../image/select_icon.jpg) no-repeat 95% 50%; 
+		border: 1px solid #666; 
+		-webkit-appearance: none;
+		-moz-appearance: none; 
+		appearance: none;
+		outline:none;
+    }
+    .select-icon option:hover{
+    	background-color:#666;
+    }
+    .search-input{
+    	width: 200px;
+    	padding: .8em .5em;
+    	font-family: inherit;
+    	border: 1px solid #666;
+    }
+    .button-design{
+    	margin:-4px; 
+    	border: 1px solid #666; 
+    	background-color: #666; 
+    	color: #fff; 
+    	padding: .8em .5em; 
+    	font-family: inherit;
+    }
+   .button-design button:hover{ 
+   	    border: 1px solid #fff;
+	    color:#666; 
+	    background-color: #fff; 
+	}

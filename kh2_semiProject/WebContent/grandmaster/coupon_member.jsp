@@ -41,9 +41,8 @@
 <meta charset="UTF-8">
 <title>사용자 보유 쿠폰 목록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-<style>
-
-</style>
+<%-- <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom-select.css"> --%>
+<%-- <script src="<%=request.getContextPath()%>/js/custom-select.js"></script> --%>
 </head>
 <body>
 <div>header</div>
@@ -128,16 +127,16 @@
 		</h4>
 	<%} %>
 	<div align="right">
-	<form action="coupon_member.jsp" method="get">
-		<select name="type">
+	<form action="coupon_member.jsp" method="get" class="form=choice">
+		<select id="select" name="type" class="select-icon custom-select">
 			<option value="member_name">회원 이름</option>
 			<option value="member_id">회원 아이디</option>
 			<option value="coupon_name">쿠폰 이름</option>
 			<option value="coupon_no">쿠폰 번호</option>
 			<option value="coupon_rate">할인율(검색값 이상)</option>
 		</select>
-		<input type="search" name="keyword" placeholder="검색어" required>
-		<input type="submit" value="검색">
+		<input type="search" name="keyword" placeholder="검색어" required class="search-input">
+		<input type="submit" value="검색" class="button-design">
 	</form>
 	</div>
 </div>
