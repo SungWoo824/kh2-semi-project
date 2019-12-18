@@ -9,13 +9,14 @@ public class MemberDto {
 	private String birthday;
 	private String phone;
 	private String email;
+	private String joindate;
 	
 	public MemberDto() {
 		super();
 	}
 	
 	public MemberDto(int no, String id, String pw, String name, String grade, String birthday, String phone,
-			String email) {
+			String email, String joindate) {
 		super();
 		this.no = no;
 		this.id = id;
@@ -25,6 +26,7 @@ public class MemberDto {
 		this.birthday = birthday;
 		this.phone = phone;
 		this.email = email;
+		this.joindate = joindate;
 	}
 
 	public int getNo() {
@@ -74,6 +76,14 @@ public class MemberDto {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
 	}
 	
 }

@@ -21,6 +21,7 @@
     }
     .member-table tr{
         text-align: center;
+        height:50px;
     }
     .member-table a{
         color: #666666;

@@ -3,40 +3,38 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.*;
-
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-
-
 public class MemberDao {
-	
+
 	private static DataSource source;
 	static {
 		try {
 			InitialContext ctx = new InitialContext();
 			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
-			
+
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	public Connection getConnection() throws Exception{
+
+	public Connection getConnection() throws Exception {
 		return source.getConnection();
 	}
+
 ////////////////////////////////////////////////////////////////
 //							회원가입							  //
 ////////////////////////////////////////////////////////////////	
-	public void regist(MemberDto dto)throws Exception{
+	public void regist(MemberDto dto) throws Exception {
 		Connection con = getConnection();
-		
-		String sql="insert into member values("
-				+ "member_no_seq.nextval,?,?,?,?,?,?,?)";
+
+		String sql = "insert into member values(" + "member_no_seq.nextval,?,?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());
@@ -45,52 +43,52 @@ public class MemberDao {
 		ps.setString(5, dto.getBirthday());
 		ps.setString(6, dto.getPhone());
 		ps.setString(7, dto.getEmail());
-		
+
 		ps.execute();
-		
+
 		con.close();
 	}
 
 ////////////////////////////////////////////////////////////////
 //							멤버로그인							  //
 ////////////////////////////////////////////////////////////////	
-	public boolean login(String id, String pw)throws Exception{
+	public boolean login(String id, String pw) throws Exception {
 		Connection con = getConnection();
-    String sql = "select * from member where member_id = ? and member_pw = ?";
+		String sql = "select * from member where member_id = ? and member_pw = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, id);
 		ps.setString(2, pw);
 		ResultSet rs = ps.executeQuery();
-		
-		boolean result= rs.next();
-		
+
+		boolean result = rs.next();
+
 		con.close();
-  return result;
+		return result;
 	}
-	
-	public boolean idCheck(String id) throws Exception{
+
+	public boolean idCheck(String id) throws Exception {
 		Connection con = this.getConnection();
 		int result;
 		String sql = "select * from member where id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-    result = ps.executeUpdate();
-    
-    con.close();
-		return result>0;
+		result = ps.executeUpdate();
+
+		con.close();
+		return result > 0;
 	}
-	
+
 ////////////////////////////////////////////////////////////////
 //						관리자 회원 목록 조회						  //
 ////////////////////////////////////////////////////////////////	
-	public List<MemberDto> memberList() throws Exception{
+	public List<MemberDto> memberList() throws Exception {
 		Connection con = this.getConnection();
 		String sql = "select * from member";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<MemberDto> list = new ArrayList<>();
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			MemberDto dto = new MemberDto();
 			dto.setNo(rs.getInt("member_no"));
 			dto.setId(rs.getString("member_id"));
@@ -99,41 +97,43 @@ public class MemberDao {
 			dto.setBirthday(rs.getString("member_birthday"));
 			dto.setPhone(rs.getString("member_phone"));
 			dto.setEmail(rs.getString("member_email"));
-			
+			dto.setJoindate(rs.getString("member_joindate"));
+
 			list.add(dto);
 		}
 		con.close();
 		return list;
 	}
-	
+
 ////////////////////////////////////////////////////////////////
 //					관리자 회원 쿠폰 보유수 확인						  //
 ////////////////////////////////////////////////////////////////
-	public int memberCouponNumber(int member_no) throws Exception{
+	public int memberCouponNumber(int member_no) throws Exception {
 		Connection con = this.getConnection();
 		String sql = "select count(*) from havecoupon where member_no = ?";
-		
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, member_no);
 		ResultSet rs = ps.executeQuery();
-		
+
 		rs.next();
 		int memberCouponNumber = rs.getInt(1);
-		
+
 		con.close();
 		return memberCouponNumber;
 	}
+
 ////////////////////////////////////////////////////////////////
 //					관리자 회원 상세정보 확인						  //
 ////////////////////////////////////////////////////////////////
-	public MemberDto memberInfomation(int member_no) throws Exception{
+	public MemberDto memberInfomation(int member_no) throws Exception {
 		Connection con = this.getConnection();
-		String sql ="select * from member where member_no = ?";
-		
+		String sql = "select * from member where member_no = ?";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, member_no);
 		ResultSet rs = ps.executeQuery();
-		
+
 		rs.next();
 		MemberDto dto = new MemberDto();
 		dto.setNo(rs.getInt("member_no"));
@@ -143,23 +143,22 @@ public class MemberDao {
 		dto.setBirthday(rs.getString("member_birthday"));
 		dto.setPhone(rs.getString("member_phone"));
 		dto.setEmail(rs.getString("member_email"));
-		
+		dto.setJoindate(rs.getString("member_joindate"));
+
 		con.close();
 		return dto;
 	}
 
-
-	
-	//아이디로 조회
-	public MemberDto memberInfomation(String member_id) throws Exception{
+	// 아이디로 조회
+	public MemberDto memberInfomation(String member_id) throws Exception {
 
 		Connection con = this.getConnection();
-		String sql ="select * from member where member_id = ?";
-		
+		String sql = "select * from member where member_id = ?";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, member_id);
 		ResultSet rs = ps.executeQuery();
-		
+
 		rs.next();
 		MemberDto dto = new MemberDto();
 		dto.setNo(rs.getInt("member_no"));
@@ -169,17 +168,115 @@ public class MemberDao {
 		dto.setBirthday(rs.getString("member_birthday"));
 		dto.setPhone(rs.getString("member_phone"));
 		dto.setEmail(rs.getString("member_email"));
-		
+		dto.setJoindate(rs.getString("member_joindate"));
+
 		con.close();
 		return dto;
 	}
+
+////////////////////////////////////////////////////////////////
+//					관리자 -	 사용자 가입일 조회					  //
+////////////////////////////////////////////////////////////////
+	public List<String[]> userJoindateSearch() throws Exception {
+		Connection con = this.getConnection();
+
+		String sql = "select DAY,count(*) from (select to_char(M.member_joindate, 'YYYY-MM-DD') DAY, M.* from member M) where member_grade = '사용자' group by DAY order by DAY desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<String[]> list = new ArrayList<>();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String todayFormat = formatter.format(today);
+		Calendar yesterday = Calendar.getInstance();
+		yesterday.add(Calendar.DATE, -1);
+		Date yest = yesterday.getTime();
+		String yesterdayFormat = formatter.format(yest);
+
+		String[] arr;
+		
+		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
+			arr = new String[2];
+			arr[0] = todayFormat;
+			arr[1] = "0";
+			list.add(arr);
+
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+
+		} else {
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+			rs.next();
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+		}
+		con.close();
+		return list;
+	}
+
+////////////////////////////////////////////////////////////////
+//					관리자 -	 판매자 가입일 조회					  //
+////////////////////////////////////////////////////////////////
+	public List<String[]> ownerJoindateSearch() throws Exception {
+		Connection con = this.getConnection();
+
+		String sql = "select DAY,count(*) from (select to_char(M.member_joindate, 'YYYY-MM-DD') DAY, M.* from member M) where member_grade = '판매자' group by DAY order by DAY desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<String[]> list = new ArrayList<>();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String todayFormat = formatter.format(today);
+		Calendar yesterday = Calendar.getInstance();
+		yesterday.add(Calendar.DATE, -1);
+		Date yest = yesterday.getTime();
+		String yesterdayFormat = formatter.format(yest);
+
+		String[] arr;
+		
+		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
+			arr = new String[2];
+			arr[0] = todayFormat;
+			arr[1] = "0";
+			list.add(arr);
+
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+
+		} else {
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+			rs.next();
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+		}
+		con.close();
+		return list;
+	}
 }
-		
-		
-		
-		
-		
-		
-		
-		
-	

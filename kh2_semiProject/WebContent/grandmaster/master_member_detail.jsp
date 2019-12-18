@@ -52,6 +52,9 @@
 	<%=mdto.getEmail() %>
 	</div>
 	<div>
+	<%=mdto.getJoindate() %>
+	</div>
+	<div>
 	쿠폰내용
 	<%for(CouponDto cdto : list){ %>
 		<%=cdto.getCoupon_no() %>
