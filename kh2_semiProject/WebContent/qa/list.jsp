@@ -195,14 +195,13 @@ a{
 	text-decoration: none; color:#000000}
 }
 body{
- background-image: url('../image/qa1.jpg');
+ background-image: url("../image/qa1.jpg");
  margin: auto;
- width: 80%
 }
 </style>
 </head>
 
-<body style="width: 80%">
+<body style="width: 80%;">
 <article >
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list.jsp">
