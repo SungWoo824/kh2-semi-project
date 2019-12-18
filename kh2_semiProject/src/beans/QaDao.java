@@ -50,15 +50,18 @@ public class QaDao {
 		return regist;
 	}
 //Q&A목록 가져오기
-	public List<QaDto> list() throws Exception{
+	public List<QaDto> list(int start,int finish) throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from qa";
+		String sql = "select * from (select rownum rn,qa.* from qa order by qa_no desc)where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finish);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
 			QaDto dto = new QaDto();
+			dto.setRn(rs.getInt("rn"));
 			dto.setQa_no(rs.getInt("qa_no"));
 			dto.setRoom_no(rs.getInt("room_no"));
 			dto.setMember_no(rs.getInt("member_no"));
@@ -72,13 +75,15 @@ public class QaDao {
 		return list;	
 	}
 	//검색한 목록 가져오기
-	public List<QaDto> search(String type,String keyword) throws Exception{
+	public List<QaDto> search(String type,String keyword,int start,int finish) throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from (select m.member_id,q.* from member m,qa q where m.member_no = q.member_no) where "+type+" like '%'||?||'%' ";
+		String sql = "select * from (select rownum rn,A.* from (select * from (select m.member_id,q.* from member m,qa q where m.member_no = q.member_no) where "+type+" like '%'||?||'%')A order by qa_no desc)where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
 			QaDto dto = new QaDto();
@@ -148,5 +153,25 @@ public class QaDao {
 		ps.setInt(1, qa_no);
 		ps.execute();
 		con.close();
+	}
+	
+	public int getCount(String type,String keyword) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "select count(*) from qa";
+//		sql = "select count(*) from board where"+type+"like '%'||?||'%'";
+		boolean isSearch = type != null && keyword != null;
+		if(isSearch) {
+			sql += " where "+type+" like '%'||?||'%'";
+		}
+		PreparedStatement ps = con.prepareStatement(sql);
+		if(isSearch) {
+			ps.setString(1, keyword);
+		}
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		con.close();
+		return count;
 	}
 }
