@@ -1,5 +1,9 @@
 package beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class QaDto {
 	
 	private int rn;
@@ -55,6 +59,18 @@ public class QaDto {
 	}
 	public String getQa_wdate() {
 		return qa_wdate;
+	}
+	public String getQa_wdateWithFormat() throws ParseException {
+		String time=null;
+		if (qa_wdate!=null) {
+		SimpleDateFormat read = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		Date date = read.parse(qa_wdate);
+		SimpleDateFormat write = new SimpleDateFormat("y년 M월 d일");
+		time = write.format(date);
+
+			return time;
+		}
+		return "";
 	}
 	public void setQa_wdate(String qa_wdate) {
 		this.qa_wdate = qa_wdate;
