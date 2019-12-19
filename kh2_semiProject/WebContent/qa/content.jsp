@@ -40,14 +40,11 @@
     width:100%;
     border:1px solid black;
     border-collapse: collapse;
-
 }
 
 .table > thead > tr,
 .table > tbody > tr 
 {
-    border:1px solid black;
-    padding:0.5rem;
 }
 
 article{
@@ -104,16 +101,16 @@ article{
 		<tr>
 		<td>
 		<%for(QaReplyDto rdto : list){ %>
-					<table class="table" width="100%" >
+					<table  width="100%" >
 			<tr>
 				<td>
-				<table class="table" width="100%" >
+				<table  width="100%" >
 				<tr>
-						<td><%=rdto.getMember_no() %></td><!-- 멤버이름으로 교체 -->
+						<td><%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
 						<td><%=rdto.getQa_reply_wdate() %></td>
 				</tr>
 				<tr>
-					<td colspan="2" ><%=rdto.getQa_reply_content() %></td>
+					<td colspan="2"  style="font-size: 5;"><%=rdto.getQa_reply_content() %></td>
 				</tr>
 					<tr>
 						<form action="qa_reply_delete.do" method="get">

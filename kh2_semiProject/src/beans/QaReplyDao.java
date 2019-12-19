@@ -45,7 +45,7 @@ public class QaReplyDao {
 		
 		List<QaReplyDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from qa_reply where qa_no=? order by qa_no";
+		String sql = "select * from(select qr.*,m.member_name from member m,qa_reply qr where m.member_no = qr.member_no order by qa_reply_no)where qa_no=?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, qa_no);
 		ResultSet rs = ps.executeQuery();
@@ -57,6 +57,7 @@ public class QaReplyDao {
 			dto.setMember_no(rs.getInt("member_no"));
 			dto.setQa_reply_content(rs.getString("qa_reply_content"));
 			dto.setQa_reply_wdate(rs.getString("qa_reply_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
 			list.add(dto);
 		}
 		con.close();

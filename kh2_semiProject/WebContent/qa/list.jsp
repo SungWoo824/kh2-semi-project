@@ -1,3 +1,5 @@
+<%@page import="beans.QaReplyDto"%>
+<%@page import="beans.QaReplyDao"%>
 <%@page import="beans.QaDto"%>
 <%@page import="beans.QaDao"%>
 <%@page import="java.util.List"%>
@@ -43,6 +45,8 @@
 	if(finishBlock > pagecount){
 		finishBlock = pagecount;
 	}
+	QaReplyDao Rdao = new QaReplyDao();
+
 %>
 <html>
 <head>
@@ -193,7 +197,22 @@ article {
 a{
 	text-decoration: none; color:#000000}
 }
-
+.search{
+	width: 80%;
+}
+.search select,
+.search option{
+	width: 3rem;
+	height: 2rem;
+}
+.search>input[type=submit] {
+	width: 3rem;
+	height: 2rem;
+}
+.search>input[name=keyword] {
+	width: 20rem;
+	height: 2rem;
+}
 </style>
 </head>
 
@@ -232,13 +251,31 @@ a{
 	%>
 	<tbody>
 	<tr>
-		<td><%=dto.getQa_no()%></td><!-- member get으로 아이디를 가져와야함 -->
+		<td><%=dto.getRn()%></td><!-- member get으로 아이디를 가져와야함 -->
 		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
 		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_name() %></td>
 		<td><%=dto.getQa_wdate() %></td>
 	</tr>
+<%-- 	<%	List<QaReplyDto> Rlist = Rdao.select(dto.getQa_no()); %>
+	<%int i = 1; %>
+	<%for(QaReplyDto Rdto: Rlist){ %><!-- 리플 미리보기 -->
+		<tr>
+			<td>&nbsp; </td>
+			<td>&nbsp; </td>
+			<td>&nbsp; </td>
+			<td align="left">
+			<%for(int j=0;j<i;j++){ %>
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<%} %>
+			ㄴ<%=Rdto.getQa_reply_content() %>
+			</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<%i++; %>
+		</tr>
+	<%} %> --%>
 	<%} %>
 </tbody>
 </table>
@@ -275,7 +312,7 @@ a{
 	  	 </ul>
 </div>
 </div>
-<form action="list.jsp">
+<form action="list.jsp" class="search">
 	<select name ="type">
 		<option value="qa_title">제목</option>
 		<option value="member_id">아이디</option>
