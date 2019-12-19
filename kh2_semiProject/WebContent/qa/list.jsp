@@ -68,7 +68,7 @@
 * {
 	box-sizing: border-box;
 	margin: auto;
-	font-family: cookieRun;
+	font-family: no;
 }
 .nav-container {
   padding: 0;
