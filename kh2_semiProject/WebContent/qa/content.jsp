@@ -31,88 +31,21 @@
         }
 
 * {
-    box-sizing: border-box;
-    font-family: cookieRun;
+	box-sizing: border-box;
+	margin: auto;
+	font-family: No;
 }
 
 .table{
     width:100%;
     border:1px solid black;
-
-    /* 테두리 병합 */
     border-collapse: collapse;
-
 }
 
-.table > thead > tr > td,
-.table > thead > tr > th,
-.table > tbody > tr > td,
-.table > tbody > tr > th
+.table > thead > tr,
+.table > tbody > tr 
 {
-    border:1px solid black;
-    padding:0.5rem;
 }
-
-.custom-list{
-    list-style: none;
-    margin:0;
-    padding:0;
-    display:inline-block;
-
-    width:150px;
-}
-.custom-list > li{
-    background-color:black;
-    color:white;
-    padding:15px;
-    cursor:pointer;
-}
-.custom-list li:hover{
-    background-color:gray;
-    color:black;
-}
-
-/* 2차 이상의 메뉴 스타일 */
-.custom-list ul{
-    list-style: none;
-    padding:0;
-    margin:0;
-
-    position: absolute;
-    margin-left: 135px;
-    margin-top: -36px;
-
-    /* 2차 이상의 메뉴는 처음에 숨김 처리 */
-    display: none;
-}
-.custom-list ul > li{
-    background-color:black;
-    color:white;
-    padding:15px;
-    width:150px;
-}
-
-.custom-list li:hover > ul{
-    display: block;
-}
-
-.custom-list li{
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-
-.w-100{ width: 100%; }
-.w-90{ width: 90%; }
-.w-80{ width: 80%; }
-.w-70{ width: 70%; }
-.w-60{ width: 60%; }
-.w-50{ width: 50%; }
-.w-40{ width: 40%; }
-.w-30{ width: 30%; }
-.w-20{ width: 20%; }
-.w-10{ width: 10%; }
 
 article{
     margin:auto;
@@ -138,51 +71,18 @@ article{
 .row-right{
 	text-align: right;
 }
-
-        .page-navigator {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            color: black;
-            display: inline-block;
-        }
-
-        .page-navigator::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        .page-navigator>li {
-            float: left;
-            background-color: white;
-            padding: 1rem;
-        }
-
-        .page-navigator>li.active {
-            background-color: black;
-        }
-
-        .page-navigator>li>a {
-            text-decoration: none;
-        }
-
-        .page-navigator>li:hover {
-           background-color: gray;
-        }
-        
-	.title{
-background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
-	color: white;
-	text-align: left
-	}
+.reply>input[type=submit]{
+	width: 7rem;
+	height: 5rem;
+}
+.reply>textarea{
+	float: left;
 }
 </style>
-<body>
+<body style="width: 60%">
 <div align="center">
 <h1>	<%=dto.getQa_title() %></h1>
-	<table border="1" width="70%">
+	<table class="table">
 	<tr>
 		<td>제목: <%=dto.getQa_title() %></td>
 	</tr>
@@ -201,15 +101,16 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%
 		<tr>
 		<td>
 		<%for(QaReplyDto rdto : list){ %>
-					<table class="table" width="100%" >
+					<table  width="100%" >
 			<tr>
-				<td><table border="1" width="100%" >
+				<td>
+				<table  width="100%" >
 				<tr>
-						<td><%=rdto.getMember_no() %></td><!-- 멤버이름으로 교체 -->
+						<td><%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
 						<td><%=rdto.getQa_reply_wdate() %></td>
 				</tr>
 				<tr>
-					<td colspan="2" ><%=rdto.getQa_reply_content() %></td>
+					<td colspan="2"  style="font-size: 5;"><%=rdto.getQa_reply_content() %></td>
 				</tr>
 					<tr>
 						<form action="qa_reply_delete.do" method="get">
@@ -229,8 +130,8 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%
 			<tr>
 					<td align="right">
 
-			<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post">
-				<textarea rows="4" cols="100" required name="qa_reply_content"></textarea>
+			<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
+				<textarea rows="4" cols="90" required name="qa_reply_content"></textarea>
 				<input type="submit" value="등록">
 			</form>
 				</td>
