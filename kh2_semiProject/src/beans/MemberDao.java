@@ -172,6 +172,21 @@ public class MemberDao {
 		return id;
 	}
 
+	public boolean find_pw(String id, String name, String phone) throws Exception {
+		Connection con = getConnection();
+		String sql = "select * from member "
+				+ "where member_id =? and member_name = ? and member_phone = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.setString(2, name);
+		ps.setString(3, phone);
+		ResultSet rs = ps.executeQuery();
+		boolean result = rs.next();
+
+		con.close();
+		return result;
+	}
+	
 //아이디로 조회
 	public MemberDto memberInfomation(String member_id) throws Exception {
 
@@ -197,7 +212,7 @@ public class MemberDao {
 		return dto;
 	}
 
-/////////단일조회
+/////////아이디를 이용해서 회원정보 모두 가져오기 /////////////
 	public MemberDto get(String member_id) throws Exception {
 
 		Connection con = this.getConnection();
@@ -363,6 +378,7 @@ public class MemberDao {
 		con.close();
 		return list;
 	}
+
 	
 ////////////////////////////////////////////////////////////////
 //					관리자 -	 회원 전체 수 검색					  //
