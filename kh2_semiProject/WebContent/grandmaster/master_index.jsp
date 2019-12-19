@@ -102,12 +102,11 @@
 <body onload="display();">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
-	<div><h2>로고</h2></div>
 	<div><h2>그림</h2></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
 	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
-	<div class="row-big"></div>
-	<div class="row-big"></div>
-	<div class="row-big"></div>
 	<div class="master">
 		<div class="master-list">
 			<div class="master-list-item">
