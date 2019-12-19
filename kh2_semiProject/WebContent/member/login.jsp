@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String error = request.getParameter("error");
+	
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,10 +13,12 @@
 <style type="text/css">
 	*{
 		box-sizing: border-box;
+		font-family: binggrae;
 	}
 	.title{
 		
-		border-collapse: collapse; 
+		border-collapse: collapse;
+		text-decoration: underline; 
 		
 	}
 	.title th{
@@ -19,7 +26,7 @@
 	}
 	.login{
 		background-image: url("../image/login5.jpg");
-		height: 800px;
+		height: 1000px;
 		width: 100%;
 		margin: auto;
 		padding: 15px;
@@ -30,22 +37,26 @@
 	.id{
 		border: 0;
 		background-color: #ededef;
+		text-decoration: underline;
 		
 	}
 		
 	.pw{
 		border: 0;
 		background-color: #ededef;
+		text-decoration: underline;
 		
 	}
 	.log_in{
 		border: 0;
 		background-color: #ededef;
 		
+		
 	}
 	.menu-item{
 		border: 0;
 		background-color: #ededef;
+		
 		
 	}
 	.logo-image img{
@@ -54,6 +65,10 @@
 		height: 150px;
 		margin: auto;
 		
+	}
+	@font-face{
+    font-family: binggrae;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
 	}
 
 
@@ -95,6 +110,7 @@
 			</th>
 		</tr>
 		
+		
 
 		<tr>
 			<th>
@@ -103,14 +119,19 @@
 			</th>
 		</tr>
 		<tr>
-			<td>
-				<a class="menu-item" href="find_id.jsp">아이디찾기</a>
+			<td align="center">
+				<p>
+				<a class="menu-item" href="find_id.jsp">아이디찾기/</a>
 				<a class="menu-item" href="find_pw.jsp">비밀번호찾기</a>
+				</p>
 				<a class="menu-item" href="regist.jsp">회원가입</a>
 			</td>
 		</tr>
 	</table>
 	</form>
+	<%if(error != null){%>
+		<font color="red"><h3>잘못된 회원정보입니다.</h3></font>
+	<%} %>
 </div>
           </div>
 

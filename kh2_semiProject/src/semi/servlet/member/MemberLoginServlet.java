@@ -28,7 +28,7 @@ public class MemberLoginServlet extends HttpServlet{
 		
 		if(result) {
 		
-			System.out.println(id);
+			
 			req.getSession().setAttribute("id", id);
 			
 			

@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
 <div class="w-100 master-menu">
 		<div class="master-menu-item">
+			<a href="master_index.jsp">관리자 페이지 홈</a>
+		</div>
+		<div class="master-menu-item">
 			<a href="master_hostel_list.jsp">호텔 관리</a>
 		</div>
 		<div class="master-menu-item">
@@ -12,8 +15,5 @@
 		</div>
 		<div class="master-menu-item">
 			<a href="#">예약 관리</a>
-		</div>
-		<div class="master-menu-item">
-			<a href="#">관리자 생성</a>
 		</div>
 </div>

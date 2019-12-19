@@ -18,7 +18,8 @@ public class QaDao {
 	static {
 		try {
 			InitialContext ctx = new InitialContext();//[1]
-			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");			
+			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
@@ -54,7 +55,7 @@ public class QaDao {
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from (select rownum rn,qa.* from qa order by qa_no desc)where rn between ? and ?";
+		String sql = "select * from (select rownum rn,A.* from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no order by qa_no desc)A )where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);
 		ps.setInt(2, finish);
@@ -69,6 +70,7 @@ public class QaDao {
 			dto.setQa_title(rs.getString("qa_title"));
 			dto.setQa_content(rs.getString("qa_content"));
 			dto.setQa_wdate(rs.getString("qa_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
 			list.add(dto);
 		}
 		con.close();
@@ -94,6 +96,31 @@ public class QaDao {
 			dto.setQa_title(rs.getString("qa_title"));
 			dto.setQa_content(rs.getString("qa_content"));
 			dto.setQa_wdate(rs.getString("qa_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
+			list.add(dto);
+		}
+		con.close();
+		return list;	
+	}
+	
+	public List<QaDto> id_search(String keyword) throws Exception{
+		
+		List<QaDto> list = new ArrayList<>();
+		Connection con = getConnection();
+		String sql = "select A.* from (select * from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no) where member_id= ? )A order by qa_no desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			QaDto dto = new QaDto();
+			dto.setQa_no(rs.getInt("qa_no"));
+			dto.setRoom_no(rs.getInt("room_no"));
+			dto.setMember_no(rs.getInt("member_no"));
+			dto.setQa_head(rs.getString("qa_head"));
+			dto.setQa_title(rs.getString("qa_title"));
+			dto.setQa_content(rs.getString("qa_content"));
+			dto.setQa_wdate(rs.getString("qa_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
 			list.add(dto);
 		}
 		con.close();

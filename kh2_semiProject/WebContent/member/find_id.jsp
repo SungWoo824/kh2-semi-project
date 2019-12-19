@@ -11,7 +11,7 @@
 <style type="text/css">
 	.find_id{
 		background-image: url("../image/find_id.jpg");
-		height: 800px;
+		height: 1000px;
 		width: 100%;
 		margin: auto;
 		padding: 15px;
@@ -23,10 +23,14 @@
 	    background-color: #ffffff;
         background-color: rgba( 255, 255, 255, 0.5 );
 	}
+	.find-id{
+		margin-top: 15%;
+	}
 </style>
 </head>
 <body>
 	<div class="find_id" align="center">
+		<div class="find-id">
 		<h2>아이디 찾기를 도와드릴께요 !</h2>
 		<form action="find.do" method="post">
 		<table border="0">	
@@ -56,6 +60,7 @@
 			</tr>
 		</table>	
 		</form>
+		</div>
 	</div>
 	
 

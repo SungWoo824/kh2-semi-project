@@ -7,6 +7,7 @@ public class QaReplyDto {
 	private int member_no;
 	private String qa_reply_content;
 	private String qa_reply_wdate;
+	private String member_name;
 	
 	public int getQa_reply_no() {
 		return qa_reply_no;
@@ -37,6 +38,12 @@ public class QaReplyDto {
 	}
 	public void setQa_reply_wdate(String qa_reply_wdate) {
 		this.qa_reply_wdate = qa_reply_wdate;
+	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
 	
 	
