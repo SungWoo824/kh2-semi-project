@@ -1,9 +1,19 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
 	String id = request.getParameter("id");
-	System.out.println(id);
+	
+	
+// 	MemberDao dao = new MemberDao();
+	
+// 	boolean result = dao.find_pw(id, name, phone);
+			
+	
+	
+	
 %>
 <html>
 <head>
@@ -43,7 +53,7 @@
 	  <div class="find_pw" align="center">
 	  	<div class="find">	
 		<h2>비밀번호 찾기를 도와드릴게요 !</h2>
-		<form action="login.jsp" method="post">
+		<form action="findpw.do" method="post">
 		<table border="0">	
 			<tr>
 				<td>
@@ -73,10 +83,15 @@
 	</div>
 	</table>	
 </form>
-			<%if(id != null){ %>
-			<font color="black"><h2>고객님의 아이디는 : <%=id %>입니다.
-			비밀번호 .. 이제 기억나실까요?</h2></font>
-			<%} %>
+<%-- 			<%if(result){ %> --%>
+			<font color="black"><h2>고객님의 ID : <%=id %>입니다.</h2>
+				<a href="login.jsp">로그인 하러 가기</a>
+			</font>
+				
+<%-- 			<%}else{ %> --%>
+<!-- 			<h2>입력하신 정보에 해당하는 회원이 없습니다.</h2>	 -->
+<!-- 			<h3><a href="find.jsp">다시 입력하기 </a></h3> -->
+<%-- 			<%} %> --%>
 			
 	</div>
 
