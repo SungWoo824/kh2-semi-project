@@ -157,3 +157,51 @@ img {
   top: 15px;
   right: 15px;
 }
+
+#main-footer {
+  height: 300px;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.item3-container {
+  height: 600px;
+  padding: 0;
+  margin-bottom: 100px;
+  background-color: rgba(219, 219, 219, 0);
+}
+
+.item3__menu,
+.item3__imagebox {
+  float: left;
+  height: 100%;
+  margin: 0;
+  box-shadow: 0 1px 5px rgb(0, 0, 0);
+}
+
+.item3-container > .item3__menu {
+  width: 20%;
+  cursor: pointer;
+}
+
+.item3-container > .item3__imagebox {
+  width: 80%;
+}
+
+.item3__list {
+  height: 33.3333%;
+  margin-right: 15px;
+}
+
+.item3__menu > .item3__list img {
+  height: 100%;
+  opacity: 0.4;
+}
+
+.item3__menu > .item3__list img.active {
+  opacity: 1;
+}
+
+.item3__imagebox img {
+  height: 100%;
+}
