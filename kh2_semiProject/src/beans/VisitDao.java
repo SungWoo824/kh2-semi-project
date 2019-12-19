@@ -45,6 +45,7 @@ public class VisitDao {
 		ps.executeUpdate();
 		
 		con.commit();
+		con.close();
 	}
 	
 	public int getVisitTotalCount() throws Exception{
