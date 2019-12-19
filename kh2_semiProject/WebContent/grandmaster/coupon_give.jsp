@@ -1,9 +1,19 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	int member_no;
+	if(request.getParameter("member_no")!=null){
+		member_no = Integer.parseInt(request.getParameter("member_no"));
+	}else{
+		member_no=0;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">re
 <title>쿠폰 수여</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
@@ -43,9 +53,11 @@
 <div><br></div>
 <div><br></div>
 <div class="w-40">
+<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 <div align="center"><h2>쿠폰 수여</h2></div>
 	<form action="<%=request.getContextPath() %>/grandmaster/coupongive.do" method="post">
 		<table class="w-100 coupon-under-table">
+		<%if(request.getParameter("member_no")==null){ %>
 			<tr>
 				<th>
 					<select name="type1" class="select-icon custom-select" required>
@@ -57,6 +69,16 @@
 					<input type="text" name="keyword1" required>
 				</td>
 			</tr>
+		<%}else{ %>
+			<tr height="52">
+				<th width="40%">
+					<%String type1 = "member_no";%>회원 번호
+				</th>
+				<td>
+					<input type="text" name="keyword1" value="<%=member_no %>" readonly>
+				</td>
+			</tr>
+		<%} %>
 			<tr height="52">
 				<th>쿠폰 번호</th>
 				<td>

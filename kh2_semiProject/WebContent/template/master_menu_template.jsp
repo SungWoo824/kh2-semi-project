@@ -8,7 +8,7 @@
 			<a href="master_member_list.jsp">회원 관리</a>
 		</div>
 		<div class="master-menu-item">
-			<a href="#">쿠폰 관리</a>
+			<a href="coupon_itself.jsp">쿠폰 관리</a>
 		</div>
 		<div class="master-menu-item">
 			<a href="#">예약 관리</a>

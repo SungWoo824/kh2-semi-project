@@ -82,6 +82,8 @@
 <div><br></div>
 <div><br></div>
 <div class="w-80">
+<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+<jsp:include page="../template/coupon_choice_template.jsp"></jsp:include>
 <div align="center"><h2>보유 쿠폰 목록</h2></div>
 	<%if(isSearch&&list.size()==0){%>
 		<h3>검색결과가 없습니다</h3>

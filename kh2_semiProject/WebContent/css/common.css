@@ -248,4 +248,25 @@
 		margin:0;
 		padding:1px 0px;
 	}
+	.coupon-choice-template{
+		padding-top: 10px;
+	}
+	.coupon-choice-template button{
+		background:#eaebec;
+		color:#666;
+		outline:none;
+		border: none;
+		height:45px;
+		width:120px;
+		font-size: 0.95rem;
+		border-radius: 1px;
+	}
+	.coupon-choice-template button:hover{
+		background-color:#666;
+		color:#eaebec;
+	}
+	.coupon-choice-template a{
+		color: #666;
+    	text-decoration: none;
+	}
 	

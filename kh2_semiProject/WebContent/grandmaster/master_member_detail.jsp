@@ -64,6 +64,6 @@
 		<%=cdto.getCoupon_explain() %>
 	<%} %>
 	</div>
-	<div><a href="#">회원탈퇴</a><br><a href="#">등급변경</a><br><a href="#">쿠폰추가</a></div>
+	<div><a href="#">회원탈퇴</a><br><a href="#">등급변경</a><br><a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>">쿠폰추가</a></div>
 </body>
 </html>
