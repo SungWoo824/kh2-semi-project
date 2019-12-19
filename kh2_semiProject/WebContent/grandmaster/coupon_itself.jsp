@@ -41,6 +41,31 @@
 <meta charset="UTF-8">
 <title>쿠폰 검색 및 관리</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<style>
+	.select-selected{
+		/*배경을 바꾸고 싶다면 */
+  		background-color:#eaebec;  
+ 		border-bottom-color:#666; 
+		/*글자색을 바꾸고 싶다면*/
+ 		color:#666; 
+	}
+	
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-selected::after{
+		border-top-color:#666;
+	}
+	.select-selected.select-arrow-active::after{
+		border-bottom-color:#666;
+	}
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-items{
+		border-color:#eaebec;
+	}
+	
+</style>
+
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
 <div>header</div>
@@ -120,7 +145,7 @@
 <%} %>
 	<div align="right">
 	<form action="coupon_itself.jsp" method="get" class="form=choice">
-		<select id="select" name="type" class="select-icon custom-select">
+		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="coupon_name">이름</option>
 			<option value="coupon_no">번호</option>
 			<option value="coupon_rate">할인율(검색값 이상)</option>
