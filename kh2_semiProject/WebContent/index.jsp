@@ -15,8 +15,9 @@
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
+    <script src="js/home-slider.js"></script>
   </head>
-  <body onscroll="scroll()">
+  <body onscroll="scroll(); item3__slider();">
     <nav>
       <!-- 상단바 시작 -->
       <div class="top-bar">
@@ -175,53 +176,32 @@
       <!-- 홈 리스트 1번 끝 -->
 
       <!-- 홈 리스트 2번 시작 -->
-      <section id="home-item2" class="home-item">
-        <!-- 제목  -->
-        <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
-        <div class="item1 review-title">
+
+      <!-- 홈 리스트 2번 끝 -->
+      <section id="home-item3" class="home-item">
+        <div class="item1 popular-title">
           <h2>인기 상품</h2>
-          <h4>설명이다다다다다다우다다다다다다</h4>
         </div>
-        <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
-        <div class="list-container hvr-fade">
-          <div class="item1 review-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
+        <div class="item3-container">
+          <div class="item3__menu">
+            <div class="item3__list item3__list-1">
+              <img src="image/item3__list-1.jpg" alt="" class="active" />
+            </div>
+            <div class="item3__list item3__list-2">
+              <img src="image/item3__list-2.jpg" alt="" />
+            </div>
+            <div class="item3__list item3__list-3">
+              <img src="image/item3__list-3.jpg" alt="" />
             </div>
           </div>
-        </div>
-        <!-- ###################################################### -->
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="list-container hvr-fade">
-          <div class="item1 popular-list">
-            <div class="list-item1">
-              <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이.jpg"/></a>
-              </div>
-              <div class="list-item1__contentBox contentBox">
-                <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
-              </div>
-            </div>
+          <div class="item3__imagebox">
+            <img class="item3__img" src="image/item3__list-1.jpg" alt="" />
           </div>
         </div>
       </section>
-      <!-- 홈 리스트 2번 끝 -->
     </main>
+    <footer id="main-footer">
+      푸터입니다
+    </footer>
   </body>
 </html>
