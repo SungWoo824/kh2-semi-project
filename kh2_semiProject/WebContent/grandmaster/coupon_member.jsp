@@ -82,7 +82,7 @@
 <div><br></div>
 <div><br></div>
 <div class="w-80">
-<div align="center"><h3>보유 쿠폰 목록</h3></div>
+<div align="center"><h2>보유 쿠폰 목록</h2></div>
 	<%if(isSearch&&list.size()==0){%>
 		<h3>검색결과가 없습니다</h3>
 	<%}else{ %>
