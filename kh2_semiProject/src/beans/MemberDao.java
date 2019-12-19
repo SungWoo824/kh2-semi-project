@@ -344,5 +344,7 @@ public class MemberDao {
 		con.close();
 		return list;
 	}
-
+	
+	
+	
 }
