@@ -26,7 +26,7 @@
 	}catch(Exception e){
 		list_count=list_width*5;
 	}
-	int pagesize = 10;
+	int pagesize = list_count;
 	int navsize = 10;
 	int startBlock = (pno-1)/navsize*navsize+1;
 	int finishBlock = startBlock+9;
@@ -70,55 +70,6 @@
 	margin: auto;
 	font-family: cookieRun;
 }
-.nav-container {
-  padding: 0;
-  height: 70px;
-  /* border: 1px solid black; */
-}
-
-.nav-menu {
-  width: 100%;
-  top: 0px;
-  left: 0;
-  position: fixed;
-  font-size: 15px;
-  padding-bottom: 10px;
-  height: 70px;
-  background-color: rgba(229, 231, 235, 0.3);
-  margin: 0;
-  /* border: 1px solid black; */
-}
-
-.top-bar > .top-bar__logo {
-  float: left;
-  margin-left: 150px;
-  margin-top: 10px;
-}
-
-.top-bar__logo > .logo-box {
-  width: 100px;
-  text-decoration: none;
-  color: black;
-}
-
-.top-bar > .top-bar__menu {
-  float: right;
-  margin-right: 200px;
-}
-
-.top-bar > .top-bar__menu > ul > li {
-  list-style-type: none;
-  float: left;
-  margin: 10px 30px;
-}
-.top-bar > .top-bar__menu > ul > li > a {
-  text-decoration: none;
-  color: black;
-}
-
-.top-bar > .top-bar__menu > ul > li > a:hover {
-  background-color: red;
-}
 
 .table {
 	width: 100%;
@@ -132,10 +83,55 @@
 	border: 1px solid black;
 	padding: 0.5rem;
 }
+
 article {
 	margin: auto;
 }
 
+.gallary {
+	text-align: center;
+	margin: 0px;
+	border: 1px dotted black;
+}
+
+.gallary:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.gallary>.gallary-place {
+	float: left;
+	width: <%=100.0/list_width%>%;
+	height: 600px;
+}
+
+.gallary>.gallary-place>a>img {
+	width: 100%;
+	height: 60%;
+	border-bottom-left-radius: 40%;
+	border-bottom-right-radius: 50%;
+	border-top-left-radius: 50%;
+	border-top-right-radius: 40%;
+	
+}
+.gallary>.gallary-place>.gallary-table td,
+.gallary>.gallary-place>.gallary-table>td{
+	width:100%;
+	text-align:left;
+
+}
+.gallary>.gallary-table{
+	width:100%;
+	text-align: center;
+	border-collapse: collapse;
+	border: 1px dotted black;
+	padding: 1rem;
+}
+.gallary>.gallary-table>td{
+
+text-align: left;
+}
 .row {
 	width:100%;
 	text-align: center;
@@ -191,17 +187,14 @@ article {
 .page-navigator>li:hover {
 	background-color: gray;
 }
-a{
-	text-decoration: none; color:#000000}
-}
-body{
- background-image: url("../image/qa1.jpg");
- margin: auto;
+
+a {
+	text-decoration: none;
+	color: #000000
 }
 </style>
 </head>
-
-<body style="width: 80%;">
+<body style="width: 80%; background-color: #ededef">
 <article >
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list.jsp">
@@ -216,36 +209,37 @@ body{
 </form>
 <div class="row">
 <div align="right">
-	<form action="list2.jsp">
+	<form action="list.jsp">
 	<input type="submit" value="갤러리 리스트">
 	</form>
 	</div>
-	<table class="table">
-	<tr>
-		<th>번호</th>
-		<th>방번호</th>
-		<th>말머리 </th>
-		<th width="45%">제목</th>
-		<th>작정자 </th>
-		<th>작성일 </th>
-		</tr>
+<div class="gallary">
+	<%int j = 0;%>
 	<%
 		for (QaDto dto : list) {
 	%>
-	<tr>
-		<td><%=dto.getQa_no()%></td><!-- member get으로 아이디를 가져와야함 -->
-		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
-		<td><%=dto.getQa_head() %></td>
-		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
-		<td><%=dto.getMember_no() %></td>
-		<td><%=dto.getQa_wdate() %></td>
-	</tr>
+		<div class="gallary-place">
+		<h3><%=dto.getQa_title() %></h3><br>
+	<a href="content.jsp?no=<%=dto.getQa_no()%>"><img src="https://placeimg.com/480/<%=400+j %>/any"></a>
+
+		<table class="gallary-table">
+		<tr>
+		<td>사용자: <%=dto.getQa_no()%></td>
+		<td>날짜:<%=dto.getQa_wdateWithFormat() %></td>
+			</tr>
+		<tr>
+			<td style="font-size: 2rem" colspan="3">내용:<%=dto.getQa_content() %></td>
+		</tr>
+			<%j++; %>
+		</table>
+				</div>
 	<%} %>
 
-</table>
-
+</div>
 <div align="right">
 <a href="write.jsp">글쓰기</a>	
+</div>
+
 <div align="center">
 	<ul class="page-navigator">
 	<%if(startBlock>1){ %>
@@ -275,8 +269,7 @@ body{
 	  	 <%} %>
 	  	 </ul>
 </div>
-</div>
-<form action="list.jsp">
+<form action="list2.jsp">
 	<select name ="type">
 		<option value="qa_title">제목</option>
 		<option value="member_id">아이디</option>

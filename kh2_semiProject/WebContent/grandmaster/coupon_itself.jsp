@@ -40,52 +40,81 @@
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 검색 및 관리</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<style>
+	.select-selected{
+		/*배경을 바꾸고 싶다면 */
+  		background-color:#eaebec;  
+ 		border-bottom-color:#666; 
+		/*글자색을 바꾸고 싶다면*/
+ 		color:#666; 
+	}
+	
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-selected::after{
+		border-top-color:#666;
+	}
+	.select-selected.select-arrow-active::after{
+		border-bottom-color:#666;
+	}
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-items{
+		border-color:#eaebec;
+	}
+	
+</style>
+
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
-	<div>header</div>
-	<div>menu</div>
-	<div align="center">
-	<h2>쿠폰 검색</h2>
-	<%if(isSearch&&list.size()==0){%>
-		<h3>검색결과가 없습니다</h3>
-	<%}else{ %>
-		<table border="1" width="90%">
-				<thead>
+<div>header</div>
+<div>menu</div>
+<div><br></div>
+<div><br></div>
+<div><br></div>
+<div class="w-80">
+<div align="center"><h2>쿠폰 검색</h2></div>
+<%if(isSearch&&list.size()==0){%>
+	<h3>검색결과가 없습니다</h3>
+<%}else{ %>
+	<table class="w-100 couponmember-table">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>이름</th>
+					<th>할인율</th>
+					<th>유효기간</th>
+					<th>관리메뉴</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<%for(CouponDto dto:list){ %>
 					<tr>
-						<th>번호</th>
-						<th>이름</th>
-						<th>할인율</th>
-						<th>유효기간</th>
-						<th>관리메뉴</th>
+						<td><%=dto.getCoupon_no() %></td>
+						<td><%=dto.getCoupon_name() %></td>
+						<td><%=dto.getCoupon_rate() %>%</td>
+						<td><%=dto.getCoupon_date().substring(0, 10) %></td>
+						<td>
+							<a href="coupon_change.jsp?coupon_no=<%=dto.getCoupon_no()%>">수정</a> 
+							<a href="<%=request.getContextPath() %>/grandmaster/coupondelete.do?coupon_no=<%=dto.getCoupon_no()%>">삭제</a>
+							<a href="coupon_detail.jsp?coupon_no=<%=dto.getCoupon_no()%>">상세보기</a>
+						</td>
 					</tr>
-				</thead>
-				<tbody align="center">
-					<%for(CouponDto dto:list){ %>
-						<tr>
-							<td><%=dto.getCoupon_no() %></td>
-							<td><%=dto.getCoupon_name() %></td>
-							<td><%=dto.getCoupon_rate() %>%</td>
-							<td><%=dto.getCoupon_date().substring(0, 10) %></td>
-							<td>
-								<a href="coupon_change.jsp?coupon_no=<%=dto.getCoupon_no()%>">수정</a> |
-								<a href="<%=request.getContextPath() %>/grandmaster/coupondelete.do?coupon_no=<%=dto.getCoupon_no()%>">삭제</a> |
-								<a href="coupon_detail.jsp?coupon_no=<%=dto.getCoupon_no()%>">상세보기</a>
-							</td>
-						</tr>
-					<%} %>
-				</tbody>
-				<tfoot>		
-					<tr>		
-						<td colspan="5" align="right">		
-							<a href="coupon_regist.jsp">쿠폰 등록</a>
-							<%if(isSearch) {%>
-							<a href="coupon_itself.jsp">전체목록 보기</a>
-							<%} %>	
-						</td>		
-					</tr>		
-				</tfoot>
-		</table>
-	<h4>
+				<%} %>
+			</tbody>
+			<tfoot>		
+				<tr>		
+					<td colspan="5" align="right">		
+						<a href="coupon_regist.jsp">쿠폰 등록</a>
+						<%if(isSearch) {%>
+						<a href="coupon_itself.jsp">전체목록 보기</a>
+						<%} %>	
+					</td>		
+				</tr>		
+			</tfoot>
+	</table>
+	<h4 class="navigator">
 		<%if(startBlock > 1){ %>
 			<%if(isSearch){ %>
 				<a href="coupon_itself.jsp?type=<%=type%>&keyword=<%=keyword%>&pno=<%=startBlock - 1%>">[이전]</a>  
@@ -95,7 +124,7 @@
 		<%} %>
 		<%for(int i=startBlock; i <= finishBlock; i++){ %>
 			<%if(i == pno){ %>
-				<%=i%>
+				<a href="coupon_member.jsp?pno=<%=i%>" class="navigator-choice"><%=i%></a>
 			<%}else{ %>
 				<%if(isSearch){ %>
 					<a href="coupon_itself.jsp?type=<%=type%>&keyword=<%=keyword%>&pno=<%=i%>"><%=i%></a>
@@ -104,7 +133,7 @@
 				<%} %>
 			<%} %>
 		<%} %>
-
+	
 		<%if(finishBlock < pagecount){ %>
 			<%if(isSearch){ %>
 				<a href="coupon_itself.jsp?type=<%=type%>&keyword=<%=keyword%>&pno=<%=finishBlock + 1%>">[다음]</a>
@@ -113,17 +142,19 @@
 			<%} %>
 		<%} %>
 	</h4>
-	<%} %>
-	<form action="coupon_itself.jsp" method="get">
-		<select name="type">
+<%} %>
+	<div align="right">
+	<form action="coupon_itself.jsp" method="get" class="form=choice">
+		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="coupon_name">이름</option>
 			<option value="coupon_no">번호</option>
 			<option value="coupon_rate">할인율(검색값 이상)</option>
 		</select>
-		<input type="search" name="keyword" placeholder="검색어" required>
-		<input type="submit" value="검색">
+		<input type="search" name="keyword" placeholder="검색어" required class="search-input">
+		<input type="submit" value="검색" class="button-design">
 	</form>
 	</div>
-	<div>footer</div>
+</div>
+<div>footer</div>
 </body>
 </html>
