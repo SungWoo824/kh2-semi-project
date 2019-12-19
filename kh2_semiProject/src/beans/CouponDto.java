@@ -115,7 +115,7 @@ public class CouponDto {
 		return coupon_rate;
 	}
 	public void setCoupon_rate(int coupon_rate) {
-		this.coupon_rate = coupon_rate;
+		this.coupon_rate = coupon_rate;	
 	}
 	public String getCoupon_date() {
 		return coupon_date;

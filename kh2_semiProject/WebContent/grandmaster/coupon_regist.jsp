@@ -6,6 +6,26 @@
 <meta charset="UTF-8">
 <title>쿠폰 등록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<script>
+    function prevent(){
+        var tag = document.querySelector("textarea");
+        var text = tag.value;
+        var len = text.length;
+        console.log(len);
+        if(len > 85){
+            text = text.substring(0, 85);
+            tag.value = text;
+        }
+    }
+    function number_check(){
+    	var check = document.querySelector(".number_check");
+    	var regex = /[0-9]+/g;//검사식(정규표현식)
+    	console.log(regex.test(check.value));
+    	if(regex.test(check.value)==false){
+    		window.alert("입력 형식이 잘못되었습니다.");
+    	}
+    }
+</script>
 <style>
 .explain textarea{
 	width:99%;
@@ -38,7 +58,7 @@
 			<tr>
 				<th>할인율</th>
 				<td>
-					<input type="text" name="coupon_rate" required>		
+					<input class="number_check" type="text" name="coupon_rate" required onblur="number_check();" onsubmit="number_check();">		
 				</td>
 			</tr>
 			<tr>
@@ -50,7 +70,7 @@
 			<tr height="200px">
 				<th>상세설명</th>
 				<td class="explain">
-					<textarea name="coupon_explain" required></textarea>		
+					<textarea oninput="prevent();" name="coupon_explain" required placeholder="85자 입력제한"></textarea>		
 				</td>
 			</tr>
 			<tr>

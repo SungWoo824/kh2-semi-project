@@ -18,6 +18,32 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
+<script>
+	function number_check(){
+		var check = document.querySelector(".number_check");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+	function number_check1(){
+		var check = document.querySelector(".number_check1");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+	function number_check2(){
+		var check = document.querySelector(".number_check2");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+</script>
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -61,7 +87,7 @@
 			<tr>
 				<th>
 					<select name="type1" class="select-icon custom-select" required>
-						<option value="member_no">회원 번호</option>
+						<option value="member_no" class="number_check1" onsubmit="number_check1();" onblur="number_check1();">회원 번호</option>
 						<option value="member_id">회원 아이디</option>
 					</select>					
 				</th>
@@ -75,14 +101,14 @@
 					<%String type1 = "member_no";%>회원 번호
 				</th>
 				<td>
-					<input type="text" name="keyword1" value="<%=member_no %>" readonly>
+					<input type="text" name="keyword1" value="<%=member_no %>" readonly class="number_check2" onsubmit="number_check2();" onblur="number_check2();">
 				</td>
 			</tr>
 		<%} %>
 			<tr height="52">
 				<th>쿠폰 번호</th>
 				<td>
-					<input type="text" name="keyword2" required>
+					<input type="text" name="keyword2" required class="number_check" onsubmit="number_check();" onblur="number_check();">
 				</td>
 			</tr>
 			<tr>

@@ -6,6 +6,7 @@
 	int coupon_no = Integer.parseInt(request.getParameter("coupon_no"));
 	CouponDao dao = new CouponDao();
 	CouponDto dto = dao.get(coupon_no);
+	
 %>
 <!DOCTYPE html>
 <html>
@@ -13,6 +14,27 @@
 <meta charset="UTF-8">
 <title>쿠폰 수정 페이지</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<script>
+    function prevent(){
+        var tag = document.querySelector("textarea");
+        var text = tag.value;
+        var len = text.length;
+        console.log(len);
+        if(len > 85){
+            text = text.substring(0, 85);
+            tag.value = text;
+        }
+    }
+    function number_check(){
+    	var check = document.querySelector(".number_check");
+    	var regex = /[0-9]+/g;//검사식(정규표현식)
+    	console.log(regex.test(check.value));
+    	if(regex.test(check.value)==false){
+    		window.alert("입력 형식이 잘못되었습니다.");
+    		check.select();
+    	}
+    }
+</script>
 <style>
 .explain textarea{
 	width:99%;
@@ -49,19 +71,19 @@
 	<tr>
 		<th>할인율</th>
 		<td align="left">
-			<input type="text" name="coupon_rate" value="<%=dto.getCoupon_rate() %>" required>		
+			<input class="number_check" type="text" name="coupon_rate" value="<%=dto.getCoupon_rate() %>" required>		
 		</td>
 	</tr>
 	<tr>
 		<th>만료일</th>
 		<td align="left" class="wrap">
-			<input id="date" type="date" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required>		
+			<input id="date" type="date" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required onblur="number_check();" onsubmit="number_check();">		
 		</td>
 	</tr>
 	<tr height="200px">
 		<th>상세설명</th>
 		<td class="explain">
-			<textarea name="coupon_explain" required><%=dto.getCoupon_explain() %></textarea>		
+			<textarea oninput="prevent();" name="coupon_explain" required placeholder="85자 입력제한"><%=dto.getCoupon_explain() %></textarea>		
 		</td>
 	</tr>
 	<tr>
