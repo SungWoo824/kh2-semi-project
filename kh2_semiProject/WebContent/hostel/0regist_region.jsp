@@ -238,7 +238,7 @@ p {
 			
 			<select class="kind" id="sigu" name="city_name">
 
-				<option>--시/군/구--</option>
+				<option>--시/군/구---</option>
 
 			</select> 
 			

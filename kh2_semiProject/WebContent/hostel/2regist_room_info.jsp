@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+<%
+	
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -111,7 +114,6 @@ p {
 			<p>어떤 편의시설이 있나요?</p>
 
 			<div class="convenience">
-
 
 
 				<label>욕조<input type="checkbox" value="o" name="room_spa"></label>
