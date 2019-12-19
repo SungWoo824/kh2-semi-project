@@ -14,6 +14,7 @@ public class QaDto {
 	private String qa_title;
 	private String qa_content;
 	private String qa_wdate;
+	private String member_name;
 	
 	
 	public int getRn() {
@@ -78,4 +79,11 @@ public class QaDto {
 	public void setRoom_no(int room_no) {
 		this.room_no = room_no;
 	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
 }
+

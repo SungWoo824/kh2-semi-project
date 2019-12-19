@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String error = request.getParameter("error");
+	
+%>    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -105,6 +110,7 @@
 			</th>
 		</tr>
 		
+		
 
 		<tr>
 			<th>
@@ -123,6 +129,9 @@
 		</tr>
 	</table>
 	</form>
+	<%if(error != null){%>
+		<font color="red"><h3>잘못된 회원정보입니다.</h3></font>
+	<%} %>
 </div>
           </div>
 

@@ -32,11 +32,15 @@ public class HostelDao {
 //					등록된 숙소 전체 조회							  //
 ////////////////////////////////////////////////////////////////
 	
-	public List<HostelDto> hostelList() throws Exception{
+	public List<HostelDto> hostelList(int start, int finsh) throws Exception{
 		Connection con = this.getConnection();
 		
-		String sql = "select * from hostel";
+		String sql = "select * from( select rownum rn, M.* from "
+				+ "(select H.*,R.region_name from hostel H inner join region R "
+				+ "on H.region_no = R.region_no order by H.hostel_no desc)M )where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finsh);
 		ResultSet rs = ps.executeQuery();
 		
 		List<HostelDto> list = new ArrayList<>();
@@ -44,7 +48,7 @@ public class HostelDao {
 			HostelDto hdto = new HostelDto();
 			hdto.setHostel_no(rs.getInt("hostel_no"));
 			hdto.setOwner_no(rs.getInt("owner_no"));
-			hdto.setRegion_no(rs.getInt("region_no"));
+			hdto.setRegion_name(rs.getString("region_name"));
 			hdto.setHostel_name(rs.getString("hostel_name"));
 			hdto.setHostel_phone(rs.getString("hostel_phone"));
 			hdto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
@@ -74,9 +78,53 @@ public class HostelDao {
 	}
 	
 	
-	////////////////룸넘버로 호스텔 정보 만들기
 	
-	public HostelDto hostelinfomation(int room_no) throws Exception{
+	
+	//
+	
+	////////////////호스텔 넘버로 호스텔 dto
+	
+	public HostelDto hostelinfomation(int hostel_no) throws Exception{
+		Connection con = this.getConnection();
+		String sql ="select * from hostel where hostel_no=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, hostel_no);
+		ResultSet rs = ps.executeQuery();
+		
+		HostelDto dto;
+		if(rs.next()) {
+			dto = new HostelDto();
+			
+			dto.setHostel_no(rs.getInt("hostel_no"));
+			dto.setOwner_no(rs.getInt("owner_no"));
+			dto.setRegion_no(rs.getInt("region_no"));
+			dto.setHostel_name(rs.getString("hostel_name"));
+			dto.setHostel_phone(rs.getString("hostel_phone"));
+			dto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
+			dto.setHostel_latitude(rs.getString("hostel_latitude"));
+			dto.setHostel_longitude(rs.getString("hostel_longitude"));
+			dto.setHostel_content(rs.getString("hostel_content"));
+			dto.setHostel_kind_name(rs.getString("hostel_kind_name"));
+		
+			
+			
+		
+		}
+		else {
+			dto = null;
+		}
+		
+		con.close();
+		
+		return dto;
+	}
+	
+	
+	
+	
+	
+	public HostelDto hostelinfomation2(int room_no) throws Exception{
 		Connection con = this.getConnection();
 		String sql ="select * from hostel where hostel_no=(select hostel_no from room_info where room_no=?)";
 		
@@ -111,5 +159,59 @@ public class HostelDao {
 		
 		return dto;
 	}
+////////////////////////////////////////////////////////////////
+//						관리자 -	 호스텔 목록 검색					  //
+////////////////////////////////////////////////////////////////
+	public List<HostelDto> masterHostelSearch(String type, String keyword , int start,int finish) throws Exception{
+		Connection con = this.getConnection();
+		String sql =  "select * from( select rownum rn, M.* from "
+				+ "(select H.*,R.region_name from hostel H inner join region R "
+				+ "on H.region_no = R.region_no where "+type+" like '%'||?||'%'order by H.hostel_no desc)M )where rn between ? and ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, keyword);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<HostelDto> list = new ArrayList<>();
+		while(rs.next()) {
+			HostelDto hdto = new HostelDto();
+			hdto.setHostel_no(rs.getInt("hostel_no"));
+			hdto.setOwner_no(rs.getInt("owner_no"));
+			hdto.setRegion_name(rs.getString("region_name"));
+			hdto.setHostel_name(rs.getString("hostel_name"));
+			hdto.setHostel_phone(rs.getString("hostel_phone"));
+			hdto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
+			hdto.setHostel_latitude(rs.getString("hostel_latitude"));
+			hdto.setHostel_longitude(rs.getString("hostel_longitude"));
+			hdto.setHostel_content(rs.getString("hostel_content"));
+			hdto.setHostel_kind_name(rs.getString("hostel_kind_name"));
+			
+			list.add(hdto);
+		}
+		con.close();
+		return list;
+	}
+////////////////////////////////////////////////////////////////
+//					관리자 -	 등록 호스텔 수 조회					  //
+////////////////////////////////////////////////////////////////
 	
+	public int hostelCount(String type, String keyword) throws Exception{
+		Connection con = getConnection();
+		String sql = "select count(*) from hostel";
+		boolean isSearch = type!=null && keyword!=null;
+		if(isSearch) {
+			sql += " where "+type+" like '%'||?||'%'";
+		} 
+		PreparedStatement ps = con.prepareStatement(sql);
+		if(isSearch) {
+			ps.setString(1, keyword);
+		}
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		
+		con.close();
+		return count;
+	}
 }
