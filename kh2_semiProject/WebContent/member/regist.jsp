@@ -8,7 +8,8 @@
 <style type="text/css">
 	* {
 		box-sizing: border-box;
-		border-collapse: collapse; 
+		border-collapse: collapse;
+		font-family: binggrae; 
 	}
 	.regist{
 		background-image: url("../image/regist2.jpg");
@@ -21,8 +22,8 @@
 	}
 	.menu-item{
 		border: 0;
-		
 		background-color: #b09f8d;
+				
 	}
 	.logo-image img{
 		text-align:left;
@@ -30,24 +31,25 @@
 		height: 150px;
 		margin: auto;
 	}
+	.title{
+		text-decoration: underline;
+	}
+	@font-face{
+    font-family: binggrae;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
+	}
 </style>
 </head>
 <body>
-	<div class="login" align="center">
-		<div class="top-bar">
-        <div class="top-bar__logo">
-        	<a class="logo-box" href="">
-        	<div class="logo-image">
-        	<img src="../image/LOGO.png" align="left"><br><br><br><br><br><br><br><br>
-        	</div>
-        	</a>
-        </div>
 
 
 <div class="regist" align ="center">
 	<h2><font color="black">S I G N UP</font></h2>
 	<form action="regist.do" method = "post">
-	<table border="0">
+	    <div class="logo-image">
+        	<img src="../image/LOGO.png" align="left"><br><br><br><br><br><br><br><br>
+        </div>
+	<table class="title" border="0">
 		<tr>
 			<th>I D</th>
 			<th><input class="menu-item" type = "text" name="member_id" required></th>
