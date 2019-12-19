@@ -120,14 +120,12 @@ body{
 
 .table {
 	width: 100%;
-	border: 1px solid black;
 	/* 테두리 병합 */
-	border-collapse: collapse;
 }
 
-.table>thead>tr, .table>thead>tr, .table>tbody>tr, .table>tbody>tr
+.table>thead>tr>th, .table>thead>tr>td, .table>tbody>tr>th, .table>tbody>tr>td
 	{
-	border: 1px solid black;
+	border-bottom: 0.5px solid gray;
 	padding: 0.5rem;
 }
 .table>thead>tr>th{

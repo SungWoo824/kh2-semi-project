@@ -30,7 +30,7 @@ public class QaReplyInsertServlet extends HttpServlet{
 			QaDto Qdto = Qdao.get(qa_no); 
 //			Bdao.ru(origin);
 			dto.setQa_no(qa_no);
-			dto.setMember_no(Qdto.getMember_no());
+			dto.setMember_no(24);
 			dto.setQa_reply_content(qa_reply_content);
 			dao.Insert(dto);
 			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?no="+qa_no);

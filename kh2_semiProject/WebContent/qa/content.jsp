@@ -106,7 +106,8 @@ article{
 		<%for(QaReplyDto rdto : list){ %>
 					<table class="table" width="100%" >
 			<tr>
-				<td><table class="table" width="100%" >
+				<td>
+				<table class="table" width="100%" >
 				<tr>
 						<td><%=rdto.getMember_no() %></td><!-- 멤버이름으로 교체 -->
 						<td><%=rdto.getQa_reply_wdate() %></td>

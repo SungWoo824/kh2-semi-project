@@ -194,7 +194,7 @@ a {
 }
 </style>
 </head>
-<body style="width: 81%; background-color: #ededef">
+<body style="width: 80%; background-color: #ededef">
 <article >
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list.jsp">

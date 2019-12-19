@@ -95,6 +95,7 @@ public class QaDao {
 			dto.setQa_title(rs.getString("qa_title"));
 			dto.setQa_content(rs.getString("qa_content"));
 			dto.setQa_wdate(rs.getString("qa_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
 			list.add(dto);
 		}
 		con.close();
