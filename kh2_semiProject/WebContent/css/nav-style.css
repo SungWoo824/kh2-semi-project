@@ -32,6 +32,7 @@
   height: 70px;
   background-color: rgba(229, 231, 235, 0.3);
   font-weight: 900;
+  z-index: 100;
 }
 
 .nav-container {
@@ -63,7 +64,7 @@
   width: 100px;
   text-decoration: none;
   color: black;
-  display:inline-block;
+  display: inline-block;
 }
 
 .logo-box > img {
@@ -74,12 +75,14 @@
 .top-bar > .top-bar__menu {
   float: right;
   margin-right: 200px;
+  /* margin-top: 15px; */
 }
 
 .top-bar > .top-bar__menu > ul > li {
   list-style-type: none;
   float: left;
   margin: 7px 30px;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
 }
 .top-bar > .top-bar__menu > ul > li > a {
   text-decoration: none;
@@ -91,5 +94,5 @@
   transition-timing-function: ease;
   font-size: 115%;
   color: white;
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
 }
-

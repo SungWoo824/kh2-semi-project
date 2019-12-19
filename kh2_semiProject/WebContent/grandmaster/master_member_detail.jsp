@@ -11,6 +11,7 @@
 	CouponDao cdao = new CouponDao();
 	List<CouponDto> list = cdao.memberHasCoupon(Integer.parseInt(request.getParameter("member_no")));
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
