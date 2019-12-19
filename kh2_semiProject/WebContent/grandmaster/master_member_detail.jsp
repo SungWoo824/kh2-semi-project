@@ -136,7 +136,7 @@
 		<div class="master-edit-menu">
 			<a href="#">회원탈퇴</a>
 			<a href="#">등급변경</a>
-			<a href="#">쿠폰추가</a>
+			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>">쿠폰추가</a>
 		</div>
 	</div>
 	</div>
