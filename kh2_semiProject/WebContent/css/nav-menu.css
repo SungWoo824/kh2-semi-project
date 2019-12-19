@@ -1,11 +1,11 @@
 @font-face {
-  font-family: "NotoSansKR-Light";
-  src: url("../fonts/NotoSansKR-Light.otf");
+  font-family: "NotoSansKR-Medium";
+  src: url("../fonts/NotoSansKR-Medium.otf");
 }
 
 * {
   box-sizing: border-box;
-  font-family: "NotoSansKR-Light";
+  font-family: "NotoSansKR-Medium";
 }
 
 .nav-container {
@@ -18,19 +18,18 @@
   width: 100%;
   top: 0px;
   left: 0;
-  position: fixed;
+  position: absolute;
   font-size: 15px;
-  padding-bottom: 10px;
+  padding: 10px;
   height: 70px;
   background-color: rgba(229, 231, 235, 0.3);
-  margin: 0;
+  margin: auto;
   /* border: 1px solid black; */
 }
 
-.top-bar > .top-bar__logo {
+.menu-bar > .top-bar__logo {
   float: left;
-  margin-left: 150px;
-  margin-top: 10px;
+  margin-left : 30px;
 }
 
 .top-bar__logo > .logo-box {
@@ -39,21 +38,20 @@
   color: black;
 }
 
-.top-bar > .top-bar__menu {
+.menu-bar > .top-bar__menu {
   float: right;
-  margin-right: 200px;
+  margin-right: 150px;
+  margin-top : 10px;
 }
 
-.top-bar > .top-bar__menu > ul > li {
-  list-style-type: none;
-  float: left;
+.menu-bar > .top-bar__menu > a{
+  text-decoration: none;
+  color: #666;
+    list-style-type: none;
+  float: right;
   margin: 10px 30px;
 }
-.top-bar > .top-bar__menu > ul > li > a {
-  text-decoration: none;
-  color: black;
-}
 
-.top-bar > .top-bar__menu > ul > li > a:hover {
-  background-color: red;
+.menu-bar > .top-bar__menu > a:hover {
+  color:black;
 }

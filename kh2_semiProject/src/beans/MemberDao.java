@@ -80,10 +80,12 @@ public class MemberDao {
 ////////////////////////////////////////////////////////////////
 //						관리자 회원 목록 조회						  //
 ////////////////////////////////////////////////////////////////	
-	public List<MemberDto> memberList() throws Exception {
+	public List<MemberDto> memberList(int start, int finish) throws Exception {
 		Connection con = this.getConnection();
-		String sql = "select * from member";
+		String sql = "select * from( select rownum rn, M.* from (select * from member order by member_no )M )where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, start);
+		ps.setInt(2, finish);
 		ResultSet rs = ps.executeQuery();
 
 		List<MemberDto> list = new ArrayList<>();
@@ -344,7 +346,60 @@ public class MemberDao {
 		con.close();
 		return list;
 	}
+
+////////////////////////////////////////////////////////////////
+//						관리자 -	 회원 목록 검색					  //
+////////////////////////////////////////////////////////////////
+	public List<MemberDto> memberSearch(String type,String keyword,int start,int finish) throws Exception{
+		Connection con = getConnection();
+		String sql = "select * from(select rownum rn, M.* from(select * from member where "+type+" like '%'||?||'%' order by member_no)M ) where rs between ? and ?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1,keyword);
+		ps.setInt(2, start);
+		ps.setInt(3, finish);
+		ResultSet rs = ps.executeQuery();
+		
+		List<MemberDto> list = new ArrayList<>();
+		
+		while (rs.next()) {
+			MemberDto dto = new MemberDto();
+			dto.setNo(rs.getInt("member_no"));
+			dto.setId(rs.getString("member_id"));
+			dto.setName(rs.getString("member_name"));
+			dto.setGrade(rs.getString("member_grade"));
+			dto.setBirthday(rs.getString("member_birthday"));
+			dto.setPhone(rs.getString("member_phone"));
+			dto.setEmail(rs.getString("member_email"));
+			dto.setJoindate(rs.getString("member_joindate"));
+
+			list.add(dto);
+		}
+		con.close();
+		return list;
+	}
+
 	
-	
-	
+////////////////////////////////////////////////////////////////
+//					관리자 -	 회원 전체 수 검색					  //
+////////////////////////////////////////////////////////////////
+	public int memberCount(String type, String keyword) throws Exception{
+		Connection con = getConnection();
+		String sql = "select count(*) from member";
+		boolean isSearch = type!=null && keyword!=null;
+		if(isSearch) {
+			sql += " where "+type+" like '%'||?||'%'";
+		}
+		PreparedStatement ps = con.prepareStatement(sql);
+		if(isSearch) {
+			ps.setString(1, keyword);
+		}
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		
+		con.close();
+		return count;
+	}
+
 }

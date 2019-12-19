@@ -11,7 +11,10 @@ public class HostelDto {
 	private String hostel_longitude;
 	private String hostel_content;
 	private String hostel_kind_name;
+	private String region_name;
 	
+	
+
 	public HostelDto() {
 		super();
 	}
@@ -31,6 +34,22 @@ public class HostelDto {
 		this.hostel_content = hostel_content;
 		this.hostel_kind_name = hostel_kind_name;
 	}
+	
+	public HostelDto(int hostel_no, int owner_no,String region_name, String hostel_name, String hostel_phone, String hostel_detail_addr,
+			String hostel_latitude, String hostel_longitude, String hostel_content, String hostel_kind_name) {
+		super();
+		this.hostel_no = hostel_no;
+		this.owner_no = owner_no;
+		this.hostel_name = hostel_name;
+		this.hostel_phone = hostel_phone;
+		this.hostel_detail_addr = hostel_detail_addr;
+		this.hostel_latitude = hostel_latitude;
+		this.hostel_longitude = hostel_longitude;
+		this.hostel_content = hostel_content;
+		this.hostel_kind_name = hostel_kind_name;
+		this.region_name = region_name;
+	}
+
 	public int getHostel_no() {
 		return hostel_no;
 	}
@@ -90,5 +109,11 @@ public class HostelDto {
 	}
 	public void setHostel_kind_name(String hostel_kind_name) {
 		this.hostel_kind_name = hostel_kind_name;
+	}
+	public String getRegion_name() {
+		return region_name;
+	}
+	public void setRegion_name(String region_name) {
+		this.region_name = region_name;
 	}
 }
