@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="datepicker/jquery-ui.css" />
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
   </head>
   <body onscroll="scroll()">
     <nav>
@@ -141,29 +142,32 @@
           <h2>인기 여행지</h2>
         </div>
         <div class="item1 popular-list">
-          <div class="pupular-image__background">
-            <div class="popular-image image-left-top">
-              <a class="popular-imageBox" href="">
+          <div class="popular-image__background">
+            <a href="#">
+              <div class="popular-image image-left-top">
                 <img src="image/seoul.jpg" alt="" />
-                <span class="image-title1">서울</span>
-              </a>
-            </div>
+                <span class="image-title">서울</span>
+                <div class="darkness"></div>
+              </div>
+            </a>
           </div>
-          <div class="pupular-image__background">
-            <div class="popular-image image-right-top">
-              <a class="popular-imageBox" href="">
+          <div class="popular-image__background">
+            <a href="#">
+              <div class="popular-image image-right-top">
                 <img src="image/전주.jpg" alt="" />
-                <span class="image-title2">전주</span>
-              </a>
-            </div>
+                <span class="image-title image-title-sub">전주</span>
+                <div class="darkness"></div>
+              </div>
+            </a>
           </div>
-          <div class="pupular-image__background">
-            <div class="popular-image image-right-bottom">
-              <a class="popular-imageBox" href="">
+          <div class="popular-image__background">
+            <a href="#">
+              <div class="popular-image image-right-bottom">
                 <img src="image/부산.jpg" alt="" />
-                <span class="image-title3">부산</span>
-              </a>
-            </div>
+                <span class="image-title image-title-sub">부산</span>
+                <div class="darkness"></div>
+              </div>
+            </a>
           </div>
         </div>
         <div class="row"></div>
@@ -175,7 +179,7 @@
         <!-- 제목  -->
         <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
         <div class="item1 review-title">
-          <h2>리뷰 입니다</h2>
+          <h2>인기 상품</h2>
           <h4>설명이다다다다다다우다다다다다다</h4>
         </div>
         <!-- 리스트 가져와서 뽑아줄 공간 #####################-->
@@ -183,7 +187,7 @@
           <div class="item1 review-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이1.jpg"/></a>
+                <a href=""><img src="image/고양이.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
@@ -196,7 +200,7 @@
           <div class="item1 popular-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이1.jpg"/></a>
+                <a href=""><img src="image/고양이.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
@@ -208,7 +212,7 @@
           <div class="item1 popular-list">
             <div class="list-item1">
               <div class="list-item1__imageBox">
-                <a href=""><img src="image/고양이1.jpg"/></a>
+                <a href=""><img src="image/고양이.jpg"/></a>
               </div>
               <div class="list-item1__contentBox contentBox">
                 <a href=""><h4>내용이다다다다다다우다다다다다다다다다</h4></a>
