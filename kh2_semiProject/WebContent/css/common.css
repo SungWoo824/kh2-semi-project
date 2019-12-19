@@ -43,10 +43,16 @@
 	    float:left;
 	    width:50%;
 	    padding:10px;
+	    margin-bottom : 60px;
+	    margin-top : 60px;
 	}
 	.master-list div{
 	    width:100%;
 	    text-align:center;
+	}
+	.master-list >.master-list-item{
+		width:60%;
+		padding:auto;
 	}
 	.master-menu{
             background-color: #565960;

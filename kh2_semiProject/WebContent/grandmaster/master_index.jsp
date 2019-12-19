@@ -27,6 +27,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script>
@@ -99,6 +100,7 @@
 	}
 </script>
 <body onload="display();">
+<jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 	<div><h2>로고</h2></div>
 	<div><h2>그림</h2></div>
@@ -108,7 +110,7 @@
 	<div class="row-big"></div>
 	<div class="master">
 		<div class="master-list">
-			<div>
+			<div class="master-list-item">
 				<div>
 					<h4>오늘 가입한 사용자</h4>
 					<h3><%=registUser.get(0)[1] %> 명</h3>
@@ -118,7 +120,7 @@
 			</div>
 		</div>
 		<div class="master-list">
-			<div>
+			<div class="master-list-item">
 				<div>
 					<h4>오늘 가입한 판매자</h4>
 					<h3><%=registOwner.get(0)[1] %> 명</h3>
@@ -127,13 +129,13 @@
 			</div>			
 		</div>
 		<div class="master-list">
-			<div>
+			<div class="master-list-item">
 				<h4>오늘 등록된 숙소</h4>
 				<h3>0 개</h3>
 			</div>			
 		</div>
 		<div class="master-list">
-			<div>
+			<div class="master-list-item">
 				<div>
 					<h4>오늘 방문자</h4>
 					<h3><%=todayVisit %> 명</h3>
