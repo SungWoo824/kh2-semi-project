@@ -8,10 +8,12 @@
 <style type="text/css">
 	*{
 		box-sizing: border-box;
+		font-family: binggrae;
 	}
 	.title{
 		
-		border-collapse: collapse; 
+		border-collapse: collapse;
+		text-decoration: underline; 
 		
 	}
 	.title th{
@@ -19,7 +21,7 @@
 	}
 	.login{
 		background-image: url("../image/login5.jpg");
-		height: 800px;
+		height: 1000px;
 		width: 100%;
 		margin: auto;
 		padding: 15px;
@@ -30,22 +32,26 @@
 	.id{
 		border: 0;
 		background-color: #ededef;
+		text-decoration: underline;
 		
 	}
 		
 	.pw{
 		border: 0;
 		background-color: #ededef;
+		text-decoration: underline;
 		
 	}
 	.log_in{
 		border: 0;
 		background-color: #ededef;
 		
+		
 	}
 	.menu-item{
 		border: 0;
 		background-color: #ededef;
+		
 		
 	}
 	.logo-image img{
@@ -54,6 +60,10 @@
 		height: 150px;
 		margin: auto;
 		
+	}
+	@font-face{
+    font-family: binggrae;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
 	}
 
 
@@ -103,9 +113,11 @@
 			</th>
 		</tr>
 		<tr>
-			<td>
-				<a class="menu-item" href="find_id.jsp">아이디찾기</a>
+			<td align="center">
+				<p>
+				<a class="menu-item" href="find_id.jsp">아이디찾기/</a>
 				<a class="menu-item" href="find_pw.jsp">비밀번호찾기</a>
+				</p>
 				<a class="menu-item" href="regist.jsp">회원가입</a>
 			</td>
 		</tr>

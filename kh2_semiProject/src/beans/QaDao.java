@@ -18,7 +18,8 @@ public class QaDao {
 	static {
 		try {
 			InitialContext ctx = new InitialContext();//[1]
-			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");			
+			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
