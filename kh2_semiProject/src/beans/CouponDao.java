@@ -412,6 +412,32 @@ public class CouponDao {
 			
 			con.close();
 		}
+		
+		
+		/////id로 쿠폰dto 검색
+		
+		public List<CouponDto> id_search(String keyword) throws Exception{
+			
+			List<CouponDto> list = new ArrayList<>();
+			Connection con = getConnection();
+			String sql = "select * from havecoupon where member_no=(select member_no from member where member_id=?)";
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, keyword);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				CouponDto dto = new CouponDto();
+				dto.setHavecoupon_no(rs.getInt("havecoupon_no"));
+			dto.setMember_no(rs.getInt("member_no"));
+				dto.setCoupon_no(rs.getInt("coupon_no"));
+			
+				
+				list.add(dto);
+			}
+			con.close();
+			return list;	
+		}
+		
 }
 
 
