@@ -14,19 +14,13 @@
 	}catch(Exception e){
 		pno=1;
 	}
-	int list_width;
-	try{
-		list_width=Integer.parseInt(request.getParameter("list_width"));
-	}catch(Exception e){
-		list_width=3;
-	}
 	int list_count;
 	try{
 		list_count=Integer.parseInt(request.getParameter("list_count"));
 	}catch(Exception e){
-		list_count=list_width*5;
+		list_count=15;
 	}
-	int pagesize = 10;
+	int pagesize = list_count;
 	int navsize = 10;
 	int startBlock = (pno-1)/navsize*navsize+1;
 	int finishBlock = startBlock+9;
@@ -68,7 +62,11 @@
 * {
 	box-sizing: border-box;
 	margin: auto;
-	font-family: cookieRun;
+	font-family: No;
+}
+body{
+/*  background-image: url("../image/qa1.jpg"); */
+ margin: auto;
 }
 .nav-container {
   padding: 0;
@@ -127,10 +125,13 @@
 	border-collapse: collapse;
 }
 
-.table>thead>tr>td, .table>thead>tr>th, .table>tbody>tr>td, .table>tbody>tr>th
+.table>thead>tr, .table>thead>tr, .table>tbody>tr, .table>tbody>tr
 	{
 	border: 1px solid black;
 	padding: 0.5rem;
+}
+.table>thead>tr>th{
+	background-color: gray;
 }
 article {
 	margin: auto;
@@ -194,15 +195,12 @@ article {
 a{
 	text-decoration: none; color:#000000}
 }
-body{
- background-image: url("../image/qa1.jpg");
- margin: auto;
-}
+
 </style>
 </head>
 
 <body style="width: 80%;">
-<article >
+<article>
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list.jsp">
 	<div>페이지 높이</div>
@@ -212,15 +210,16 @@ body{
 		<option><%=45%></option>
 		<option><%=60%></option>
 	</select>
-	<input type="submit">
+	<input type="submit" value="입력">
 </form>
 <div class="row">
 <div align="right">
 	<form action="list2.jsp">
-	<input type="submit" value="갤러리 리스트">
+	<input type="submit" value="&clubs;">
 	</form>
 	</div>
 	<table class="table">
+	<thead>
 	<tr>
 		<th>번호</th>
 		<th>방번호</th>
@@ -229,19 +228,21 @@ body{
 		<th>작정자 </th>
 		<th>작성일 </th>
 		</tr>
+		</thead>
 	<%
 		for (QaDto dto : list) {
 	%>
+	<tbody>
 	<tr>
 		<td><%=dto.getQa_no()%></td><!-- member get으로 아이디를 가져와야함 -->
 		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
 		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
-		<td><%=dto.getMember_no() %></td>
+		<td><%=dto.getMember_name() %></td>
 		<td><%=dto.getQa_wdate() %></td>
 	</tr>
 	<%} %>
-
+</tbody>
 </table>
 
 <div align="right">
@@ -250,9 +251,9 @@ body{
 	<ul class="page-navigator">
 	<%if(startBlock>1){ %>
 		<%if(isSearch){ %>
-	<li><a href="list2.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=startBlock-1%>&list_count=<%=list_count%>">[이전]</a></li>
+	<li><a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=startBlock-1%>&list_count=<%=list_count%>">[이전]</a></li>
 	<%}else{ %>
-		<li><a href="list2.jsp?pno=<%=startBlock-1 %>&list_count=<%=list_count%>">[이전]</a></li>
+		<li><a href="list.jsp?pno=<%=startBlock-1 %>&list_count=<%=list_count%>">[이전]</a></li>
 		<%} %>
 	<%} %>
 	<%for(int i = startBlock;i<finishBlock+1;i++){ %>
@@ -260,17 +261,17 @@ body{
 	 		<li><%=i %></li>
 	 	<%}else{ %>
 	 	<%if(isSearch){ %>
-	 		<li><a href="list2.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=i%>&list_count=<%=list_count%>"><%=i %></a></li>
+	 		<li><a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=i%>&list_count=<%=list_count%>"><%=i %></a></li>
 	 		<%}else{ %>
-	 		<li> <a href="list2.jsp?pno=<%=i %>&list_count=<%=list_count%>" ><%=i %></a></li>
+	 		<li> <a href="list.jsp?pno=<%=i %>&list_count=<%=list_count%>" ><%=i %></a></li>
 	 		 <%} %>
 	 <%} %>
 	 <%} %>
 	  <%if(pagecount>finishBlock){ %>
 	  <%if(isSearch){ %>
-	 <li>	<a href="list2.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=finishBlock+1%>&list_count=<%=list_count%>">[다음]</a></li>
+	 <li>	<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=finishBlock+1%>&list_count=<%=list_count%>">[다음]</a></li>
 	 <%}else{ %>
-	  	 <li><a href="list2.jsp?pno=<%=finishBlock+1 %>&list_count=<%=list_count%>">[다음]</a> </li>
+	  	 <li><a href="list.jsp?pno=<%=finishBlock+1 %>&list_count=<%=list_count%>">[다음]</a> </li>
 	  	 <%} %>
 	  	 <%} %>
 	  	 </ul>

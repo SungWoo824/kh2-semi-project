@@ -54,7 +54,7 @@ public class QaDao {
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select * from (select rownum rn,qa.* from qa order by qa_no desc)where rn between ? and ?";
+		String sql = "select * from (select rownum rn,A.* from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no order by qa_no desc)A )where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);
 		ps.setInt(2, finish);
@@ -69,6 +69,7 @@ public class QaDao {
 			dto.setQa_title(rs.getString("qa_title"));
 			dto.setQa_content(rs.getString("qa_content"));
 			dto.setQa_wdate(rs.getString("qa_wdate"));
+			dto.setMember_name(rs.getString("member_name"));
 			list.add(dto);
 		}
 		con.close();
