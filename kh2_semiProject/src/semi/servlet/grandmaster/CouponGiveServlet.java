@@ -1,4 +1,4 @@
-package semi.selvlet.grandmaster;
+package semi.servlet.grandmaster;
 
 import java.io.IOException;
 
@@ -36,7 +36,7 @@ public class CouponGiveServlet extends HttpServlet{
 			resp.sendRedirect("coupon_member.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.sendError(500);
+			resp.sendRedirect("coupon_give.jsp?error");
 		}
 	}
 }

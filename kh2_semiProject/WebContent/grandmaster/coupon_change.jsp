@@ -7,6 +7,7 @@
 	CouponDao dao = new CouponDao();
 	CouponDto dto = dao.get(coupon_no);
 	
+	request.getParameter("error");
 %>
 <!DOCTYPE html>
 <html>
@@ -26,12 +27,18 @@
         }
     }
     function number_check(){
+    	event.preventDefault();
     	var check = document.querySelector(".number_check");
     	var regex = /[0-9]+/g;//검사식(정규표현식)
-    	console.log(regex.test(check.value));
-    	if(regex.test(check.value)==false){
+//     	console.log(regex.test(check.value));
+    	var a = regex.test(check.value);
+    	if(!a){
     		window.alert("입력 형식이 잘못되었습니다.");
-    		check.select();
+			check.value = '';
+    		check.focus();
+    	}else{
+    		var form = document.querySelector("form");
+            form.submit();
     	}
     }
 </script>
@@ -52,11 +59,15 @@
 <div><br></div>
 <div><br></div>
 <div><br></div>
-<div class="w-50">
+<div class="w-80">
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+</div>
+<div class="w-50">
 <div align="center"><h2>쿠폰 수정</h2></div>
-	
-<form action="<%=request.getContextPath() %>/grandmaster/couponchange.do" method="post">
+<%if(request.getParameter("error")!=null){ %>
+<div align="center"><h4 style="color:#4F0101">입력값이 유효하지 않습니다</h4></div>
+<%} %>	
+<form onsubmit="number_check();" action="<%=request.getContextPath() %>/grandmaster/couponchange.do" method="post">
 	
 <input type="hidden" name="coupon_no" value="<%=dto.getCoupon_no() %>">
 	
@@ -71,13 +82,13 @@
 	<tr>
 		<th>할인율</th>
 		<td align="left">
-			<input class="number_check" type="text" name="coupon_rate" value="<%=dto.getCoupon_rate() %>" required>		
+			<input class="number_check" type="text" name="coupon_rate" value="<%=dto.getCoupon_rate() %>" required placeholder="(단위 : %)">		
 		</td>
 	</tr>
 	<tr>
 		<th>만료일</th>
 		<td align="left" class="wrap">
-			<input id="date" type="date" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required onblur="number_check();" onsubmit="number_check();">		
+			<input id="date" type="date" name="coupon_date" value="<%=dto.getCoupon_date().substring(0, 10) %>" required>		
 		</td>
 	</tr>
 	<tr height="200px">

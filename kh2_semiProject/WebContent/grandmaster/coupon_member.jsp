@@ -162,10 +162,11 @@
 	<div align="right">
 	<form action="coupon_member.jsp" method="get" class="form=choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
+			<option value="member_no">회원 번호</option>
 			<option value="member_name">회원 이름</option>
 			<option value="member_id">회원 아이디</option>
-			<option value="coupon_name">쿠폰 이름</option>
 			<option value="coupon_no">쿠폰 번호</option>
+			<option value="coupon_name">쿠폰 이름</option>
 			<option value="coupon_rate">할인율(검색값 이상)</option>
 		</select>
 		<input type="search" name="keyword" placeholder="검색어" required class="search-input">

@@ -317,20 +317,20 @@ public class CouponDao {
 					+ "order by havecoupon_no "
 					+ ")A "
 					+ ") where rn between ? and ?";			
-		}else if(type.equals("coupon_no")){
+		}else if(type.equals("coupon_no")||type.equals("member_no")){
 			sql = "select * from( "
 					+ "select rownum rn, A.* from( "
 					+ "select * from coupon "
-					+ "order by havecoupon_no "
 					+ "where "+type+" =? "
+					+ "order by havecoupon_no "
 					+ ")A "
 					+ ") where rn between ? and ?";
 		}else{
 			sql = "select * from("
 					+ "select rownum rn, A.* from( "
 					+ "select * from coupon "
-					+ "order by havecoupon_no "
 					+ "where "+type+" >= ? "
+					+ "order by havecoupon_no "
 					+ ")A "
 					+ ") where rn between ? and ?";
 		}
@@ -369,7 +369,7 @@ public class CouponDao {
 			if(isSearch) {
 				if(type.equals("coupon_name")||type.equals("member_name")||type.equals("member_id")) {
 					sql +=" where "+type+" like '%'||?||'%'";
-				}else if(type.equals("coupon_no")) {
+				}else if(type.equals("coupon_no")||type.equals("member_no")) {
 					sql +=" where "+type+" = ?";
 				}
 				else {
