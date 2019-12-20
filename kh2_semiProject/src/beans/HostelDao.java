@@ -214,4 +214,34 @@ public class HostelDao {
 		con.close();
 		return count;
 	}
+	
+	
+	
+	
+	
+	
+
+	// 호스텔 번호로 호스텔이름 구하기
+	
+		public String hostelname(int hostel_no) throws Exception {
+
+			Connection con = this.getConnection();
+			String sql = "select hostel_name from hostel where hostel_no = ?";
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1, hostel_no);
+			ResultSet rs = ps.executeQuery();
+
+			String hostel_name = null;
+			if(rs.next()) {
+//				
+				hostel_name=rs.getString("hostel_name"); //나오는 값이 1개니까
+			}
+			
+			con.close();
+			return hostel_name;
+		
+			
+		}
+	
 }
