@@ -103,6 +103,7 @@ public class QaDao {
 		return list;	
 	}
 	
+	
 	public List<QaDto> id_search(String keyword) throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
