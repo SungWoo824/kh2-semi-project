@@ -171,7 +171,8 @@ public class MemberDao {
 		con.close();
 		return id;
 	}
-
+	
+////// 비밀번호 찾기 /////////////
 	public boolean find_pw(String id, String name, String phone) throws Exception {
 		Connection con = getConnection();
 		String sql = "select * from member "
