@@ -3,6 +3,7 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.naming.InitialContext;
@@ -289,30 +290,88 @@ public class HostelDao {
 	///	판매자 - 숙소 등록 기능(이가영)		끝				///
 	///////////////////////////////////////////////////////////////
 	
-	
-	
-	//////////////////////////////////////////////////////////////////////////////////////////
-	///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		시작			///
-	/////////////////////////////////////////////////////////////////////////////////////////
-	
-	public void registHostelContent(HostelDto dto) throws Exception{
-		
-		Connection con = getConnection();
-		String sql = "update hostel set hostel_content = ? where hostel_no = ?;";
+/////////////////////////////////////////////////////////////////
+///						관리자   -   숙소 등록 수 조회				///
+///////////////////////////////////////////////////////////////
+	public List<String[]> hostelRegistDateSearch() throws Exception {
+		Connection con = this.getConnection();
+
+		String sql = "select DAY,count(*) from (select to_char(H.regist_date, 'YYYY-MM-DD') DAY, H.* from hostel H) group by DAY order by DAY desc";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, dto.getHostel_content());
-		ps.setInt(2, dto.getHostel_no());
-		
-		ps.execute();
-		
+		ResultSet rs = ps.executeQuery();
+		List<String[]> list = new ArrayList<>();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String todayFormat = formatter.format(today);
+		Calendar yesterday = Calendar.getInstance();
+		yesterday.add(Calendar.DATE, -1);
+		Date yest = yesterday.getTime();
+		String yesterdayFormat = formatter.format(yest);
+
+		String[] arr;
+
+		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
+			arr = new String[2];
+			arr[0] = todayFormat;
+			arr[1] = "0";
+			list.add(arr);
+			
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+
+		} else {
+			
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+			rs.next();
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+		}
 		con.close();
+		return list;
 	}
-	
-	
-	//////////////////////////////////////////////////////////////////////////////////////////
-	///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		끝			///
-	/////////////////////////////////////////////////////////////////////////////////////////
-	
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		시작			///
+/////////////////////////////////////////////////////////////////////////////////////////
+
+public void registHostelContent(HostelDto dto) throws Exception{
+
+Connection con = getConnection();
+String sql = "update hostel set hostel_content = ? where hostel_no = ?;";
+PreparedStatement ps = con.prepareStatement(sql);
+
+ps.setString(1, dto.getHostel_content());
+ps.setInt(2, dto.getHostel_no());
+
+ps.execute();
+
+con.close();
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		끝			///
+/////////////////////////////////////////////////////////////////////////////////////////
+
 	
 }
