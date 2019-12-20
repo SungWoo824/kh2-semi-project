@@ -1,13 +1,49 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	int member_no;
+	if(request.getParameter("member_no")!=null){
+		member_no = Integer.parseInt(request.getParameter("member_no"));
+	}else{
+		member_no=0;
+	}
+%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8">re
 <title>쿠폰 수여</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
+<script>
+	function number_check(){
+		var check = document.querySelector(".number_check");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+	function number_check1(){
+		var check = document.querySelector(".number_check1");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+	function number_check2(){
+		var check = document.querySelector(".number_check2");
+		var regex = /[0-9]+/g;//검사식(정규표현식)
+		console.log(regex.test(check.value));
+		if(regex.test(check.value)==false){
+			window.alert("입력 형식이 잘못되었습니다.");
+		}
+	}
+</script>
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -43,13 +79,15 @@
 <div><br></div>
 <div><br></div>
 <div class="w-40">
+<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 <div align="center"><h2>쿠폰 수여</h2></div>
 	<form action="<%=request.getContextPath() %>/grandmaster/coupongive.do" method="post">
 		<table class="w-100 coupon-under-table">
+		<%if(request.getParameter("member_no")==null){ %>
 			<tr>
 				<th>
 					<select name="type1" class="select-icon custom-select" required>
-						<option value="member_no">회원 번호</option>
+						<option value="member_no" class="number_check1" onsubmit="number_check1();" onblur="number_check1();">회원 번호</option>
 						<option value="member_id">회원 아이디</option>
 					</select>					
 				</th>
@@ -57,10 +95,20 @@
 					<input type="text" name="keyword1" required>
 				</td>
 			</tr>
+		<%}else{ %>
+			<tr height="52">
+				<th width="40%">
+					<%String type1 = "member_no";%>회원 번호
+				</th>
+				<td>
+					<input type="text" name="keyword1" value="<%=member_no %>" readonly class="number_check2" onsubmit="number_check2();" onblur="number_check2();">
+				</td>
+			</tr>
+		<%} %>
 			<tr height="52">
 				<th>쿠폰 번호</th>
 				<td>
-					<input type="text" name="keyword2" required>
+					<input type="text" name="keyword2" required class="number_check" onsubmit="number_check();" onblur="number_check();">
 				</td>
 			</tr>
 			<tr>

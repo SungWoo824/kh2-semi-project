@@ -1,3 +1,5 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@page import="beans.CouponDto"%>
 <%@page import="java.util.List"%>
 <%@page import="beans.CouponDao"%>
@@ -11,11 +13,13 @@ String id =(String)session.getAttribute("id");
 System.out.println(id);
 
 
-	CouponDao cdao = new CouponDao();
-	List<CouponDto> list=cdao.id_search(id);
+MemberDao mdao = new  MemberDao();
+MemberDto mdto=mdao.get(id);
+ 
+int member_no  =  mdto.getNo();
 	
-	
-	
+CouponDao cdao = new CouponDao();
+List<CouponDto> list=  cdao.id_search(member_no);
 
 	
 %>
@@ -51,11 +55,11 @@ System.out.println(id);
 			<tbody align="center">
 				<%for(CouponDto dto:list){ %>
 					<tr>
-						<td><%=dto.getHavecoupon_no() %></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+						<td><%=dto.getCoupon_no()%></td>
+						<td><%=dto.getCoupon_name()%></td>
+						<td><%=dto.getCoupon_rate()%></td>
+						<td><%=dto.getCoupon_date()%></td>
+						<td><%=dto.getCoupon_explain()%></td>
 					</tr>
 				<%} %>
 			</tbody>

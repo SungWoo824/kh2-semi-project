@@ -22,15 +22,17 @@
 
 .top-bar:hover,
 .menu-fixed:hover {
-  background-color: rgba(95, 93, 93, 0.2);
+  background-color: rgba(95, 93, 93, 0.5);
+  color: white;
+  text-shadow: 0 1px 5px rgba(255, 255, 255, 0.5);
 }
 
 .menu-fixed {
   position: fixed;
-  font-size: 15px;
+  font-size: 17px;
   padding-bottom: 10px;
   height: 70px;
-  background-color: rgba(229, 231, 235, 0.3);
+  background-color: rgba(229, 231, 235, 0.6);
   font-weight: 900;
   z-index: 100;
 }
