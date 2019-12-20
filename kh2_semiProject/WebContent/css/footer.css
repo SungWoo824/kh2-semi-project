@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+ 	* {
+ 		box-sizing: border-box;
+ 		background-color: rgba(229, 231, 235, 0);
+ 	}
+ 	@font-face{
+    	font-family: binggrae;
+    	src:url("../font/NotoSansCJKkr-Medium.otf");
+	}
+	footer{
+		background-color: rgba(229, 231, 235, 0);
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+	}
+	.foot{
+		font-family: binggrae;
+		background-color: rgba(229, 231, 235, 0);
+	}
+	.foot-menu{
+		margin-bottom: 10rem;
+		background-color: rgba(229, 231, 235, 0);
+	}
+	.foot-logo > img{
+		width: 100px;
+		background-color: rgba(229, 231, 235, 0);
+	}
+	.foot-logo{
+		height: 10px;
+		background-color: rgba(229, 231, 235, 0);	
+	}
+	.name{
+		margin-left: 100px;
+		background-color: rgba(229, 231, 235, 0);
+		
+	}
+
+ 		
