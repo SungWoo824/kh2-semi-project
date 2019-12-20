@@ -66,7 +66,7 @@
 	        var dataArray = [];
 	        
 	        ///////////
-	        dataArray.push(['Element', '판매자 가입수', { role: 'style' }]);
+	        dataArray.push(['date', '판매자가입수', { role: 'style' }]);
 	        dataArray.push(['어제', <%=Integer.parseInt(registOwner.get(1)[1]) %>, 'black']);
 	        dataArray.push(['오늘', <%=Integer.parseInt(registOwner.get(0)[1]) %>, 'silver']);
 	        

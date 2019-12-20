@@ -45,6 +45,15 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
+<script type="text/javascript">
+	function hostel_remove_event(){
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	   		document.form.submit();
+		}else{   //취소
+	   	 return;
+		}
+	}
+</script>
 <body>
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
@@ -80,7 +89,7 @@
 				
 				<th><%=hdto.getHostel_detail_addr() %></th>
 				<th><%=hdto.getHostel_content() %></th>
-				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>">
+				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>" onclick="hostel_remove_event();">
 					숙소 삭제하기</a></th>
 			</tr>
 			<%} %>
