@@ -154,7 +154,7 @@ public class RoomDao {
 		
 		con.close();
 	}
-	
+
 	// hostel_no 받아오는 메소드
 	public int getHostelNo(String member_id) throws Exception{
 		
@@ -182,5 +182,55 @@ public class RoomDao {
 /////////////////////////////////////////////////////////////////
 ///	판매자 - room_info 등록 기능(이가영)		끝	   ///
 ///////////////////////////////////////////////////////////////
+
+
+
+
+//방번호로 방이름 구하기
+
+public String roomname(int room_no) throws Exception {
+
+	Connection con = this.getConnection();
+	String sql = "select room_name from room_info where room_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+	ResultSet rs = ps.executeQuery();
+
+	String room_name = null;
+	if(rs.next()) {
+//		
+		room_name=rs.getString("room_name"); //나오는 값이 1개니까
+	}
+	
+	con.close();
+	return room_name;
+
+	
+}
+
+//방번호로 호스텔넘버 구하기
+
+public int hostelNumber(int room_no) throws Exception {
+
+	Connection con = this.getConnection();
+	String sql = "select hostel_no from room_info where room_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+	ResultSet rs = ps.executeQuery();
+
+	int hostel_no=0;
+	if(rs.next()) {
+		
+	hostel_no =rs.getInt("hostel_no");
+	}
+
+	con.close();
+	return hostel_no;
+
+	
+}
+
 
 }
