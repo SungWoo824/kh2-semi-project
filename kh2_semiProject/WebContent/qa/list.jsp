@@ -8,7 +8,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	String id = "김운기";
 	QaDao dao = new QaDao();
 	int pno;
 	try{

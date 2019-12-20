@@ -10,7 +10,6 @@
 	if(isLogin){
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
-		System.out.println(id + grade);
 	}
 %>    
     

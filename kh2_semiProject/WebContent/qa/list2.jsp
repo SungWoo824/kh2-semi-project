@@ -69,6 +69,7 @@
 	box-sizing: border-box;
 	margin: auto;
 	font-family: No;
+
 }
 
 .table {
