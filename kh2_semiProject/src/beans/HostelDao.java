@@ -358,11 +358,11 @@ public class HostelDao {
 public void registHostelContent(HostelDto dto) throws Exception{
 
 Connection con = getConnection();
-String sql = "update hostel set hostel_content = ? where hostel_no = ?;";
+String sql = "update hostel set hostel_content = ? where hostel_name = ?";
 PreparedStatement ps = con.prepareStatement(sql);
 
 ps.setString(1, dto.getHostel_content());
-ps.setInt(2, dto.getHostel_no());
+ps.setString(2, dto.getHostel_name());
 
 ps.execute();
 
