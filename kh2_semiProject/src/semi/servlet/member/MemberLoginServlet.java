@@ -26,12 +26,11 @@ public class MemberLoginServlet extends HttpServlet{
 		MemberDao dao = new MemberDao();
 		boolean result = dao.login(id, pw);
 		
-		if(result) {
+		MemberDto dto = dao.get(id);
 		
-			
+		if(result) {
 			req.getSession().setAttribute("id", id);
-			
-			
+			req.getSession().setAttribute("grade", dto.getGrade());
 			resp.sendRedirect(req.getContextPath());
 		}else {
 			
