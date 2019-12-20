@@ -1,3 +1,4 @@
+<%@page import="beans.RoomDao"%>
 <%@page import="beans.HostelDto"%>
 <%@page import="beans.HostelDao"%>
 <%@page import="beans.ReservationDto"%>
@@ -9,17 +10,23 @@
     pageEncoding="UTF-8"%>
     
   <%
-  ReservationDao rdao = new ReservationDao();
-	
   
-  List<ReservationDto> list= rdao.list();
-ReservationDto rdto=rdao.get();
+  //아이디로 주문 리스트 받기 
+  
+  	String id = (String)session.getAttribute("id");
+     
+	MemberDao mdao = new MemberDao();
+	MemberDto mdto = mdao.get(id);
 	
-	
-	int room_no=rdto.getRoom_no();
-	HostelDao hdao = new HostelDao();
-	
-	HostelDto hdto =hdao.hostelinfomation(room_no);
+	int member_no=mdto.getNo();
+  
+  ReservationDao rdao = new ReservationDao();
+  List<ReservationDto> list = rdao.list(member_no);
+  
+RoomDao roomdao = new RoomDao();
+	HostelDao hosteldao = new HostelDao();
+
+ 
  %>  
     
 <!DOCTYPE html>
@@ -44,7 +51,16 @@ ReservationDto rdto=rdao.get();
                 <tr>
                     <th>예약번호</th>
                     <th>이미지</th>
-                    <th>상품정보</th>
+                      
+                      
+                      <th>호스텔번호</th>
+                           <th>호스텔이름</th>
+                    <th>방번호</th>
+                    <th>방이름</th>
+                  
+                  
+                  
+                  
                     <th>숙박기간</th>
                     <th>인원수</th>
                     <th>고객요구사항</th>
@@ -61,8 +77,10 @@ ReservationDto rdto=rdao.get();
                     
                     <td>이미지창</td>
                     
-                   
-                    <td><%=hdto.getHostel_name() %></td>
+                      <td><%=roomdao.hostelNumber(rdto2.getRoom_no()) %></td>
+                    <td><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%></td>
+                    <td><%=rdto2.getRoom_no() %></td>
+                        <td><%=roomdao.roomname(rdto2.getRoom_no()) %></td>
                  
                     
                     <td><%=rdto2.getReservation_start_date() %>~ 2019-12-20</td>

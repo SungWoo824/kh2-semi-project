@@ -1,5 +1,18 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%
+	boolean isLogin = session.getAttribute("id") != null;
+	String id = null;
+	String grade = null;
+	if(isLogin){
+		id = (String)session.getAttribute("id");
+		grade = (String)session.getAttribute("grade");
+	}
+%>    
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,10 +21,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
     <link rel="stylesheet" href="css/header-style.css" />
-    <link rel="stylesheet" href="css/nav-style.css" />
-    <script src="datepicker/jquery-1.12.4.js"></script>
-    <script src="datepicker/jquery-ui.js"></script>
-    <link rel="stylesheet" href="datepicker/jquery-ui.css" />
+    <link rel="stylesheet" href="css/homenav-style.css" />
+    <script src="js/datepicker/jquery-1.12.4.js"></script>
+    <script src="js/datepicker/jquery-ui.js"></script>
+    <link rel="stylesheet" href="js/datepicker/jquery-ui.css" />
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
@@ -28,12 +41,20 @@
         </div>
         <div class="top-bar__menu">
           <ul>
-            <li><a class="top-bar__menu-item" href="">메뉴 A</a></li>
-            <li><a class="top-bar__menu-item" href="">메뉴 B</a></li>
-            <li><a class="top-bar__menu-item" href="">메뉴 C</a></li>
-            <li><a class="top-bar__menu-item" href="">메뉴 D</a></li>
-            <li><a class="top-bar__menu-item" href="">메뉴 E</a></li>
-            <li><a class="top-bar__menu-item" href="">메뉴 F</a></li>
+            <li><a class="top-bar__menu-item" href="hostel/0regist_region.jsp">HOSTING</a></li>
+            <%if(grade!=null && grade.equals("관리자")){ %>
+            	<li><a class="top-bar__menu-item" href="grandmaster/master_index.jsp">ADMIN PAGE</a></li>
+            <%} %>
+            <%if(isLogin) {%>
+            	<li><a class="top-bar__menu-item" href="mypage/index.jsp">MY PAGE</a></li>            	
+            <%}%>
+            <li><a class="top-bar__menu-item" href="qa/list.jsp">Q &amp; A</a></li>
+            <%if(isLogin) {%>
+            	<li><a class="top-bar__menu-item" href="member/logout.do">SIGN OUT</a></li>
+            <%}else { %>
+           		<li><a class="top-bar__menu-item" href="member/login.jsp">SIGN IN</a></li>
+         	    <li><a class="top-bar__menu-item" href="member/regist.jsp">SIGN UP</a></li>
+            <%} %>
           </ul>
         </div>
       </div>
@@ -201,7 +222,9 @@
       </section>
     </main>
     <footer id="main-footer">
-      푸터입니다
+      푸터입니다<br> 
+      ID : <%=session.getAttribute("id")  %><br>
+      GRADE : <%=session.getAttribute("grade") %>
     </footer>
   </body>
 </html>

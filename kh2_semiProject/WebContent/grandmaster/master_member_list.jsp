@@ -48,7 +48,7 @@
 <body>
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
-	<div><h2>그림</h2></div>
+	
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>

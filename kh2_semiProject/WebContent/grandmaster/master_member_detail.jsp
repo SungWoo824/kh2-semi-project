@@ -20,11 +20,10 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
-<body>
 	<body onload="display();">
 	<jsp:include page="../template/nav.jsp"></jsp:include>
 	<div class="w-80">
-		<div><h2>그림</h2></div>
+		
 		<div class="row-big"></div>
 		<div class="row-big"></div>
 		<div class="row-big"></div>

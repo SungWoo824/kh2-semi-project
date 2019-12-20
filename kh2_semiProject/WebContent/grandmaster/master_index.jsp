@@ -1,3 +1,4 @@
+<%@page import="beans.HostelDao"%>
 <%@page import="beans.VisitDao"%>
 <%@page import="java.util.*"%>
 <%@page import="beans.MemberDao"%>
@@ -5,8 +6,10 @@
     pageEncoding="UTF-8"%>
     <%
    		MemberDao mdao = new MemberDao();
+    	HostelDao hdao = new HostelDao();
    	 	List<String[]> registUser = mdao.userJoindateSearch();
    	 	List<String[]> registOwner = mdao.ownerJoindateSearch();
+   	 	List<String[]> registHostel = hdao.hostelRegistDateSearch();
    		int todayVisit;
    		int totalVisit;
    		if(session.getAttribute("todayCount")==null){
@@ -30,12 +33,14 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script>
 	function display(){
 	    google.charts.load('current', {packages: ['corechart', 'bar']});
 	    google.charts.setOnLoadCallback(todayUser);
-	    google.charts.setOnLoadCallback(todayOwner);
-	    google.charts.setOnLoadCallback(todayCustomer);
+ 	    google.charts.setOnLoadCallback(todayOwner);
+ 	    google.charts.setOnLoadCallback(todayCustomer);
+ 	    google.charts.setOnLoadCallback(todayHostel);
 	
 	    function todayUser() {
 	          var data = new google.visualization.DataTable();
@@ -47,8 +52,9 @@
 	        
 	        ///////////
 	        dataArray.push(['Element', '사용자 가입수', { role: 'style' }]);
-	        dataArray.push(['어제',<%=Integer.parseInt(registUser.get(1)[1]) %>, 'black']);
-	        dataArray.push(['오늘',<%=Integer.parseInt(registUser.get(0)[1]) %>, 'silver']);
+ 	        dataArray.push(['어제',<%=Integer.parseInt(registUser.get(1)[1]) %>, 'black']); 
+	        dataArray.push(['오늘',<%=Integer.parseInt(registUser.get(0)[1]) %>, 'silver']); 
+		
 	        
 	        ////////////////////
 	        
@@ -66,9 +72,9 @@
 	        var dataArray = [];
 	        
 	        ///////////
-	        dataArray.push(['Element', '판매자 가입수', { role: 'style' }]);
-	        dataArray.push(['어제', <%=Integer.parseInt(registOwner.get(1)[1]) %>, 'black']);
-	        dataArray.push(['오늘', <%=Integer.parseInt(registOwner.get(0)[1]) %>, 'silver']);
+	        dataArray.push(['date', '판매자가입수', { role: 'style' }]);
+	        dataArray.push(['어제',<%=Integer.parseInt(registOwner.get(1)[1]) %>, 'black']);
+	        dataArray.push(['오늘',<%=Integer.parseInt(registOwner.get(0)[1]) %>, 'silver']);
 	        
 	        ////////////////////
 	        
@@ -87,8 +93,8 @@
 	        
 	        ///////////
 	        dataArray.push(['Element', '회원가입수', { role: 'style' }]);
-	        dataArray.push(['총접속자수', <%=todayVisit %>, 'black']);
-	        dataArray.push(['오늘접속자수', <%=totalVisit %>, 'silver']);
+	        dataArray.push(['총접속자수',<%=totalVisit %>, 'black']);
+	        dataArray.push(['오늘접속자수',<%=todayVisit %>, 'silver']);
 	        
 	        ////////////////////
 	        
@@ -96,13 +102,33 @@
 	
 	          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div3'));
 	          chart.draw(data);
-	        }
+	       }
+	    function todayHostel() {
+	          var data = new google.visualization.DataTable();
+	          data.addColumn('timeofday', 'Time of Day');
+	          data.addColumn('number', 'Motivation Level');
+	          data.addColumn('number', 'Energy Level');
+	
+	        var dataArray = [];
+	        
+	        ///////////
+	        dataArray.push(['Element', '호텔등록수', { role: 'style' }]);
+	        dataArray.push(['어제등록된숙소',<%=Integer.parseInt(registHostel.get(1)[1])%>, 'black']);
+	        dataArray.push(['오늘등록된숙소',<%=Integer.parseInt(registHostel.get(0)[1]) %>, 'silver']);
+	        
+	        ////////////////////
+	        
+	         var data = google.visualization.arrayToDataTable(dataArray);
+	
+	          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div4'));
+	          chart.draw(data);
+	       }
+	   
 	}
 </script>
 <body onload="display();">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
-	<div><h2>그림</h2></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
@@ -129,9 +155,12 @@
 		</div>
 		<div class="master-list">
 			<div class="master-list-item">
-				<h4>오늘 등록된 숙소</h4>
-				<h3>0 개</h3>
-			</div>			
+				<div>
+					<h4>오늘 등록된 숙소</h4>
+					<h3><%=registHostel.get(0)[1] %> 개</h3>
+				</div>
+				<div id="chart_div4"></div>			
+			</div>
 		</div>
 		<div class="master-list">
 			<div class="master-list-item">
@@ -143,6 +172,7 @@
 			</div>
 		</div>
 	</div>
+	
 </div>
 </body>
 </html>
