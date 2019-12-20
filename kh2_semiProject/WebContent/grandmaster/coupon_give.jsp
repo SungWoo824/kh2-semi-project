@@ -9,6 +9,7 @@
 	}else{
 		member_no=0;
 	}
+	request.getParameter("error");
 %>
 <!DOCTYPE html>
 <html>
@@ -19,30 +20,43 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script>
-	function number_check(){
-		var check = document.querySelector(".number_check");
-		var regex = /[0-9]+/g;//검사식(정규표현식)
-		console.log(regex.test(check.value));
-		if(regex.test(check.value)==false){
-			window.alert("입력 형식이 잘못되었습니다.");
+function number_check1(){
+	
+	//기본 전송을 막고
+	event.preventDefault();
+	
+	//입력창을 불러오고
+	var check1 = document.querySelector(".number_check1");
+	var check2 = document.querySelector(".number_check2");
+	
+	//검사식을 만들고
+	var memberCheck = /[0-9]+/g.test(check1.value);
+	var couponCheck = /[0-9]+/g.test(check2.value);
+	
+// 	console.log(memberCheck, couponCheck, memberCheck && couponCheck);
+	
+	//만약에 회원번호가 아니라 회원아이디가 선택됐다면 memberCheck는 필요가 없다(true로 변경)
+	var select = document.querySelector("select[name=type1]");
+	if(select.value == "member_id"){
+		memberCheck = true;	
+	}
+	
+	if(memberCheck && couponCheck){
+		var form = document.querySelector("form");
+		form.submit();
+	}
+	else{
+		window.alert("입력 형식이 잘못되었습니다.");
+// 		if(memberCheck==true && couponCheck==false){
+		if(memberCheck && !couponCheck){
+			check2.value = '';
+			check2.focus();
+		}else{
+			check1.value = '';
+			check1.focus();
 		}
 	}
-	function number_check1(){
-		var check = document.querySelector(".number_check1");
-		var regex = /[0-9]+/g;//검사식(정규표현식)
-		console.log(regex.test(check.value));
-		if(regex.test(check.value)==false){
-			window.alert("입력 형식이 잘못되었습니다.");
-		}
-	}
-	function number_check2(){
-		var check = document.querySelector(".number_check2");
-		var regex = /[0-9]+/g;//검사식(정규표현식)
-		console.log(regex.test(check.value));
-		if(regex.test(check.value)==false){
-			window.alert("입력 형식이 잘못되었습니다.");
-		}
-	}
+}
 </script>
 <style>
 	.select-selected{
@@ -78,21 +92,26 @@
 <div><br></div>
 <div><br></div>
 <div><br></div>
-<div class="w-40">
+<div class="w-80">
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+</div>
+<div class="w-40">
 <div align="center"><h2>쿠폰 수여</h2></div>
-	<form action="<%=request.getContextPath() %>/grandmaster/coupongive.do" method="post">
+<%if(request.getParameter("error")!=null){ %>
+<div align="center"><h4 style="color:#4F0101">입력값이 유효하지 않습니다</h4></div>
+<%} %>
+	<form onsubmit="number_check1();" action="<%=request.getContextPath() %>/grandmaster/coupongive.do" method="post">
 		<table class="w-100 coupon-under-table">
 		<%if(request.getParameter("member_no")==null){ %>
 			<tr>
 				<th>
 					<select name="type1" class="select-icon custom-select" required>
-						<option value="member_no" class="number_check1" onsubmit="number_check1();" onblur="number_check1();">회원 번호</option>
+						<option value="member_no">회원 번호</option>
 						<option value="member_id">회원 아이디</option>
 					</select>					
 				</th>
 				<td>
-					<input type="text" name="keyword1" required>
+					<input type="text" name="keyword1" required class="number_check1">
 				</td>
 			</tr>
 		<%}else{ %>
@@ -101,14 +120,14 @@
 					<%String type1 = "member_no";%>회원 번호
 				</th>
 				<td>
-					<input type="text" name="keyword1" value="<%=member_no %>" readonly class="number_check2" onsubmit="number_check2();" onblur="number_check2();">
+					<input type="text" name="keyword1" value="<%=member_no %>" readonly>
 				</td>
 			</tr>
 		<%} %>
 			<tr height="52">
 				<th>쿠폰 번호</th>
 				<td>
-					<input type="text" name="keyword2" required class="number_check" onsubmit="number_check();" onblur="number_check();">
+					<input type="text" name="keyword2" required class="number_check2">
 				</td>
 			</tr>
 			<tr>

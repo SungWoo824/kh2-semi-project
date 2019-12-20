@@ -31,8 +31,10 @@ CouponDto dto = dao.get(coupon_no);
 <div><br></div>
 <div><br></div>
 <div><br></div>
-<div class="w-50">
+<div class="w-80">
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+</div>
+<div class="w-50">
 <div align="center"><h2>쿠폰 상세보기</h2></div>
 	
 <table class="w-100 coupon-under-table">

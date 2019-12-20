@@ -1,4 +1,4 @@
-package semi.selvlet.grandmaster;
+package semi.servlet.grandmaster;
 
 import java.io.IOException;
 
@@ -17,16 +17,23 @@ public class CouponRegistServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			CouponDto dto = new CouponDto();
-			dto.setCoupon_name(req.getParameter("coupon_name"));
-			dto.setCoupon_rate(Integer.parseInt(req.getParameter("coupon_rate")));
-			dto.setCoupon_date(req.getParameter("coupon_date"));
-			dto.setCoupon_explain(req.getParameter("coupon_explain"));
+			int coupon_rate = Integer.parseInt(req.getParameter("coupon_rate"));
 			
-			CouponDao dao = new CouponDao();
+			if(coupon_rate<100&&coupon_rate>0) {
+				CouponDto dto = new CouponDto();
+				dto.setCoupon_name(req.getParameter("coupon_name"));
+				dto.setCoupon_rate(Integer.parseInt(req.getParameter("coupon_rate")));
+				dto.setCoupon_date(req.getParameter("coupon_date"));
+				dto.setCoupon_explain(req.getParameter("coupon_explain"));
+				
+				CouponDao dao = new CouponDao();
+				
+				dao.regist(dto);
+				resp.sendRedirect("coupon_itself.jsp");				
+			}else {
+				resp.sendRedirect("coupon_regist.jsp?error");	
+			}
 			
-			dao.regist(dto);
-			resp.sendRedirect("coupon_itself.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
