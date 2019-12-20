@@ -35,7 +35,7 @@ public class ReservationDao {
 ////////////////////////////////////////////////////////////////
 public List<ReservationDto> list(int member_no) throws Exception{
 Connection con = this.getConnection();
-String sql = "select A.* from (select * from (select r.*,O.room_name,o.hostel_no from reservation_list R,room_info O where r.room_no=o.room_no)where customer_no=?)A order by reservation_no desc";
+String sql = "select * from reservation_list  where customer_no=? order by reservation_no desc";
 PreparedStatement ps = con.prepareStatement(sql);
 ps.setInt(1, member_no);
 ResultSet rs = ps.executeQuery();
