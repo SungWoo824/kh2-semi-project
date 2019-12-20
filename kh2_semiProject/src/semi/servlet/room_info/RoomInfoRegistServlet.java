@@ -20,7 +20,12 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			req.setCharacterEncoding("UTF-8");
 			
 			RoomDto dto = new RoomDto();
+			RoomDao dao = new RoomDao();
 			
+			String member_id = (String) req.getSession().getAttribute("id");
+			int hostel_no = dao.getHostelNo(member_id);
+			
+			dto.setHostel_no(hostel_no);
 			dto.setRoom_price(Integer.parseInt(req.getParameter("room_price")));
 			dto.setRoom_standard_people(Integer.parseInt(req.getParameter("room_standard_people")));
 			dto.setRoom_max_people(Integer.parseInt(req.getParameter("room_max_people")));
@@ -39,8 +44,6 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			dto.setRoom_hot(req.getParameter("room_hot"));
 			dto.setRoom_name(req.getParameter("room_name"));
 			
-			
-			RoomDao dao = new RoomDao();
 			dao.regist(dto);
 			
 			
