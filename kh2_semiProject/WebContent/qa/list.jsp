@@ -1,3 +1,4 @@
+<%@page import="javax.sound.midi.SysexMessage"%>
 <%@page import="beans.QaReplyDto"%>
 <%@page import="beans.QaReplyDao"%>
 <%@page import="beans.QaDto"%>
@@ -47,6 +48,7 @@
 	}
 	QaReplyDao Rdao = new QaReplyDao();
 
+	String member_id = (String)request.getAttribute("id");
 %>
 <html>
 <head>
@@ -281,7 +283,9 @@ a{
 </table>
 
 <div align="right">
+		<%if(member_id!=null){ %>
 <a href="write.jsp">글쓰기</a>	
+<%} %>
 <div align="center">
 	<ul class="page-navigator">
 	<%if(startBlock>1){ %>

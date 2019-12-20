@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 
 <% request.setCharacterEncoding("UTF-8");%>
-
 <html>
 <head>
 <style type="text/css">
@@ -53,10 +52,6 @@
 		border: 1px;
 	
 	}
-		
-		
-		
-		
 
 </style>			
 </head>
