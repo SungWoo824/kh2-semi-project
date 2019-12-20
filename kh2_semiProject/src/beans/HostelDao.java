@@ -214,4 +214,78 @@ public class HostelDao {
 		con.close();
 		return count;
 	}
+	
+	/////////////////////////////////////////////////////////////////
+	///	판매자 - 숙소 등록 기능(이가영)		시작					///
+	///////////////////////////////////////////////////////////////
+	
+	public void regist(HostelDto dto) throws Exception {
+
+		Connection con = getConnection();
+		String sql = "insert into hostel values(hostel_no_seq.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, dto.getOwner_no());
+		ps.setInt(2, dto.getRegion_no());
+		ps.setString(3, dto.getHostel_name());
+		ps.setString(4, dto.getHostel_phone());
+		ps.setString(5, dto.getHostel_detail_addr());
+		ps.setString(6, dto.getHostel_latitude());
+		ps.setString(7, dto.getHostel_longitude());
+		ps.setString(8, dto.getHostel_content());
+		ps.setString(9, dto.getHostel_kind_name());
+
+		ps.execute();
+
+		con.close();
+
+	}
+
+	// region_no 받아오는 메소드!!
+
+	public int getRegionNo(String region_name, String city_name) throws Exception {
+ 
+		Connection con = getConnection();
+		String sql = "select * from region where region_name = ? and city_name = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, region_name);
+		ps.setString(2, city_name);
+
+		ResultSet rs = ps.executeQuery();
+
+		int region_no = 0;
+
+		if (rs.next()) {
+			region_no = rs.getInt("region_no");
+		}
+
+		con.close();
+
+		return region_no;
+	}
+	
+	// owner_no(member_no) 받아오는 메소드
+	public int getOwnerNo(String member_id) throws Exception{
+		
+		Connection con = getConnection();
+		String sql = "select * from member where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, member_id);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int owner_no = 0;
+		
+		if (rs.next()) {
+			owner_no = rs.getInt("member_no");
+		}
+		
+		con.close();
+		return owner_no;
+	}	
+	/////////////////////////////////////////////////////////////////
+	///	판매자 - 숙소 등록 기능(이가영)		끝					///
+	///////////////////////////////////////////////////////////////
 }

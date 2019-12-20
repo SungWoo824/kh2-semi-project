@@ -72,7 +72,13 @@
             <option>아파트</option>
             <option>빌라</option>
             <option>단독 주택</option>
+            <option>펜션</option>
+            <option>산장</option>
             <option>호텔</option>
+            <option>리조트</option>
+            <option>초소형 주택</option>
+            <option>캠핑카</option>
+            
 
         </select>
 
