@@ -414,15 +414,15 @@ public class CouponDao {
 		}
 		
 		
-		/////id로 쿠폰dto 검색
+		/////member_no로 쿠폰dto 검색
 		
-		public List<CouponDto> id_search(String keyword) throws Exception{
+		public List<CouponDto> id_search(int member_no) throws Exception{
 			
 			List<CouponDto> list = new ArrayList<>();
 			Connection con = getConnection();
-			String sql = "select * from havecoupon where member_no=(select member_no from member where member_id=?)";
+			String sql = "select A.* from (select * from (select c.*,h.member_no,h.havecoupon_no from havecoupon h , couponlist c where h.coupon_no=c.coupon_no) where member_no=?)A  order by coupon_no desc";
 			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, keyword);
+			ps.setInt(1, member_no);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -430,6 +430,10 @@ public class CouponDao {
 				dto.setHavecoupon_no(rs.getInt("havecoupon_no"));
 			dto.setMember_no(rs.getInt("member_no"));
 				dto.setCoupon_no(rs.getInt("coupon_no"));
+				dto.setCoupon_name(rs.getString("coupon_name"));
+				dto.setCoupon_rate(rs.getInt("coupon_rate"));
+				dto.setCoupon_date(rs.getString("coupon_date"));
+				dto.setCoupon_explain(rs.getString("coupon_explain"));
 			
 				
 				list.add(dto);
