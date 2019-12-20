@@ -56,7 +56,7 @@ public class VisitDao {
 		
 		rs.next();
 		int visitor = rs.getInt("count(*)");
-		System.out.println(visitor);
+		
 		con.close();
 		return visitor;
 	}
