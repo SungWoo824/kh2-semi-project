@@ -122,39 +122,115 @@ public class RoomDao {
 	}
 
 /////////////////////////////////////////////////////////////////
-///	판매자 - room_info 등록 기능(이가영)		시작			///
+///	판매자 - room_info 등록 기능(이가영)		시작	///
 ///////////////////////////////////////////////////////////////	
 	public void regist(RoomDto dto) throws Exception{
 		Connection con = getConnection();
 
-		String sql = "insert into room_info values(room_no_seq.nextval,2,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into room_info values(room_no_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, dto.getRoom_price());
-		ps.setInt(2, dto.getRoom_standard_people());
-		ps.setInt(3, dto.getRoom_max_people());
-		ps.setInt(4, dto.getRoom_bed());
-		ps.setInt(5, dto.getRoom_bath());
-		ps.setString(6, dto.getRoom_spa());
-		ps.setString(7, dto.getRoom_cook());
-		ps.setString(8, dto.getRoom_content());
-		ps.setString(9, dto.getRoom_parking());
-		ps.setString(10, dto.getRoom_pet());
-		ps.setString(11, dto.getRoom_breakfast());
-		ps.setString(12, dto.getRoom_basic());
-		ps.setString(13, dto.getRoom_tv());
-		ps.setString(14, dto.getRoom_dry());
-		ps.setString(15, dto.getRoom_cool());
-		ps.setString(16, dto.getRoom_hot());
-		ps.setString(17, dto.getRoom_name());
+		ps.setInt(1, dto.getHostel_no());
+		ps.setInt(2, dto.getRoom_price());
+		ps.setInt(3, dto.getRoom_standard_people());
+		ps.setInt(4, dto.getRoom_max_people());
+		ps.setInt(5, dto.getRoom_bed());
+		ps.setInt(6, dto.getRoom_bath());
+		ps.setString(7, dto.getRoom_spa());
+		ps.setString(8, dto.getRoom_cook());
+		ps.setString(9, dto.getRoom_content());
+		ps.setString(10, dto.getRoom_parking());
+		ps.setString(11, dto.getRoom_pet());
+		ps.setString(12, dto.getRoom_breakfast());
+		ps.setString(13, dto.getRoom_basic());
+		ps.setString(14, dto.getRoom_tv());
+		ps.setString(15, dto.getRoom_dry());
+		ps.setString(16, dto.getRoom_cool());
+		ps.setString(17, dto.getRoom_hot());
+		ps.setString(18, dto.getRoom_name());
 		
 		
 		ps.execute();
 		
 		con.close();
-	}	
+	}
+
+	// hostel_no 받아오는 메소드
+	public int getHostelNo(String member_id) throws Exception{
+		
+		Connection con = getConnection();
+		String sql = "select * from hostel "
+						+ "where owner_no = ("
+						+ "select member_no "
+						+ "from member where member_id = ?"
+						+ ")";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, member_id);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int hostel_no = 0;
+		
+		if (rs.next()) {
+			hostel_no = rs.getInt("hostel_no");
+		}
+		
+		con.close();
+		return hostel_no;
+	}
 /////////////////////////////////////////////////////////////////
-///	판매자 - room_info 등록 기능(이가영)		끝			    ///
+///	판매자 - room_info 등록 기능(이가영)		끝	   ///
 ///////////////////////////////////////////////////////////////
+
+
+
+
+//방번호로 방이름 구하기
+
+public String roomname(int room_no) throws Exception {
+
+	Connection con = this.getConnection();
+	String sql = "select room_name from room_info where room_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+	ResultSet rs = ps.executeQuery();
+
+	String room_name = null;
+	if(rs.next()) {
+//		
+		room_name=rs.getString("room_name"); //나오는 값이 1개니까
+	}
+	
+	con.close();
+	return room_name;
+
+	
+}
+
+//방번호로 호스텔넘버 구하기
+
+public int hostelNumber(int room_no) throws Exception {
+
+	Connection con = this.getConnection();
+	String sql = "select hostel_no from room_info where room_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+	ResultSet rs = ps.executeQuery();
+
+	int hostel_no=0;
+	if(rs.next()) {
+		
+	hostel_no =rs.getInt("hostel_no");
+	}
+
+	con.close();
+	return hostel_no;
+
+	
+}
+
 
 }
