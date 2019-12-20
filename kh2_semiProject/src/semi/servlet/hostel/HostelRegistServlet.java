@@ -43,6 +43,7 @@ public class HostelRegistServlet extends HttpServlet {
 			dao.regist(dto);
 
 //			[3] 출력(이동)
+			req.getSession().setAttribute("hostel_name", dto.getHostel_name());
 			resp.sendRedirect("2regist_room_info.jsp");
 			
 		}
