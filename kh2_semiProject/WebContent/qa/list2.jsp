@@ -189,8 +189,10 @@ a {
 	color: #000000
 }
 </style>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
 <body style="width: 80%; background-color: #ededef">
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 <article >
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list2.jsp">

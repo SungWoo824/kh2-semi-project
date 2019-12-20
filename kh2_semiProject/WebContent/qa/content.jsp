@@ -91,7 +91,10 @@ article{
 	float: left;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+
 <body style="width: 60%">
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 <div align="center">
 <h1>	<%=dto.getQa_title() %></h1>
 	<table class="table">
