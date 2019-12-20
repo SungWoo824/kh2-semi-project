@@ -3,6 +3,7 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import javax.naming.InitialContext;
@@ -215,14 +216,167 @@ public class HostelDao {
 		return count;
 	}
 	
-	
-	
-	
-	
-	
 
-	// 호스텔 번호로 호스텔이름 구하기
+	/////////////////////////////////////////////////////////////////
+	///	판매자 - 숙소 등록 기능(이가영)		시작			///
+	///////////////////////////////////////////////////////////////
 	
+	public void regist(HostelDto dto) throws Exception {
+
+		Connection con = getConnection();
+		String sql = "insert into hostel values(hostel_no_seq.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, dto.getOwner_no());
+		ps.setInt(2, dto.getRegion_no());
+		ps.setString(3, dto.getHostel_name());
+		ps.setString(4, dto.getHostel_phone());
+		ps.setString(5, dto.getHostel_detail_addr());
+		ps.setString(6, dto.getHostel_latitude());
+		ps.setString(7, dto.getHostel_longitude());
+		ps.setString(8, dto.getHostel_content());
+		ps.setString(9, dto.getHostel_kind_name());
+
+		ps.execute();
+
+		con.close();
+
+	}
+
+	// region_no 받아오는 메소드!!
+
+	public int getRegionNo(String region_name, String city_name) throws Exception {
+ 
+		Connection con = getConnection();
+		String sql = "select * from region where region_name = ? and city_name = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+
+		ps.setString(1, region_name);
+		ps.setString(2, city_name);
+
+		ResultSet rs = ps.executeQuery();
+
+		int region_no = 0;
+
+		if (rs.next()) {
+			region_no = rs.getInt("region_no");
+		}
+
+		con.close();
+
+		return region_no;
+	}
+	
+	// owner_no(member_no) 받아오는 메소드
+	public int getOwnerNo(String member_id) throws Exception{
+		
+		Connection con = getConnection();
+		String sql = "select * from member where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, member_id);
+		
+		ResultSet rs = ps.executeQuery();
+		
+		int owner_no = 0;
+		
+		if (rs.next()) {
+			owner_no = rs.getInt("member_no");
+		}
+		
+		con.close();
+		return owner_no;
+	}	
+	/////////////////////////////////////////////////////////////////
+	///	판매자 - 숙소 등록 기능(이가영)		끝				///
+	///////////////////////////////////////////////////////////////
+	
+/////////////////////////////////////////////////////////////////
+///						관리자   -   숙소 등록 수 조회				///
+///////////////////////////////////////////////////////////////
+	public List<String[]> hostelRegistDateSearch() throws Exception {
+		Connection con = this.getConnection();
+
+		String sql = "select DAY,count(*) from (select to_char(H.regist_date, 'YYYY-MM-DD') DAY, H.* from hostel H) group by DAY order by DAY desc";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		List<String[]> list = new ArrayList<>();
+
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		Date today = new Date();
+		String todayFormat = formatter.format(today);
+		Calendar yesterday = Calendar.getInstance();
+		yesterday.add(Calendar.DATE, -1);
+		Date yest = yesterday.getTime();
+		String yesterdayFormat = formatter.format(yest);
+
+		String[] arr;
+
+		if (rs.next() && !rs.getString("DAY").equals(todayFormat)) {
+			arr = new String[2];
+			arr[0] = todayFormat;
+			arr[1] = "0";
+			list.add(arr);
+			
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+
+		} else {
+			
+			arr = new String[2];
+			arr[0] = rs.getString("DAY");
+			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			list.add(arr);
+			rs.next();
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
+			list.add(arr);
+		}
+		con.close();
+		return list;
+	}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		시작			///
+/////////////////////////////////////////////////////////////////////////////////////////
+
+public void registHostelContent(HostelDto dto) throws Exception{
+
+Connection con = getConnection();
+String sql = "update hostel set hostel_content = ? where hostel_no = ?;";
+PreparedStatement ps = con.prepareStatement(sql);
+
+ps.setString(1, dto.getHostel_content());
+ps.setInt(2, dto.getHostel_no());
+
+ps.execute();
+
+con.close();
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////////
+///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		끝			///
+/////////////////////////////////////////////////////////////////////////////////////////
+
+	
+//호스텔 번호로 호스텔이름 구하기
+
 		public String hostelname(int hostel_no) throws Exception {
 
 			Connection con = this.getConnection();
@@ -243,5 +397,6 @@ public class HostelDao {
 		
 			
 		}
-	
+
+
 }

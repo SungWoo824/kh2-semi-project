@@ -41,7 +41,7 @@
 </head>
 
 <body>
-
+	<form action="/hostel/hostel_content_regist.do" method="get">
     <div class="a">
 
         <h1 style="color: lightsalmon">숙소를 설명해주세요!</h1>
@@ -54,17 +54,17 @@
                 </td>
             </tr>
 
-            <tr>
-                <th>첨부파일</th>
-                <td>
-                    <input type="file" name="file" accept=".jpg, .png, .gif">
-                </td>
-            </tr>
+<!--             <tr> -->
+<!--                 <th>첨부파일</th> -->
+<!--                 <td> -->
+<!--                     <input type="file" name="file" accept=".jpg, .png, .gif"> -->
+<!--                 </td> -->
+<!--             </tr> -->
 
         </table>
 
-        <a href="4regist_date.jsp"><input class="btn" type="button" value="다음"></a>
+        <input class="btn" type="submit" value="다음">
 
     </div>
-
+</form>
 </body></html>

@@ -171,7 +171,8 @@ public class MemberDao {
 		con.close();
 		return id;
 	}
-
+	
+////// 비밀번호 찾기 /////////////
 	public boolean find_pw(String id, String name, String phone) throws Exception {
 		Connection con = getConnection();
 		String sql = "select * from member "
@@ -267,7 +268,7 @@ public class MemberDao {
 			arr[0] = todayFormat;
 			arr[1] = "0";
 			list.add(arr);
-
+			
 			if (!rs.getString("DAY").equals(yesterdayFormat)) {
 				arr = new String[2];
 				arr[0] = yesterdayFormat;
@@ -280,14 +281,21 @@ public class MemberDao {
 			list.add(arr);
 
 		} else {
+			
 			arr = new String[2];
 			arr[0] = rs.getString("DAY");
 			arr[1] = String.valueOf(rs.getInt("count(*)"));
 			list.add(arr);
 			rs.next();
-			arr = new String[2];
-			arr[0] = rs.getString("DAY");
-			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
 			list.add(arr);
 		}
 		con.close();
@@ -338,9 +346,15 @@ public class MemberDao {
 			arr[1] = String.valueOf(rs.getInt("count(*)"));
 			list.add(arr);
 			rs.next();
-			arr = new String[2];
-			arr[0] = rs.getString("DAY");
-			arr[1] = String.valueOf(rs.getInt("count(*)"));
+			if (!rs.getString("DAY").equals(yesterdayFormat)) {
+				arr = new String[2];
+				arr[0] = yesterdayFormat;
+				arr[1] = "0";
+			} else {
+				arr = new String[2];
+				arr[0] = rs.getString("DAY");
+				arr[1] = String.valueOf(rs.getInt("count(*)"));
+			}
 			list.add(arr);
 		}
 		con.close();

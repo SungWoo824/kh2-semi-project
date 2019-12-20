@@ -72,7 +72,13 @@
             <option>아파트</option>
             <option>빌라</option>
             <option>단독 주택</option>
+            <option>펜션</option>
+            <option>산장</option>
             <option>호텔</option>
+            <option>리조트</option>
+            <option>초소형 주택</option>
+            <option>캠핑카</option>
+            
 
         </select>
 
@@ -98,11 +104,7 @@
 
         <input type="text" name="hostel_name" placeholder="숙소 이름">
 
-        <p>숙소 설명!</p>
-
-        <h5>(나중에 따로 페이지 만들것)</h5>
-
-        <input type="text" name="hostel_content" placeholder="숙소 설명">
+        <input type="hidden" name="hostel_content" value="일단 null">
         
         <input class="btn" type="submit" value="다음">
 
