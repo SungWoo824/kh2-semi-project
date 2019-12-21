@@ -397,6 +397,47 @@ con.close();
 		
 			
 		}
-
+/////////////////////////////////////////////////////////////////
+///						사용자 호스텔 검색						   ///
+///////////////////////////////////////////////////////////////
+		public List<HostelDto> userSearchHostel(String start_day, String finish_day, String city_name) throws Exception{
+			Connection con = this.getConnection();
+			String sql = "select DISTINCT hostel.* from hostel inner join (select * from room_info where room_info.room_no not in(" + 
+					"select room_no from reservation_list where(" + 
+					"    (reservation_start_date<? and reservation_finish_date>?) " + 
+					"    or (reservation_start_date<? and reservation_finish_date>?)" + 
+					"    or (reservation_start_date>? and reservation_finish_date<?)" + 
+					"))) RI on hostel.hostel_no = RI.hostel_no "
+					+ "where hostel.region_no = (select R.region_no from region R where R.city_name like '%'||?||'%')";
+			//1,2,6 finish_day
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setString(1, finish_day);
+			ps.setString(2, finish_day);
+			ps.setString(6, finish_day);
+			ps.setString(3, start_day);
+			ps.setString(4, start_day);
+			ps.setString(5, start_day);
+			ps.setString(7, city_name);
+			
+			ResultSet rs = ps.executeQuery();
+			List<HostelDto> list = new ArrayList<>();
+			while(rs.next()) {
+				HostelDto hdto = new HostelDto();
+				hdto.setHostel_no(rs.getInt("hostel_no"));
+				hdto.setOwner_no(rs.getInt("owner_no"));
+				hdto.setRegion_name(rs.getString("region_name"));
+				hdto.setHostel_name(rs.getString("hostel_name"));
+				hdto.setHostel_phone(rs.getString("hostel_phone"));
+				hdto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
+				hdto.setHostel_latitude(rs.getString("hostel_latitude"));
+				hdto.setHostel_longitude(rs.getString("hostel_longitude"));
+				hdto.setHostel_content(rs.getString("hostel_content"));
+				hdto.setHostel_kind_name(rs.getString("hostel_kind_name"));
+				
+				list.add(hdto);
+			}
+			con.close();
+			return list;
+		}
 
 }
