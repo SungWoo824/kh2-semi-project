@@ -32,15 +32,31 @@
             box-sizing: border-box;
              font-family: melonabold;
              color: dimgray;
+        
         }
-
-        .mypage {
+    .all{
+         
+            background-repeat: no-repeat;
+            background-size: 120% 100%;
+            background-position: center center;
+        margin: auto;
+    }
+        
+    
+    
+    .mypage {
             /*            border: 1px dotted black;*/
             width: 460px;
             margin: 30px auto;
             text-align: left;
-
+          
+           
+		
         }
+
+
+
+
 
         .mypage>* {
             width: 100%;
@@ -53,35 +69,35 @@
         }
 
         .mypage>table[id=a] {
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon1.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
 
         .mypage>table[id=b] {
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon2.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
 
         .mypage>table[id=c] {
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon3.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
 
         .mypage>table[id=d] {
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon4.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
 
         .mypage>table[id=e] {
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon5.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
@@ -89,18 +105,21 @@
 
         .mypage>table[id=f] {
         	
-            background-image: url("../image/jang.webp");
+            background-image: url("../image/icon6.png");
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
     </style>
+  <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+   
    
 </head>
 
-<body>
+<body class="all">
 
- <h2>마이페이지</h2>
+ <div class="master-title w-100"><h2>MYPAGE</h2></div>
     <div class="mypage">
 
 
@@ -110,7 +129,7 @@
             <tr>
                 <td>
 
-                    <h4><a href="#">예약내역 조회</a></h4>
+                    <h4><a href="order/list.jsp">예약내역 조회</a></h4>
 
                 </td>
             </tr>
@@ -126,7 +145,7 @@
             <tr>
                 <td>
 
-                    <h4><a href="#">회원 정보</a></h4>
+                    <h4><a href="../member/info.jsp">회원 정보</a></h4>
 
                 </td>
             </tr>
@@ -143,7 +162,7 @@
             <tr>
                 <td>
 
-                    <h4><a href="#">관심 상품</a></h4>
+                    <h4><a href="wish_list.jsp">관심 상품</a></h4>
 
                 </td>
             </tr>
@@ -159,7 +178,7 @@
             <tr>
                 <td>
 
-                    <h4><a href="#">쿠폰</a></h4>
+                    <h4><a href="coupon/list.jsp">쿠폰</a></h4>
 
                 </td>
             </tr>
@@ -175,7 +194,7 @@
             <tr>
                 <td>
 
-                    <h4><a href="#">게시물 관리</a></h4>
+                    <h4><a href="board_list.jsp">게시물 관리</a></h4>
 
                 </td>
             </tr>
@@ -204,15 +223,10 @@
 
 
 
-
-
-
-
-
     </div>
 
+ 
 
-
-
+</body>
 
 	</html>
