@@ -28,7 +28,10 @@
 		list = cdao.getCouponList(start, finish);
 	}
 	int count = cdao.getCouponCount(type, keyword);
-	int pagecount = (count + pagesize) / pagesize;
+	int pagecount = count / pagesize;
+	if(count%pagesize!=0){
+		pagecount+=1;
+	}
 	int startBlock = (pno - 1) / navsize * navsize + 1;
 	int finishBlock = startBlock + (navsize - 1);
 	if(finishBlock > pagecount){
