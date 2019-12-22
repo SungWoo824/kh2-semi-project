@@ -44,49 +44,44 @@ HostelDto hdto=   hdao.hostelinfomation(hostel_no);
 </head>
 <body>
 
- <h2><%=mdto.getName() %>님의 위시리스트</h2>
-
-    <div class="w-80">
-        <table class="w-100 wish-table">
-            <thead>
-                <tr>
-                    <th><input type="checkbox"></th>
-                    <th>이미지</th>
-                    <th>상품정보 </th>
-                    <th>가격</th>
 
 
 
-                </tr>
-            </thead>
+    
+    
+    <div class="master-title w-100"><h2><%=mdto.getName() %>님의 위시리스트</h2></div>
+    <table class="w-100 hostel-table">
+		<thead>
+			<tr>
+				<th></th>
+				<th>이미지</th>
+				<th>상품정보</th>
+				<th>가격</th>
+				<th></th>
+				<th></th>
+				
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+			
+				<th><input type="checkbox"></th>
+				<th>이미나올곳</th>
+				<th> <%=hdto.getHostel_name() %>//<%=rdto.getRoom_name() %></th>
+				<th><%=rdto.getRoom_price() %></th>
+				<th><input type="submit" value="주문하기"></th>
+				<th><input type="submit" value="삭제"></th>
+				
+				
+				
+			</tr>
+			
+		</tbody>
+	</table>
 
 
-            <tbody>
-
-                <tr>
-
-                    <td><input type="checkbox"></td>
-
-                    <td>이미지창</td>
-
-
-                    <td> <%=hdto.getHostel_name() %>//<%=rdto.getRoom_name() %></td>
-
-
-                    <td><%=rdto.getRoom_price() %></td>
-
-
-
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </div>
     <input type="submit" value="주문하기">
     <input type="submit" value="삭제">
-
-
 </body>
 </html>
