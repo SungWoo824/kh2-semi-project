@@ -47,8 +47,7 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			dao.regist(dto);
 			
 			
-//			[3] 출력(이동)
-			
+//			[3] 출력(이동)			
 			resp.sendRedirect("3regist_content.jsp");
 			
 		}

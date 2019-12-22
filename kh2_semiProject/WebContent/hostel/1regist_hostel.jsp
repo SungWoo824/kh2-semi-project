@@ -104,7 +104,24 @@
 
         <input type="text" name="hostel_name" placeholder="숙소 이름">
 
-        <input type="hidden" name="hostel_content" value="일단 null">
+        <p>숙소 설명을 적어주세요!</p>		 
+
+        <table border="0" width="100%">
+
+            <tr>
+                <td colspan="2">
+                    <textarea name="content" required rows="30" cols="100" style="resize:vertical;"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>첨부파일</th>
+                <td>
+                    <input type="file" name="file" accept=".jpg, .png, .gif">
+                </td>
+            </tr>
+
+        </table>
         
         <input class="btn" type="submit" value="다음">
 

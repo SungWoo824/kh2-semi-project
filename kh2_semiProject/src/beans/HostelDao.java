@@ -355,20 +355,7 @@ public class HostelDao {
 ///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		시작			///
 /////////////////////////////////////////////////////////////////////////////////////////
 
-public void registHostelContent(HostelDto dto) throws Exception{
-
-Connection con = getConnection();
-String sql = "update hostel set hostel_content = ? where hostel_name = ?";
-PreparedStatement ps = con.prepareStatement(sql);
-
-ps.setString(1, dto.getHostel_content());
-ps.setString(2, dto.getHostel_name());
-
-ps.execute();
-
-con.close();
-}
-
+	//regist_hostel로 합쳤습니다.
 
 //////////////////////////////////////////////////////////////////////////////////////////
 ///	판매자 - 숙소 설명(hostel_content) 등록 기능(이가영)		끝			///

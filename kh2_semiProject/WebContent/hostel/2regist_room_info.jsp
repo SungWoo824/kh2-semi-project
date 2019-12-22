@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	String hostel_name = (String)session.getAttribute("hostel_name");
+	int hostel_no = (int)session.getAttribute("hostel_no");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,7 +76,7 @@ p {
 	
 			<h1 style="color: lightsalmon">판매자 등록 페이지(2단계 방 정보)</h1>
 
-			<input type="hidden" name="hostel_name" value="<%=hostel_name%>" >
+			<input type="hidden" name="hostel_no" value="<%=hostel_no%>" >
 
 			<p>방의 가격을 정해주세요.</p>
 			<input type="number" name="room_price" placeholder="가격" required>
