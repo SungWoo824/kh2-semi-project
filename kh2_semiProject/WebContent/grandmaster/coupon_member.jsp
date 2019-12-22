@@ -29,7 +29,7 @@
 	}
 	int count = cdao.getCouponCount(type, keyword);
 	int pagecount = count / pagesize;
-	if(count%pagesize!=0){
+	if(count%pagesize==0){
 		pagecount+=1;
 	}
 	int startBlock = (pno - 1) / navsize * navsize + 1;
@@ -45,6 +45,7 @@
 <title>사용자 보유 쿠폰 목록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -79,12 +80,11 @@
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
-<div>header</div>
-<div>menu</div>
-<div><br></div>
-<div><br></div>
-<div><br></div>
+<jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
+<div class="row-big"></div>
+<div class="row-big"></div>
+<div class="row-big"></div>
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 <jsp:include page="../template/coupon_choice_template.jsp"></jsp:include>
 <div align="center"><h2>보유 쿠폰 목록</h2></div>

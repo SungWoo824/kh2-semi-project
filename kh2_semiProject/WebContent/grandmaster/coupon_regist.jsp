@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <title>쿠폰 등록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <script>
     function prevent(){
         var tag = document.querySelector("textarea");
@@ -49,12 +50,11 @@
 </style>
 </head>
 <body>
-<div>header</div>
-<div>menu</div>
-<div><br></div>
-<div><br></div>
-<div><br></div>
+<jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
+<div class="row-big"></div>
+<div class="row-big"></div>
+<div class="row-big"></div>
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 </div>
 <div class="w-50">
