@@ -33,7 +33,7 @@
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/mypage/index.jsp">MY PAGE</a></li>            	
             <%}%>
-            <li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/qa/list.jsp">Q &amp; A</a></li>
+            <li><a class="top-bar__menu-item" href="#">HELP</a></li>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/member/logout.do">SIGN OUT</a></li>
             <%}else { %>
