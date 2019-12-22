@@ -104,7 +104,7 @@
 
         <input type="text" name="hostel_name" placeholder="숙소 이름">
 
-        <p>숙소 설명을 적어주세요!</p>		 
+        <p>숙소 설명을 적어주세요</p>		 
 
         <table border="0" width="100%">
 
