@@ -8,6 +8,7 @@ public class ReservationDto {
 	private int customer_count;
 	private String customer_request;
 	private String reservation_start_date;
+	private String reservation_finish_date;
 	private int reservation_until;
 	private int hostel_no;
 	public int getReservation_no() {
@@ -46,6 +47,12 @@ public class ReservationDto {
 	public void setReservation_start_date(String reservation_start_date) {
 		this.reservation_start_date = reservation_start_date;
 	}
+	public String getReservation_finish_date() {
+		return reservation_finish_date;
+	}
+	public void setReservation_finish_date(String reservation_finish_date) {
+		this.reservation_finish_date = reservation_finish_date;
+	}
 	public int getReservation_until() {
 		return reservation_until;
 	}
@@ -59,7 +66,7 @@ public class ReservationDto {
 		this.hostel_no = hostel_no;
 	}
 	public ReservationDto(int reservation_no, int room_no, int customer_no, int customer_count, String customer_request,
-			String reservation_start_date, int reservation_until, int hostel_no) {
+			String reservation_start_date, String reservation_finish_date, int reservation_until, int hostel_no) {
 		super();
 		this.reservation_no = reservation_no;
 		this.room_no = room_no;
@@ -67,12 +74,16 @@ public class ReservationDto {
 		this.customer_count = customer_count;
 		this.customer_request = customer_request;
 		this.reservation_start_date = reservation_start_date;
+		this.reservation_finish_date = reservation_finish_date;
 		this.reservation_until = reservation_until;
 		this.hostel_no = hostel_no;
 	}
 	public ReservationDto() {
 		super();
 	}
+	
+	
+	
 	
 	
 	

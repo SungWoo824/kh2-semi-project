@@ -18,6 +18,8 @@ public class CouponGiveServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			req.setCharacterEncoding("UTF-8");
+			
 			String type1 = req.getParameter("type1");
 			String keyword1 = req.getParameter("keyword1");
 			String keyword2 = req.getParameter("keyword2");
