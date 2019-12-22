@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="4.0" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       
+	http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+
+<!-- 	현재 세션만료시간 : 720분(12시간) -->
+	<session-config>
+		<session-timeout>720</session-timeout>
+	</session-config>
+	
+	<!-- 필터 설정 : EFilter - LoginFilter - AdminFilter -->
+<!-- 	인코딩(UTF-8) 필터 -->
+	<filter>
+		<filter-name>encoding</filter-name>
+		<filter-class>semi.filter.EFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>encoding</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+<!-- 	로그인이 되어야 접근할 수 있게 설정할 페이지 추가하세요-->
+<!-- 		<url-pattern>이 형식으로</url-pattern> -->
+	<filter>
+		<filter-name>loginFilter</filter-name>
+		<filter-class>semi.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginFilter</filter-name>
+		<url-pattern></url-pattern>
+	</filter-mapping>
+
+<!-- 	관리자여야만 접근할 수 있게 설정할 페이지 추가하세요-->
+<!-- 		<url-pattern>이 형식으로</url-pattern> -->	
+	<filter>
+		<filter-name>adminFilter</filter-name>
+		<filter-class>semi.filter.AdminFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>adminFilter</filter-name>
+		<url-pattern>/grandmaster/*</url-pattern>
+	</filter-mapping>
+	
+	
+	<!-- 
+		에러 페이지 설정 
+		-403, 404, 405, 500
+		-순서대로 권한없음 , 페이지 없음, 지원하지 않는 방식/형태, 서버에서 오류 발생 
+	-->
+<!-- 	<error-page> -->
+<!-- 		<error-code>404</error-code> -->
+<!-- 		<location>/error/404.jsp</location> -->
+<!-- 	</error-page> -->
+	
+<!-- 	<error-page> -->
+<!-- 		<error-code>405</error-code> -->
+<!-- 		<location>/error/405.jsp</location> -->
+<!-- 	</error-page> -->
+	
+<!-- 	<error-page> -->
+<!-- 		<error-code>500</error-code> -->
+<!-- 		<location>/error/500.jsp</location> -->
+<!-- 	</error-page> -->
+	
+</web-app>
