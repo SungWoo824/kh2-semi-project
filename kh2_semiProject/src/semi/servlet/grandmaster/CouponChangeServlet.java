@@ -17,6 +17,8 @@ public class CouponChangeServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			req.setCharacterEncoding("UTF-8");
+			
 			int coupon_rate = Integer.parseInt(req.getParameter("coupon_rate"));
 			int coupon_no = Integer.parseInt(req.getParameter("coupon_no"));
 			
