@@ -9,10 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/nav-menu.css">
-<link rel="stylesheet" type="text/css"
-	href="<%=request.getContextPath()%>/css/footer.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
 <style type="text/css">
@@ -167,7 +165,7 @@ input#uid, input#upass {
 	background-color: #efefef
 }
 
-label#uid, label#upass {
+label#fUid, label#fUpass {
 	width: 60px;
 	margin: 0;
 	padding-top: 5px;
@@ -293,9 +291,9 @@ a {
 		<div id="wrap">
 			<form action="/kh2_semiProject/member/login.do" method="post">
 			<div id="loginbox">
-				<label for id="uid">아이디</label> <input id="uid" type="text" title="아이디" name="member_id" placeholder="ID">
+				<label for="uid" id="fUid">아이디</label> <input id="uid" type="text" title="아이디" name="member_id" placeholder="ID">
 				<div class="block"></div>
-				<label for id="upass">암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password">
+				<label for="upass" id="fUpass">암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password">
 				<div class="block"></div>
 				<span class="bt">
 					<input id="login_bt" type="submit" value="Login">
@@ -315,22 +313,3 @@ a {
 	</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
