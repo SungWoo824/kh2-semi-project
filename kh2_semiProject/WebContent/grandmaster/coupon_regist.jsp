@@ -1,11 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	request.getParameter("error");
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>쿠폰 등록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <script>
     function prevent(){
         var tag = document.querySelector("textarea");
@@ -18,11 +22,18 @@
         }
     }
     function number_check(){
+    	event.preventDefault();
     	var check = document.querySelector(".number_check");
     	var regex = /[0-9]+/g;//검사식(정규표현식)
-    	console.log(regex.test(check.value));
-    	if(regex.test(check.value)==false){
+//     	console.log(regex.test(check.value));
+    	var a = regex.test(check.value);
+    	if(!a){
     		window.alert("입력 형식이 잘못되었습니다.");
+			check.value = '';
+    		check.focus();
+    	}else{
+    		var form = document.querySelector("form");
+            form.submit();
     	}
     }
 </script>
@@ -39,15 +50,19 @@
 </style>
 </head>
 <body>
-<div>header</div>
-<div>menu</div>
-<div><br></div>
-<div><br></div>
-<div><br></div>
-<div class="w-50">
+<jsp:include page="../template/nav.jsp"></jsp:include>
+<div class="w-80">
+<div class="row-big"></div>
+<div class="row-big"></div>
+<div class="row-big"></div>
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+</div>
+<div class="w-50">
 <div align="center"><h2>쿠폰 등록</h2></div>
-	<form action="<%=request.getContextPath() %>/grandmaster/couponregist.do" method="post">
+<%if(request.getParameter("error")!=null){ %>
+<div align="center"><h4 style="color:#4F0101">입력값이 유효하지 않습니다</h4></div>
+<%} %>
+	<form action="<%=request.getContextPath() %>/grandmaster/couponregist.do" method="post" onsubmit="number_check();">
 		<table class="w-100 coupon-under-table">
 			<tr>
 				<th>쿠폰이름</th>
@@ -58,7 +73,7 @@
 			<tr>
 				<th>할인율</th>
 				<td>
-					<input class="number_check" type="text" name="coupon_rate" required onblur="number_check();" onsubmit="number_check();">		
+					<input class="number_check" type="text" name="coupon_rate" required placeholder="(단위 : %)">		
 				</td>
 			</tr>
 			<tr>

@@ -1,4 +1,4 @@
-package semi.selvlet.grandmaster;
+package semi.servlet.grandmaster;
 
 import java.io.IOException;
 
@@ -18,6 +18,8 @@ public class CouponGiveServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			req.setCharacterEncoding("UTF-8");
+			
 			String type1 = req.getParameter("type1");
 			String keyword1 = req.getParameter("keyword1");
 			String keyword2 = req.getParameter("keyword2");
@@ -36,7 +38,7 @@ public class CouponGiveServlet extends HttpServlet{
 			resp.sendRedirect("coupon_member.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			resp.sendError(500);
+			resp.sendRedirect("coupon_give.jsp?error");
 		}
 	}
 }
