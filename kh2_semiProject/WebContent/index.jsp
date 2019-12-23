@@ -1,3 +1,5 @@
+
+
 <%@page import="beans.MemberDto"%>
 <%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -34,6 +36,7 @@
     <link rel="stylesheet" href="js/datepicker/jquery-ui.css" />
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
     <script src="js/home-slider.js"></script>
   </head>
@@ -229,9 +232,11 @@
       </section>
     </main>
     <footer id="main-footer">
-      푸터입니다<br> 
-      ID : <%=session.getAttribute("id")  %><br>
-      GRADE : <%=session.getAttribute("grade") %>
+     <div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div> 
+      접속한 ID : <%=session.getAttribute("id")  %><br>
+      접속한 GRADE : <%=session.getAttribute("grade") %>
     </footer>
   </body>
 </html>

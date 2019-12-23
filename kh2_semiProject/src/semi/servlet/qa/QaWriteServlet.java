@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import beans.MemberDao;
+import beans.MemberDto;
 import beans.QaDao;
 import beans.QaDto;
 
@@ -20,10 +22,13 @@ public class QaWriteServlet extends HttpServlet{
 		try {		
 			QaDao dao = new QaDao();
 			QaDto dto = new QaDto();
+			String member_id = (String) req.getSession().getAttribute("id");
+			MemberDao mdao = new MemberDao();
+			MemberDto mdto = mdao.get(member_id);
 			req.setCharacterEncoding("UTF-8");
 			int qa_no = dao.getSequence();
 			
-			int member_no = 23;//나중에 세션으로 받음
+			int member_no = mdto.getNo();
 			int room_no = Integer.parseInt(req.getParameter("room_no"));
 			String qa_head = req.getParameter("qa_head");
 			String qa_title = req.getParameter("qa_title");

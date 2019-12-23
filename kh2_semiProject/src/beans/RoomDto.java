@@ -21,11 +21,17 @@ public class RoomDto {
 	private String room_cool;
 	private String room_hot;
 	private String room_name;
+	private String start_hosting;
+	private String finish_hosting;
 	
+	
+	public RoomDto() {
+		super();
+	}
 	public RoomDto(int room_no, int hostel_no, int room_price, int room_standard_people, int room_max_people,
 			int room_bed, int room_bath, String room_spa, String room_cook, String room_content, String room_parking,
 			String room_pet, String room_breakfast, String room_basic, String room_tv, String room_dry,
-			String room_cool, String room_hot, String room_name) {
+			String room_cool, String room_hot, String room_name, String start_hosting, String finish_hosting) {
 		super();
 		this.room_no = room_no;
 		this.hostel_no = hostel_no;
@@ -46,12 +52,9 @@ public class RoomDto {
 		this.room_cool = room_cool;
 		this.room_hot = room_hot;
 		this.room_name = room_name;
+		this.start_hosting = start_hosting;
+		this.finish_hosting = finish_hosting;
 	}
-	
-	public RoomDto() {
-		super();
-	}
-	
 	public int getRoom_no() {
 		return room_no;
 	}
@@ -166,6 +169,19 @@ public class RoomDto {
 	public void setRoom_name(String room_name) {
 		this.room_name = room_name;
 	}
+	public String getStart_hosting() {
+		return start_hosting;
+	}
+	public void setStart_hosting(String start_hosting) {
+		this.start_hosting = start_hosting;
+	}
+	public String getFinish_hosting() {
+		return finish_hosting;
+	}
+	public void setFinish_hosting(String finish_hosting) {
+		this.finish_hosting = finish_hosting;
+	}
 	
-
+	
+	
 }

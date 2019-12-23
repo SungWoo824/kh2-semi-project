@@ -37,7 +37,7 @@ RoomDao roomdao = new RoomDao();
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+
 <style>
 
 
