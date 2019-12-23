@@ -1,5 +1,6 @@
 package semi.servlet.review;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
+import beans.FilesDao;
+import beans.FilesDto;
 import beans.ReviewDao;
 import beans.ReviewDto;
 
@@ -18,6 +24,7 @@ public class ReviewWriteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
+			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/review",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
 			ReviewDao dao = new ReviewDao();
 			ReviewDto dto = new ReviewDto();
 			
@@ -37,6 +44,18 @@ public class ReviewWriteServlet extends HttpServlet{
 			dto.setStar_point(star_point);
 			
 			dao.write(dto);
+			
+			File file = mRequest.getFile("review_file");
+			if(file != null) {
+				FilesDto fdto = new FilesDto();
+				fdto.setUploadname(mRequest.getOriginalFileName("file"));
+				fdto.setSavename(mRequest.getFilesystemName("file"));
+				fdto.setFiletype(mRequest.getContentType("file"));
+				fdto.setFilesize(file.length());
+				fdto.setReview_no(review_no);
+				
+				FilesDao fdao = new FilesDao();
+			}
 			
 			resp.sendRedirect(req.getContextPath()+"/index.jsp");
 		} catch (Exception e) {

@@ -8,6 +8,7 @@ public class ReviewDto {
 	private int hostel_no;
 	private String review_content;
 	private int star_point;
+	private String review_date;
 	private String member_name;
 
 	public int getReview_no() {
@@ -45,6 +46,13 @@ public class ReviewDto {
 	}
 	public void setStar_point(int star_point) {
 		this.star_point = star_point;
+	}
+	
+	public String getReview_date() {
+		return review_date;
+	}
+	public void setReview_date(String review_date) {
+		this.review_date = review_date;
 	}
 	public String getMember_name() {
 		return member_name;
