@@ -125,6 +125,16 @@ public class HostelDao {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public HostelDto hostelinfomation2(int room_no) throws Exception{
 		Connection con = this.getConnection();
 		String sql ="select * from hostel where hostel_no=(select hostel_no from room_info where room_no=?)";

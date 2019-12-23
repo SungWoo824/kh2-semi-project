@@ -104,13 +104,15 @@ public class QaDao {
 	}
 	
 	
-	public List<QaDto> id_search(String keyword) throws Exception{
+	public List<QaDto> id_search(String keyword,int StartBlock,int FinishBlock) throws Exception{
 		
 		List<QaDto> list = new ArrayList<>();
 		Connection con = getConnection();
-		String sql = "select A.* from (select * from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no) where member_id= ? )A order by qa_no desc";
+		String sql = "select * from (select rownum rn,A.* from (select * from (select m.member_id,m.member_name,q.* from member m,qa q where m.member_no = q.member_no) where member_id= ?)A order by qa_no desc)where rn between ? and ?";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
+		ps.setInt(2, StartBlock);
+		ps.setInt(3, FinishBlock);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next()) {
 			QaDto dto = new QaDto();
@@ -202,4 +204,23 @@ public class QaDao {
 		con.close();
 		return count;
 	}
+	
+	
+	
+	public int Countmemberno(int member_no) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "select count(*) from qa where member_no=? ";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, member_no);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		con.close();
+		return count;
+	}
+	
+	
+	
 }
