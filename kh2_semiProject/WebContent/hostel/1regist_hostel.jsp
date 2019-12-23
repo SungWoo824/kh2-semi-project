@@ -1,9 +1,13 @@
+<%@page import="beans.HostelDto"%>
+<%@page import="beans.HostelDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
 	String region_name = request.getParameter("region_name");
 	String city_name = request.getParameter("city_name");
+	HostelDao dao = new HostelDao();
+	HostelDto dto = new HostelDto();
 %>
 <!DOCTYPE html>
 <html lang="en">

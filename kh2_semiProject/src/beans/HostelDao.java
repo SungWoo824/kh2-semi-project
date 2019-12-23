@@ -224,18 +224,19 @@ public class HostelDao {
 	public void regist(HostelDto dto) throws Exception {
 
 		Connection con = getConnection();
-		String sql = "insert into hostel values(hostel_no_seq.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
+		String sql = "insert into hostel values(?,?,?,?,?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, dto.getOwner_no());
-		ps.setInt(2, dto.getRegion_no());
-		ps.setString(3, dto.getHostel_name());
-		ps.setString(4, dto.getHostel_phone());
-		ps.setString(5, dto.getHostel_detail_addr());
-		ps.setString(6, dto.getHostel_latitude());
-		ps.setString(7, dto.getHostel_longitude());
-		ps.setString(8, dto.getHostel_content());
-		ps.setString(9, dto.getHostel_kind_name());
+		ps.setInt(1, dto.getHostel_no());
+		ps.setInt(2, dto.getOwner_no());
+		ps.setInt(3, dto.getRegion_no());
+		ps.setString(4, dto.getHostel_name());
+		ps.setString(5, dto.getHostel_phone());
+		ps.setString(6, dto.getHostel_detail_addr());
+		ps.setString(7, dto.getHostel_latitude());
+		ps.setString(8, dto.getHostel_longitude());
+		ps.setString(9, dto.getHostel_content());
+		ps.setString(10, dto.getHostel_kind_name());
 
 		ps.execute();
 
@@ -286,7 +287,23 @@ public class HostelDao {
 		
 		con.close();
 		return owner_no;
-	}	
+	}
+	
+	// hostel_no 받아오는 메소드(files에 저장할 hostel_no)
+		public int getHostelNo() throws Exception{
+			
+			Connection con = getConnection();
+			String sql = "select hostel_no_seq.nextval from dual";
+			PreparedStatement ps = con.prepareStatement(sql);
+					
+			ResultSet rs = ps.executeQuery();
+				
+			rs.next();
+			int hostel_no = rs.getInt(1);
+					
+			con.close();
+			return hostel_no;
+		}
 	/////////////////////////////////////////////////////////////////
 	///	판매자 - 숙소 등록 기능(이가영)		끝				///
 	///////////////////////////////////////////////////////////////
@@ -387,24 +404,62 @@ public class HostelDao {
 /////////////////////////////////////////////////////////////////
 ///						사용자 호스텔 검색						   ///
 ///////////////////////////////////////////////////////////////
-		public List<HostelDto> userSearchHostel(String start_day, String finish_day, String city_name) throws Exception{
+		public List<HostelDto> userSearchHostel(String check_in, String check_out, String location, int people) throws Exception{
 			Connection con = this.getConnection();
-			String sql = "select DISTINCT hostel.* from hostel inner join (select * from room_info where room_info.room_no not in(" + 
-					"select room_no from reservation_list where(" + 
-					"    (reservation_start_date<? and reservation_finish_date>?) " + 
-					"    or (reservation_start_date<? and reservation_finish_date>?)" + 
-					"    or (reservation_start_date>? and reservation_finish_date<?)" + 
-					"))) RI on hostel.hostel_no = RI.hostel_no "
-					+ "where hostel.region_no = (select R.region_no from region R where R.city_name like '%'||?||'%')";
-			//1,2,6 finish_day
-			PreparedStatement ps = con.prepareStatement(sql);
-			ps.setString(1, finish_day);
-			ps.setString(2, finish_day);
-			ps.setString(6, finish_day);
-			ps.setString(3, start_day);
-			ps.setString(4, start_day);
-			ps.setString(5, start_day);
-			ps.setString(7, city_name);
+//			check_in = start_day
+//			check_out = finish_day
+//			location = 목적지 (region_name + city_name)
+//			people = 성인 + (아동/2+1);
+
+//			[1]check_in [2]check_out [3]people [4]region_name [5]city_name
+			String sql = 
+					"SELECT DISTINCT * FROM hostel H " +
+						"INNER JOIN ( "	+
+							"SELECT hostel_no FROM room_info RI "+
+								"WHERE RI.room_no NOT IN " +
+									"(SELECT room_no FROM reservation_list " + 
+										"WHERE ( " +
+											"(to_date(?) between to_char(reservation_start_date, 'YY/MM/DD') " +
+												"and to_char(reservation_finish_date, 'YY/MM/DD')) " +
+											"or (to_date(?) between to_char(reservation_start_date, 'YY/MM/DD') " +
+												"and to_char(reservation_finish_date, 'YY/MM/DD')) " +
+									")) and ? <= room_max_people) HN " +
+						"ON H.hostel_no = HN.hostel_no " +
+						"INNER JOIN " +
+							"(SELECT R.region_no FROM region R ";	
+
+//			포맷 변경
+			String[] str = location.split(" ");
+			String region_name = str[0];
+			String city_name = "";
+			
+			PreparedStatement ps;
+	
+		
+			if(str.length<=1) {
+				sql += "WHERE R.region_name LIKE '%'||?||'%') RN " +
+						"ON H.region_no = RN.region_no ";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, check_in);
+				ps.setString(2, check_out);
+				ps.setInt(3, people);
+				ps.setString(4, region_name);
+//				System.out.println("1번실행");
+			} else{
+				city_name = str[1];
+				sql += "WHERE R.region_name LIKE '%'||?||'%' and R.city_name LIKE '%'||?||'%') RN " +
+						"ON H.region_no = RN.region_no ";
+				ps = con.prepareStatement(sql);
+				ps.setString(1, check_in);
+				ps.setString(2, check_out);
+				ps.setInt(3, people);
+				ps.setString(4, region_name);
+				ps.setString(5, city_name);
+//				System.out.println("2번실행");
+			}
+			
+//			System.out.println("region : " + region_name);
+//			System.out.println("city : " + city_name);
 			
 			ResultSet rs = ps.executeQuery();
 			List<HostelDto> list = new ArrayList<>();
@@ -412,7 +467,7 @@ public class HostelDao {
 				HostelDto hdto = new HostelDto();
 				hdto.setHostel_no(rs.getInt("hostel_no"));
 				hdto.setOwner_no(rs.getInt("owner_no"));
-				hdto.setRegion_name(rs.getString("region_name"));
+				hdto.setRegion_no(rs.getInt("region_no"));
 				hdto.setHostel_name(rs.getString("hostel_name"));
 				hdto.setHostel_phone(rs.getString("hostel_phone"));
 				hdto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
