@@ -1,3 +1,4 @@
+<%@page import="javax.sound.midi.SysexMessage"%>
 <%@page import="beans.QaReplyDto"%>
 <%@page import="beans.QaReplyDao"%>
 <%@page import="beans.QaDto"%>
@@ -46,6 +47,7 @@
 	}
 	QaReplyDao Rdao = new QaReplyDao();
 
+	String member_id = (String)request.getSession().getAttribute("id");
 %>
 <html>
 <head>
@@ -71,54 +73,8 @@ body{
 /*  background-image: url("../image/qa1.jpg"); */
  margin: auto;
 }
-.nav-container {
-  padding: 0;
-  height: 70px;
-  /* border: 1px solid black; */
-}
-
-.nav-menu {
-  width: 100%;
-  top: 0px;
-  left: 0;
-  position: fixed;
-  font-size: 15px;
-  padding-bottom: 10px;
-  height: 70px;
-  background-color: rgba(229, 231, 235, 0.3);
-  margin: 0;
-  /* border: 1px solid black; */
-}
-
-.top-bar > .top-bar__logo {
-  float: left;
-  margin-left: 150px;
-  margin-top: 10px;
-}
-
-.top-bar__logo > .logo-box {
-  width: 100px;
-  text-decoration: none;
-  color: black;
-}
-
-.top-bar > .top-bar__menu {
-  float: right;
-  margin-right: 200px;
-}
-
-.top-bar > .top-bar__menu > ul > li {
-  list-style-type: none;
-  float: left;
-  margin: 10px 30px;
-}
-.top-bar > .top-bar__menu > ul > li > a {
-  text-decoration: none;
-  color: black;
-}
-
-.top-bar > .top-bar__menu > ul > li > a:hover {
-  background-color: red;
+article{
+	padding-top: 100px;
 }
 
 .table {
@@ -213,10 +169,12 @@ a{
 	height: 2rem;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
 
 <body style="width: 80%;">
 <article>
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
 <form action="list.jsp">
 	<div>페이지 높이</div>
@@ -241,7 +199,7 @@ a{
 		<th>방번호</th>
 		<th>말머리 </th>
 		<th width="45%">제목</th>
-		<th>작정자 </th>
+		<th>작성자 </th>
 		<th>작성일 </th>
 		</tr>
 		</thead>
@@ -280,7 +238,9 @@ a{
 </table>
 
 <div align="right">
+		<%if(member_id!=null){ %>
 <a href="write.jsp">글쓰기</a>	
+<%} %>
 <div align="center">
 	<ul class="page-navigator">
 	<%if(startBlock>1){ %>

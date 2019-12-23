@@ -9,6 +9,8 @@
 	QaDao dao = new QaDao();
 	QaDto dto = dao.get(no);
 %>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 <div>
 <h1>글수정</h1>
 		<form action="edit.do" method="post" >

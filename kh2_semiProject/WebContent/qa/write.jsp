@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 
 <% request.setCharacterEncoding("UTF-8");%>
-
 <html>
 <head>
 <style type="text/css">
@@ -53,14 +52,12 @@
 		border: 1px;
 	
 	}
-		
-		
-		
-		
 
-</style>			
+</style>	
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">		
 </head>
 <body>
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 	<form action="write.do" method="post" >
 	<div class="write" align="center">	
   		

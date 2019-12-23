@@ -1,6 +1,6 @@
 package beans;
 
-import java.sql.Connection;
+import java.sql.Connection;	
 import java.sql.PreparedStatement;
 
 import javax.naming.InitialContext;
@@ -14,14 +14,15 @@ public class FilesDao {
 		try {
 			InitialContext ctx = new InitialContext();
 			source = (DataSource) ctx.lookup("java:comp/env/jdbc/oracle");
-
+			
 		} catch (NamingException e) {
 			e.printStackTrace();
 		}
-
+		
 	}
-
-	public Connection getConnection() throws Exception {
+	
+//연결메소드	
+	public Connection getConnection() throws Exception{
 		return source.getConnection();
 	}
 	
@@ -29,7 +30,7 @@ public class FilesDao {
 		Connection con = getConnection();
 		
 		String sql = "insert into files("
-							+ "no, hostel_no, uploadname, savename, filetype, filesize) "
+							+ "flie_no, hostel_no, uploadname, savename, filetype, filesize) "
 							+ "values(files_no_seq.nextval, 2, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		//ps.setInt(1, fdto.getHostel_no());
