@@ -148,6 +148,8 @@ public class RoomDao {
 		ps.setString(16, dto.getRoom_cool());
 		ps.setString(17, dto.getRoom_hot());
 		ps.setString(18, dto.getRoom_name());
+		ps.setString(19, dto.getStart_hosting());
+		ps.setString(20, dto.getFinish_hosting());
 		
 		
 		

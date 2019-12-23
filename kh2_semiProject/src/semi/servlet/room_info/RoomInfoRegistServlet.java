@@ -43,12 +43,14 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			dto.setRoom_cool(req.getParameter("room_cool"));
 			dto.setRoom_hot(req.getParameter("room_hot"));
 			dto.setRoom_name(req.getParameter("room_name"));
+			dto.setStart_hosting(req.getParameter("start_hosting"));
+			dto.setFinish_hosting(req.getParameter("finish_hosting"));
 			
 			dao.regist(dto);
 			
 			
 //			[3] 출력(이동)			
-			resp.sendRedirect("4regist_date.jsp");
+			resp.sendRedirect("5regist_success.jsp");
 			
 		}
 		
