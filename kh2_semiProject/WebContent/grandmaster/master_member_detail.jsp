@@ -164,10 +164,11 @@
 			</div>
 		<%} %>
 		</div>
-		<div class="coupon-choice-template">
-			<a href="#">회원탈퇴</a>
-			<a href="#">등급변경</a>
-			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>">쿠폰추가</a>
+		<br><br>
+		<div align="right" class="coupon-choice-template">
+			<a href="#"><button>회원탈퇴</button></a>
+			<a href="#"><button>등급변경</button></a>
+			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>"><button>쿠폰추가</button></a>
 		</div>
 	</div>
 	</div>
