@@ -53,6 +53,8 @@
  		border-bottom-color: #666; 
 		/*글자색을 바꾸고 싶다면*/
  		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
 	}
 	
 	/* 화살표 색상을 바꾸고 싶다면 */
@@ -76,6 +78,19 @@
 		color:#666;
 	}
 	/* 항목 글자색을 바꾸고 싶다면 */
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.form-choice{
+		border:none;
+		margin-bottom:200px;
+	}
 </style>
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
@@ -123,7 +138,7 @@
 					<%} %>
 				</tbody>
 				<tfoot>
-					<tr>
+					<tr style="height: 30px;">
 						<th colspan="9" align="right">
 							<%if(isSearch) {%>
 							<a href="coupon_member.jsp">전체목록 보기</a>
@@ -163,7 +178,7 @@
 		</h4>
 	<%} %>
 	<div align="right">
-	<form action="coupon_member.jsp" method="get" class="form=choice">
+	<form action="coupon_member.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="member_no">회원 번호</option>
 			<option value="member_name">회원 이름</option>

@@ -44,6 +44,54 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<style>
+	.select-selected{
+		/*배경을 바꾸고 싶다면 */
+  		background-color:#eaebec;  
+ 		border-bottom-color: #666; 
+		/*글자색을 바꾸고 싶다면*/
+ 		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
+	}
+	
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-selected::after{
+		border-top-color:#666;
+	}
+	.select-selected.select-arrow-active::after{
+		border-bottom-color:#666;
+	}
+	/* 화살표 색상을 바꾸고 싶다면 */	
+	
+	/* 테두리를 바꾸고 싶다면 */
+	.select-items{
+		border-color:#eaebec;
+	}
+	/* 테두리를 바꾸고 싶다면 */
+	
+	
+	/* 항목 글자색을 바꾸고 싶다면 */
+	.select-items div{
+		color:#666;
+	}
+	/* 항목 글자색을 바꾸고 싶다면 */
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
+</style>
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
 <jsp:include page="../template/nav.jsp"></jsp:include>
@@ -54,7 +102,7 @@
 	<div class="row-big"></div>
 	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 	<div class="master-title w-100"><h2>회원 목록</h2></div>
-    <table class="w-100 member-table">
+    <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
 				<th>회원번호</th>
@@ -114,9 +162,9 @@
 				<%} %>
 			<%} %>
 		</h4>
-	<div align="right">
-	<form action="master_member_list.jsp" method="get" class="form=choice">
-		<select id="select" name="type" class="select-icon custom-select">
+	<div align="right" style="border-color:none;">
+	<form action="master_member_list.jsp" method="get" class="form-choice">
+		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="member_name">회원 이름</option>
 			<option value="member_id">회원 아이디</option>
 		</select>

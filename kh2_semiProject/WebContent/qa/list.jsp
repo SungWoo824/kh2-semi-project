@@ -96,6 +96,24 @@
 	.master-title{
 		margin-bottom: 0px;
 	}
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	
+	.m{
+		margin-right: 30px;
+		margin-bottom: 15px;
+	}
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
 </style>
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script>
@@ -111,11 +129,11 @@ function formChange(obj){
 <div class="row-big"></div>
 <div class="row-big"></div>
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
-<div class="master-title w-100"><h2>리스트 목록</h2></div>
+<div class="master-title w-100"><h2>Q&A 목록</h2></div>
 <form action="list.jsp">
 <div align="right">
 	<h5></h5>
-	<select name ="list_count" onchange="formChange(this.form)">
+	<select name ="list_count" onchange="formChange(this.form)" class="m">
 		<option value="" hidden>페이지 크기 선택</option>
 		<option value="15">15개씩 보기</option>
 		<option value="30">30개씩 보기</option>
@@ -124,7 +142,6 @@ function formChange(obj){
 	</select>
 </div>
 </form>
-<br>
 <table class="w-100 couponmember-table">
 <thead>
 	<tr>
@@ -170,7 +187,7 @@ function formChange(obj){
 </tbody>
 <%if(member_id!=null){ %>
 <tfoot>
-	<tr>
+	<tr style="height: 30px;">
 		<th colspan="6" align="right">
 			<a href="write.jsp">글쓰기</a>
 		</th>
@@ -184,7 +201,7 @@ function formChange(obj){
 		<%if(isSearch){ %>
 			<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=startBlock-1%>&list_count=<%=list_count%>">[이전]</a>
 		<%}else{ %>
-			<a href="list.jsp?pno=<%=startBlock-1 %>&list_count=<%=list_count%>">[이전]</a>
+			<a href="list.jsp?pno=<%=startBlock-1 %>&list_count=<%=list_count%>">이전</a>
 		<%} %>
 	<%} %>
 	<%for(int i = startBlock;i<finishBlock+1;i++){ %>
@@ -203,7 +220,7 @@ function formChange(obj){
 	 	<%if(isSearch){ %>
 	 		<a href="list.jsp?type=<%=type %>&keyword=<%=keyword%>&pno=<%=finishBlock+1%>&list_count=<%=list_count%>">[다음]</a>
 	 	<%}else{ %>
-	  	 	<a href="list.jsp?pno=<%=finishBlock+1 %>&list_count=<%=list_count%>">[다음]</a>
+	  	 	<a href="list.jsp?pno=<%=finishBlock+1 %>&list_count=<%=list_count%>">다음</a>
 	  	<%} %>
 	 <%} %>
 </h4>

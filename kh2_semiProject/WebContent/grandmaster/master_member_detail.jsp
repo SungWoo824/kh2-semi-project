@@ -19,6 +19,17 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<style>
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+</style>
 </head>
 	<body onload="display();">
 	<jsp:include page="../template/nav.jsp"></jsp:include>

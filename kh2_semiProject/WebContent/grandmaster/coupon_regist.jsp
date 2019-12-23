@@ -47,6 +47,15 @@
 	border: 1px solid #fff;
 	background-color:#fff;
 }
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
 </style>
 </head>
 <body>

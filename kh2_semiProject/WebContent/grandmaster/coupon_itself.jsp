@@ -53,6 +53,8 @@
  		border-bottom-color:#666; 
 		/*글자색을 바꾸고 싶다면*/
  		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
 	}
 	
 	/* 화살표 색상을 바꾸고 싶다면 */
@@ -66,7 +68,19 @@
 	.select-items{
 		border-color:#eaebec;
 	}
-	
+	body{
+		background-image: url("../image/master.jpg");
+		height: 1000px;
+		width: 100%;
+		margin: auto;
+		padding: 15px;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}	
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
 </style>
 
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
@@ -109,7 +123,7 @@
 				<%} %>
 			</tbody>
 			<tfoot>		
-				<tr>		
+				<tr style="height: 30px;">		
 					<td colspan="5" align="right">		
 						<a href="coupon_regist.jsp">쿠폰 등록</a>
 						<%if(isSearch) {%>
