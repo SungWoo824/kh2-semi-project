@@ -19,6 +19,9 @@
 	.text{
 		color:#292929;
 	}
+	.errorbutton a:hover{
+		cursor:pointer
+	}
 </style>
 <script>
 	function goback(){
