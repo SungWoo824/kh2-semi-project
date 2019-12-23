@@ -7,12 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="review_write.do">
-		예약번호:<input type="text" name="reservation_no"><br>
-		호텔번호:<input type="text" name="hostel_no"><br>
-		리뷰내용:<input type="text" name="review_content"><br>
-		별포이트:<input type="text" name="star_point"><br>
-		<input type="submit">
-	</form>
+<form action="review_edit.do">
+	리뷰번호:<input type="text" name="review_no">hidden으로 받을 예정
+	수정내용:<input type="text" name="review_content">
+	수정별점:<input type="text" name="star_point">
+	<input type="submit">
+</form>
 </body>
 </html>

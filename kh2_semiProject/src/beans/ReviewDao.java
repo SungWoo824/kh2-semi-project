@@ -31,6 +31,14 @@ public class ReviewDao {
 		Connection con = getConnection();
 		String sql = "insert into review VALUES(?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, dto.getReview_no());
+		ps.setInt(2, dto.getReservation_no());
+		ps.setInt(3, dto.getCustomer_no());
+		ps.setInt(4, dto.getHostel_no());
+		ps.setString(5, dto.getReview_content());
+		ps.setInt(6, dto.getStar_point());
+		ps.execute();
+		con.close();
 	}
 	
 	public int getSequence() throws Exception{
@@ -43,5 +51,19 @@ public class ReviewDao {
 		con.close();
 		
 		return seq;
+	}
+	
+	public void edit(ReviewDto dto) throws Exception{
+		Connection con = getConnection();
+		String sql = "update review set review_content=?,star_point=?,review_date=sysdate where review_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, dto.getReview_content());
+		ps.setInt(2, dto.getStar_point());
+		ps.setInt(3, dto.getReview_no());
+		
+		ps.execute();
+		
+		con.close();
 	}
 }

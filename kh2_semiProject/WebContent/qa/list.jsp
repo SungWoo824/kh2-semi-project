@@ -199,7 +199,7 @@ a{
 		<th>방번호</th>
 		<th>말머리 </th>
 		<th width="45%">제목</th>
-		<th>작정자 </th>
+		<th>작성자 </th>
 		<th>작성일 </th>
 		</tr>
 		</thead>
