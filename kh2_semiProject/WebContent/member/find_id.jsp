@@ -11,25 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <style type="text/css">
-/* 	.find_id{
-		background-image: url("../image/find_id.jpg");
-		height: 1000px;
-		width: 100%;
-		margin: auto;
-		padding: 15px;
-		background-repeat: no-repeat;
-		background-size: 98% 100%;
-	}
-	.menu-item{
-		border: 0;
-	    background-color: #ffffff;
-        background-color: rgba( 255, 255, 255, 0.5 );
-        text-align: center;
-	}
-	.find-id{
-		margin-top: 15%;
-	} */
-	
+
 *{
 		font-family: binggrae;
 	}
@@ -38,7 +20,7 @@ body, h1,h2,h3,#wrap, #findIdbox, input,label {margin:0 auto; padding:0; border:
 body {background-color:#efefef; color:#333; font-size:0.8em; font-family:"돋음",dotum,"굴림",gulim,'Apple SD Gothic Neo',Helvetica,sans-serif}
 
 .backBody{
-	height: 700px;
+	height: 800px;
 	padding-top:40px;
 	background-image: url("../image/login5.jpg"); background-position:center; background-repeat: no-repeat; 
 }
@@ -167,32 +149,7 @@ a {
 		<h2>잊어버린 아이디 찾기를 도와드릴께요!</h2>
 		<div id="wrap">
 		<form action="find.do" method="post">
-<!-- 		<table border="0">	 -->
-<!-- 			<tr> -->
-<!-- 				<td> -->
-<!-- 				<input id="uname" type="text" name="member_name" placeholder="이름" required> -->
-				
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td> -->
-<!-- 				<input id="ubirth" type="text" name="member_birthday" placeholder="생년월일" required> -->
-				
-<!-- 				</td> -->
-<!-- 			</tr> -->
-<!-- 			<tr> -->
-<!-- 				<td> -->
-<!-- 				<input id="uphone" type="text" name="member_phone" placeholder="핸드폰번호" required> -->
-				
-<!-- 				</td> -->
-<!-- 			</tr> -->
-					
-<!-- 			<tr align="center"> -->
-<!-- 				<td> -->
-<!-- 				<input class="menu-item" type="submit" value="확인"> -->
-<!-- 				</td>	 -->
-<!-- 			</tr> -->
-<!-- 		</table>	 -->
+
 			<div id="findIdbox">
 				<label for="uname" id="fUname">이름</label> <input id="uname" type="text" title="이름" name="member_name" required>
 				<div class="block"></div>

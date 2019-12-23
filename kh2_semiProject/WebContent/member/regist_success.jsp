@@ -20,8 +20,8 @@
 		font-family: binggrae;
 	}
 	.regist_success{
-		background-image: url("../image/regist_success.jpg");
-		height: 800px;
+		background-image: url("../image/login5.jpg");
+		height: 1000px;
 		width: 100%;
 		margin: auto;
 		padding: 15px;
