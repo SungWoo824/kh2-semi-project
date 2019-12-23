@@ -78,13 +78,30 @@
 	}
 	/* 항목 글자색을 바꾸고 싶다면 */
 	body{
-		background-image: url("../image/master.jpg");
 		height: 1000px;
 		width: 100%;
-		margin: auto;
-		padding: 15px;
+		margin: 0;
+		padding: 0;
 		background-repeat: no-repeat;
 		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
+	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
 	}
 	.form-choice{
 		border:none;
@@ -94,6 +111,10 @@
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 	
@@ -173,5 +194,6 @@
 	</form>
 	</div>
 	</div>
+</section>
 </body>
 </html>
