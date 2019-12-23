@@ -15,6 +15,7 @@
         * {
             box-sizing: border-box;
         }
+        
         .a {
             width: 70%;
             /* 내용물 가운데 정렬 */
@@ -54,9 +55,10 @@
         }
     </style>
 
+</head>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    function sample6_execDaumPostcode() {
+    function DaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -89,52 +91,23 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                    document.getElementById("extraAddress").value = extraAddr;
                 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    document.getElementById("extraAddress").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
+                document.getElementById('postcode').value = data.zonecode;
+                document.getElementById("address").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
+                document.getElementById("detailAddress").focus();
             }
         }).open();
     }
-    
-    function getLatLog(){
-    	
-    	var addr = document.querySelector('#sample6_address').value;
-    	console.log(addr);
-    	
-    	var oReq = new XMLHttpRequest();
-    	
-    	oReq.onreadystatechange = function(){
-    		debugger
-    		if(oReq.readystate == 4 && oReq.status ==200){
-    			var data = JSON.parse(oReq.responseText).documents.x;
-    	    	console.log(data);
-    		}
-    			
-    		
-    	}
-    	/* oReq.addEventListener("load", reqListener); */
-    	oReq.open("GET", "https://dapi.kakao.com/v2/local/search/address.json?query="+addr);
-    	
-    	oReq.setRequestHeader("Authorization", "KakaoAK d772651d091a5ca1d7dc5670526b357f");
-    	
-    	oReq.send();
-    	console.log(oReq);
-    	
-    	
-    }
 </script>
-</head>
-
 <body>
-<form action="hostel_regist.do" method="get">
+<form action="hostel_regist.do" method="post" enctype="multipart/form-data">
     <div class="a">
         <h1 style="color: lightsalmon">판매자 등록 페이지(1단계 숙소 정보)</h1>
         
@@ -163,21 +136,48 @@
 
         <input type="text" name="hostel_phone" placeholder="숙소 연락처">       
 
-        <p>숙소의 상세주소를 등록하세요</p>
-		
-		<input type="text" id="sample6_postcode" placeholder="우편번호">
-		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" id="sample6_address" placeholder="주소" readonly><br>
-		<input type="text" id="sample6_detailAddress" placeholder="상세주소" onfocus="getLatLog()">
-		<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+         <p>숙소의 주소를 적어주세요</p>
+
+<!--         <input type="text" name="hostel_detail_addr" placeholder="숙소 상세 주소"> -->
+		<input type="button" class="btn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
+		<input type="text" id="postcode" name="postcode" placeholder="우편번호">
+		<input type="text" id="address" name="address" placeholder="주소"><br>
+		<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
+		<input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">
+
+		<h4>(나중에 위도/경도 변환해볼것)</h4>
+
+        <p>숙소 위도는 무엇인가요?</p>
+
+        <input type="text" name="hostel_latitude" placeholder="숙소 위도"> 
+
+        <p>숙소 경도는 무엇인가요?</p>
+
+        <input type="text" name="hostel_longitude" placeholder="숙소 경도">
 
         <p>숙소의 이름을 정해주세요!</p>
 
         <input type="text" name="hostel_name" placeholder="숙소 이름">
-		
-        <input type="hidden" name="hostel_content" value="일단 null">
-        <input type="hidden" name="x">
-        <input type="hidden" name="y">
+
+        <p>숙소 설명을 적어주세요</p>		 
+
+        <table border="0" width="100%">
+
+            <tr>
+                <td colspan="2">
+                    <textarea name="hostel_content" required rows="30" cols="100" style="resize:vertical;"></textarea>
+                </td>
+            </tr>
+
+            <tr>
+                <th>첨부파일</th>
+                <td>
+                    <input type="file" name="file" accept=".jpg, .png, .gif">
+                </td>
+            </tr>
+
+        </table>
+        
         <input class="btn" type="submit" value="다음">
 
     </div>
