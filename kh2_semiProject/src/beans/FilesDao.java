@@ -30,7 +30,7 @@ public class FilesDao {
 		Connection con = getConnection();
 		
 		String sql = "insert into files("
-							+ "no, hostel_no, uploadname, savename, filetype, filesize) "
+							+ "flie_no, hostel_no, uploadname, savename, filetype, filesize) "
 							+ "values(files_no_seq.nextval, 2, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		//ps.setInt(1, fdto.getHostel_no());
