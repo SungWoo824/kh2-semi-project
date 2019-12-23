@@ -42,5 +42,19 @@ public class FilesDao {
 		
 		con.close();
 	}
+//	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ아래는 운기자리 입니다.ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	
+	public void ReviewUpload(FilesDto fdto)throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "insert into filse(file_no,uploadname, savename, filetype, filesize,review_no) values(files_no_seq.nextval,?,?,?,?,?)";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, fdto.getUploadname());
+		ps.setString(2, fdto.getSavename());
+		ps.setString(3, fdto.getFiletype());
+		ps.setLong(4, fdto.getFilesize());
+		ps.setInt(5, fdto.getReview_no());
+	}
 	
 }

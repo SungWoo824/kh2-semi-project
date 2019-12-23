@@ -3,6 +3,8 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -66,4 +68,28 @@ public class ReviewDao {
 		
 		con.close();
 	}
+	
+	public List<ReviewDto> hostel_review_list(int hostel_no) throws Exception{
+		List<ReviewDto> list = new ArrayList<>();
+		Connection con = getConnection();
+		String sql = "select * from review where hostel_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, hostel_no);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			ReviewDto dto = new ReviewDto();
+			dto.setReview_no(rs.getInt("review_no"));
+			dto.setReservation_no(rs.getInt("reservation_no"));
+			dto.setCustomer_no(rs.getInt("customer_no"));
+			dto.setHostel_no(rs.getInt("hostel_no"));
+			dto.setReview_content(rs.getString("review_content"));
+			dto.setStar_point(rs.getInt("star_point"));
+			dto.setReview_date(rs.getString("review_date"));
+			list.add(dto);
+		}
+		con.close();
+		return list;
+	}
+
 }
