@@ -50,19 +50,25 @@
 		-403, 404, 405, 500
 		-순서대로 권한없음 , 페이지 없음, 지원하지 않는 방식/형태, 서버에서 오류 발생 
 	-->
-<!-- 	<error-page> -->
-<!-- 		<error-code>404</error-code> -->
-<!-- 		<location>/error/404.jsp</location> -->
-<!-- 	</error-page> -->
 	
-<!-- 	<error-page> -->
-<!-- 		<error-code>405</error-code> -->
-<!-- 		<location>/error/405.jsp</location> -->
-<!-- 	</error-page> -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/error/403.jsp</location>
+	</error-page>	
 	
-<!-- 	<error-page> -->
-<!-- 		<error-code>500</error-code> -->
-<!-- 		<location>/error/500.jsp</location> -->
-<!-- 	</error-page> -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error/404.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>405</error-code>
+		<location>/error/405.jsp</location>
+	</error-page>
+	
+	<error-page>
+		<error-code>500</error-code>
+		<location>/error/500.jsp</location>
+	</error-page>
 	
 </web-app>
