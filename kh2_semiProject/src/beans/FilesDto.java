@@ -8,11 +8,13 @@ public class FilesDto {
 	private String savename;//실제이름
 	private String filetype;//파일유형
 	private long filesize;//파일크기
+	private int review_no;
 	
 	public FilesDto() {
 		super();
 	}
-	public FilesDto(int no, int hostel_no, String uploadname, String savename, String filetype, long filesize) {
+	public FilesDto(int no, int hostel_no, String uploadname, String savename, String filetype, long filesize,
+			int review_no) {
 		super();
 		this.no = no;
 		this.hostel_no = hostel_no;
@@ -20,6 +22,7 @@ public class FilesDto {
 		this.savename = savename;
 		this.filetype = filetype;
 		this.filesize = filesize;
+		this.review_no = review_no;
 	}
 	public int getNo() {
 		return no;
@@ -57,6 +60,14 @@ public class FilesDto {
 	public void setFilesize(long filesize) {
 		this.filesize = filesize;
 	}
+	public int getReview_no() {
+		return review_no;
+	}
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
+	}
+	
+	
 	
 	
 }

@@ -23,7 +23,7 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			RoomDao dao = new RoomDao();
 			
 			String member_id = (String) req.getSession().getAttribute("id");
-			int hostel_no = dao.getHostelNo(member_id);
+			int hostel_no = dao.getHostelNo();
 			
 			dto.setHostel_no(hostel_no);
 			dto.setRoom_price(Integer.parseInt(req.getParameter("room_price")));
