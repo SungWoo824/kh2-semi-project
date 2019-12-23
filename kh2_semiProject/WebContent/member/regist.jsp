@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 가입 페이지</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style type="text/css">
 	* {
 		box-sizing: border-box;
@@ -42,13 +44,14 @@
 </head>
 <body>
 
-
+<jsp:include page="/template/nav.jsp"></jsp:include>
 <div class="regist" align ="center">
 	<h2><font color="black">S I G N UP</font></h2>
 	<form action="regist.do" method = "post">
-	    <div class="logo-image">
-        	<img src="../image/LOGO.png" align="left"><br><br><br><br><br><br><br><br>
-        </div>
+<!-- 	    <div class="logo-image"> -->
+<!--         	<img src="../image/LOGO.png" align="left"> -->
+<!--         </div> -->
+        <br><br><br><br><br><br><br><br>
 	<table class="title" border="0">
 		<tr>
 			<th>I D</th>
@@ -75,11 +78,11 @@
 			<th><input class="menu-item" type = "text" name="member_email"></th>
 		</tr>
 		<tr>
-		<th>T Y P E</th>
-		<th><select class="menu-item" name="member_grade">
-			<option>사용자</option>
-			<option>판매자</option>
-		</select></th>
+			<th>T Y P E</th>
+			<th><select class="menu-item" name="member_grade">
+				<option>사용자</option>
+				<option>판매자</option>
+			</select></th>
 		</tr>
 		<tr><td colspan = "2" align = "center">
 		<input class="menu-item" type = "submit" value = "회원 가입">
@@ -87,7 +90,6 @@
 	</table>
 	</form>
 </div>
-	</div>
-
+<jsp:include page="/template/footer.jsp"></jsp:include>
 </body>
 </html>
