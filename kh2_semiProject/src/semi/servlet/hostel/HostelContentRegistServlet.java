@@ -23,8 +23,11 @@ public class HostelContentRegistServlet extends HttpServlet{
 	
 	HostelDto dto = new HostelDto();
 	HostelDao dao = new HostelDao();
-
 	
+	String hostel_name = (String) req.getSession().getAttribute("hostel_name");
+	
+	dto.setHostel_content(req.getParameter("hostel_content"));
+	dto.setHostel_name(hostel_name);
 	
 	
 	
