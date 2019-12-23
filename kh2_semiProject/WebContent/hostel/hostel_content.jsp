@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="beans.RoomDao"%>
 <%@page import="beans.RoomDto"%>
 <%@page import="java.util.List"%>
@@ -10,12 +11,24 @@
 <!DOCTYPE html>
 <%
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
+	String check_in = request.getParameter("check_in");
+	String check_out = request.getParameter("check_out");
+	int people=0;
+	if(request.getParameter("people")!=null){
+		people = Integer.parseInt(request.getParameter("people"));
+	}
+	boolean isSearch = check_in!=null && check_out!=null && people!=0;
 	HostelDao dao = new HostelDao();
 	HostelDto dto = dao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();
 	List<ReviewDto>list = rdao.hostel_review_list(hostel_no);
 	RoomDao Rdao = new RoomDao();
-	List<RoomDto>Rlist = Rdao.hostel_room_list(hostel_no);
+	List<RoomDto>Rlist = new ArrayList<>();
+	if(isSearch){
+		Rlist = Rdao.hostel_room_list_search(check_in, check_out, people, hostel_no);
+	}else{
+		Rlist = Rdao.hostel_room_list(hostel_no);
+	}
 %>
 <html>
 <head>
