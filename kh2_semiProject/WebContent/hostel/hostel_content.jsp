@@ -1,3 +1,5 @@
+<%@page import="beans.FilesDto"%>
+<%@page import="beans.FilesDao"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="beans.RoomDao"%>
 <%@page import="beans.RoomDto"%>
@@ -70,6 +72,8 @@
 	<%} %>
 	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ리뷰자리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br><br>
 	<%for(ReviewDto rdto : list){ %>
+	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
+	<a href="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">다운</a>
 	리뷰넘버<%=rdto.getReview_no() %>
 	예약넘버<%=rdto.getReservation_no() %>
 	고객넘버<%=rdto.getCustomer_no() %>
