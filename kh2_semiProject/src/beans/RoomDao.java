@@ -127,7 +127,7 @@ public class RoomDao {
 	public void regist(RoomDto dto) throws Exception{
 		Connection con = getConnection();
 
-		String sql = "insert into room_info values(room_no_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into room_info values(room_no_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, dto.getHostel_no());
@@ -150,35 +150,33 @@ public class RoomDao {
 		ps.setString(18, dto.getRoom_name());
 		
 		
+		
 		ps.execute();
 		
 		con.close();
 	}
 
 	// hostel_no 받아오는 메소드
-	public int getHostelNo(String member_id) throws Exception{
+	public int getHostelNo() throws Exception{
 		
 		Connection con = getConnection();
-		String sql = "select * from hostel "
-						+ "where owner_no = ("
-						+ "select member_no "
-						+ "from member where member_id = ?"
-						+ ")";
+		String sql = "select hostel_no_seq.currval from dual";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, member_id);
-		
+				
 		ResultSet rs = ps.executeQuery();
-		
-		int hostel_no = 0;
-		
-		if (rs.next()) {
-			hostel_no = rs.getInt("hostel_no");
-		}
-		
+			
+		rs.next();
+		int hostel_no = rs.getInt(1);
+				
 		con.close();
 		return hostel_no;
 	}
+	
+	
+	// room_info에 날짜 등록하기
+	
+	
+	
 /////////////////////////////////////////////////////////////////
 ///	판매자 - room_info 등록 기능(이가영)		끝	   ///
 ///////////////////////////////////////////////////////////////
