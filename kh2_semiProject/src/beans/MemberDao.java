@@ -34,7 +34,7 @@ public class MemberDao {
 	public void regist(MemberDto dto) throws Exception {
 		Connection con = getConnection();
 
-		String sql = "insert into member values(" + "member_no_seq.nextval,?,?,?,?,?,?,?,sysdate)";
+		String sql = "insert into member values(member_no_seq.nextval,?,?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, dto.getId());
 		ps.setString(2, dto.getPw());

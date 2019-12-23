@@ -2,7 +2,7 @@ package beans;
 
 public class FilesDto {
 	
-	private int no;//번호(기본키)
+	private int file_no;//번호(기본키)
 	private int hostel_no;//숙소번호
 	private String uploadname;//올린이름
 	private String savename;//실제이름
@@ -13,10 +13,10 @@ public class FilesDto {
 	public FilesDto() {
 		super();
 	}
-	public FilesDto(int no, int hostel_no, String uploadname, String savename, String filetype, long filesize,
+	public FilesDto(int file_no, int hostel_no, String uploadname, String savename, String filetype, long filesize,
 			int review_no) {
 		super();
-		this.no = no;
+		this.file_no = file_no;
 		this.hostel_no = hostel_no;
 		this.uploadname = uploadname;
 		this.savename = savename;
@@ -24,11 +24,12 @@ public class FilesDto {
 		this.filesize = filesize;
 		this.review_no = review_no;
 	}
-	public int getNo() {
-		return no;
+	
+	public int getFlie_no() {
+		return file_no;
 	}
-	public void setNo(int no) {
-		this.no = no;
+	public void setFlie_no(int flie_no) {
+		this.file_no = flie_no;
 	}
 	public int getHostel_no() {
 		return hostel_no;

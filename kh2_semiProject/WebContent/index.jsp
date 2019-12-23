@@ -14,6 +14,13 @@
 		grade = (String)session.getAttribute("grade");
 	}
 %>    
+ 
+<!-- ########### TO DO ############################ -->
+<!--  [ ] 정렬 기준 짜기 (평점순 오름내림) -->
+<!--  [ ] 달력 이전,다음 이미지 추가 -->
+<!--  [ ] input:date 초기값 지정, 현재날짜 전 선택 못하게하기, check_in < check_out 설정 -->
+<!-- ##############################################  -->
+ 
     
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +36,7 @@
     <link rel="stylesheet" href="js/datepicker/jquery-ui.css" />
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
     <script src="js/home-slider.js"></script>
   </head>
@@ -224,9 +232,11 @@
       </section>
     </main>
     <footer id="main-footer">
-      푸터입니다<br> 
-      ID : <%=session.getAttribute("id")  %><br>
-      GRADE : <%=session.getAttribute("grade") %>
+     <div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div> 
+      접속한 ID : <%=session.getAttribute("id")  %><br>
+      접속한 GRADE : <%=session.getAttribute("grade") %>
     </footer>
   </body>
 </html>

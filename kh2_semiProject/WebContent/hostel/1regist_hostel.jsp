@@ -1,9 +1,13 @@
+<%@page import="beans.HostelDto"%>
+<%@page import="beans.HostelDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <%
 	String region_name = request.getParameter("region_name");
 	String city_name = request.getParameter("city_name");
+	HostelDao dao = new HostelDao();
+	HostelDto dto = new HostelDto();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +61,7 @@
 
 </head>
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
 <script>
     function DaumPostcode() {
         new daum.Postcode({
@@ -105,9 +110,33 @@
             }
         }).open();
     }
+    
+        function loadMap(){
+            // 입력창의 결과값을 불러옵니다.
+            var addr = document.querySelector("#address").value;
+            //입력값이 없으면 종료
+            if(!addr) return;
+           
+            // 주소-좌표 변환 객체를 생성합니다
+            var geocoder = new kakao.maps.services.Geocoder();
+            // 주소로 좌표를 검색합니다
+            geocoder.addressSearch(addr, function(result, status) {
+            // 정상적으로 검색이 완료됐으면 
+            if (status === kakao.maps.services.Status.OK) {
+                debugger;
+                var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+                // 결과값으로 받은 위치를 마커로 표시합니다
+                console.log(coords);
+                var lat = coords.Ga;
+                var log = coords.Ha;
+                document.addr.hostel_latitude.value = lat; 
+                document.addr.hostel_longitude.value = log;
+                 } 
+            });    
+        }
 </script>
 <body>
-<form action="hostel_regist.do" method="post" enctype="multipart/form-data">
+<form name="addr" action="hostel_regist.do" method="post" enctype="multipart/form-data">
     <div class="a">
         <h1 style="color: lightsalmon">판매자 등록 페이지(1단계 숙소 정보)</h1>
         
@@ -142,18 +171,10 @@
 		<input type="button" class="btn" onclick="DaumPostcode()" value="우편번호 찾기"><br>
 		<input type="text" id="postcode" name="postcode" placeholder="우편번호">
 		<input type="text" id="address" name="address" placeholder="주소"><br>
-		<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소">
+		<input type="text" id="detailAddress" name="detailAddress" placeholder="상세주소" onfocus="loadMap()">
 		<input type="text" id="extraAddress" name="extraAddress" placeholder="참고항목">
-
-		<h4>(나중에 위도/경도 변환해볼것)</h4>
-
-        <p>숙소 위도는 무엇인가요?</p>
-
-        <input type="text" name="hostel_latitude" placeholder="숙소 위도"> 
-
-        <p>숙소 경도는 무엇인가요?</p>
-
-        <input type="text" name="hostel_longitude" placeholder="숙소 경도">
+		<input type="hidden" name="hostel_latitude" value="">
+		<input type="hidden" name="hostel_longitude" value="">
 
         <p>숙소의 이름을 정해주세요!</p>
 
