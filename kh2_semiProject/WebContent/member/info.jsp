@@ -25,28 +25,22 @@
 <title>회원 정보 수정</title>
 
  <style>
-        .table {
-            width: 100%;
-            border: 1px solid black;
-            /*            테두리 병합*/
-            border-collapse: collapse;
-        }
-
-        .table>thead>tr>td,
-        .table>thead>tr>th,
-        .table>tbody>tr>td,
-        .table>tbody>tr>th {
-            border: 1px solid black;
-            padding: 0.5rem;
-        }
+    
+        
+      
     </style>
+   
+     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+   
 </head>
 <body>
- <div align="center">
-        <form action="member/info.jsp"></form>
+ 
+ <div align="center" class="a">
+        <form action="/kh2_semiProject/member/info.do" method="post">
 
 
-        <table border="1">
+        <table>
 
 
             <h2>회원정보수정</h2>
@@ -62,21 +56,21 @@
             <tr>
                 <th>현재 비밀번호</th>
                 <td>
-                    <input type="text" name="phone" required="required" >
+                    <input type="text" name="member_pw" required="required" >
                 </td>
             </tr>
 
             <tr>
                 <th>새 비밀번호</th>
                 <td>
-                    <input type="text" name="phone"required="required">
+                    <input type="text" name="newpw"required="required" >
                 </td>
             </tr>
 
             <tr>
                 <th>새 비밀번호 확인</th>
                 <td>
-                    <input type="text" name="phone" required="required">
+                    <input type="text"  required="required">
                 </td>
             </tr>
 
@@ -90,7 +84,7 @@
             <tr>
                 <th>전화번호</th>
                 <td>
-                    <input type="text" name="phone"  required="required" placeholder="<%=dto.getPhone()%>">
+                    <input type="text" name="member_phone"  required="required" placeholder="<%=dto.getPhone()%>">
                 </td>
             </tr>
 
@@ -98,14 +92,14 @@
             <tr>
                 <th>이메일</th>
                 <td>
-                    <input type="text" name="phone" required="required" placeholder="<%=dto.getEmail()%>">
+                    <input type="text" name="member_email" required="required" placeholder="<%=dto.getEmail()%>">
                 </td>
             </tr>
 
             <tr>
                 <th>생일</th>
                 <td>
-                    <input type="text" name="phone" required="required" placeholder="<%=dto.getBirthday() %>"> 
+                    <input type="text" name="member_birthday" required="required" placeholder="<%=dto.getBirthday() %>"> 
                 </td>
             </tr>
 
@@ -119,6 +113,7 @@
 
 
         </table>
+        </form>
     </div>
 
 

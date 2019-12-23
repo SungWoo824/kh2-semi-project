@@ -3,6 +3,8 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -127,7 +129,7 @@ public class RoomDao {
 	public void regist(RoomDto dto) throws Exception{
 		Connection con = getConnection();
 
-		String sql = "insert into room_info values(room_no_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into room_info values(room_no_seq.nextval,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
 		ps.setInt(1, dto.getHostel_no());
@@ -148,6 +150,9 @@ public class RoomDao {
 		ps.setString(16, dto.getRoom_cool());
 		ps.setString(17, dto.getRoom_hot());
 		ps.setString(18, dto.getRoom_name());
+		ps.setString(19, dto.getStart_hosting());
+		ps.setString(20, dto.getFinish_hosting());
+		
 		
 		
 		ps.execute();
@@ -156,29 +161,26 @@ public class RoomDao {
 	}
 
 	// hostel_no 받아오는 메소드
-	public int getHostelNo(String member_id) throws Exception{
+	public int getHostelNo() throws Exception{
 		
 		Connection con = getConnection();
-		String sql = "select * from hostel "
-						+ "where owner_no = ("
-						+ "select member_no "
-						+ "from member where member_id = ?"
-						+ ")";
+		String sql = "select hostel_no_seq.currval from dual";
 		PreparedStatement ps = con.prepareStatement(sql);
-		
-		ps.setString(1, member_id);
-		
+				
 		ResultSet rs = ps.executeQuery();
-		
-		int hostel_no = 0;
-		
-		if (rs.next()) {
-			hostel_no = rs.getInt("hostel_no");
-		}
-		
+			
+		rs.next();
+		int hostel_no = rs.getInt(1);
+				
 		con.close();
 		return hostel_no;
 	}
+	
+	
+	// room_info에 날짜 등록하기
+	
+	
+	
 /////////////////////////////////////////////////////////////////
 ///	판매자 - room_info 등록 기능(이가영)		끝	   ///
 ///////////////////////////////////////////////////////////////
@@ -208,6 +210,49 @@ public String roomname(int room_no) throws Exception {
 
 	
 }
+
+//운기등록 호텔번호로 방찾기
+public List<RoomDto> hostel_room_list(int hostel_no) throws Exception {
+
+	List<RoomDto> list = new ArrayList<RoomDto>();
+	Connection con = this.getConnection();
+	String sql = "select * from room_info where hostel_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, hostel_no);
+	ResultSet rs = ps.executeQuery();
+	
+	while(rs.next()) {
+		
+		RoomDto dto = new RoomDto();
+		dto.setRoom_no(rs.getInt("room_no"));
+		dto.setHostel_no(rs.getInt("hostel_no"));
+		dto.setRoom_price(rs.getInt("room_price"));
+		dto.setRoom_standard_people(rs.getInt("room_standard_people"));
+		dto.setRoom_max_people(rs.getInt("room_max_people"));
+		dto.setRoom_bed(rs.getInt("room_bed"));
+		dto.setRoom_bath(rs.getInt("room_bath"));
+		dto.setRoom_spa(rs.getString("room_spa"));
+		dto.setRoom_cook(rs.getString("room_cook"));
+		dto.setRoom_content(rs.getString("room_content"));
+		dto.setRoom_parking(rs.getString("room_parking"));
+		dto.setRoom_pet(rs.getString("room_pet"));
+		dto.setRoom_breakfast(rs.getString("room_breakfast"));
+		dto.setRoom_basic(rs.getString("room_basic"));
+		dto.setRoom_tv(rs.getString("room_tv"));
+		dto.setRoom_dry(rs.getString("room_dry"));
+		dto.setRoom_cool(rs.getString("room_cool"));
+		dto.setRoom_hot(rs.getString("room_hot"));
+		dto.setRoom_name(rs.getString("room_name"));
+		
+		list.add(dto);
+	}
+	
+	con.close();
+	
+	return list;
+}
+//운기등록
 
 //방번호로 호스텔넘버 구하기
 

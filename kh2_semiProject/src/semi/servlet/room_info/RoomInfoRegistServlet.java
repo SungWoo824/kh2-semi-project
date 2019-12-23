@@ -23,7 +23,7 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			RoomDao dao = new RoomDao();
 			
 			String member_id = (String) req.getSession().getAttribute("id");
-			int hostel_no = dao.getHostelNo(member_id);
+			int hostel_no = dao.getHostelNo();
 			
 			dto.setHostel_no(hostel_no);
 			dto.setRoom_price(Integer.parseInt(req.getParameter("room_price")));
@@ -43,13 +43,14 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			dto.setRoom_cool(req.getParameter("room_cool"));
 			dto.setRoom_hot(req.getParameter("room_hot"));
 			dto.setRoom_name(req.getParameter("room_name"));
+			dto.setStart_hosting(req.getParameter("start_hosting"));
+			dto.setFinish_hosting(req.getParameter("finish_hosting"));
 			
 			dao.regist(dto);
 			
 			
-//			[3] 출력(이동)
-			
-			resp.sendRedirect("3regist_content.jsp");
+//			[3] 출력(이동)			
+			resp.sendRedirect("5regist_success.jsp");
 			
 		}
 		
