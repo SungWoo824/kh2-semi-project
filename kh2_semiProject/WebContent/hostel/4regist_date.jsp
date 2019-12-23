@@ -2,8 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%
-	String id = (String) session.getAttribute("id");
-	boolean login = id != null; 
 	
 	int room_price = Integer.parseInt(request.getParameter("room_price"));
 	int room_standard_people = Integer.parseInt(request.getParameter("room_standard_people"));

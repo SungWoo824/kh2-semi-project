@@ -224,18 +224,19 @@ public class HostelDao {
 	public void regist(HostelDto dto) throws Exception {
 
 		Connection con = getConnection();
-		String sql = "insert into hostel values(hostel_no_seq.nextval,?,?,?,?,?,?,?,?,?,sysdate)";
+		String sql = "insert into hostel values(?,?,?,?,?,?,?,?,?,?,sysdate)";
 		PreparedStatement ps = con.prepareStatement(sql);
 		
-		ps.setInt(1, dto.getOwner_no());
-		ps.setInt(2, dto.getRegion_no());
-		ps.setString(3, dto.getHostel_name());
-		ps.setString(4, dto.getHostel_phone());
-		ps.setString(5, dto.getHostel_detail_addr());
-		ps.setString(6, dto.getHostel_latitude());
-		ps.setString(7, dto.getHostel_longitude());
-		ps.setString(8, dto.getHostel_content());
-		ps.setString(9, dto.getHostel_kind_name());
+		ps.setInt(1, dto.getHostel_no());
+		ps.setInt(2, dto.getOwner_no());
+		ps.setInt(3, dto.getRegion_no());
+		ps.setString(4, dto.getHostel_name());
+		ps.setString(5, dto.getHostel_phone());
+		ps.setString(6, dto.getHostel_detail_addr());
+		ps.setString(7, dto.getHostel_latitude());
+		ps.setString(8, dto.getHostel_longitude());
+		ps.setString(9, dto.getHostel_content());
+		ps.setString(10, dto.getHostel_kind_name());
 
 		ps.execute();
 
@@ -286,7 +287,23 @@ public class HostelDao {
 		
 		con.close();
 		return owner_no;
-	}	
+	}
+	
+	// hostel_no 받아오는 메소드(files에 저장할 hostel_no)
+		public int getHostelNo() throws Exception{
+			
+			Connection con = getConnection();
+			String sql = "select hostel_no_seq.nextval from dual";
+			PreparedStatement ps = con.prepareStatement(sql);
+					
+			ResultSet rs = ps.executeQuery();
+				
+			rs.next();
+			int hostel_no = rs.getInt(1);
+					
+			con.close();
+			return hostel_no;
+		}
 	/////////////////////////////////////////////////////////////////
 	///	판매자 - 숙소 등록 기능(이가영)		끝				///
 	///////////////////////////////////////////////////////////////
