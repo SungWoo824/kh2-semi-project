@@ -52,13 +52,14 @@ public class HostelRegistServlet extends HttpServlet {
 			dto.setHostel_content(mRequest.getParameter("hostel_content"));
 			dto.setHostel_kind_name(mRequest.getParameter("hostel_kind_name"));
 
+			int hostel_no = dao.getHostelNo();
+			dto.setHostel_no(hostel_no);
 			dao.regist(dto);
 			
-		
 			File file = mRequest.getFile("file");
 			if(file != null) {
 				FilesDto fdto = new FilesDto();
-				//fdto.setHostel_no();//게시글번호
+				fdto.setHostel_no(hostel_no);//게시글번호
 				fdto.setUploadname(mRequest.getOriginalFileName("file"));//업로드이름
 				fdto.setSavename(mRequest.getFilesystemName("file"));//실저장이름
 				fdto.setFiletype(mRequest.getContentType("file"));//파일유형

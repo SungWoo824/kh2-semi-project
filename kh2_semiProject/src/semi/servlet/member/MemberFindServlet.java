@@ -24,10 +24,10 @@ public class MemberFindServlet extends HttpServlet{
 			String result = dao.find(name, birthday, phone);
 			
 			if(result != null) {
-				resp.sendRedirect("find_pw.jsp?id=" +result);
+				resp.sendRedirect("find_pw.jsp?id=" +result+"&tryYn=Y");
 			}
 			else {
-				resp.sendRedirect("find_id.jsp");
+				resp.sendRedirect("find_id.jsp?id=empty");
 			}
 			
 			
