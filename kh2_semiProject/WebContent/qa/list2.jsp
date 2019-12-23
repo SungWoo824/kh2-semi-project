@@ -68,7 +68,8 @@
 * {
 	box-sizing: border-box;
 	margin: auto;
-	font-family: no;
+	font-family: No;
+
 }
 
 .table {
@@ -109,10 +110,7 @@ article {
 .gallary>.gallary-place>a>img {
 	width: 100%;
 	height: 60%;
-	border-bottom-left-radius: 40%;
-	border-bottom-right-radius: 50%;
-	border-top-left-radius: 50%;
-	border-top-right-radius: 40%;
+
 	
 }
 .gallary>.gallary-place>.gallary-table td,
@@ -129,7 +127,6 @@ article {
 	padding: 1rem;
 }
 .gallary>.gallary-table>td{
-
 text-align: left;
 }
 .row {
@@ -193,11 +190,13 @@ a {
 	color: #000000
 }
 </style>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 </head>
 <body style="width: 80%; background-color: #ededef">
+<jsp:include page="../template/nav.jsp" ></jsp:include>
 <article >
 <div class="row-title"><a href="list.jsp">리스트 목록</a></div>
-<form action="list.jsp">
+<form action="list2.jsp">
 	<div>페이지 높이</div>
 		<select name ="list_count">
 		<option><%=15%></option>
@@ -207,6 +206,16 @@ a {
 	</select>
 	<input type="submit">
 </form>
+<%-- <form action="list2.jsp">
+	<div>페이지 높이</div>
+		<select name ="list_width">
+		<option><%=2%></option>
+		<option><%=3%></option>
+		<option><%=4%></option>
+		<option><%=5%></option>
+	</select>
+	<input type="submit">
+</form> --%>
 <div class="row">
 <div align="right">
 	<form action="list.jsp">
@@ -222,7 +231,7 @@ a {
 		<h3><%=dto.getQa_title() %></h3><br>
 	<a href="content.jsp?no=<%=dto.getQa_no()%>"><img src="https://placeimg.com/480/<%=400+j %>/any"></a>
 
-		<table class="gallary-table">
+		<table class="gallary-table" >
 		<tr>
 		<td>사용자: <%=dto.getQa_no()%></td>
 		<td>날짜:<%=dto.getQa_wdateWithFormat() %></td>
