@@ -158,7 +158,7 @@ article{
 							<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
 							<a href="content.jsp?pno=&qa_no=<%=rdto.getQa_no()%>&qa_reply_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="수정"></a>
 							<%} %>
-							<a href="qa_reply_delete.do?qa_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
+							<a href="qa_reply_delete.do?qa_reply_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
 					</form>
 					</td>
 				</tr>

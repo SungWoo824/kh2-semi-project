@@ -51,8 +51,7 @@
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <body>
 	<form action="review_edit.do" method="post" enctype="multipart/form-data">
-		예약번호:<input type="text" name="reservation_no" required="required"><br>
-		호텔번호:<input type="text" name="hostel_no" required="required"><br>
+		리뷰번호:<input type="text" name="review_no" required="required"><br>	
 		리뷰내용:<input type="text" name="review_content" required="required"><br>
 		별포이트:<input type="text" name="star_point" required="required"><br>
 		<input type="submit">

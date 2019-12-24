@@ -15,14 +15,17 @@
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 	String check_in = request.getParameter("check_in");
 	String check_out = request.getParameter("check_out");
-	int people=0;
-	if(request.getParameter("people")!=null){
+	int people;
+	try{
 		people = Integer.parseInt(request.getParameter("people"));
+	}catch(Exception e){
+		people=0;
 	}
+	
 	boolean isSearch = check_in!=null && check_out!=null && people!=0;
 /* 	HostelDao dao = new HostelDao();
-	HostelDto dto = dao.hostelinfomation(hostel_no);
-======= */
+	HostelDto dto = dao.hostelinfomation(hostel_no);	
+======= */	
 	HostelDao hdao = new HostelDao();
 	HostelDto hdto = hdao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();

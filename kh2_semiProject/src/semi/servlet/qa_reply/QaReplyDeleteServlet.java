@@ -19,7 +19,7 @@ public class QaReplyDeleteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			int qa_reply_no = Integer.parseInt(req.getParameter("no"));
+			int qa_reply_no = Integer.parseInt(req.getParameter("qa_reply_no"));
 			
 			QaReplyDao dao = new QaReplyDao();
 			QaReplyDto dto = dao.get(qa_reply_no);
