@@ -1,6 +1,6 @@
 package semi.servlet.qa_reply;
 
-import java.io.IOException;	
+import java.io.IOException;		
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.QaDao;
-import beans.QaDto;
+import beans.MemberDao;
+import beans.MemberDto;
 import beans.QaReplyDao;
 import beans.QaReplyDto;
 
@@ -24,15 +24,17 @@ public class QaReplyInsertServlet extends HttpServlet{
 			req.setCharacterEncoding("UTF-8");
 			int qa_no = Integer.parseInt(req.getParameter("qa_no"));
 			String qa_reply_content = req.getParameter("qa_reply_content");
+			String id = (String) req.getSession().getAttribute("id");
 			QaReplyDao dao = new QaReplyDao();
 			QaReplyDto dto = new QaReplyDto();
-
+			MemberDao mdao = new MemberDao();
+			MemberDto mdto = mdao.get(id);
 //			Bdao.ru(origin);
 			dto.setQa_no(qa_no);
-			dto.setMember_no(24);
+			dto.setMember_no(mdto.getNo());
 			dto.setQa_reply_content(qa_reply_content);
 			dao.Insert(dto);
-			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?no="+qa_no);
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?qa_no="+qa_no);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
