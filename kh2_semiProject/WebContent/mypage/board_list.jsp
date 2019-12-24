@@ -84,6 +84,7 @@ int count=qdao.Countmemberno(member_no);
 		<th width="45%">제목</th>
 		<th>작성자 </th>
 		<th>작성일 </th>
+		<th> </th>
 		</tr>
 		</thead>
 		<tbody>
@@ -95,6 +96,7 @@ int count=qdao.Countmemberno(member_no);
 		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_no() %></td>
 		<td><%=dto.getQa_wdate() %></td>
+		<td><input type="button" value="상세보기"></td>
 	</tr>
 	<% } %>
 </tbody>

@@ -78,7 +78,10 @@ RoomDao roomdao = new RoomDao();
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
+ 
 <title>예약조회</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 
@@ -89,9 +92,15 @@ RoomDao roomdao = new RoomDao();
 </head>
 <body>
     
-  
-
-
+    
+ <div class="background">
+	
+</div>
+<section class="container">
+<div>
+<jsp:include page="/template/nav.jsp"></jsp:include>
+</div>
+<div class="w-80">
 	<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row" ></div>
@@ -100,7 +109,7 @@ RoomDao roomdao = new RoomDao();
 	<div class="row-big"></div>
 
 	<div class="master-title w-100"><h2>나의 예약 내역</h2></div>
-    <table class="w-100 hostel-table">
+    <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
 				<th>예약번호</th>
@@ -119,7 +128,7 @@ RoomDao roomdao = new RoomDao();
 			<tr>
 			
 				<th><%=rdto2.getReservation_no() %></th>
-				<th>이미지</th>
+				<th><img src="http://placehold.it/200x150"></th>
 				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%></th>
 				<th><%=roomdao.roomname(rdto2.getRoom_no()) %></th>
 				<th><%=rdto2.getReservation_start_date().substring(0, 10) %>~ 2019-12-25</th>
@@ -132,7 +141,10 @@ RoomDao roomdao = new RoomDao();
 			<%} %>
 			
 		</tbody>
+	
 	</table>
+	
+
 <h4 class="navigator">
 			<%if(startBlock > 1){ %>
 			
@@ -155,5 +167,24 @@ RoomDao roomdao = new RoomDao();
 				<%} %>
 		
 		</h4>
+	</div>
+</section>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+		
+			<div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
+           
+		
+		
 </body>
 </html>

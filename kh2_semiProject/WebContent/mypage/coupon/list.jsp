@@ -29,6 +29,7 @@ String id = (String)session.getAttribute("id");
 MemberDto mdto =  mdao.get(id);
 int member_no=   mdto.getNo();
 
+	List<CouponDto> list =cdao.id_search(member_no, start, finish);
 	
 	
 int count=cdao.Count(member_no);
@@ -41,7 +42,6 @@ if(count%pagesize!=0){
 
 int startBlock = (pno - 1) / navsize * navsize + 1;
 int finishBlock = startBlock + (navsize - 1);
-	List<CouponDto> list =cdao.id_search(member_no, start, finish);
 
 
 if(finishBlock > pagecount){
@@ -88,9 +88,13 @@ if(finishBlock > pagecount){
 </head>
 <body>
 
-<div><br></div>
-<div><br></div>
-<div><br></div>
+
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
 
 
  <div class="master-title w-100"><h2>마이쿠폰</h2></div>
@@ -123,7 +127,7 @@ if(finishBlock > pagecount){
 			<%} %>
 		</tbody>
 	</table>
-<h4 class="navigator">
+<h4 class="navigator" >
 			<%if(startBlock > 1){ %>
 				
 					<a href="list.jsp?pno=<%=startBlock - 1%>">이전</a>
