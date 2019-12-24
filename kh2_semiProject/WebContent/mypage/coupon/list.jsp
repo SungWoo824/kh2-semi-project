@@ -7,21 +7,74 @@
     pageEncoding="UTF-8"%>
 <%
 
-//아이디로 내쿠폰 확인
-String id =(String)session.getAttribute("id");
-	
-System.out.println(id);
 
 
-MemberDao mdao = new  MemberDao();
-MemberDto mdto=mdao.get(id);
- 
-int member_no  =  mdto.getNo();
-	
+int pagesize = 10;
+int navsize = 10;
+int pno;
+try{
+	pno = Integer.parseInt(request.getParameter("pno"));
+	if(pno <= 0) throw new Exception();
+}
+catch(Exception e){
+	pno = 1;
+}
+int finish = pno * pagesize;
+int start = finish - (pagesize - 1);
+
+String context = request.getContextPath();
 CouponDao cdao = new CouponDao();
-List<CouponDto> list=  cdao.id_search(member_no);
+MemberDao mdao = new MemberDao();
+String id = (String)session.getAttribute("id");
+MemberDto mdto =  mdao.get(id);
+int member_no=   mdto.getNo();
 
 	
+	
+int count=cdao.Count(member_no);
+	
+int pagecount = count / pagesize;
+if(count%pagesize!=0){
+	pagecount+=1;
+}
+
+
+int startBlock = (pno - 1) / navsize * navsize + 1;
+int finishBlock = startBlock + (navsize - 1);
+	List<CouponDto> list =cdao.id_search(member_no, start, finish);
+
+
+if(finishBlock > pagecount){
+	finishBlock = pagecount;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
 %>
 <!DOCTYPE html>
 <html>
@@ -34,8 +87,7 @@ List<CouponDto> list=  cdao.id_search(member_no);
 
 </head>
 <body>
-<div>header</div>
-<div>menu</div>
+
 <div><br></div>
 <div><br></div>
 <div><br></div>
@@ -50,7 +102,7 @@ List<CouponDto> list=  cdao.id_search(member_no);
 				<th>할인율</th>
 				<th>유효기간</th>
 				<th>쿠폰설명</th>
-				
+				<th></th>
 				
 			</tr>
 		</thead>
@@ -63,7 +115,7 @@ List<CouponDto> list=  cdao.id_search(member_no);
 				<th><%=dto.getCoupon_rate()%> </th>
 				<th><%=dto.getCoupon_date()%></th>
 				<th><%=dto.getCoupon_explain()%></th>
-				
+				<th><input type="submit" value="쿠폰사용하기"></th>
 				
 				
 				
@@ -71,7 +123,28 @@ List<CouponDto> list=  cdao.id_search(member_no);
 			<%} %>
 		</tbody>
 	</table>
-
-<div>footer</div>
+<h4 class="navigator">
+			<%if(startBlock > 1){ %>
+				
+					<a href="list.jsp?pno=<%=startBlock - 1%>">이전</a>
+				
+			<%} %>
+			<%for(int i=startBlock; i <= finishBlock; i++){ %>
+				<%if(i == pno){ %>
+					<a href="list.jsp?pno=<%=i%>" class="navigator-choice"><%=i%></a>
+				<%}else{ %>
+					
+						<a href="list.jsp?pno=<%=i%>"><%=i%></a>
+				
+				<%} %>
+			<%} %>
+	
+			<%if(finishBlock < pagecount){ %>
+			
+			
+					<a href="list.jsp?pno=<%=finishBlock + 1%>">다음</a>
+			
+			<%} %>
+		</h4>
 </body>
 </html>

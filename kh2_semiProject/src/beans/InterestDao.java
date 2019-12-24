@@ -3,6 +3,8 @@ package beans;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -82,6 +84,53 @@ public class InterestDao {
 		return dto;
 	}
 
+	
+	
+	
+	public List<InterestDto> interestinfolist(int member_no) throws Exception {
+
+		Connection con = this.getConnection();
+		String sql = "select * from interest_room where member_no =? ";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, member_no);
+		
+		ResultSet rs = ps.executeQuery();
+		List<InterestDto> list = new ArrayList<>();
+
+		while(rs.next()) {
+			InterestDto idto=new InterestDto();
+			idto.setMember_no(rs.getInt("member_no"));
+			idto.setRoom_no(rs.getInt("room_no"));
+			list.add(idto);
+		}
+		
+	
+		con.close();
+		
+		return list;
+	}
+
+	
+	
+	
+	
+	
+
+	//회원별 위시리스트 구하기
+	public int Count(int member_no) throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "select count(*) from interest_room where member_no=?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, member_no);
+		ResultSet rs = ps.executeQuery();
+		rs.next();
+		int count = rs.getInt(1);
+		con.close();
+		return count;
+	}
 	
 	
 	

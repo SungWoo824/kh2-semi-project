@@ -31,9 +31,9 @@ public class RoomDao {
 	
 	
 	
-	//방번호로 방dto 구하기
+	//방번호로 방dto 리스트 구하기
 	
-	public RoomDto roomInfomation(int room_no) throws Exception {
+	public List<RoomDto> roomInfomation(int room_no) throws Exception {
 
 		Connection con = this.getConnection();
 		String sql = "select * from room_info where room_no = ?";
@@ -42,9 +42,58 @@ public class RoomDao {
 		ps.setInt(1, room_no);
 		ResultSet rs = ps.executeQuery();
 
+		List<RoomDto> list = new ArrayList<>();
+		
+		
+		while(rs.next()) {
+			RoomDto rdto = new RoomDto();
+			rdto.setRoom_no(rs.getInt("room_no"));
+			rdto.setHostel_no(rs.getInt("hostel_no"));
+			rdto.setRoom_price(rs.getInt("room_price"));
+			rdto.setRoom_standard_people(rs.getInt("room_standard_people"));
+			rdto.setRoom_max_people(rs.getInt("room_max_people"));
+			rdto.setRoom_bed(rs.getInt("room_bed"));
+			rdto.setRoom_bath(rs.getInt("room_bath"));
+			rdto.setRoom_spa(rs.getString("room_spa"));
+			rdto.setRoom_cook(rs.getString("room_cook"));
+			rdto.setRoom_content(rs.getString("room_content"));
+			rdto.setRoom_parking(rs.getString("room_parking"));
+			rdto.setRoom_pet(rs.getString("room_pet"));
+			rdto.setRoom_breakfast(rs.getString("room_breakfast"));
+			rdto.setRoom_basic(rs.getString("room_basic"));
+			rdto.setRoom_tv(rs.getString("room_tv"));
+			rdto.setRoom_dry(rs.getString("room_dry"));
+			rdto.setRoom_cool(rs.getString("room_cool"));
+			rdto.setRoom_hot(rs.getString("room_hot"));
+			rdto.setRoom_name(rs.getString("room_name"));
+			
+			list.add(rdto);
+		}
+		con.close();
+		return list;
+		
+		
+	
+		
+	
+	}
 
+	
+	///dto만들기
+	
+	public RoomDto roomInfomation1(int room_no) throws Exception {
+
+		Connection con = this.getConnection();
+		String sql = "select * from room_info where room_no = ?";
+
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, room_no);
+		ResultSet rs = ps.executeQuery();
+
+		
 		RoomDto dto = new RoomDto();
-		if(rs.next()) {
+		
+if(rs.next()) {
 			
 			dto.setRoom_no(rs.getInt("room_no"));
 			dto.setHostel_no(rs.getInt("hostel_no"));
@@ -75,8 +124,14 @@ public class RoomDao {
 		con.close();
 		
 		return dto;
+		
+		
+	
+		
+	
 	}
 
+	
 	
 	///////id로 dto 뽑기
 	public RoomDto get(String member_id) throws Exception {
@@ -276,6 +331,30 @@ public int hostelNumber(int room_no) throws Exception {
 
 	
 }
+
+
+//방번호로 방가격 구하기
+public int roomprice(int room_no) throws Exception {
+
+	Connection con = this.getConnection();
+	String sql = "select room_price from room_info where room_no = ?";
+
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+	ResultSet rs = ps.executeQuery();
+
+	int room_price=0;
+	if(rs.next()) {
+		
+	room_price =rs.getInt("room_price");
+	}
+
+	con.close();
+	return room_price;
+
+	
+}
+
 
 
 }

@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="beans.HostelDao"%>
 <%@page import="beans.HostelDto"%>
 <%@page import="beans.RoomDto"%>
@@ -15,22 +16,61 @@
 	//2. id를 주고 dao를 이용하여 회원정보(MemberDto)를 꺼낸다
 	//3. 원하는 위치에 출력한다.
 	
+	int pagesize = 10;
+	int navsize = 10;
+	int pno;
+	try{
+		pno = Integer.parseInt(request.getParameter("pno"));
+		if(pno <= 0) throw new Exception();
+	}
+	catch(Exception e){
+		pno = 1;
+	}
+	int finish = pno * pagesize;
+	int start = finish - (pagesize - 1);
+	
+	
+	
+	
 	String id = (String)session.getAttribute("id");
      
 	MemberDao mdao = new MemberDao();
 	MemberDto mdto = mdao.get(id);
 	
 	int member_no=mdto.getNo();
+	
 	InterestDao idao = new InterestDao();
- InterestDto idto= idao.interestinfo2(member_no);
+	
+List<InterestDto> list =  idao.interestinfolist(member_no);
+ 
+ 
+ 
 
- int room_no=idto.getRoom_no();
+
  RoomDao rdao = new RoomDao();
-RoomDto rdto= rdao.roomInfomation(room_no);
+ 
 
-int hostel_no=   rdto.getHostel_no();
+
+
+	
+
+
+	int count = idao.Count(member_no);
+	int pagecount = (count + pagesize) / pagesize;
+	int startBlock = (pno - 1) / navsize * navsize + 1;
+	int finishBlock = startBlock + (navsize - 1);
+	if(finishBlock > pagecount){
+		finishBlock = pagecount;
+	}
+	
+	
+	
+	
+	
+
 HostelDao hdao =new  HostelDao();
-HostelDto hdto=   hdao.hostelinfomation(hostel_no);
+
+
  
 %>
     
@@ -63,25 +103,49 @@ HostelDto hdto=   hdao.hostelinfomation(hostel_no);
 			</tr>
 		</thead>
 		<tbody>
-			
+			<%for(InterestDto idto:list){ %>
 			<tr>
 			
 				<th><input type="checkbox"></th>
-				<th>이미나올곳</th>
-				<th> <%=hdto.getHostel_name() %>//<%=rdto.getRoom_name() %></th>
-				<th><%=rdto.getRoom_price() %></th>
-				<th><input type="submit" value="주문하기"></th>
+				<th><img src="http://placehold.it/200x150"></th>
+				<th><%=rdao.roomname( idto.getRoom_no()) %>//<%= hdao.hostelname( rdao.hostelNumber( idto.getRoom_no()))   %></th>
+				<th><%=rdao.roomprice(idto.getRoom_no())%></th>
+				<th><input type="submit" value="예약하기"></th>
 				<th><input type="submit" value="삭제"></th>
 				
 				
 				
 			</tr>
-			
+			<%} %>
 		</tbody>
 	</table>
 
 
-    <input type="submit" value="주문하기">
-    <input type="submit" value="삭제">
+    <input type="submit" value="전체선택">
+    <input type="submit" value="전체삭제">
+    
+    
+    <h4 class="navigator">
+			<%if(startBlock > 1){ %>
+			
+					<a href="wish_list.jsp?pno=<%=startBlock - 1%>">이전</a>
+				<%} %>
+	
+			<%for(int i=startBlock; i <= finishBlock; i++){ %>
+				<%if(i == pno){ %>
+					<a href="wish_list.jsp?pno=<%=i%>" class="navigator-choice"><%=i%></a>
+				<%}else{ %>
+					
+						<a href="wish_list.jsp?pno=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+		
+	
+			<%if(finishBlock < pagecount){ %>
+				
+					<a href="wish_list.jsp?pno=<%=finishBlock + 1%>">다음</a>
+				<%} %>
+		
+		</h4>
 </body>
 </html>
