@@ -53,6 +53,8 @@
  		border-bottom-color: #666; 
 		/*글자색을 바꾸고 싶다면*/
  		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
 	}
 	
 	/* 화살표 색상을 바꾸고 싶다면 */
@@ -76,10 +78,44 @@
 		color:#666;
 	}
 	/* 항목 글자색을 바꾸고 싶다면 */
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
+	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}
+	.form-choice{
+		border:none;
+		margin-bottom:200px;
+	}
 </style>
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 <div class="row-big"></div>
@@ -123,7 +159,7 @@
 					<%} %>
 				</tbody>
 				<tfoot>
-					<tr>
+					<tr style="height: 30px;">
 						<th colspan="9" align="right">
 							<%if(isSearch) {%>
 							<a href="coupon_member.jsp">전체목록 보기</a>
@@ -163,7 +199,7 @@
 		</h4>
 	<%} %>
 	<div align="right">
-	<form action="coupon_member.jsp" method="get" class="form=choice">
+	<form action="coupon_member.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="member_no">회원 번호</option>
 			<option value="member_name">회원 이름</option>
@@ -177,6 +213,7 @@
 	</form>
 	</div>
 </div>
+</section>
 <div>footer</div>
 </body>
 </html>

@@ -415,6 +415,9 @@ public class MemberDao {
 		con.close();
 		return count;
 	}
+	
+	
+	///
 
 	public void changeInfo(MemberDto dto) throws Exception {
 		Connection con = getConnection();
@@ -435,7 +438,7 @@ public class MemberDao {
 	}
 	
 	
-	public void ci(MemberDto dto , String newpw) throws Exception {
+	public int ci(MemberDto dto , String newpw) throws Exception {
 		Connection con = getConnection();
 		String sql = "update member set member_pw=?,member_phone=?,member_email=?,member_birthday=?   where member_id=? and member_pw=?";
 		
@@ -448,9 +451,11 @@ public class MemberDao {
 		ps.setString(5, dto.getId());
 		ps.setString(6, dto.getPw());
 		
-		ps.execute();
+		int result= ps.executeUpdate();
+		
 		
 		con.close();
+		return result;
 	}
 
 }

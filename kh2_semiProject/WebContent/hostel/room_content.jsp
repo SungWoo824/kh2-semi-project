@@ -6,7 +6,7 @@
 <%
 	int room_no = Integer.parseInt(request.getParameter("room_no"));
 	RoomDao dao = new RoomDao();
-	RoomDto Rdto = dao.roomInfomation(room_no);
+  RoomDto Rdto = dao.roomInfomation1(room_no);
 %>
 <html>
 <head>
