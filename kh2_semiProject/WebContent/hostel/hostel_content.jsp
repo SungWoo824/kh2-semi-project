@@ -38,15 +38,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="../css/hostel-list.css" />
+<title>호텔 상세정보</title>
+<link rel="stylesheet" href="../css/hostel-list2.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/hostel-content.css">
 <style>
 	img {
-	width: 200px;
-	height: 150px;
-}
+		width: 200px;
+		height: 150px;
+	}
 </style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 	<script>
 		var db = {
 			//이름:마커객체
@@ -193,6 +197,17 @@
 	</script>
 </head>
 <body onload="loadMap();">
+<div>
+<jsp:include page="../template/nav.jsp"></jsp:include>
+</div>
+<div class="w-80">
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="title w-100"><h2>호텔 상세정보</h2></div>
 	호텔넘버:<%=hdto.getHostel_no() %><br>
 	오너넘버<%=hdto.getOwner_no() %><br>
 	지역넘버<%=hdto.getRegion_no() %><br>
@@ -283,5 +298,7 @@
 <%-- 	리뷰시간<%=rdto.getReview_date() %> --%>
 <!-- 	<br><br> -->
 <%-- 	<%} %> --%>
+</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </body>
 </html>
