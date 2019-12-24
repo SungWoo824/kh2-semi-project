@@ -214,7 +214,7 @@ p {
 	<jsp:include page="/template/nav.jsp"></jsp:include>
 </div>
 <%if(login){ %>
-	<form action="1regist_hostel.jsp" method="get">
+	<form action="1regist_hostel.jsp" method="post">
 
 		<div class="a">
 			<h1 style="color: #565960">숙소를 등록할 지역을 설정해주세요</h1>
