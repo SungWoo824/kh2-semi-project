@@ -14,6 +14,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 		룸번호<%=Rdto.getRoom_no() %><br>
 		호텔번호<%=Rdto.getHostel_no() %><br>
 		룸가격<%=Rdto.getRoom_price() %><br>
@@ -33,5 +34,9 @@
 		에어컨<%=Rdto.getRoom_cool() %><br>
 		난방<%=Rdto.getRoom_hot() %><br>
 		방이름<%=Rdto.getRoom_name() %><br><br>
+	</div>
+	<div>
+		
+	</div>
 </body>
 </html>
