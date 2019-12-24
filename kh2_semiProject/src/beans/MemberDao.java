@@ -131,7 +131,7 @@ public class MemberDao {
 	public MemberDto memberInfomation(int member_no) throws Exception {
 		Connection con = this.getConnection();
 		String sql = "select * from member where member_no = ?";
-
+		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, member_no);
 		ResultSet rs = ps.executeQuery();
@@ -437,7 +437,7 @@ public class MemberDao {
 		con.close();
 	}
 	
-	
+	//////회원정보수정
 	public int ci(MemberDto dto , String newpw) throws Exception {
 		Connection con = getConnection();
 		String sql = "update member set member_pw=?,member_phone=?,member_email=?,member_birthday=?   where member_id=? and member_pw=?";

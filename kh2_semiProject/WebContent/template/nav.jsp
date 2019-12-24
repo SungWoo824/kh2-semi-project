@@ -7,7 +7,6 @@
 	if(isLogin){
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
-		System.out.println(id + grade);
 	}
 %>   
 		<!-- @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ -->
@@ -33,7 +32,7 @@
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/mypage/index.jsp">MY PAGE</a></li>            	
             <%}%>
-            <li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/qa/list.jsp">Q &amp; A</a></li>
+            <li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/info/regist_info.jsp">HELP</a></li>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="<%=request.getContextPath() %>/member/logout.do">SIGN OUT</a></li>
             <%}else { %>

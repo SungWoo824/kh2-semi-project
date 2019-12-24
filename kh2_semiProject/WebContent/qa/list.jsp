@@ -7,6 +7,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	String id = (String)request.getSession().getAttribute("id");
+	String grade = (String)request.getSession().getAttribute("grade");
 	QaDao dao = new QaDao();
 	int pno;
 	try{
@@ -182,7 +184,7 @@ function formChange(obj){
 		<td><%=dto.getRn()%></td><!-- member get으로 아이디를 가져와야함 -->
 		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
-		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
+		<td align="left"><a href="content.jsp?pno=&qa_no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_name() %></td>
 		<td><%=dto.getQa_wdate().substring(0,10) %></td>
 	</tr>
@@ -206,7 +208,7 @@ function formChange(obj){
 	<%} %> --%>
 	<%} %>
 </tbody>
-<%if(member_id!=null){ %>
+<%if(grade!=null){ %>
 <tfoot>
 	<tr style="height: 30px;">
 		<th colspan="6" align="right">

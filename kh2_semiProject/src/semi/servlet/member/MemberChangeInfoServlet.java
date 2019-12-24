@@ -26,11 +26,11 @@ public class MemberChangeInfoServlet extends HttpServlet{
 			MemberDto dto = new MemberDto();
 			String newpw=req.getParameter("newpw");
 			
-		dto.setId(id);
+			dto.setId(id);
 			dto.setPw(req.getParameter("member_pw"));
-			
-		
-			dto.setBirthday(req.getParameter("member_birthday"));
+			String member_birthday = req.getParameter("member_birthday");
+			System.out.println("생일"+member_birthday);
+			dto.setBirthday(member_birthday);
 			dto.setPhone(req.getParameter("member_phone"));
 			dto.setEmail(req.getParameter("member_email"));
 			
