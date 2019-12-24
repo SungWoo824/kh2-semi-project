@@ -13,7 +13,6 @@
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
 	}
-	
 %>    
  
 <!-- ########### TO DO ############################ -->
