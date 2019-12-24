@@ -25,7 +25,7 @@ public class QaReplyEditServlet extends HttpServlet{
 			System.out.println("안녕1");
 			dao.update(qa_reply_no, qa_reply_content);
 			System.out.println("안녕2");
-			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?pno=&no="+dto.getQa_no());
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?pno=&qa_no="+dto.getQa_no());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}

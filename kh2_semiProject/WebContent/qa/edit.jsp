@@ -4,10 +4,14 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	String no1 = request.getParameter("no");
-	int no = Integer.parseInt(no1);
+	int qa_edit_no;
+	try{
+		qa_edit_no = Integer.parseInt(request.getParameter("qa_edit_no"));
+	}catch(Exception e){
+		qa_edit_no=0;
+	}
 	QaDao dao = new QaDao();
-	QaDto dto = dao.get(no);
+	QaDto dto = dao.get(qa_edit_no);
 %>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <jsp:include page="../template/nav.jsp" ></jsp:include>

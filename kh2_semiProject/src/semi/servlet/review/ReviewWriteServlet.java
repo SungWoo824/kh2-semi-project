@@ -44,7 +44,6 @@ public class ReviewWriteServlet extends HttpServlet{
 			dao.write(dto);
 			
 			File file = mRequest.getFile("review_file");
-			System.out.println(file);
 			if(file != null) {
 				FilesDto fdto = new FilesDto();
 				fdto.setUploadname(mRequest.getOriginalFileName("review_file"));

@@ -26,9 +26,7 @@ public class ReviewDownloadServlet extends HttpServlet{
 			FilesDao fdao = new FilesDao();
 			FilesDto fdto = (FilesDto) fdao.ReviewGet(no);
 			File target = new File("D:/upload/review",fdto.getSavename());
-			System.out.println("target:"+target);
 			byte[] data = FileUtils.readFileToByteArray(target);
-			System.out.println("data:"+data);
 //			application/octet-stream
 //			resp.setContentType("application/octet=stream; charset=UTF-8"); 
 			resp.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");

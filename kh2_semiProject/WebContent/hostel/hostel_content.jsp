@@ -20,8 +20,11 @@
 		people = Integer.parseInt(request.getParameter("people"));
 	}
 	boolean isSearch = check_in!=null && check_out!=null && people!=0;
-	HostelDao dao = new HostelDao();
+/* 	HostelDao dao = new HostelDao();
 	HostelDto dto = dao.hostelinfomation(hostel_no);
+======= */
+	HostelDao hdao = new HostelDao();
+	HostelDto hdto = hdao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();
 	List<ReviewDto>list = rdao.hostel_review_list(hostel_no);
 	RoomDao Rdao = new RoomDao();
@@ -36,6 +39,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	img {
+	width: 200px;
+	height: 150px;
+}
+</style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
 	<script>
 		var db = {
