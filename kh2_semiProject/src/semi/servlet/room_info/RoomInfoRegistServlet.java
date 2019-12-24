@@ -14,8 +14,8 @@ import beans.RoomDto;
 @WebServlet(urlPatterns = "/hostel/room_info_regist.do")
 public class RoomInfoRegistServlet extends HttpServlet{
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		try {
 			req.setCharacterEncoding("UTF-8");
 			
