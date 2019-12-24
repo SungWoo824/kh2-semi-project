@@ -27,13 +27,12 @@ public class ReviewWriteServlet extends HttpServlet{
 			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/review",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
 			ReviewDao dao = new ReviewDao();
 			ReviewDto dto = new ReviewDto();
-			
 			int review_no = dao.getSequence();
-			int reservation_no =  Integer.parseInt(req.getParameter("reservation_no"));
+			int reservation_no = Integer.parseInt(mRequest.getParameter("reservation_no"));
 			int customer_no = 1;//reservation_no로 가져옴
-			int hostel_no = Integer.parseInt(req.getParameter("hostel_no"));
-			String review_content = req.getParameter("review_content");
-			int star_point = Integer.parseInt(req.getParameter("star_point"));
+			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));
+			String review_content = mRequest.getParameter("review_content");
+			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
 			
 			
 			dto.setReview_no(review_no);
@@ -41,26 +40,26 @@ public class ReviewWriteServlet extends HttpServlet{
 			dto.setCustomer_no(customer_no);
 			dto.setHostel_no(hostel_no);
 			dto.setReview_content(review_content);
-			dto.setStar_point(star_point);
-			
+			dto.setStar_point(star_point);;
 			dao.write(dto);
 			
 			File file = mRequest.getFile("review_file");
+			System.out.println(file);
 			if(file != null) {
 				FilesDto fdto = new FilesDto();
-				fdto.setUploadname(mRequest.getOriginalFileName("file"));
-				fdto.setSavename(mRequest.getFilesystemName("file"));
-				fdto.setFiletype(mRequest.getContentType("file"));
+				fdto.setUploadname(mRequest.getOriginalFileName("review_file"));
+				fdto.setSavename(mRequest.getFilesystemName("review_file"));
+				fdto.setFiletype(mRequest.getContentType("review_file"));
 				fdto.setFilesize(file.length());
 				fdto.setReview_no(review_no);
-				
 				FilesDao fdao = new FilesDao();
+				fdao.ReviewUpload(fdto);
 			}
-			
-			resp.sendRedirect(req.getContextPath()+"/index.jsp");
+			resp.sendRedirect(req.getContextPath()+"/hostel/hostel_content.jsp?hostel_no="+hostel_no);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			resp.sendError(500);
 		}
 		
 	}

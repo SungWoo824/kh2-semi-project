@@ -23,7 +23,7 @@
 		adult = Integer.parseInt(request.getParameter("adult"));
 		child = Integer.parseInt(request.getParameter("child"));
 		people = adult + child;
-		hlist = hdao.userSearchHostel(start_day, finish_day, city_name, people);
+		hlist= hdao.userSearchHostel(start_day, finish_day, city_name, people);
 	}
 	// 	System.out.println("hlist : " + hlist.size());
 	// 	System.out.println("start : " + start_day);

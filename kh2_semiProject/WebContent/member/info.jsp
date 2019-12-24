@@ -13,6 +13,8 @@
 	String id = (String)session.getAttribute("id");
 	MemberDao dao = new MemberDao();
 	MemberDto dto = dao.get(id);
+	
+	
 %>
     
     
@@ -31,19 +33,24 @@
     </style>
    
      <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+
    
 </head>
 <body>
  
  <div align="center" class="a">
-        <form action="/kh2_semiProject/member/info.do" method="post">
+        <form action="info.do" method="post">
 
 
+
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+          <div class="master-title w-100"><h2>회원 정보 수정</h2></div>
         <table>
-
-
-            <h2>회원정보수정</h2>
 
 
             <tr>
@@ -59,6 +66,17 @@
                     <input type="text" name="member_pw" required="required" >
                 </td>
             </tr>
+             
+
+<%if(request.getParameter("error") != null){ %>
+	<div class="row">
+		<!-- error라는 이름의 파라미터가 있다면 오류 메시지를 출력 -->
+		<h5><font color="red">비밀번호가 일치하지 않습니다.</font></h5>
+	</div>
+	<%} %>	
+             
+           
+            
 
             <tr>
                 <th>새 비밀번호</th>
@@ -67,12 +85,7 @@
                 </td>
             </tr>
 
-            <tr>
-                <th>새 비밀번호 확인</th>
-                <td>
-                    <input type="text"  required="required">
-                </td>
-            </tr>
+           
 
             <tr>
                 <th>이름</th>
@@ -84,7 +97,7 @@
             <tr>
                 <th>전화번호</th>
                 <td>
-                    <input type="text" name="member_phone"  required="required" placeholder="<%=dto.getPhone()%>">
+                    <input type="text" name="member_phone" placeholder="<%=dto.getPhone()%>">
                 </td>
             </tr>
 
@@ -92,14 +105,14 @@
             <tr>
                 <th>이메일</th>
                 <td>
-                    <input type="text" name="member_email" required="required" placeholder="<%=dto.getEmail()%>">
+                    <input type="text" name="member_email" placeholder="<%=dto.getEmail()%>">
                 </td>
             </tr>
 
             <tr>
                 <th>생일</th>
                 <td>
-                    <input type="text" name="member_birthday" required="required" placeholder="<%=dto.getBirthday() %>"> 
+                    <input type="date" name="member_birthday"placeholder="<%=dto.getBirthday() %>"> 
                 </td>
             </tr>
 
@@ -109,8 +122,6 @@
                     <input type="submit" value="회원정보수정">
                 </td>
             </tr>
-
-
 
         </table>
         </form>

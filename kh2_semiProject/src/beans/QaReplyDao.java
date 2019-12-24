@@ -86,6 +86,17 @@ public class QaReplyDao {
 		return dto;
 	}
 	
+	public void update(int qa_reply_no,String qa_reply_content) throws Exception{
+		
+		Connection con = getConnection();
+		String sql = "update qa_reply set qa_reply_content=? where qa_reply_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, qa_reply_content);
+		ps.setInt(2, qa_reply_no);
+		ps.execute();
+		
+		con.close();
+	}
 	public void delete(int qa_no) throws Exception{
 		
 		Connection con = getConnection();
