@@ -184,7 +184,7 @@
 	</h4>
 <%} %>
 	<div align="right">
-	<form action="coupon_itself.jsp" method="get" class="form=choice">
+	<form action="coupon_itself.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="coupon_name">이름</option>
 			<option value="coupon_no">번호</option>

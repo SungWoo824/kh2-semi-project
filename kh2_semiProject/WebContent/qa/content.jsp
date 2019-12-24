@@ -28,13 +28,13 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <style>
 	.explain textarea{
-		width:99%;
-		height:200px;
+		width:100%;
+		height:50px;
 		resize:vertical;
 		font-family:inherit;
 		outline:none;
-		border: 1px solid #fff;
-		background-color:#fff;
+		border: 0;
+		background-color:transparent
 	}
 	body{
 		height: 1000px;
@@ -71,7 +71,23 @@
 		background-color: rgba( 255, 255, 255, 0.5 );
 	}
     .coupon-under-table td {
-    background-color: rgba( 255, 255, 255, 0.5 );
+    	background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.coupon-under-table input#b{
+		color: #666;
+		width:80px;
+		font-size: 0.8rem;
+		margin:0;
+		border:0;
+		outline:0;
+		background: none;
+		font-weight:bold;
+	}
+	.coupon-under-table input#b:hover{
+		color:#292929;
+	}
+	.margin{
+		margin-bottom: 200px;
 	}
 </style>
 </head>
@@ -134,17 +150,25 @@
 		</table>
 	<%} %>
 	</tbody>
+</table>
+<table class="w-80 coupon-under-table margin">
+	<form action="<%=request.getContextPath() %>/qa/qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
+		<tbody>
+			<%if(id!=null){ %>
+				<tr>
+					<td class="explain">	
+						<textarea rows="4" cols="80%" required name="qa_reply_content" placeholder="댓글 입력창"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<input id="b" type="submit" value="댓글 등록">
+					</td>
+				</tr>
+			<%} %>		
+		</tbody>
+	</form>
 	<tfoot>
-		<%if(id!=null){ %>
-			<tr>
-				<td class="explain">	
-						<textarea rows="4" cols="80%" required name="qa_reply_content"></textarea>
-					<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
-						<input type="submit" value="등록">
-					</form>
-				</td>
-			</tr>
-		<%} %>	
 		<tr>
 			<td colspan="2" align="right" class="input-button">
 				<%if(member_id!=null){ %>
