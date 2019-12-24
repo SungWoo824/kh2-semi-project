@@ -11,21 +11,67 @@
     
   <%
   
-  //아이디로 주문 리스트 받기 
   
-  	String id = (String)session.getAttribute("id");
-     
-	MemberDao mdao = new MemberDao();
-	MemberDto mdto = mdao.get(id);
+  
+  
+	int pagesize = 10;
+	int navsize = 10;
+	int pno;
+	try{
+		pno = Integer.parseInt(request.getParameter("pno"));
+		if(pno <= 0) throw new Exception();
+	}
+	catch(Exception e){
+		pno = 1;
+	}
+	int finish = pno * pagesize;
+	int start = finish - (pagesize - 1);
 	
+	String context = request.getContextPath();
+	
+	ReservationDao rdao = new ReservationDao();
+  	String id = (String)session.getAttribute("id");
+
+ 	MemberDao mdao = new MemberDao();
+	MemberDto mdto = mdao.get(id);
+     
 	int member_no=mdto.getNo();
+	int startBlock = (pno - 1) / navsize * navsize + 1;
+	int finishBlock = startBlock + (navsize - 1);
+  List<ReservationDto> list = rdao.list(member_no, start, finish);
+	
+	int count = rdao.Count(member_no);
+	int pagecount = (count + pagesize) / pagesize;
+	if(finishBlock > pagecount){
+		finishBlock = pagecount;
+	}
   
-  ReservationDao rdao = new ReservationDao();
-  List<ReservationDto> list = rdao.list(member_no);
   
+  
+  
+
 RoomDao roomdao = new RoomDao();
 	HostelDao hosteldao = new HostelDao();
+	
 
+	
+
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
  
  %>  
     
@@ -35,13 +81,10 @@ RoomDao roomdao = new RoomDao();
 <meta charset="UTF-8">
 <title>예약조회</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 
 
-<style>
 
 
-</style>
 
 </head>
 <body>
@@ -71,6 +114,7 @@ RoomDao roomdao = new RoomDao();
 			</tr>
 		</thead>
 		<tbody>
+			
 			<%for(ReservationDto rdto2 : list){ %>
 			<tr>
 			
@@ -78,7 +122,7 @@ RoomDao roomdao = new RoomDao();
 				<th>이미지</th>
 				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%></th>
 				<th><%=roomdao.roomname(rdto2.getRoom_no()) %></th>
-				<th><%=rdto2.getReservation_start_date() %>~ 2019-12-25</th>
+				<th><%=rdto2.getReservation_start_date().substring(0, 10) %>~ 2019-12-25</th>
 				<th><%=rdto2.getCustomer_count() %></th>
 				
 				<th><%=rdto2.getCustomer_request() %></th>
@@ -86,7 +130,30 @@ RoomDao roomdao = new RoomDao();
 				
 			</tr>
 			<%} %>
+			
 		</tbody>
 	</table>
+<h4 class="navigator">
+			<%if(startBlock > 1){ %>
+			
+					<a href="list.jsp?pno=<%=startBlock - 1%>">이전</a>
+				<%} %>
+	
+			<%for(int i=startBlock; i <= finishBlock; i++){ %>
+				<%if(i == pno){ %>
+					<a href="list.jsp?pno=<%=i%>" class="navigator-choice"><%=i%></a>
+				<%}else{ %>
+					
+						<a href="list.jsp?pno=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+		
+	
+			<%if(finishBlock < pagecount){ %>
+				
+					<a href="list.jsp?pno=<%=finishBlock + 1%>">다음</a>
+				<%} %>
+		
+		</h4>
 </body>
 </html>

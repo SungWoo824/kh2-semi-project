@@ -416,13 +416,15 @@ public class CouponDao {
 		
 		/////member_no로 쿠폰dto 검색
 		
-		public List<CouponDto> id_search(int member_no) throws Exception{
+		public List<CouponDto> id_search(int member_no,int startblock,int finishblock) throws Exception{
 			
 			List<CouponDto> list = new ArrayList<>();
 			Connection con = getConnection();
-			String sql = "select A.* from (select * from (select c.*,h.member_no,h.havecoupon_no from havecoupon h , couponlist c where h.coupon_no=c.coupon_no) where member_no=?)A  order by coupon_no desc";
+			String sql = "select * from(select ROWNUM rn,A.* from (select * from (select c.*,h.member_no,h.havecoupon_no from havecoupon h , couponlist c where h.coupon_no=c.coupon_no) where member_no=?)A  order by coupon_no desc)where rn between ? and ?";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ps.setInt(1, member_no);
+			ps.setInt(2, startblock);
+			ps.setInt(3, finishblock);
 			ResultSet rs = ps.executeQuery();
 			
 			while(rs.next()) {
@@ -442,6 +444,21 @@ public class CouponDao {
 			return list;	
 		}
 		
+		
+		//회원별 쿠폰개수 구하기
+		public int Count(int member_no) throws Exception{
+			Connection con = getConnection();
+			
+			String sql = "select count(*) from havecoupon where member_no=? ";
+
+			PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, member_no);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			int count = rs.getInt(1);
+			con.close();
+			return count;
+		}
 }
 
 

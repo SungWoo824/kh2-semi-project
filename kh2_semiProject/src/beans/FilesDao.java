@@ -36,13 +36,13 @@ public class FilesDao {
 		
 		String sql = "insert into files("
 							+ "file_no, hostel_no, uploadname, savename, filetype, filesize) "
-							+ "values(files_no_seq.nextval, 2, ?, ?, ?, ?)";
+							+ "values(files_no_seq.nextval, ?, ?, ?, ?, ?)";
 		PreparedStatement ps = con.prepareStatement(sql);
-		//ps.setInt(1, fdto.getHostel_no());
-		ps.setString(1, fdto.getUploadname());
-		ps.setString(2, fdto.getSavename());
-		ps.setString(3, fdto.getFiletype());
-		ps.setLong(4, fdto.getFilesize());
+		ps.setInt(1, fdto.getHostel_no());
+		ps.setString(2, fdto.getUploadname());
+		ps.setString(3, fdto.getSavename());
+		ps.setString(4, fdto.getFiletype());
+		ps.setLong(5, fdto.getFilesize());
 		ps.execute();
 		
 		con.close();
