@@ -27,6 +27,15 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <style>
+	.explain textarea{
+		width:99%;
+		height:200px;
+		resize:vertical;
+		font-family:inherit;
+		outline:none;
+		border: 1px solid #fff;
+		background-color:#fff;
+	}
 	body{
 		height: 1000px;
 		width: 100%;
@@ -53,6 +62,17 @@
 		position:absolute;
 		z-index:101;
 	}
+	.content-table #replycontent{
+		overflow:hidden;
+		word-wrap:break-word;
+		word-break:break-all;
+	}
+	.coupon-under-table{
+		background-color: rgba( 255, 255, 255, 0.5 );
+	}
+    .coupon-under-table td {
+    background-color: rgba( 255, 255, 255, 0.5 );
+	}
 </style>
 </head>
 <body>
@@ -67,68 +87,83 @@
 <div class="row-big"></div>
 <jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 </div>
-<div class="w-60">
+<div class="w-60" align="center">
 <div align="center"><h2 class="master-title w-100"><%=dto.getQa_title() %></h2></div>
 
-<table class="w-100 coupon-under-table">
+<table class="w-80 coupon-under-table">
 	<thead>
 		<tr>
-			<td width="150px">&nbsp;제목</td>
+			<th width="150px">&nbsp;제목</th>
 			<td>&nbsp;<%=dto.getQa_title() %></td>
 		</tr>
 		<tr>
-			<td>&nbsp;글쓴이</td>
+			<th>&nbsp;글쓴이</th>
 			<td>&nbsp;<%=dto.getMember_no() %></td>
 		</tr>
 		<tr>
-			<td>&nbsp;방이름</td>
+			<th>&nbsp;방이름</th>
 			<td>&nbsp;<%=dto.getRoom_no() %></td>
 		</tr>
 		<tr height="200">
 			<td valign="top" colspan="2"><%=dto.getQa_content() %> </td>
 		</tr>
-			<tr>
-			<td>
 	</thead>
 	<tbody>
-		<table class="w-100 coupon-under-table">
-			<%for(QaReplyDto rdto : list){ %>
-				<tr>
-					<td><%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
-					<td><%=rdto.getQa_reply_wdate().substring(0,16) %></td>
-				</tr>
-				<tr>
-					<td colspan="2"><%=rdto.getQa_reply_content() %></td>
-				</tr>
-				<tr>
-					<form action="<%=request.getContextPath() %>/qa/qa_reply_delete.do" method="get">
-						<td colspan="2">
-							<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
-						</td>
-					</form>
-				</tr>
-			<%} %>
+	<%for(QaReplyDto rdto : list){ %>
+		<table class="w-80 content-table">
+				<thead>
+					<tr>
+						<td align="left" style="border-right: hidden;">&nbsp;<%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
+						<td align="right" style="border-left: hidden;"><%=rdto.getQa_reply_wdate().substring(0,16) %>&nbsp;</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2" valign="top" id="replycontent"><%=rdto.getQa_reply_content() %></td>
+					</tr>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th colspan="2" align="right" class="input-button" height="5px">
+							<form action="<%=request.getContextPath() %>/qa/qa_reply_delete.do" method="get">
+								<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>">삭제</a>
+							</form>
+						</th>
+					</tr>
+				</tfoot>
 		</table>
+	<%} %>
+	</tbody>
+	<tfoot>
 		<%if(id!=null){ %>
 			<tr>
-				<td align="right">	
-					<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
+				<td class="explain">	
 						<textarea rows="4" cols="80%" required name="qa_reply_content"></textarea>
+					<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
 						<input type="submit" value="등록">
 					</form>
 				</td>
 			</tr>
 		<%} %>	
-		<tr align="right">
-			<td>
-			<%if(member_id!=null){ %>
-				<a href="write.jsp"><input type="button" value="글쓰기"></a>
-			<%} %>
-			<a href="edit.jsp?no=<%=dto.getQa_no() %>"><input type="button" value="글수정"></a>
-			<a href="delete.do?no=<%=dto.getQa_no() %>"><input type="button" value="글삭제"></a>
-			<a href="list.jsp"><input type="button" value="글목록"></a></td>
+		<tr>
+			<td colspan="2" align="right" class="input-button">
+				<%if(member_id!=null){ %>
+					<a id="a" href="write.jsp">
+						<input type="button" value="글쓰기">
+					</a>
+				<%} %>
+				<a id="a" href="edit.jsp?no=<%=dto.getQa_no() %>">
+					<input type="button" value="글수정">
+				</a>
+				<a id="a" href="delete.do?no=<%=dto.getQa_no() %>">
+					<input type="button" value="글삭제">
+				</a>
+				<a id="a" href="list.jsp">
+					<input type="button" value="글목록">
+				</a>
+			</td>
 		</tr>
-	</tbody>
+	</tfoot>	
 </table>
 </div>
 </section>
