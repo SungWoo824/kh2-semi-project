@@ -10,6 +10,7 @@
 <title>쿠폰 등록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <script>
     function prevent(){
         var tag = document.querySelector("textarea");
@@ -129,7 +130,7 @@
 		</table>
 	</form>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
-<div>footer</div>
 </body>
 </html>
