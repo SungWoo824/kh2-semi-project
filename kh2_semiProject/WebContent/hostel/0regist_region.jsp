@@ -8,12 +8,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <style>
+@font-face{
+    font-family: binggrae;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
+	}
+	
 * {
 	box-sizing: border-box;
+	background-color: #EFEFEF;
+	height: 80px;
+	font-family: binggrae;
+	background-image: url("../image/login5.jpg"); 
 }
 
 .a {
@@ -21,6 +31,7 @@
 	/* 내용물 가운데 정렬 */
 	text-align: center;
 	/* div 자신을 가운데 정렬 */
+	padding: 70px;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -37,7 +48,10 @@
 	padding-right: 2rem;
 	margin: 30PX;
 	font-size: 25px;
+	
+	
 }
+
 
 p {
 	font-size: 30px;
@@ -45,19 +59,23 @@ p {
 }
 
 .btn {
-	border: 0;
+	border: 1px;
 	font-size: 18px;
 	display: block;
 	margin: 35px auto;
 	padding: 15px 20px;
-	background-color: lightsalmon;
+	background-color: #565960;
+	height: 50px;
+	width: 100px;
+	
 }
 
 .btn:hover {
-	background-color: white;
-	color: lightsalmon;
+	background-color: #EFEFEF;
+	color: #565960;
 	cursor: pointer;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -192,16 +210,18 @@ p {
 </head>
 
 <body>
+<div>
+	<jsp:include page="/template/nav.jsp"></jsp:include>
+</div>
 <%if(login){ %>
 	<form action="1regist_hostel.jsp" method="get">
 
 		<div class="a">
-			<h1 style="color: lightsalmon">판매자 등록 페이지(0단계 지역 정보)</h1>
-			<p>숙소등록지를 설정해주세요.</p>
+			<h1 style="color: #565960">숙소를 등록할 지역을 설정해주세요</h1>
 
 			<select class="kind" onchange="categoryChange(this)"
-				name="region_name">
-
+				name="region_name" style="background: #EFEFEF">
+				
 				<option>--도/광역시/특별시--</option>
 
 				<option>서울특별시</option>
