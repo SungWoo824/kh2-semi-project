@@ -9,6 +9,12 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
+	int qa_reply_no;
+	try{
+		qa_reply_no = Integer.parseInt(request.getParameter("qa_reply_no"));
+	}catch(Exception e){
+		qa_reply_no=0;
+	}
 	String id = "운기";
 	String grade ="관리자";
 	String no1 = request.getParameter("no");
@@ -95,6 +101,7 @@ article{
 
 <body style="width: 60%">
 <jsp:include page="../template/nav.jsp" ></jsp:include>
+<br><br><br><br>
 <div align="center">
 <h1>	<%=dto.getQa_title() %></h1>
 	<table class="table">
@@ -125,11 +132,24 @@ article{
 						<td><%=rdto.getQa_reply_wdate() %></td>
 				</tr>
 				<tr>
+					<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
 					<td colspan="2"  style="font-size: 1.2rem;"><%=rdto.getQa_reply_content() %></td>
+				<%}else{ %>
+				<form action="qa_reply_edit.do">
+					<td colspan="2"  style="font-size: 1.2rem;">
+					<textarea name="qa_reply_content"><%=rdto.getQa_reply_content() %></textarea> 
+					<input type="hidden" name="qa_reply_no" value="<%=rdto.getQa_reply_no()%>">
+					<input type="submit" value="수정">
+					</td>
+				</form>
+				<%} %>
 				</tr>
 					<tr>
 						<form action="qa_reply_delete.do" method="get">
 							<td colspan="2" align="right">
+							<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
+							<a href="content.jsp?pno=&no=<%=rdto.getQa_no()%>&qa_reply_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="수정"></a>
+							<%} %>
 							<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
 							</td>
 					</form>
