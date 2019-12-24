@@ -123,6 +123,14 @@ RoomDao roomdao = new RoomDao();
 			</tr>
 		</thead>
 		<tbody>
+			<%if(count==0){ %>
+			<tr>
+			
+				<th colspan="8">예약내역이 없습니다.</th>
+				
+				
+			</tr>
+			<%} else{%>
 			
 			<%for(ReservationDto rdto2 : list){ %>
 			<tr>
@@ -138,6 +146,7 @@ RoomDao roomdao = new RoomDao();
 				<th><input type="button" value="리뷰쓰러가기"></th>
 				
 			</tr>
+			<%} %>
 			<%} %>
 			
 		</tbody>
