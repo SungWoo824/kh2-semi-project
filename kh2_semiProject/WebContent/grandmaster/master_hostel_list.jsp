@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int pagesize = 10;
+	int pagesize = 15;
 	int navsize = 10;
 	int pno;
 	try{
@@ -41,9 +41,75 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>호텔 목록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
+<style>
+	.select-selected{
+		/*배경을 바꾸고 싶다면 */
+  		background-color:#eaebec;  
+ 		border-bottom-color: #666; 
+		/*글자색을 바꾸고 싶다면*/
+ 		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
+	}
+	
+	/* 화살표 색상을 바꾸고 싶다면 */
+	.select-selected::after{
+		border-top-color:#666;
+	}
+	.select-selected.select-arrow-active::after{
+		border-bottom-color:#666;
+	}
+	/* 화살표 색상을 바꾸고 싶다면 */	
+	
+	/* 테두리를 바꾸고 싶다면 */
+	.select-items{
+		border-color:#eaebec;
+	}
+	/* 테두리를 바꾸고 싶다면 */
+	
+	
+	/* 항목 글자색을 바꾸고 싶다면 */
+	.select-items div{
+		color:#666;
+	}
+	/* 항목 글자색을 바꾸고 싶다면 */
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
+	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
+</style>
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <script type="text/javascript">
 	function hostel_remove_event(){
@@ -55,6 +121,10 @@
 	}
 </script>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <div>
 <jsp:include page="../template/nav.jsp"></jsp:include>
 </div>
@@ -67,7 +137,7 @@
 	<div class="row-big"></div>
 	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
 	<div class="master-title w-100"><h2>호텔 목록</h2></div>
-    <table class="w-100 hostel-table">
+    <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
 				<th>숙소번호</th>
@@ -91,7 +161,7 @@
 				<th><%=hdto.getHostel_name() %></th>
 				<th><%=hdto.getHostel_phone() %></th>
 				
-				<th><%=hdto.getHostel_detail_addr() %></th>
+				<th>(<%=hdto.getHostel_detail_addr().substring(0, 5) %>) <%=hdto.getHostel_detail_addr().substring(5) %></th>
 				<th><%=hdto.getHostel_content() %></th>
 				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>" onclick="hostel_remove_event();">
 					숙소 삭제하기</a></th>
@@ -128,7 +198,7 @@
 			<%} %>
 		</h4>
 	<div align="right">
-	<form action="master_hostel_list.jsp" method="get" class="form=choice">
+	<form action="master_hostel_list.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select">
 			<option value="hostel_name">숙소 이름</option>
 		</select>
@@ -137,5 +207,7 @@
 	</form>
 	</div>
 	</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
+</section>
 </body>
 </html>

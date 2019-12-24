@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>리뷰 페이지</title>
 <style type="text/css">
 *{
@@ -208,8 +209,31 @@ a {
 		}
 	
 </script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#imgInp").on('change', function(){
+                readURL(this);
+            });
+        });
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    $('#foo	').attr('src', e.target.result);
+                }
+
+              reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 </head>
+<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <body>
+<<<<<<< HEAD
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>

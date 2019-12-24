@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script>
 function number_check1(){
@@ -84,10 +85,39 @@ function number_check1(){
 	.select-items{
 		border-color:#eaebec;
 	}
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
 	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}
 </style>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 <div class="row-big"></div>
@@ -138,6 +168,7 @@ function number_check1(){
 		</table>
 	</form>
 </div>
-<div>footer</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
+</section>
 </body>
 </html>

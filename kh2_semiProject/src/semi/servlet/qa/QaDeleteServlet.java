@@ -17,9 +17,9 @@ public class QaDeleteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			int qa_no = Integer.parseInt(req.getParameter("no"));
+			int qa_delete_no = Integer.parseInt(req.getParameter("qa_delete_no"));
 			QaDao dao = new QaDao();
-			dao.delete(qa_no);
+			dao.delete(qa_delete_no);
 			resp.sendRedirect(req.getContextPath()+"/qa/list.jsp");
 		} catch (Exception e) {
 			e.getStackTrace();

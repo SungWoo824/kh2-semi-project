@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int pagesize = 10;
+	int pagesize = 15;
 	int navsize = 10;
 	int pno;
 	try{
@@ -46,6 +46,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -53,6 +54,8 @@
  		border-bottom-color:#666; 
 		/*글자색을 바꾸고 싶다면*/
  		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
 	}
 	
 	/* 화살표 색상을 바꾸고 싶다면 */
@@ -66,12 +69,45 @@
 	.select-items{
 		border-color:#eaebec;
 	}
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
 	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}	
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
 </style>
 
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 <div class="row-big"></div>
@@ -109,7 +145,7 @@
 				<%} %>
 			</tbody>
 			<tfoot>		
-				<tr>		
+				<tr style="height: 30px;">		
 					<td colspan="5" align="right">		
 						<a href="coupon_regist.jsp">쿠폰 등록</a>
 						<%if(isSearch) {%>
@@ -149,7 +185,7 @@
 	</h4>
 <%} %>
 	<div align="right">
-	<form action="coupon_itself.jsp" method="get" class="form=choice">
+	<form action="coupon_itself.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="coupon_name">이름</option>
 			<option value="coupon_no">번호</option>
@@ -160,6 +196,7 @@
 	</form>
 	</div>
 </div>
-<div>footer</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
+</section>
 </body>
 </html>

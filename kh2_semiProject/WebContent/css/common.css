@@ -15,9 +15,12 @@
     background:#eaebec;
     border:#ccc 1px solid;
     border-radius: 3px;
+    background-color: rgba( 255, 255, 255, 0.5 );
     }
-    .member-table>tbody tr{
+    .member-table>tbody tr
+    .member-table>tfoot tr{
         background: #fff;
+        background-color: rgba( 255, 255, 255, 0.5 );
     }
     .member-table tr{
         text-align: center;
@@ -50,6 +53,7 @@
 	.master-list> div{
 	    width:100%;
 	    text-align:center;
+	    
 	}
 	.master-list >.master-list-item{
 		width:60%;
@@ -131,22 +135,26 @@
     }
    
     .couponmember-table{
-    font-family: notosanskrmedium;
-    color:#666;
-    text-shadow: 1px 1px 0px #fff;
-    background:#eaebec;
-    border:#ccc 1px solid;
-    border-radius: 3px;
-    font-weight: bold;
+	    font-family: notosanskrmedium;
+	    color:#666;
+	    text-shadow: 1px 1px 0px #fff;
+	    background:#eaebec;
+	    border:#ccc 1px solid;
+	    border-radius: 3px;
+	    font-weight: bold;
+	    background-color: rgba( 255, 255, 255, 0.5 );
     }
     .couponmember-table>tbody tr{
         background: #fff;
+        background-color: rgba( 255, 255, 255, 0.5 );
     }
     .couponmember-table>tfoot tr{
         background: #fff;
+        background-color: rgba( 255, 255, 255, 0.5 );
     }
     .couponmember-table tr{
         text-align: center;
+        height:50px;
     }
     .couponmember-table a{
         color: #666666;
@@ -160,25 +168,27 @@
     .navigator{
     	font-family: notosanskrmedium;
     	color:#666;
-    	text-shadow: 1px 1px 0px #fff;
-    	background:#fff;
+    	background:none;
     	border-radius: 3px;
     	text-align: center;
     	margin-right: 10px;
     	margin-left: 10px;
+    	font-size: 1.2rem;
     }
     .navigator a{
-    	color:#c0c0c0;
+    	color:#ffffff;
     	text-decoration: none;
     	margin-right: 10px;
     	margin-left: 10px;
     }
+    
+
     .navigator a:hover{
     	color: black;
     	text-decoration: none;
     }
     .navigator .navigator-choice{
-    	color: #666;
+    	color: #045912;
     	text-decoration: none;
     }
     .form-choice{
@@ -246,10 +256,14 @@
 	}	
 	.input-button input{
 		width:60px;
-		background-color: #fff;
+		background-color: transparent;
+		border:none;
+		font-size: 0.85rem;
+		font-weight: bold;
+		color:#666;
 	}
 	.input-button input:hover{
-		color:#666;
+		color:#000000;
 	}
 	.input-button a{
 		text-decoration: none;
@@ -287,9 +301,12 @@
     background:#eaebec;
     border:#ccc 1px solid;
     border-radius: 3px;
+    background-color: rgba( 255, 255, 255, 0.5 );
     }
-    .hostel-table>tbody tr{
+    .hostel-table>tbody tr
+    .hostel-table>tfoot tr{
         background: #fff;
+        background-color: rgba( 255, 255, 255, 0.5 );
     }
     .hostel-table tr{
         text-align: center;
@@ -312,21 +329,30 @@
 	.master-detail{
 		width : 80%;
 		font-size : 1.2rem;
-		padding : 1rem;
-		padding-bottom:3rem;
+		padding : 0rem;
+		padding-bottom:1.5rem;
 		margin : auto;
-		margin-top:2rem; 
+		margin-top:0.5rem; 
 		background-color : #f5f5f5;
+		background-color: rgba( 255, 255, 255, 0.5 );
 	}
 	.master-detail .master-detail-name{
             width: 25%;
             float: left;
             margin-top : 2rem;
+            text-align: left;
+	}
+	.master-detail .master-detail-content{
+            width: 25%;
+            float: left;
+            margin-top : 2rem;
+            text-align: left;
 	}
 	.master-detail .master-detail-coupon{
 			width: 20%;
             float: left;
             margin-top : 2rem;
+            text-align: center;
 	}
 	.master-detail::after{
             content:"";
@@ -367,3 +393,44 @@
 	.errorbutton a:hover{
 		color:#292929;
 	}
+
+	.content-table{
+		font-family: notosanskrmedium;
+    	color:#666;
+    	text-shadow: 1px 1px 0px #fff;
+    	background:#eaebec;
+    	border:#ccc 1px solid;
+    	border-radius: 3px;
+    	font-size: 0.85rem;
+    	background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.content-table tbody td{
+		font-size: 0.95rem;
+		background:#fff;
+		background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.content-table input{
+		outline:none;
+		border: 1px solid #fff;
+		width:100%;
+	}
+	.content-table tfoot td{
+		font-size: 0.95rem;
+		background:#fff;
+		background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.content-table tfoot tr{
+		background: #fff;
+        background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.content-table a{
+        color: #666666;
+        text-decoration: none;
+        margin-right: 10px;
+        font-size: 0.85rem;
+    }
+    .content-table a:hover{
+        color: black;
+        text-decoration: none;
+    }
+	

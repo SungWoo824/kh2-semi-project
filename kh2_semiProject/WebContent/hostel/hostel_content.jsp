@@ -1,3 +1,6 @@
+<%@page import="beans.FilesDto"%>
+<%@page import="beans.FilesDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="beans.RoomDao"%>
 <%@page import="beans.RoomDto"%>
 <%@page import="java.util.List"%>
@@ -10,17 +13,39 @@
 <!DOCTYPE html>
 <%
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
+	String check_in = request.getParameter("check_in");
+	String check_out = request.getParameter("check_out");
+	int people=0;
+	if(request.getParameter("people")!=null){
+		people = Integer.parseInt(request.getParameter("people"));
+	}
+	boolean isSearch = check_in!=null && check_out!=null && people!=0;
+/* 	HostelDao dao = new HostelDao();
+	HostelDto dto = dao.hostelinfomation(hostel_no);
+======= */
 	HostelDao hdao = new HostelDao();
 	HostelDto hdto = hdao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();
 	List<ReviewDto>list = rdao.hostel_review_list(hostel_no);
 	RoomDao Rdao = new RoomDao();
-	List<RoomDto>Rlist = Rdao.hostel_room_list(hostel_no);
+	List<RoomDto>Rlist = new ArrayList<>();
+	if(isSearch){
+		Rlist = Rdao.hostel_room_list_search(check_in, check_out, people, hostel_no);
+	}else{
+		Rlist = Rdao.hostel_room_list(hostel_no);
+	}
 %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="../css/hostel-list.css" />
+<style>
+	img {
+	width: 200px;
+	height: 150px;
+}
+</style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
 	<script>
 		var db = {
@@ -181,36 +206,82 @@
 	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ방자리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br><br>
 	<%for(RoomDto Rdto : Rlist){ %>
 		
-	<a href="room_content.jsp?room_no=<%=Rdto.getRoom_no() %>">	룸번호<%=Rdto.getRoom_no() %></a>
-		호텔번호<%=Rdto.getHostel_no() %>
-		룸가격<%=Rdto.getRoom_price() %>
-		기본인원<%=Rdto.getRoom_standard_people() %>
-		최대인원<%=Rdto.getRoom_max_people() %>
-		침대<%=Rdto.getRoom_bed() %>
-		화장실<%=Rdto.getRoom_bath() %>
-		스파<%=Rdto.getRoom_spa() %>
-		요리<%=Rdto.getRoom_cook() %>
-		방설명<%=Rdto.getRoom_content() %>
-		주차<%=Rdto.getRoom_parking() %>
-		펫<%=Rdto.getRoom_pet() %>
-		아침식사<%=Rdto.getRoom_breakfast() %>
-		룸베이직<%=Rdto.getRoom_basic() %>
-		티비<%=Rdto.getRoom_tv() %>
-		헤어드라이기<%=Rdto.getRoom_dry() %>
-		에어컨<%=Rdto.getRoom_cool() %>
-		난방<%=Rdto.getRoom_hot() %>
-		방이름<%=Rdto.getRoom_name() %><br><br>
+<%-- 	<a href="room_content.jsp?room_no=<%=Rdto.getRoom_no() %>">	룸번호 : <%=Rdto.getRoom_no() %></a> --%>
+<%-- 		호텔번호<%=Rdto.getHostel_no() %> --%>
+<%-- 		룸가격<%=Rdto.getRoom_price() %> --%>
+<%-- 		기본인원<%=Rdto.getRoom_standard_people() %> --%>
+<%-- 		최대인원<%=Rdto.getRoom_max_people() %> --%>
+<%-- 		침대<%=Rdto.getRoom_bed() %> --%>
+<%-- 		화장실<%=Rdto.getRoom_bath() %> --%>
+<%-- 		스파<%=Rdto.getRoom_spa() %> --%>
+<%-- 		요리<%=Rdto.getRoom_cook() %> --%>
+<%-- 		방설명<%=Rdto.getRoom_content() %> --%>
+<%-- 		주차<%=Rdto.getRoom_parking() %> --%>
+<%-- 		펫<%=Rdto.getRoom_pet() %> --%>
+<%-- 		아침식사<%=Rdto.getRoom_breakfast() %> --%>
+<%-- 		룸베이직<%=Rdto.getRoom_basic() %> --%>
+<%-- 		티비<%=Rdto.getRoom_tv() %> --%>
+<%-- 		헤어드라이기<%=Rdto.getRoom_dry() %> --%>
+<%-- 		에어컨<%=Rdto.getRoom_cool() %> --%>
+<%-- 		난방<%=Rdto.getRoom_hot() %> --%>
+<%-- 		방이름<%=Rdto.getRoom_name() %><br><br> --%>
+		<section class="hostel">
+		<form action="room_content.jsp">
+		<div class="hostel-container">
+			<div class="hostel__image">
+				<img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
+			</div>
+			<div class="hostel__content">
+				<ul>
+					<li class="hostel__title"><h3><%=Rdto.getRoom_name() %></h3></li>
+					<li class="hostel__intro"><span><%=Rdto.getRoom_content() %></span></li>
+					<li class="hostel__info">
+						<ul class="hostel__info-list">
+							<li class="room-info hostel__max-people"><span>최대인원
+									<%=Rdto.getRoom_max_people() %>명 | </span></li>
+							<li class="room-info hostel__bed"><span>침대 <%=Rdto.getRoom_bed() %>개 | </span></li>
+							<li class="room-info hostel__bathroom"><span>화장실 <%=Rdto.getRoom_bath() %>개 |
+							</span></li>
+							<li class="room-info hostel__cook"><span>요리 <%=Rdto.getRoom_cook() %> | </span></li>
+							<li class="room-info hostel__spa"><span>사우나 <%=Rdto.getRoom_spa() %></span></li>
+						</ul>
+						<ul class="hostel__info-list">
+							<li class="room-info hostel__parking"><span>주차장 <%=Rdto.getRoom_parking() %> | </span>
+							</li>
+							<li class="room-info hostel__pet"><span>애완동물 <%=Rdto.getRoom_pet() %> | </span></li>
+							<li class="room-info hostel__wifi"><span>WIFI O | </span></li>
+							<li class="room-info hostel__breakfast"><span>조식 <%=Rdto.getRoom_breakfast() %></span></li>
+						</ul>
+					</li>
+					<li>
+						<input type="hidden" name="room_no" value="<%=Rdto.getRoom_no() %>">
+						<input type="hidden" name="check-in" value="<%=check_in %>">
+						<input type="hidden" name="check-out" value="<%=check_out %>">
+						<input type="hidden" name="people" value="<%=people %>">	
+					</li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="details"><input type="submit"></div>
+			<div class="hostel__price">
+				<h3>1,000,000원</h3>
+			</div>
+		</div>
+		</form>
+	</section>
 	<%} %>
 	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ리뷰자리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br><br>
-	<%for(ReviewDto rdto : list){ %>
-	리뷰넘버<%=rdto.getReview_no() %>
-	예약넘버<%=rdto.getReservation_no() %>
-	고객넘버<%=rdto.getCustomer_no() %>
-	호텔넘버<%=rdto.getHostel_no() %>
-	리뷰내용<%=rdto.getReview_content() %>
-	별점<%=rdto.getStar_point() %>
-	리뷰시간<%=rdto.getReview_date() %>
-	<br><br>
-	<%} %>
+<%-- 	<%for(ReviewDto rdto : list){ %> --%>
+<%-- 	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>"> --%>
+<%-- 	<a href="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">다운</a> --%>
+<%-- 	리뷰넘버<%=rdto.getReview_no() %> --%>
+<%-- 	예약넘버<%=rdto.getReservation_no() %> --%>
+<%-- 	고객넘버<%=rdto.getCustomer_no() %> --%>
+<%-- 	호텔넘버<%=rdto.getHostel_no() %> --%>
+<%-- 	리뷰내용<%=rdto.getReview_content() %> --%>
+<%-- 	별점<%=rdto.getStar_point() %> --%>
+<%-- 	리뷰시간<%=rdto.getReview_date() %> --%>
+<!-- 	<br><br> -->
+<%-- 	<%} %> --%>
 </body>
 </html>

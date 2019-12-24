@@ -14,6 +14,7 @@ CouponDto dto = dao.get(coupon_no);
 <title>쿠폰 상세보기</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 .explain textarea{
 	width:99%;
@@ -24,9 +25,45 @@ CouponDto dto = dao.get(coupon_no);
 	border: 1px solid #fff;
 	background-color:#fff;
 }
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
+	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}
+	.coupon-under-table{
+		background-color: rgba( 255, 255, 255, 0.5 );
+	}
+	.coupon-under-table td{
+		background-color: rgba( 255, 255, 255, 0.5 );
+	}
 </style>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 <div class="row-big"></div>
@@ -65,8 +102,8 @@ CouponDto dto = dao.get(coupon_no);
 	</tr>
 	<tr height="200px">
 		<th>상세설명</th>
-		<td class="explain">
-			<textarea readonly="readonly" disabled><%=dto.getCoupon_explain() %></textarea>		
+		<td class="explain" height="200px" valign="top" align="left">
+			<%=dto.getCoupon_explain() %>	
 		</td>
 	</tr>
 	<tr>
@@ -85,6 +122,7 @@ CouponDto dto = dao.get(coupon_no);
 </tbody>
 </table>
 </div>
-<div>footer</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
+</section>
 </body>
 </html>

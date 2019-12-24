@@ -18,30 +18,45 @@ public class MemberChangeInfoServlet extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String id = (String)req.getSession().getAttribute("id");
 			
 			req.setCharacterEncoding("UTF-8");
 			
+			String id = (String)req.getSession().getAttribute("id");
 			
 			MemberDto dto = new MemberDto();
 			String newpw=req.getParameter("newpw");
-		dto.setId(id);
-			dto.setPw(req.getParameter("member_pw"));
 			
-		
-			dto.setBirthday(req.getParameter("member_birthday"));
+			dto.setId(id);
+			dto.setPw(req.getParameter("member_pw"));
+			String member_birthday = req.getParameter("member_birthday");
+			System.out.println("생일"+member_birthday);
+			dto.setBirthday(member_birthday);
 			dto.setPhone(req.getParameter("member_phone"));
 			dto.setEmail(req.getParameter("member_email"));
 			
+	
+				
+		
+		
+		
 			MemberDao dao = new MemberDao();
-			dao.ci(dto,newpw);
-			resp.sendRedirect("regist_success.jsp");
+int result=			dao.ci(dto,newpw);
+			
+			if(result>=1) {
+				resp.sendRedirect("../mypage/index.jsp");
+				
+			}
+			else {
+		resp.sendRedirect("info.jsp?error");		
+			}
+			
 			
 		} catch (Exception e) {
 			
 			
 			e.printStackTrace();
-			resp.sendRedirect("regist_fail.jsp");
+		resp.sendError(500);
+	
 			
 			
 		}

@@ -1,3 +1,5 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@page import="beans.QaDto"%>
 <%@page import="beans.QaDao"%>
 <%@page import="java.util.List"%>
@@ -8,51 +10,45 @@
 //아이디로 내가 쓴 보드 글 찾기
 
 String id = (String)session.getAttribute("id");
-	QaDao dao = new QaDao();
-	List<QaDto> list = dao.id_search(id);
+
+MemberDao mdao = new MemberDao();
+MemberDto mdto =  mdao.get(id);
+int member_no=   mdto.getNo();
 
 
 	
+
+
+//	페이지 크기
+	int pagesize = 10;
+//	네비게이터 크기
+	int navsize = 10;
+	
+//	페이징 추가
 	int pno;
 	try{
 		pno = Integer.parseInt(request.getParameter("pno"));
-		if(pno<=0)throw new Exception();
-	}catch(Exception e){
-		pno=1;
+		if(pno <= 0) throw new Exception();
 	}
-	int list_width;
-	try{
-		list_width=Integer.parseInt(request.getParameter("list_width"));
-	}catch(Exception e){
-		list_width=3;
+	catch(Exception e){
+		pno = 1;
 	}
-	int list_count;
-	try{
-		list_count=Integer.parseInt(request.getParameter("list_count"));
-	}catch(Exception e){
-		list_count=list_width*5;
-	}
-	int pagesize = 10;
-	int navsize = 10;
-	int startBlock = (pno-1)/navsize*navsize+1;
-	int finishBlock = startBlock+9;
 	
 	int finish = pno * pagesize;
-	int start = finish -  (pagesize-1);
+	int start = finish - (pagesize - 1);
+	
+	
+	
+	
+QaDao qdao = new QaDao();
+int count=qdao.Countmemberno(member_no);
 
-
+	int pagecount = (count + pagesize) / pagesize;
 	
+	int startBlock = (pno - 1) / navsize * navsize + 1;
+	int finishBlock = startBlock + (navsize - 1);
 	
-	String type = request.getParameter("type");
-	String keyword = request.getParameter("keyword");
-	
-	int count = dao.getCount(type,keyword);
-	int pagecount = (count+pagesize)/pagesize;
-	
-	boolean isSearch = type!=null && keyword!=null;
-	if(isSearch){
-		list = dao.search(type, keyword,start,finish);
-	}
+	List<QaDto> list = qdao.id_search(id, start, finish);
 	if(finishBlock > pagecount){
 		finishBlock = pagecount;
 	}
@@ -88,6 +84,7 @@ String id = (String)session.getAttribute("id");
 		<th width="45%">제목</th>
 		<th>작성자 </th>
 		<th>작성일 </th>
+		<th> </th>
 		</tr>
 		</thead>
 		<tbody>
@@ -99,6 +96,7 @@ String id = (String)session.getAttribute("id");
 		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_no() %></td>
 		<td><%=dto.getQa_wdate() %></td>
+		<td><input type="button" value="상세보기"></td>
 	</tr>
 	<% } %>
 </tbody>
@@ -106,7 +104,28 @@ String id = (String)session.getAttribute("id");
 
 
 
-
+<h4 class="navigator">
+			<%if(startBlock > 1){ %>
+			
+					<a href="board_list.jsp?pno=<%=startBlock - 1%>">이전</a>
+				<%} %>
+	
+			<%for(int i=startBlock; i <= finishBlock; i++){ %>
+				<%if(i == pno){ %>
+					<a href="board_list.jsp?pno=<%=i%>" class="navigator-choice"><%=i%></a>
+				<%}else{ %>
+					
+						<a href="board_list.jsp?pno=<%=i%>"><%=i%></a>
+					<%} %>
+				<%} %>
+		
+	
+			<%if(finishBlock < pagecount){ %>
+				
+					<a href="board_list.jsp?pno=<%=finishBlock + 1%>">다음</a>
+				<%} %>
+		
+		</h4>
 
 </body>
 </html>
