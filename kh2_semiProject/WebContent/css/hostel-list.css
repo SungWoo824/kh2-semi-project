@@ -127,6 +127,10 @@ table {
   box-sizing: border-box;
 }
 
+.body{
+	min-height:1000px;
+}
+
 .search-container {
   margin: 0 auto;
   width: 1200px;
@@ -298,8 +302,9 @@ table {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.hostel__image a img {
+.hostel__image img {
   width: 100%;
+  height:auto;
   border-radius: 5px;
   border: 3px solid white;
 }

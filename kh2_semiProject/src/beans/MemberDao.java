@@ -131,7 +131,7 @@ public class MemberDao {
 	public MemberDto memberInfomation(int member_no) throws Exception {
 		Connection con = this.getConnection();
 		String sql = "select * from member where member_no = ?";
-
+		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, member_no);
 		ResultSet rs = ps.executeQuery();

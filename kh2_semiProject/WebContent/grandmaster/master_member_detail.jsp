@@ -16,9 +16,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 상세정보</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	body{
 		height: 1000px;
@@ -165,7 +166,7 @@
 		<%} %>
 		</div>
 		<br><br>
-		<div align="right" class="coupon-choice-template">
+		<div align="right" class="coupon-choice-template w-80">
 			<a href="#"><button>회원탈퇴</button></a>
 			<a href="#"><button>등급변경</button></a>
 			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>"><button>쿠폰추가</button></a>
@@ -175,5 +176,7 @@
 	<div>
 		<h2>Footer 위치</h2>
 	</div>
+	<jsp:include page="../template/footer.jsp"></jsp:include>
+	</section>
 </body>
 </html>

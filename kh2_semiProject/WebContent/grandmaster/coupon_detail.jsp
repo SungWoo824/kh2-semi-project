@@ -14,6 +14,7 @@ CouponDto dto = dao.get(coupon_no);
 <title>쿠폰 상세보기</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 .explain textarea{
 	width:99%;
@@ -121,7 +122,7 @@ CouponDto dto = dao.get(coupon_no);
 </tbody>
 </table>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
-<div>footer</div>
 </body>
 </html>

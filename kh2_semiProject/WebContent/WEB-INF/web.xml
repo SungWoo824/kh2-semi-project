@@ -11,6 +11,9 @@
 		<session-timeout>720</session-timeout>
 	</session-config>
 	
+	<listener>
+		<listener-class>listener.SessionListener</listener-class>
+	</listener>
 	<!-- 필터 설정 : EFilter - LoginFilter - AdminFilter -->
 <!-- 	인코딩(UTF-8) 필터 -->
 	<filter>
