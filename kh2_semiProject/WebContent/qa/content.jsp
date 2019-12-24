@@ -26,6 +26,7 @@
 <title>Q&A 게시물 상세보기</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	.explain textarea{
 		width:100%;
@@ -190,6 +191,7 @@
 	</tfoot>	
 </table>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
 </body>
 </html>

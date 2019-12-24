@@ -56,6 +56,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -256,8 +257,8 @@ function formChange(obj){
 	</form>
 </div>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
-<div>footer</div>
 
 </body>
 </html>

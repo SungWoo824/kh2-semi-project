@@ -16,9 +16,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 상세정보</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	body{
 		height: 1000px;
@@ -175,6 +176,7 @@
 	<div>
 		<h2>Footer 위치</h2>
 	</div>
+	<jsp:include page="../template/footer.jsp"></jsp:include>
 	</section>
 </body>
 </html>

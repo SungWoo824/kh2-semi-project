@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script>
 function number_check1(){
@@ -167,7 +168,7 @@ function number_check1(){
 		</table>
 	</form>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
-<div>footer</div>
 </body>
 </html>
