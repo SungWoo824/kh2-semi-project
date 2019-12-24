@@ -7,7 +7,6 @@
 <%@page import="beans.QaDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%
 	String id = "운기";
 	String grade ="관리자";
@@ -20,150 +19,118 @@
 	
 	String member_id = (String)request.getAttribute("id");
 %>
-<style>
-@charset "UTF-8";
-
-        @font-face{
-            font-family:cookieRun;
-            src:url("../font/COOKIERUN BLACK.OTF")
-        }
-        @font-face{
-            font-family:No;
-            src:url("../font/NotoSansCJKkr-Medium.otf")
-        }
-
-* {
-	box-sizing: border-box;
-	margin: auto;
-	font-family: No;
-}
-
-.table{
-    width:100%;
-    border:1px solid black;
-    border-collapse: collapse;
-}
-
-.table > tbody > tr>.content
-{
-	padding-top:25px;
-	padding-bottom:50px;
-	padding-left: 50px;
-	padding-right: 50px;
-	font-size: 1rem; 
-	border-bottom: 1px dotted black;
-}
-
-article{
-    margin:auto;
-}
-
-.row{
-	text-align: center;
-}
-
-.row,.row-left,.row-right,.row-title,row-multi{
-    margin:10px 0px;
-}
-.row-title{
-	font-size: 2rem;
-	margin-bottom:2rem;
-	text-align: center;
-}
-.row-left{
-	text-align: left;
-}
-
-
-.row-right{
-	text-align: right;
-}
-.reply{
-	width: 100%;
-}
-.reply>input[type=submit]{
-	width: 20%;
-	height: 5rem;
-	float: left;
-}
-.reply>textarea{
-	width:80%;
-	float: left;
-}
-</style>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Q&A 게시물 상세보기</title>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
-
-<body style="width: 60%">
+<style>
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
+	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}
+</style>
+</head>
+<body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp" ></jsp:include>
-<div align="center">
-<h1>	<%=dto.getQa_title() %></h1>
-	<table class="table">
-	<tr>
-		<td>제목: <%=dto.getQa_title() %></td>
-	</tr>
-	<tr>
-		<td>글쓴이: 
-		<%=dto.getMember_no() %> 
+<div class="w-80">
+<div class="row-big"></div>
+<div class="row-big"></div>
+<div class="row-big"></div>
+<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
+</div>
+<div class="w-60">
+<div align="center"><h2 class="master-title w-100"><%=dto.getQa_title() %></h2></div>
 
-		</td>
-	</tr>
-	<tr>
-		<td style="border-bottom: 1px dotted black">방이름:<%=dto.getRoom_no() %></td>
-	</tr>
-	<tr height="200">
-		<td valign="top" class="content" ><%=dto.getQa_content() %> </td>
-	</tr>
+<table class="w-100 coupon-under-table">
+	<thead>
 		<tr>
-		<td>
-		<%for(QaReplyDto rdto : list){ %>
-					<table  width="100%" >
+			<td width="150px">&nbsp;제목</td>
+			<td>&nbsp;<%=dto.getQa_title() %></td>
+		</tr>
+		<tr>
+			<td>&nbsp;글쓴이</td>
+			<td>&nbsp;<%=dto.getMember_no() %></td>
+		</tr>
+		<tr>
+			<td>&nbsp;방이름</td>
+			<td>&nbsp;<%=dto.getRoom_no() %></td>
+		</tr>
+		<tr height="200">
+			<td valign="top" colspan="2"><%=dto.getQa_content() %> </td>
+		</tr>
 			<tr>
-				<td>
-				<table width="100%" >
+			<td>
+	</thead>
+	<tbody>
+		<table class="w-100 coupon-under-table">
+			<%for(QaReplyDto rdto : list){ %>
 				<tr>
-						<td><%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
-						<td><%=rdto.getQa_reply_wdate() %></td>
+					<td><%=rdto.getMember_name() %></td><!-- 멤버이름으로 교체 -->
+					<td><%=rdto.getQa_reply_wdate().substring(0,16) %></td>
 				</tr>
 				<tr>
-					<td colspan="2"  style="font-size: 1.2rem;"><%=rdto.getQa_reply_content() %></td>
+					<td colspan="2"><%=rdto.getQa_reply_content() %></td>
 				</tr>
-					<tr>
-						<form action="qa_reply_delete.do" method="get">
-							<td colspan="2" align="right">
+				<tr>
+					<form action="<%=request.getContextPath() %>/qa/qa_reply_delete.do" method="get">
+						<td colspan="2">
 							<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
-							</td>
+						</td>
 					</form>
 				</tr>
-				</table>
-					   </td>
-				</tr>
-			</table>
-		<%} %>
-		</td>
-	</tr>
-	<%if(id!=null){ %>
+			<%} %>
+		</table>
+		<%if(id!=null){ %>
 			<tr>
-					<td align="right">
-
-			<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
-				<textarea rows="4" cols="80%" required name="qa_reply_content"></textarea>
-				<input type="submit" value="등록">
-			</form>
+				<td align="right">	
+					<form action="qa_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
+						<textarea rows="4" cols="80%" required name="qa_reply_content"></textarea>
+						<input type="submit" value="등록">
+					</form>
 				</td>
+			</tr>
+		<%} %>	
+		<tr align="right">
+			<td>
+			<%if(member_id!=null){ %>
+				<a href="write.jsp"><input type="button" value="글쓰기"></a>
+			<%} %>
+			<a href="edit.jsp?no=<%=dto.getQa_no() %>"><input type="button" value="글수정"></a>
+			<a href="delete.do?no=<%=dto.getQa_no() %>"><input type="button" value="글삭제"></a>
+			<a href="list.jsp"><input type="button" value="글목록"></a></td>
 		</tr>
-	<%} %>
-
-	<tr align="right">
-		<td>
-		<%if(member_id!=null){ %>
-	<a href="write.jsp"><input type="button" value="글쓰기"></a>
-	<%} %>
-	<a href="edit.jsp?no=<%=dto.getQa_no() %>"><input type="button" value="글수정"></a>
-	<a href="delete.do?no=<%=dto.getQa_no() %>"><input type="button" value="글삭제"></a>
-	<a href="list.jsp"><input type="button" value="글목록"></a></td>
-	</tr>
-
+	</tbody>
 </table>
-<br>
 </div>
+</section>
 </body>
+</html>

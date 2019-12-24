@@ -160,7 +160,7 @@
 				<th><%=hdto.getHostel_name() %></th>
 				<th><%=hdto.getHostel_phone() %></th>
 				
-				<th><%=hdto.getHostel_detail_addr() %></th>
+				<th>(<%=hdto.getHostel_detail_addr().substring(0, 5) %>) <%=hdto.getHostel_detail_addr().substring(5) %></th>
 				<th><%=hdto.getHostel_content() %></th>
 				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>" onclick="hostel_remove_event();">
 					숙소 삭제하기</a></th>
