@@ -1,3 +1,6 @@
+<%@page import="beans.FilesDto"%>
+<%@page import="beans.FilesDao"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="beans.RoomDao"%>
 <%@page import="beans.RoomDto"%>
 <%@page import="java.util.List"%>
@@ -10,17 +13,38 @@
 <!DOCTYPE html>
 <%
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
+	String check_in = request.getParameter("check_in");
+	String check_out = request.getParameter("check_out");
+	int people=0;
+	if(request.getParameter("people")!=null){
+		people = Integer.parseInt(request.getParameter("people"));
+	}
+	boolean isSearch = check_in!=null && check_out!=null && people!=0;
+/* 	HostelDao dao = new HostelDao();
+	HostelDto dto = dao.hostelinfomation(hostel_no);
+======= */
 	HostelDao hdao = new HostelDao();
 	HostelDto hdto = hdao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();
 	List<ReviewDto>list = rdao.hostel_review_list(hostel_no);
 	RoomDao Rdao = new RoomDao();
-	List<RoomDto>Rlist = Rdao.hostel_room_list(hostel_no);
+	List<RoomDto>Rlist = new ArrayList<>();
+	if(isSearch){
+		Rlist = Rdao.hostel_room_list_search(check_in, check_out, people, hostel_no);
+	}else{
+		Rlist = Rdao.hostel_room_list(hostel_no);
+	}
 %>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	img {
+	width: 200px;
+	height: 150px;
+}
+</style>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
 	<script>
 		var db = {
@@ -203,6 +227,8 @@
 	<%} %>
 	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ리뷰자리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br><br>
 	<%for(ReviewDto rdto : list){ %>
+	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
+	<a href="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">다운</a>
 	리뷰넘버<%=rdto.getReview_no() %>
 	예약넘버<%=rdto.getReservation_no() %>
 	고객넘버<%=rdto.getCustomer_no() %>

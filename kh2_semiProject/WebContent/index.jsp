@@ -13,9 +13,6 @@
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
 	}
-	
-	
-
 %>    
  
 <!-- ########### TO DO ############################ -->
@@ -61,7 +58,7 @@
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="mypage/index.jsp">MY PAGE</a></li>            	
             <%}%>
-            <li><a class="top-bar__menu-item" href="qa/list.jsp">Q &amp; A</a></li>
+            <li><a class="top-bar__menu-item" href="info/regist_info.jsp">HELP</a></li>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="member/logout.do">SIGN OUT</a></li>
             <%}else { %>
@@ -77,7 +74,9 @@
 
     <header id="header">
       <!-- 검색창 시작 -->
-      <form action="" method="POST">
+      <form
+		action="hostel/hostel_list.jsp?"
+		method="POST">
         <section class="search">
           <div class="search__empty"></div>
 
@@ -90,6 +89,8 @@
                   class="search__location"
                   type="text"
                   placeholder="&nbsp;"
+                  name="location"
+                  required="required"
                 />
                 <span class="label">목적지</span>
                 <span class="border"></span>
@@ -105,6 +106,8 @@
                     class="check-in"
                     type="text"
                     placeholder="&nbsp;"
+                    name="check-in"
+                    required="required"
                   />
                   <span class="label">Check In</span>
                   <span class="border"></span>
@@ -120,6 +123,8 @@
                     class="check-out"
                     type="text"
                     placeholder="&nbsp;"
+                    name="check-out"
+                    required="required"
                   />
                   <span class="label">Check Out</span>
                   <span class="border"></span>
@@ -133,31 +138,31 @@
 
             <!-- 인원 입력창 -->
             <div class="people">
-              <select name="" class="adult">
-                <option value="">성인 1명</option>
-                <option value="">성인 2명</option>
-                <option value="">성인 3명</option>
-                <option value="">성인 4명</option>
-                <option value="">성인 5명</option>
-                <option value="">성인 6명</option>
-                <option value="">성인 7명</option>
-                <option value="">성인 8명</option>
-                <option value="">성인 9명</option>
-                <option value="">성인 10명</option>
-                <option value="">성인 11명</option>
-                <option value="">성인 12명</option>
-                <option value="">성인 13명</option>
-                <option value="">성인 14명</option>
-                <option value="">성인 15명</option>
-                <option value="">성인 16명</option>
+              <select name="adult" class="adult" required="required">
+                <option value="1">성인 1명</option>
+                <option value="2">성인 2명</option>
+                <option value="3">성인 3명</option>
+                <option value="4">성인 4명</option>
+                <option value="5">성인 5명</option>
+                <option value="6">성인 6명</option>
+                <option value="7">성인 7명</option>
+                <option value="8">성인 8명</option>
+                <option value="9">성인 9명</option>
+                <option value="10">성인 10명</option>
+                <option value="11">성인 11명</option>
+                <option value="12">성인 12명</option>
+                <option value="13">성인 13명</option>
+                <option value="14">성인 14명</option>
+                <option value="15">성인 15명</option>
+                <option value="16">성인 16명</option>
               </select>
-              <select name="" class="child">
-                <option value="">어린이 0명</option>
-                <option value="">어린이 1명</option>
-                <option value="">어린이 2명</option>
-                <option value="">어린이 3명</option>
-                <option value="">어린이 4명</option>
-                <option value="">어린이 5명</option>
+              <select name="child" class="child" required="required">
+                <option value="0">어린이 0명</option>
+                <option value="1">어린이 1명</option>
+                <option value="2">어린이 2명</option>
+                <option value="3">어린이 3명</option>
+                <option value="4">어린이 4명</option>
+                <option value="5">어린이 5명</option>
               </select>
             </div>
             <div class="search-btn-box">
@@ -219,17 +224,17 @@
         <div class="item3-container">
           <div class="item3__menu">
             <div class="item3__list item3__list-1">
-              <img src="image/item3__list-1.jpg" alt="" class="active" />
+              <img src="image/item3__list-1.jpg" class="active" />
             </div>
             <div class="item3__list item3__list-2">
-              <img src="image/item3__list-2.jpg" alt="" />
+              <img src="image/item3__list-2.jpg"/>
             </div>
             <div class="item3__list item3__list-3">
-              <img src="image/item3__list-3.jpg" alt="" />
+              <img src="image/item3__list-3.jpg" />
             </div>
           </div>
           <div class="item3__imagebox">
-            <img class="item3__img" src="image/item3__list-1.jpg" alt="" />
+            <img class="item3__img" src="image/item3__list-1.jpg"/>
           </div>
         </div>
       </section>
@@ -237,9 +242,7 @@
     <footer id="main-footer">
      <div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div> 
-      접속한 ID : <%=session.getAttribute("id")  %><br>
-      접속한 GRADE : <%=session.getAttribute("grade") %>
+	</div>
     </footer>
   </body>
 </html>

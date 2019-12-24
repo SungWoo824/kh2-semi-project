@@ -1,5 +1,3 @@
-<%@page import="beans.MemberDto"%>
-<%@page import="beans.MemberDao"%>
 <%@page import="beans.QaReplyDao"%>
 <%@page import="beans.QaReplyDto"%>
 <%@page import="java.util.List"%>
@@ -11,28 +9,17 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-	int qa_reply_no;
-	try{
-		qa_reply_no = Integer.parseInt(request.getParameter("qa_reply_no"));
-	}catch(Exception e){
-		qa_reply_no=0;
-	}
-	String id = (String)request.getSession().getAttribute("id");
-	String grade = (String)request.getSession().getAttribute("grade");
-	int qa_no;
-	try{
-		qa_no = Integer.parseInt(request.getParameter("qa_no"));
-	}catch(Exception e){
-		qa_no=0;
-	}
+	String id = "운기";
+	String grade ="관리자";
+	
+	String no1 = request.getParameter("no");
+	int qa_no = Integer.parseInt(no1);
 	QaDao dao = new QaDao();
 	QaDto dto = dao.get(qa_no);
-	MemberDao mdao = new MemberDao();
-	MemberDto mdto = mdao.memberInfomation(dto.getMember_no());
-	String qa_member_id = mdto.getId();
-	System.out.println(qa_member_id);
 	QaReplyDao QRDao = new QaReplyDao();
 	List<QaReplyDto> list = QRDao.select(qa_no);
+	
+	String member_id = (String)request.getAttribute("id");
 %>
 <style>
 @charset "UTF-8";
@@ -108,8 +95,7 @@ article{
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 
 <body style="width: 60%">
-<jsp:include page="../template/nav.jsp" ></jsp:include>
-<br><br><br><br>
+
 <div align="center">
 <h1>	<%=dto.getQa_title() %></h1>
 	<table class="table">
@@ -140,27 +126,14 @@ article{
 						<td><%=rdto.getQa_reply_wdate() %></td>
 				</tr>
 				<tr>
-					<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
 					<td colspan="2"  style="font-size: 1.2rem;"><%=rdto.getQa_reply_content() %></td>
-				<%}else{ %>
-				<td colspan="2"  style="font-size: 1.2rem;">
-				<form action="qa_reply_edit.do" method="post">
-					<textarea name="qa_reply_content"><%=rdto.getQa_reply_content() %></textarea> 
-					<input type="hidden" name="qa_reply_no" value="<%=rdto.getQa_reply_no()%>">
-					<input type="submit" value="수정">
-				</form>
-				</td>
-				<%} %>
 				</tr>
 					<tr>
-					<td colspan="2" align="right">
-						<form action="qa_reply_delete.do" method="post">
-							<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
-							<a href="content.jsp?pno=&qa_no=<%=rdto.getQa_no()%>&qa_reply_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="수정"></a>
-							<%} %>
-							<a href="qa_reply_delete.do?qa_no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
+						<form action="qa_reply_delete.do" method="get">
+							<td colspan="2" align="right">
+							<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>"><input type="button" value="삭제"></a>
+							</td>
 					</form>
-					</td>
 				</tr>
 				</table>
 					   </td>
@@ -183,13 +156,11 @@ article{
 
 	<tr align="right">
 		<td>
-		<%if(id!=null){ %>
+		<%if(member_id!=null){ %>
 	<a href="write.jsp"><input type="button" value="글쓰기"></a>
 	<%} %>
-	<% if(id.equals(qa_member_id)||grade.equals("관리자")){%>
-	<a href="edit.jsp?qa_edit_no=<%=dto.getQa_no() %>"><input type="button" value="글수정"></a>
-	<a href="delete.do?qa_delete_no=<%=dto.getQa_no() %>"><input type="button" value="글삭제"></a>
-	<%} %>
+	<a href="edit.jsp?no=<%=dto.getQa_no() %>"><input type="button" value="글수정"></a>
+	<a href="delete.do?no=<%=dto.getQa_no() %>"><input type="button" value="글삭제"></a>
 	<a href="list.jsp"><input type="button" value="글목록"></a></td>
 	</tr>
 

@@ -71,7 +71,7 @@ p {
 
 <body>
 
-	<form action="4regist_date.jsp" method="get">
+	<form action="4regist_date.jsp" method="post">
 		<div class="a">
 	
 			<h1 style="color: lightsalmon">판매자 등록 페이지(2단계 방 정보)</h1>

@@ -105,7 +105,7 @@
 </head>
 
 <body>
-	<form action="room_info_regist.do">
+	<form action="room_info_regist.do" method="post">
     <div class="a">
         <h1 style="color: lightsalmon">판매자 등록 페이지(4단계 날짜 정보)</h1>
         <input type="hidden" name="room_price" value="<%=room_price %>">
