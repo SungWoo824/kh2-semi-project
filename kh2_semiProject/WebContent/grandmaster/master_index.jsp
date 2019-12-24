@@ -22,7 +22,7 @@
    		}else{
    			totalVisit = (int)session.getAttribute("totalCount");
    		}
-    	
+   		
     %>
 <!DOCTYPE html>
 <html>
