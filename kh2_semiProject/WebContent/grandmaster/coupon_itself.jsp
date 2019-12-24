@@ -53,6 +53,8 @@
  		border-bottom-color:#666; 
 		/*글자색을 바꾸고 싶다면*/
  		color:#666; 
+ 		padding: 9px 16px;
+ 		margin-bottom: 2px;
 	}
 	
 	/* 화살표 색상을 바꾸고 싶다면 */
@@ -66,12 +68,45 @@
 	.select-items{
 		border-color:#eaebec;
 	}
+	body{
+		height: 1000px;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		background-repeat: no-repeat;
+		background-size : cover;	
+	}
+	.background{
+		height:1000px;	
+		position:fixed;
+		width:100%;
+		z-index:100;
+		background-size: 100%;
+		min-height:1000px;
+	}
+	.background img{
+		width:100%;
+		height:1000px;
+	}
 	
+	.container{
+		width:100%;
+		position:absolute;
+		z-index:101;
+	}	
+	.form-choice{
+		border:none;
+		margin-bottom: 200px;
+	}
 </style>
 
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
+<div class="background">
+	<img src="../image/master.jpg">
+</div>
+<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
 <div class="w-80">
 <div class="row-big"></div>
@@ -109,7 +144,7 @@
 				<%} %>
 			</tbody>
 			<tfoot>		
-				<tr>		
+				<tr style="height: 30px;">		
 					<td colspan="5" align="right">		
 						<a href="coupon_regist.jsp">쿠폰 등록</a>
 						<%if(isSearch) {%>
@@ -160,6 +195,7 @@
 	</form>
 	</div>
 </div>
+</section>
 <div>footer</div>
 </body>
 </html>
