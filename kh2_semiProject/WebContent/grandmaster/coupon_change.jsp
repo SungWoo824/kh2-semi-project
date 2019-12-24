@@ -45,14 +45,14 @@
     }
 </script>
 <style>
-.explain textarea{
-	width:99%;
-	height:200px;
-	resize:vertical;
-	font-family:inherit;
-	outline:none;
-	border: 1px solid #fff;
-}
+	.explain textarea{
+		width:99%;
+		height:200px;
+		resize:vertical;
+		font-family:inherit;
+		outline:none;
+		border: 1px solid #fff;
+	}
 	body{
 		height: 1000px;
 		width: 100%;
