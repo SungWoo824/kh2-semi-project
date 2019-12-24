@@ -42,7 +42,7 @@ public class QaWriteServlet extends HttpServlet{
 			dto.setMember_no(member_no);
 			dto.setQa_content(qa_content);
 			dao.write(dto);
-			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?no="+qa_no);
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?qa_no="+qa_no);
 		} catch (Exception e) {
 			e.getStackTrace();
 			resp.sendError(500);

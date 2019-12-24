@@ -25,7 +25,7 @@ public class QaReplyDeleteServlet extends HttpServlet{
 			QaReplyDto dto = dao.get(qa_reply_no);
 			int qa_no = dto.getQa_no();
 			dao.delete(qa_reply_no);
-			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?no="+qa_no);
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?qa_no="+qa_no);
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
