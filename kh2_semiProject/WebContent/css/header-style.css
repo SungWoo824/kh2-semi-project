@@ -84,6 +84,7 @@ body {
   height: 700px;
   background-image: url("../image/home-image-2.jpg");
   background-size: 100% 100%;
+  min-width: 1200px;
 }
 
 .search {
