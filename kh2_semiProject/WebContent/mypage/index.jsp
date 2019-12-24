@@ -113,14 +113,16 @@
     </style>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
-   
+   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
    
 </head>
 
 <body class="all">
-
- <div class="master-title w-100"><h2>MYPAGE</h2></div>
+<div>
+<jsp:include page="/template/nav.jsp"></jsp:include>
+</div>
     <div class="mypage">
+ <div class="master-title w-100"><h2>MYPAGE</h2></div>
 
 
 
@@ -225,7 +227,10 @@
 
     </div>
 
- 
+ 	<div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
+           
 
 </body>
 

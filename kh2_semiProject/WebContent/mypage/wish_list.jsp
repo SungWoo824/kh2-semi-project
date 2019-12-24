@@ -77,6 +77,8 @@ HostelDao hdao =new  HostelDao();
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
 <title>관심상품</title>
 
@@ -84,13 +86,22 @@ HostelDao hdao =new  HostelDao();
 </head>
 <body>
 
+<section class="container">
+<div>
+<jsp:include page="/template/nav.jsp"></jsp:include>
+</div>
+<div class="w-80">
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row" ></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
+	<div class="row-big"></div>
 
-
-
-    
-    
-    <div class="master-title w-100"><h2><%=mdto.getName() %>님의 위시리스트</h2></div>
-    <table class="w-100 hostel-table">
+	<div class="master-title w-100"><h2>나의 위시리스트</h2></div>
+    <table class="w-100 couponmember-table">
+		
+	
 		<thead>
 			<tr>
 				<th></th>
@@ -103,6 +114,14 @@ HostelDao hdao =new  HostelDao();
 			</tr>
 		</thead>
 		<tbody>
+		<%if(count==0){ %>
+			<tr>
+			
+				<th colspan="6">위시리스트가 없습니다.</th>
+				
+				
+			</tr>
+			<%} else{%>
 			<%for(InterestDto idto:list){ %>
 			<tr>
 			
@@ -117,15 +136,14 @@ HostelDao hdao =new  HostelDao();
 				
 			</tr>
 			<%} %>
+				<%} %>
 		</tbody>
 	</table>
+	
 
 
-    <input type="submit" value="전체선택">
-    <input type="submit" value="전체삭제">
-    
-    
-    <h4 class="navigator">
+		
+		    <h4 class="navigator">
 			<%if(startBlock > 1){ %>
 			
 					<a href="wish_list.jsp?pno=<%=startBlock - 1%>">이전</a>
@@ -147,5 +165,20 @@ HostelDao hdao =new  HostelDao();
 				<%} %>
 		
 		</h4>
+		
+	</div>
+</section>
+
+
+    	
+			<div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
+           
+		
+    
+ 
+    
+
 </body>
 </html>

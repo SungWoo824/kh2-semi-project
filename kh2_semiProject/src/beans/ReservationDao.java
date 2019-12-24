@@ -150,7 +150,7 @@ dto.setCustomer_no(rs.getInt("customer_no"));
 dto.setCustomer_count(rs.getInt("customer_count"));
 dto.setCustomer_request(rs.getString("customer_request"));
 dto.setReservation_start_date(rs.getString("reservation_start_date"));
-dto.setReservation_until(rs.getInt("reservation_until"));
+
 
 list.add(dto);
 }
