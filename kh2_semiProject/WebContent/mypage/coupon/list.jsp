@@ -81,19 +81,62 @@ if(finishBlock > pagecount){
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
-<meta charset="UTF-8">
-<title>마이쿠폰</title>
-
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<meta charset="UTF-8">
+<title>쿠폰내역</title>
 
 
+<style>
+.row-big{
+
+height: 0.1px;
+}
+
+
+ .navigator{
+    	font-family: notosanskrmedium;
+    	color:#666;
+    	background:none;
+    	border-radius: 3px;
+    	text-align: center;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    	font-size: 1.2rem;
+    }
+    .navigator a{
+    	color:#666;
+    	text-decoration: none;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    
+
+    .navigator a:hover{
+    	color: black;
+    	text-decoration: none;
+    }
+    .navigator .navigator-choice{
+    	color: #045912;
+    	text-decoration: none;
+    }
+.container{
+	height: 670px;
+	padding-top:40px;
+	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+}
+
+
+</style>
 </head>
-<body>
 
-<section class="container">
+<body>
 <div>
 <jsp:include page="/template/nav.jsp"></jsp:include>
 </div>
+
+
+
+<section class="container">
 <div class="w-80">
 	<div class="row" ></div>
 	<div class="row" ></div>

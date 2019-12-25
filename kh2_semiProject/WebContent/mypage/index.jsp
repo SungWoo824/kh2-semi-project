@@ -110,6 +110,14 @@
             background-size: 50px 50px;
             background-position: 400px 14px;
         }
+       
+.row-big{
+
+height: 0.1px;
+}
+
+
+
     </style>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
@@ -121,6 +129,8 @@
 <div>
 <jsp:include page="/template/nav.jsp"></jsp:include>
 </div>
+  
+	<div class="row-big"></div>
     <div class="mypage">
  <div class="master-title w-100"><h2>MYPAGE</h2></div>
 

@@ -81,21 +81,64 @@ RoomDao roomdao = new RoomDao();
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
+ <title>예약목록</title>
  
-<title>예약조회</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 
 
 
 
+<style type="text/css">
+.row-big{
 
+height: 0.1px;
+}
+
+
+
+ .navigator{
+    	font-family: notosanskrmedium;
+    	color:#666;
+    	background:none;
+    	border-radius: 3px;
+    	text-align: center;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    	font-size: 1.2rem;
+    }
+    .navigator a{
+    	color:#666;
+    	text-decoration: none;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    
+
+    .navigator a:hover{
+    	color: black;
+    	text-decoration: none;
+    }
+    .navigator .navigator-choice{
+    	color: #045912;
+    	text-decoration: none;
+    }
+
+.container{
+	height: 670px;
+	padding-top:40px;
+	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+}
+
+
+
+</style>
 </head>
 <body>
+
     
     
- <div class="background">
+
 	
-</div>
 <section class="container">
 <div>
 <jsp:include page="/template/nav.jsp"></jsp:include>
@@ -177,17 +220,18 @@ RoomDao roomdao = new RoomDao();
 		
 		</h4>
 	</div>
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
 </section>
- 
- 
- 
- 
- 
- 
- 
- 
-
-
 		
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
