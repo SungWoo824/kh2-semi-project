@@ -79,12 +79,56 @@ HostelDao hdao =new  HostelDao();
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
-<meta charset="UTF-8">
-<title>관심상품</title>
-
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<meta charset="UTF-8">
+ <title>관심상품</title>
+
+<style type="text/css">
+.row-big{
+
+height: 0.1px;
+}
+
+ .navigator{
+    	font-family: notosanskrmedium;
+    	color:#666;
+    	background:none;
+    	border-radius: 3px;
+    	text-align: center;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    	font-size: 1.2rem;
+    }
+    .navigator a{
+    	color:#666;
+    	text-decoration: none;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    
+
+    .navigator a:hover{
+    	color: black;
+    	text-decoration: none;
+    }
+    .navigator .navigator-choice{
+    	color: #045912;
+    	text-decoration: none;
+    }
+
+
+.container{
+	height: 670px;
+	padding-top:40px;
+	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+}
+
+
+</style>
+
 </head>
 <body>
+
 
 <section class="container">
 <div>
@@ -99,6 +143,7 @@ HostelDao hdao =new  HostelDao();
 	<div class="row-big"></div>
 
 	<div class="master-title w-100"><h2>나의 위시리스트</h2></div>
+   <form action="/kh2_semiProject/mypage/wish_list.do" method="post">
     <table class="w-100 couponmember-table">
 		
 	
@@ -117,7 +162,7 @@ HostelDao hdao =new  HostelDao();
 		<%if(count==0){ %>
 			<tr>
 			
-				<th colspan="6">위시리스트가 없습니다.</th>
+				<th colspan="6">관심상품이 없습니다.</th>
 				
 				
 			</tr>
@@ -129,9 +174,13 @@ HostelDao hdao =new  HostelDao();
 				<th><img src="http://placehold.it/200x150"></th>
 				<th><%=rdao.roomname( idto.getRoom_no()) %>//<%= hdao.hostelname( rdao.hostelNumber( idto.getRoom_no()))   %></th>
 				<th><%=rdao.roomprice(idto.getRoom_no())%></th>
-				<th><input type="submit" value="예약하기"></th>
-				<th><input type="submit" value="삭제"></th>
+				<th><input type="button" value="예약하기"></th>
+				<th>
+				<span class="bt">
+					<input id="login_bt" type="submit" value="삭제">
+				</span>
 				
+				</th>
 				
 				
 			</tr>
@@ -139,7 +188,7 @@ HostelDao hdao =new  HostelDao();
 				<%} %>
 		</tbody>
 	</table>
-	
+	</form>
 
 
 		
