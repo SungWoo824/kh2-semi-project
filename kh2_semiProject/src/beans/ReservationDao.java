@@ -269,4 +269,22 @@ public class ReservationDao {
 
 		return count;
 	}
+	
+/////////////////////////////////////////////////////////////////
+///							숙박 일 계산							  //
+///////////////////////////////////////////////////////////////
+	public int until(String start_date, String finish_date) throws Exception{
+		Connection con = this.getConnection();
+		String sql = "SELECT to_date(?,'YY/MM/DD') - TO_DATE(?, 'YY/MM/DD') FROM DUAL";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(2, start_date);
+		ps.setString(1, finish_date);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		int until = rs.getInt(1);
+		
+		con.close();
+		return until;
+	}
 }

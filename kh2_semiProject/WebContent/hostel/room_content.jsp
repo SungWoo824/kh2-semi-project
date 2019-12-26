@@ -51,6 +51,7 @@
 			<input type="hidden" name="reservation_finish_date" value="<%=check_out %>">
 			<input type="hidden" name="hostel_no" value="<%=hostel_no %>">
 			<input type="hidden" name="room_price" value="<%=room_price %>">
+			<input type="submit" value="예약하기">
 		</form>
 	</div>
 </body>
