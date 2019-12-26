@@ -13,7 +13,6 @@
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
 	}
-	
 %>    
  
 <!-- ########### TO DO ############################ -->
@@ -184,7 +183,7 @@
         </div>
         <div class="item1 popular-list">
           <div class="popular-image__background">
-            <a href="#">
+            <a href="hostel/hostel_list.jsp">
               <div class="popular-image image-left-top">
                 <img src="image/seoul.jpg" alt="" />
                 <span class="image-title">서울</span>
@@ -193,7 +192,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="#">
+            <a href="hostel/hostel_list.jsp">
               <div class="popular-image image-right-top">
                 <img src="image/전주.jpg" alt="" />
                 <span class="image-title image-title-sub">전주</span>
@@ -202,7 +201,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="#">
+            <a href="hostel/hostel_list.jsp">
               <div class="popular-image image-right-bottom">
                 <img src="image/부산.jpg" alt="" />
                 <span class="image-title image-title-sub">부산</span>

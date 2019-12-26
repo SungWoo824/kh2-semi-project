@@ -1,13 +1,12 @@
 package listener;
 
-import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 import beans.VisitDao;
 
-@WebListener
+
 public class SessionListener implements HttpSessionListener {
 	@Override
 	public void sessionCreated(HttpSessionEvent arg0) {
@@ -21,7 +20,8 @@ public class SessionListener implements HttpSessionListener {
 		VisitDao dao = VisitDao.getInstance();
 
 		try {
-
+			dao.setVisitTotalCount();
+			
 			int totalCount = dao.getVisitTotalCount();
 
 			int todayCount = dao.getVisitTodayCount();
