@@ -99,6 +99,7 @@
 						<option value="5">5명</option>
 					</select>
 				</div>
+				<input type="hidden" value="<%=child+adult %>" name="people">
 				<div class="search__inputbox search__button">
 					<input class="search__input " type="submit" value="검색" />
 				</div>
@@ -122,7 +123,7 @@
 	<%
 		for (HostelDto dto : hlist) {
 	%>
-		<a href="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&people=<%=people%>">
+	<form method="POST" action="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&people=<%=people%>">
 	<section class="hostel">
 		<div class="hostel-container">
 			<div class="hostel__image">
@@ -155,13 +156,13 @@
 					<li></li>
 				</ul>
 			</div>
-			<div class="details"><input type="submit"></div>
 			<div class="hostel__price">
+				<input value="상세 보기" class="submit" type="submit">
 				<h3>1,000,000원</h3>
 			</div>
 		</div>
 	</section>
-		</a>
+	</form>
 	<%
 		}
 	%>

@@ -11,6 +11,7 @@ public class ReservationDto {
 	private String reservation_finish_date;
 	private int reservation_until;
 	private int hostel_no;
+	
 	public int getReservation_no() {
 		return reservation_no;
 	}
