@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <meta charset="UTF-8">
-<<<<<<< HEAD
+
 <title>리뷰 페이지</title>
 <style type="text/css">
 *{
@@ -233,7 +233,7 @@ a {
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <body>
-<<<<<<< HEAD
+
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>

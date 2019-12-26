@@ -5,8 +5,16 @@
 <!DOCTYPE html>
 <%
 	int room_no = Integer.parseInt(request.getParameter("room_no"));
+	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
+	String check_in = request.getParameter("check_in");
+	String check_out = request.getParameter("check_out");
+	int customer_count = Integer.parseInt(request.getParameter("people"));
+	int room_price = Integer.parseInt(request.getParameter("room_price"));
+	
 	RoomDao dao = new RoomDao();
-  RoomDto Rdto = dao.roomInfomation1(room_no);
+  	RoomDto Rdto = dao.roomInfomation1(room_no);
+ 
+  
 %>
 <html>
 <head>
@@ -14,6 +22,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<div>
 		룸번호<%=Rdto.getRoom_no() %><br>
 		호텔번호<%=Rdto.getHostel_no() %><br>
 		룸가격<%=Rdto.getRoom_price() %><br>
@@ -33,5 +42,16 @@
 		에어컨<%=Rdto.getRoom_cool() %><br>
 		난방<%=Rdto.getRoom_hot() %><br>
 		방이름<%=Rdto.getRoom_name() %><br><br>
+	</div>
+	<div>
+		<form action = "room_reservation.jsp" method="post">
+			<input type="hidden" name="room_no" value="<%=room_no %>">
+			<input type="hidden" name="customer_count" value="<%=customer_count %>">
+			<input type="hidden" name="reservation_start_date" value="<%=check_in %>">
+			<input type="hidden" name="reservation_finish_date" value="<%=check_out %>">
+			<input type="hidden" name="hostel_no" value="<%=hostel_no %>">
+			<input type="hidden" name="room_price" value="<%=room_price %>">
+		</form>
+	</div>
 </body>
 </html>

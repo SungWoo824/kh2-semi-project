@@ -44,8 +44,7 @@
 	href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/nav-menu.css">
-<link rel="stylesheet" type="text/css"
-	href="../css/hostel-content.css" />
+<link rel="stylesheet" type="text/css" href="../css/hostel-content.css" />
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/swiper.min.css" />
 <script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
@@ -294,59 +293,60 @@ img {
 				for (RoomDto Rdto : Rlist) {
 			%>
 			<section class="hostel">
-			<div class="tab__room-info js-list">
-				<form action="room_content.jsp">
-					<div class="hostel-container">
-						<div class="hostel__image">
-							<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
+				<div class="tab__room-info js-list">
+					<form action="room_content.jsp">
+						<div class="hostel-container">
+							<div class="hostel__image">
+								<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
+							</div>
+							<div class="hostel__content">
+								<ul>
+									<li class="hostel__title"><h3><%=Rdto.getRoom_name()%></h3></li>
+									<li class="hostel__intro"><span><%=Rdto.getRoom_content()%></span></li>
+									<li class="hostel__info">
+										<ul class="hostel__info-list">
+											<li class="room-info hostel__max-people"><span>최대인원
+													<%=Rdto.getRoom_max_people()%>명 |
+											</span></li>
+											<li class="room-info hostel__bed"><span>침대 <%=Rdto.getRoom_bed()%>개
+													|
+											</span></li>
+											<li class="room-info hostel__bathroom"><span>화장실
+													<%=Rdto.getRoom_bath()%>개 |
+											</span></li>
+											<li class="room-info hostel__cook"><span>요리 <%=Rdto.getRoom_cook()%>
+													|
+											</span></li>
+											<li class="room-info hostel__spa"><span>사우나 <%=Rdto.getRoom_spa()%></span></li>
+										</ul>
+										<ul class="hostel__info-list">
+											<li class="room-info hostel__parking"><span>주차장 <%=Rdto.getRoom_parking()%>
+													|
+											</span></li>
+											<li class="room-info hostel__pet"><span>애완동물 <%=Rdto.getRoom_pet()%>
+													|
+											</span></li>
+											<li class="room-info hostel__wifi"><span>WIFI O |
+											</span></li>
+											<li class="room-info hostel__breakfast"><span>조식
+													<%=Rdto.getRoom_breakfast()%></span></li>
+										</ul>
+									</li>
+									<li><input type="hidden" name="room_no"
+										value="<%=Rdto.getRoom_no()%>"> <input type="hidden"
+										name="check-in" value="<%=check_in%>"> <input
+										type="hidden" name="check-out" value="<%=check_out%>">
+										<input type="hidden" name="people" value="<%=people%>">
+									</li>
+									<li></li>
+								</ul>
+							</div>
+							<div class="hostel__price">
+								<input value="상세 보기" class="submit" type="submit">
+								<h3>1,000,000원</h3>
+							</div>
 						</div>
-						<div class="hostel__content">
-							<ul>
-								<li class="hostel__title"><h3><%=Rdto.getRoom_name()%></h3></li>
-								<li class="hostel__intro"><span><%=Rdto.getRoom_content()%></span></li>
-								<li class="hostel__info">
-									<ul class="hostel__info-list">
-										<li class="room-info hostel__max-people"><span>최대인원
-												<%=Rdto.getRoom_max_people()%>명 |
-										</span></li>
-										<li class="room-info hostel__bed"><span>침대 <%=Rdto.getRoom_bed()%>개
-												|
-										</span></li>
-										<li class="room-info hostel__bathroom"><span>화장실 <%=Rdto.getRoom_bath()%>개
-												|
-										</span></li>
-										<li class="room-info hostel__cook"><span>요리 <%=Rdto.getRoom_cook()%>
-												|
-										</span></li>
-										<li class="room-info hostel__spa"><span>사우나 <%=Rdto.getRoom_spa()%></span></li>
-									</ul>
-									<ul class="hostel__info-list">
-										<li class="room-info hostel__parking"><span>주차장 <%=Rdto.getRoom_parking()%>
-												|
-										</span></li>
-										<li class="room-info hostel__pet"><span>애완동물 <%=Rdto.getRoom_pet()%>
-												|
-										</span></li>
-										<li class="room-info hostel__wifi"><span>WIFI O |
-										</span></li>
-										<li class="room-info hostel__breakfast"><span>조식 <%=Rdto.getRoom_breakfast()%></span></li>
-									</ul>
-								</li>
-								<li><input type="hidden" name="room_no"
-									value="<%=Rdto.getRoom_no()%>"> <input type="hidden"
-									name="check-in" value="<%=check_in%>"> <input
-									type="hidden" name="check-out" value="<%=check_out%>">
-									<input type="hidden" name="people" value="<%=people%>">
-								</li>
-								<li></li>
-							</ul>
-						</div>
-						<div class="hostel__price">
-							<input value="상세 보기" class="submit" type="submit">
-							<h3>1,000,000원</h3>
-						</div>
-					</div>
-				</form>
+					</form>
 				</div>
 			</section>
 			<%
@@ -359,8 +359,8 @@ img {
 		</article>
 	</section>
 
-		<script src="<%=request.getContextPath()%>/js/slide.js"></script>
-		<script src="<%=request.getContextPath()%>/js/hostel_content.js"></script>
-		<jsp:include page="../template/footer.jsp"></jsp:include>
+	<script src="<%=request.getContextPath()%>/js/slide.js"></script>
+	<script src="<%=request.getContextPath()%>/js/hostel_content.js"></script>
+	<jsp:include page="../template/footer.jsp"></jsp:include>
 </body>
 </html>
