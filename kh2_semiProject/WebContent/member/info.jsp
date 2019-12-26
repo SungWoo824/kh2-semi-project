@@ -40,7 +40,7 @@ body {background-color:#efefef; color:#333; font-size:0.8em; font-family:"돋음
 .backBody{
 	height: 800px;
 	padding-top:40px;
-	background-image: url("../image/login5.jpg"); background-position:center; background-repeat: no-repeat; 
+	background-image: url("../image/mypage1.jpg"); background-position:center; background-repeat: no-repeat; 
 }
 
 @font-face{

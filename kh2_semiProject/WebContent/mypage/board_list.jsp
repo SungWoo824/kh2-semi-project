@@ -5,7 +5,6 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%
 //아이디로 내가 쓴 보드 글 찾기
 
@@ -53,29 +52,77 @@ int count=qdao.Countmemberno(member_no);
 		finishBlock = pagecount;
 	}
 %>
+<!DOCTYPE html>
 <html>
 <head>
-<style>
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
+<meta charset="UTF-8">
 
-</style>
 
+
+
+<title>내 게시물 관리</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<style>
+.row-big{
 
+height: 0.1px;
+}
+
+ .navigator{
+    	font-family: notosanskrmedium;
+    	color:#666;
+    	background:none;
+    	border-radius: 3px;
+    	text-align: center;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    	font-size: 1.2rem;
+    }
+    .navigator a{
+    	color:#666;
+    	text-decoration: none;
+    	margin-right: 10px;
+    	margin-left: 10px;
+    }
+    
+
+    .navigator a:hover{
+    	color: black;
+    	text-decoration: none;
+    }
+    .navigator .navigator-choice{
+    	color: #045912;
+    	text-decoration: none;
+    }
+
+
+.container{
+	height: 670px;
+	padding-top:40px;
+	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+}
+</style>
 </head>
 
 <body>
-<div class="row" ></div>
+
+<section class="container">
+<div>
+<jsp:include page="/template/nav.jsp"></jsp:include>
+</div>
+<div class="w-80">
 	<div class="row" ></div>
 	<div class="row" ></div>
+	<div class="row" ></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 
-<div class="master-title w-100"><h2>내가 쓴 글</h2></div>
-
-
-
-	<table class="w-100 hostel-table">
+	<div class="master-title w-100"><h2>내가 쓴 글 </h2></div>
+    <table class="w-100 couponmember-table">
+		
 	<thead>
 	<tr>
 		<th>번호</th>
@@ -88,23 +135,30 @@ int count=qdao.Countmemberno(member_no);
 		</tr>
 		</thead>
 		<tbody>
+		<%if(count==0){ %>
+			<tr>
+			
+				<th colspan="7">게시물이 없습니다.</th>
+				
+				
+			</tr>
+			<%} else{%>
 	<%for (QaDto dto : list) {%>
 	<tr>
 		<td><%=dto.getQa_no()%></td><!-- member get으로 아이디를 가져와야함 -->
 		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
 		<td><%=dto.getQa_head() %></td>
-		<td align="left"><a href="content.jsp?pno=&no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
+		<td align="left"><a href="board_content.jsp?pno=&qa_no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_no() %></td>
 		<td><%=dto.getQa_wdate() %></td>
 		<td><input type="button" value="상세보기"></td>
 	</tr>
 	<% } %>
+		<% } %>
 </tbody>
-</table>
 
-
-
-<h4 class="navigator">
+	</table>
+	<h4 class="navigator">
 			<%if(startBlock > 1){ %>
 			
 					<a href="board_list.jsp?pno=<%=startBlock - 1%>">이전</a>
@@ -126,6 +180,21 @@ int count=qdao.Countmemberno(member_no);
 				<%} %>
 		
 		</h4>
+	
+
+
+	</div>
+</section>
+ 
+
+
+
+		<div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
+           
+
+
 
 </body>
 </html>

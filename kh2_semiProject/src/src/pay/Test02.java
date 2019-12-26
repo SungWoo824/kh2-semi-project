@@ -22,9 +22,9 @@ public class Test02 {
 
 		//신호 보내기 전 설정
 		httpConnection.setRequestMethod("POST");
-		httpConnection.setRequestProperty("Authorization", "KakaoAK 35fa20f25ea37935f657e69b289db050");
-		httpConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-		httpConnection.setRequestProperty("Accept", "application/json;charset=UTF-8");
+		httpConnection.setRequestProperty("Authorization", "KakaoAK 4f0ba4e9f70eafa42710fac2e2ec5692");
+		httpConnection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+		httpConnection.setRequestProperty("charset", "UTF-8");
 		
 		//파라미터 추가
 		httpConnection.setDoOutput(true);//내보내기 허용

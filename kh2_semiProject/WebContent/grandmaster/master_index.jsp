@@ -22,15 +22,16 @@
    		}else{
    			totalVisit = (int)session.getAttribute("totalCount");
    		}
-    	
+   		
     %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>관리자 메인</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	body{
 		height: 1000px;
@@ -206,6 +207,7 @@
 	</div>
 	
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
 </body>
 </html>

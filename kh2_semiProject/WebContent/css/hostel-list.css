@@ -127,6 +127,10 @@ table {
   box-sizing: border-box;
 }
 
+.body{
+	min-height:1000px;
+}
+
 .search-container {
   margin: 0 auto;
   width: 1200px;
@@ -183,6 +187,11 @@ table {
 
 .search__inputbox h6 {
   margin-left: 5px;
+}
+
+.search__button .search__input:hover{
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;	
 }
 
 /****인풋,버튼스타일*******************************/
@@ -298,8 +307,9 @@ table {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
 }
 
-.hostel__image a img {
+.hostel__image img {
   width: 100%;
+  height:auto;
   border-radius: 5px;
   border: 3px solid white;
 }
@@ -343,7 +353,6 @@ table {
   width: 20%;
   padding: 20px;
   font-size: 2rem;
-  padding-top: 15%;
 }
 
 .hostel__price h3 {
@@ -357,4 +366,21 @@ table {
 
 .border-bottom {
 	margin-bottom: 30px;
+}
+
+.hostel__price .submit{
+	margin-bottom: 110px;
+	width: 150px;
+	height:45px;
+	margin-left: 40px;
+	font-size: 1.3rem;
+	border-radius: 5px;
+	background-color: #666;
+	color: white;
+	border:0;
+}
+
+.hostel__price .submit:hover{
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 }

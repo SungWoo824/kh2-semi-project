@@ -133,5 +133,22 @@ public class InterestDao {
 	}
 	
 	
+	//member_no로 위시리스트 삭제
+	
+	public void delete(int room_no) throws Exception {
+		Connection con = getConnection();
+
+		String sql = "DELETE interest_room WHERE room_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, room_no);
+
+		ps.execute();
+
+		con.close();
+	}
+	
+	
+	
+	
 	
 }

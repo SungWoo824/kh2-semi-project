@@ -4,7 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	int pagesize = 10;
+	int pagesize = 15;
 	int navsize = 10;
 	int pno;
 	try{
@@ -41,10 +41,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>호텔 목록</title>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -144,7 +145,7 @@
 				<th>지역 이름</th>
 				<th>숙소 종류</th>
 				<th>숙소이름</th>
-				<th>숙소번호</th>
+				<th>숙소 전화번호</th>
 				<th>숙소상세주소</th>
 				<th>숙소설명</th>
 			</tr>
@@ -160,7 +161,7 @@
 				<th><%=hdto.getHostel_name() %></th>
 				<th><%=hdto.getHostel_phone() %></th>
 				
-				<th><%=hdto.getHostel_detail_addr() %></th>
+				<th>(<%=hdto.getHostel_detail_addr().substring(0, 5) %>) <%=hdto.getHostel_detail_addr().substring(5) %></th>
 				<th><%=hdto.getHostel_content() %></th>
 				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>" onclick="hostel_remove_event();">
 					숙소 삭제하기</a></th>
@@ -206,6 +207,7 @@
 	</form>
 	</div>
 	</div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
 </body>
 </html>

@@ -47,8 +47,9 @@
 </head>
 <body>
 	<jsp:include page="../template/nav.jsp"></jsp:include>
+	<div class="body">
 	<form
-		action="hostel_list.jsp?city_name=<%=city_name%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&adult=<%=adult%>&child=<%=child%>"
+		action="hostel_list.jsp?"
 		method="POST">
 		<section class="search-section">
 			<div class="search-container">
@@ -98,6 +99,7 @@
 						<option value="5">5명</option>
 					</select>
 				</div>
+				<input type="hidden" value="<%=child+adult %>" name="people">
 				<div class="search__inputbox search__button">
 					<input class="search__input " type="submit" value="검색" />
 				</div>
@@ -121,12 +123,11 @@
 	<%
 		for (HostelDto dto : hlist) {
 	%>
+	<form method="POST" action="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&people=<%=people%>">
 	<section class="hostel">
-		<a href="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&people=<%=people%>">
 		<div class="hostel-container">
 			<div class="hostel__image">
-				<a href="#"> <img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
-				</a>
+				<img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
 			</div>
 			<div class="hostel__content">
 				<ul>
@@ -156,11 +157,12 @@
 				</ul>
 			</div>
 			<div class="hostel__price">
+				<input value="상세 보기" class="submit" type="submit">
 				<h3>1,000,000원</h3>
 			</div>
 		</div>
-		</a>
 	</section>
+	</form>
 	<%
 		}
 	%>
@@ -168,6 +170,7 @@
 		}
 	%>
 	<div class="border-bottom"></div>
+	</div>
 	<jsp:include page="/template/footer.jsp"></jsp:include>
 </body>
 </html>

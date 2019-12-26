@@ -46,6 +46,7 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/custom_select.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/footer.css">
 <style>
 	.select-selected{
 		/*배경을 바꾸고 싶다면 */
@@ -184,7 +185,7 @@
 	</h4>
 <%} %>
 	<div align="right">
-	<form action="coupon_itself.jsp" method="get" class="form=choice">
+	<form action="coupon_itself.jsp" method="get" class="form-choice">
 		<select id="select" name="type" class="select-icon custom-select" required>
 			<option value="coupon_name">이름</option>
 			<option value="coupon_no">번호</option>
@@ -195,7 +196,7 @@
 	</form>
 	</div>
 </div>
+<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
-<div>footer</div>
 </body>
 </html>
