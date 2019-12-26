@@ -154,7 +154,7 @@
 			<td>&nbsp;<%=dto.getMember_no() %></td>
 		</tr>
 		<tr>
-			<th>&nbsp;방이름</th>
+			<th>&nbsp;방번호</th>
 			<td>&nbsp;<%=dto.getRoom_no() %></td>
 		</tr>
 		<tr height="200">
