@@ -135,7 +135,7 @@ public class ReservationDao {
 			dto.setCustomer_count(rs.getInt("customer_count"));
 			dto.setCustomer_request(rs.getString("customer_request"));
 			dto.setReservation_start_date(rs.getString("reservation_start_date"));
-			dto.setReservation_until(rs.getInt("reservation_until"));
+			dto.setReservation_finish_date(rs.getString("reservation_finish_date"));
 
 			list.add(dto);
 		}
@@ -165,9 +165,8 @@ public class ReservationDao {
 	public void roomReservation(ReservationDto rdto) throws Exception {
 		Connection con = getConnection();
 
-		String sql = "insert into reservation_list values"
-				+ "(reservation_no_seq.nextval,?,?,?,?,?,?,?)";
-		
+		String sql = "insert into reservation_list values" + "(reservation_no_seq.nextval,?,?,?,?,?,?,?)";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, rdto.getRoom_no());
 		ps.setInt(2, rdto.getCustomer_no());
@@ -176,29 +175,29 @@ public class ReservationDao {
 		ps.setString(5, rdto.getReservation_start_date());
 		ps.setInt(6, rdto.getHostel_no());
 		ps.setString(7, rdto.getReservation_finish_date());
-		
+
 		ps.execute();
-		
+
 		con.close();
-		
+
 	}
 ////////////////////////////////////////////////////////////////
 //						관리자 예약전체 조회						  //
 ////////////////////////////////////////////////////////////////
-	
-	public List<ReservationDto> masterReservationList(int start,int finish) throws Exception{
+
+	public List<ReservationDto> masterReservationList(int start, int finish) throws Exception {
 		Connection con = getConnection();
 		String sql = "select * from(select rownum rn, RL.* from(select * from reservation_list order by reservation_no desc)RL) where rn between ? and ?";
-		
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setInt(1, start);
 		ps.setInt(2, finish);
 		ResultSet rs = ps.executeQuery();
-		
+
 		List<ReservationDto> list = new ArrayList<>();
-		while(rs.next()) {
+		while (rs.next()) {
 			ReservationDto rdto = new ReservationDto();
-			
+
 			rdto.setReservation_no(rs.getInt("reservation_no"));
 			rdto.setRoom_no(rs.getInt("room_no"));
 			rdto.setCustomer_no(rs.getInt("customer_no"));
@@ -210,27 +209,30 @@ public class ReservationDao {
 			list.add(rdto);
 		}
 		con.close();
-		
+
 		return list;
 	}
+
 ////////////////////////////////////////////////////////////////
 //						관리자 예약목록 검색						  //
 ////////////////////////////////////////////////////////////////
-	public List<ReservationDto> masterReservationSearch(String type,String keyword,int start, int finish) throws Exception{
+	public List<ReservationDto> masterReservationSearch(String type, String keyword, int start, int finish)
+			throws Exception {
 		Connection con = getConnection();
-		String sql = "select * from(select rownum rn, RS.* form(select * from reservation_list where "+type+" like '%'||?||'%' order by reservation_no desc)RL) where rn between ? and ?";
-		
+		String sql = "select * from(select rownum rn, RS.* form(select * from reservation_list where " + type
+				+ " like '%'||?||'%' order by reservation_no desc)RL) where rn between ? and ?";
+
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
 		ps.setInt(2, start);
 		ps.setInt(3, finish);
-		
+
 		ResultSet rs = ps.executeQuery();
 		List<ReservationDto> list = new ArrayList<>();
-		
-		while(rs.next()) {
+
+		while (rs.next()) {
 			ReservationDto rdto = new ReservationDto();
-			
+
 			rdto.setReservation_no(rs.getInt("reservation_no"));
 			rdto.setRoom_no(rs.getInt("room_no"));
 			rdto.setCustomer_no(rs.getInt("customer_no"));
@@ -242,28 +244,29 @@ public class ReservationDao {
 			list.add(rdto);
 		}
 		con.close();
-		
+
 		return list;
 	}
-	public int masterReservationCount(String type, String keyword) throws Exception{
+
+	public int masterReservationCount(String type, String keyword) throws Exception {
 		Connection con = getConnection();
 		String sql = "select count(*) from reservation_list";
-		boolean isSearch = type!=null && keyword!=null;
-		
-		if(isSearch) {
-			sql +="where "+type+" like '%'||?||'%'";
+		boolean isSearch = type != null && keyword != null;
+
+		if (isSearch) {
+			sql += "where " + type + " like '%'||?||'%'";
 		}
 		PreparedStatement ps = con.prepareStatement(sql);
-		if(isSearch) {
+		if (isSearch) {
 			ps.setString(1, keyword);
 		}
 		ResultSet rs = ps.executeQuery();
 		rs.next();
-		
+
 		int count = rs.getInt(1);
-		
+
 		con.close();
-		
+
 		return count;
 	}
 }
