@@ -41,6 +41,7 @@ body {background-color:#efefef; color:#333; font-size:0.8em; font-family:"돋음
 	height: 800px;
 	padding-top:40px;
 	background-image: url("../image/mypage1.jpg"); background-position:center; background-repeat: no-repeat; 
+  min-height: 90vh;
 }
 
 @font-face{
@@ -82,6 +83,7 @@ h3 {
 	margin-bottom:10px;
 	height: 500px;
 	overflow: hidden
+padding-bottom: 8rem;
 }
 
 #loginbox {
@@ -134,13 +136,13 @@ label#fUid, label#fUpass ,label#fUnewpass,label#fUname,label#fUphone,#fUemail{
 #loginbox hr {
 	color: #ddd;
 	height: 1px;
-	background-color: #ddd
+	background-color: #5B6D5E;
 }
 
 #login_bt {
 	width: 285px;
 	height: 35px;
-	background-color: #000;
+	background-color: #5B6D5E;
 	font-weight: bold;
 	color: #fff;
 }
@@ -157,7 +159,15 @@ a {
 	color: #333;
 }
     
-        
+        	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	bottom:0;
+	
+	width: 100%;
+	height: 8rem;
+	}
       
     </style>
    
@@ -183,11 +193,11 @@ a {
 		
 
 				<div class="block"></div>
-				<label for="upass" id="fUpass">현재 암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password">
+				<label for="upass" id="fUpass">현재 암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password" required="required">
          
 				
 				<div class="block"></div>
-				<label for="newupass" id="fUnewpass">새 암호</label> <input id="newupass" title="암호" type="password" name="newpw" placeholder="NewPassword">
+				<label for="newupass" id="fUnewpass">새 암호</label> <input id="newupass" title="암호" type="password" name="newpw" placeholder="NewPassword" required="required">
 				
 				
 				<div class="block"></div>
