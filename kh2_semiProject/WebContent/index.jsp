@@ -58,7 +58,7 @@
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="mypage/index.jsp">MY PAGE</a></li>            	
             <%}%>
-            <li><a class="top-bar__menu-item" href="info/regist_info.jsp">HELP</a></li>
+            <li><a class="top-bar__menu-item" href="info/help.jsp">HELP</a></li>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="member/logout.do">SIGN OUT</a></li>
             <%}else { %>
