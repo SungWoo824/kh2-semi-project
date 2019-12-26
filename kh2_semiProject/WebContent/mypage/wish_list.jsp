@@ -48,7 +48,7 @@ List<InterestDto> list =  idao.interestinfolist(member_no);
 
 
  RoomDao rdao = new RoomDao();
- 
+ RoomDto rdto = rdao.get(id);
 
 
 
@@ -121,9 +121,23 @@ height: 0.1px;
 	height: 670px;
 	padding-top:40px;
 	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+ min-height: 110vh;
 }
 
+.w-80{
 
+padding-bottom: 8rem;
+}
+
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	
+		bottom:0;
+	width: 100%;
+	height: 8rem;
+	}
 </style>
 
 </head>
@@ -149,7 +163,7 @@ height: 0.1px;
 	
 		<thead>
 			<tr>
-				<th></th>
+				<th>번호</th>
 				<th>이미지</th>
 				<th>상품정보</th>
 				<th>가격</th>
@@ -170,7 +184,7 @@ height: 0.1px;
 			<%for(InterestDto idto:list){ %>
 			<tr>
 			
-				<th><input type="checkbox"></th>
+				<th><%=rdto.getRoom_no()%></th>
 				<th><img src="http://placehold.it/200x150"></th>
 				<th><%=rdao.roomname( idto.getRoom_no()) %>//<%= hdao.hostelname( rdao.hostelNumber( idto.getRoom_no()))   %></th>
 				<th><%=rdao.roomprice(idto.getRoom_no())%></th>

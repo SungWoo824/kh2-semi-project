@@ -64,6 +64,21 @@ public class FilesDao {
 		con.close();
 	}
 	
+	public void ReviewChange(FilesDto fdto)throws Exception{
+		Connection con = getConnection();
+		
+		String sql = "update files set uploadname=?,savename=?,filetype=?,filesize=? where review_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setString(1, fdto.getUploadname());
+		ps.setString(2, fdto.getSavename());
+		ps.setString(3, fdto.getFiletype());
+		ps.setLong(4, fdto.getFilesize());
+		ps.setInt(5, fdto.getReview_no());
+		ps.execute();
+		con.close();
+	}
+	
 	public FilesDto ReviewGet(int review_no) throws Exception {
 		Connection con = getConnection();
 		

@@ -51,7 +51,9 @@
         </div>
         <div class="top-bar__menu">
           <ul>
+          <%if(grade!=null && grade.equals("판매자")){ %>
             <li><a class="top-bar__menu-item" href="hostel/0regist_region.jsp">HOSTING</a></li>
+            <%} %>
             <%if(grade!=null && grade.equals("관리자")){ %>
             	<li><a class="top-bar__menu-item" href="grandmaster/master_index.jsp">ADMIN PAGE</a></li>
             <%} %>
@@ -106,7 +108,7 @@
                     class="check-in"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-in"
+                    name="check_in"
                     required="required"
                   />
                   <span class="label">Check In</span>
@@ -123,7 +125,7 @@
                     class="check-out"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-out"
+                    name="check_out"
                     required="required"
                   />
                   <span class="label">Check Out</span>

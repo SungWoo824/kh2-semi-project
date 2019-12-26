@@ -11,8 +11,47 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <meta charset="UTF-8">
-
 <title>리뷰 페이지</title>
+ <!-- naver toast ui editor를 쓰기 위해 필요한 준비물 -->
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/github.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/tui-color-picker.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/dist/tui-editor.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/dist/tui-editor-contents.min.css">
+
+    <script src="../lib/toast/dist/tui-editor-Editor-full.min.js"></script>
+    <!-- naver toast ui editor를 쓰기 위해 필요한 준비물 -->
+
+    <script>
+        //naver toast ui를 만들기 위한 코드
+        function createEditor(){
+            //editor 옵션
+            var options = {
+                //el(element) : 에디터가 될 영역
+                el:document.querySelector(".naver-editor"),
+                //previewStyle : 표시되는 방식(horizontal, vertical)
+                previewStyle:'vertical',
+                //height : 생성될 에디터의 높이
+                height:'300px',
+                //initialEditType : 생성될 에디터의 초기화면 형태(markdown, wysiwyg)
+                initialEditType:'markdown'
+            };
+            //editor 생성 코드
+            var editor = tui.Editor.factory(options);
+            //editor에 이벤트를 설정해서 입력하면 자동으로 input에 복사되게 구현
+            //- input이라는 상황이 발생하면 오른쪽 function을 실행하라
+            //- oninput이랑 동일한데 자바스크립트로만 구현
+            editor.on("change", function(){
+                //editor의 입력값을 가져와서 input에 설정
+                var text = editor.getValue();
+                var input = document.querySelector(".naver-editor + input");
+                input.value = text;
+            });
+        }
+        //body가 없는 경우에는 다음과 같이 작성
+        // - 예약 실행(callback)
+        window.onload = createEditor;
+    </script>
 <style type="text/css">
 *{
 		font-family: binggrae;
@@ -149,7 +188,7 @@ a {
 }
 
 #star_grade>a{
-        text-decoration: none;
+        text-decoration: underline;
         color: grey;
     }
 #star_grade>a.on{
@@ -164,8 +203,6 @@ a {
 
 }
 #fUimage{
-	
-	
 	margin-bottom: 30px;
 }
 .reviewbox-menu{
@@ -173,15 +210,16 @@ a {
 }
 .reviewbox-menu-one{
 	display:inline-block;
-	width: 50%;
-	height: 300px;
+	text-align: center;
+	width: 40%;
+	height: 400px;
 	border: 1px solid black;
 	float: left;
 }
 .reviewbox-menu-two{
 	display:inline-block;
-	width: 50%;
-	height: 300px;
+	width: 60%;
+	height: 400px;
 	border: 1px solid black;
 	float: left;
 }
@@ -197,17 +235,56 @@ a {
     height: 299px;
     width: 460px;
 }
-
+.dropzone{
+	position: relative;
+	width: 554px;
+	height: 370px;
+	opacity: 0.01;
+}
+#foo{
+	position: absolute;
+	width: 554px;
+	height: 370px;
+}
+.star_style{
+	font-size: 3rem;
+}
+img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
+	opacity: 0.5;
+}
 </style>
+<link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+
+<script src="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.js"></script>
 <script>
+		var star_ex;
 		function star(){
 		$('#star_grade a').click(function(){
     	$(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
     	$(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-   		 return false;
+    	return false;
 		});
 		}
-	
+		function star1(){
+			document.getElementById('star').value=1;
+			document.getElementById('star_ex').innerHTML=" 별로에요";
+		}
+		function star2(){
+			document.getElementById('star').value=2;
+			document.getElementById('star_ex').innerHTML=" 그저그래요";
+		}
+		function star3(){
+			document.getElementById('star').value=3;
+			document.getElementById('star_ex').innerHTML=" 나쁘지않아요";
+		}
+		function star4(){
+			document.getElementById('star').value=4;
+			document.getElementById('star_ex').innerHTML=" 좋아요";
+		}
+		function star5(){
+			document.getElementById('star').value=5;
+			document.getElementById('star_ex').innerHTML=" 완전좋아요";
+		}
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
@@ -230,8 +307,6 @@ a {
         }
     </script>
 </head>
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <body>
 
 	<div>
@@ -242,36 +317,39 @@ a {
 		<h1>REVIEW</h1>
 		<h2>
 			리뷰를 남겨주세요.
-		</h2>
+		</h2>	
 		<div id="wrap">
-	<form action="review_write.do">
+	<form name="review" action="review_write.do"  method="post" enctype="multipart/form-data">
 <!-- 		예약번호:<input type="text" name="reservation_no"><br>
 		호텔번호:<input type="text" name="hostel_no"><br> -->
 		<div id="reviewbox">
 		<div>
-		<label for="ureview" id="fUreview">리뷰</label><br><input type="text" name="review_content">
-		<textarea class="noresize" rows="10" cols="100"></textarea>
+		<label for="ureview" id="fUreview">리뷰</label><br>
+		<div class="naver-editor"></div>    
+    <input type="hidden" name="content">
+		<textarea class="noresize" name="review_content" rows="10" cols="100" style="font-size: 1.5rem;"></textarea>
 			<div class="block"></div>
 			<div class="block"></div>
 			<div class="block"></div>
 		</div>	
 		<div class="reviewbox-menu">
 		<div class="reviewbox-menu-one">	
-		<label for="upoint" id="fUpoint">평점<input type="text" name="star_point"></label> 
+		<div style="font-size: 1.5rem;">별점을 메겨주세요</div>
 			<p id="star_grade">
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
+        		<a href="#" class="star_style" onclick="star(); star1();">★</a>
+        		<a href="#" class="star_style" onclick="star(); star2();">★</a>
+        		<a href="#" class="star_style" onclick="star(); star3();">★</a>
+        		<a href="#" class="star_style" onclick="star(); star4();">★</a>
+        		<a href="#" class="star_style" onclick="star(); star5();">★</a>
+        		<input type="hidden" name="star_point" id="star" value="0">
 			</p>
-			<input type="file" name="review_flie" accept=".jpg, .png, .gif">
+			<div id="star_ex" class="star_style"></div>
 		</div>
 		
 		<div class="reviewbox-menu-two">	
-			<label for="uimage" id="fUimage">리뷰사진</label>
-			<textarea class="noresize-img" rows="10" cols="10"></textarea>
-			
+			<label for="uimage" id="fUimage">리뷰사진</label><br>
+			<img id="foo" src="<%=request.getContextPath() %>/image/리뷰사진.png">
+			<input type="file" name="review_file" class="dropzone" id="imgInp" accept=".jpg, .png, .gif">
 		<input type="text" name="image_point">
 			
 		</div>

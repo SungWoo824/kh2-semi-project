@@ -397,7 +397,6 @@ public int roomprice(int room_no) throws Exception {
 	con.close();
 	return room_price;
 
-	
 }
 
 

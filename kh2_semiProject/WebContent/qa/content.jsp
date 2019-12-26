@@ -154,7 +154,7 @@
 			<td>&nbsp;<%=dto.getMember_no() %></td>
 		</tr>
 		<tr>
-			<th>&nbsp;방이름</th>
+			<th>&nbsp;방번호</th>
 			<td>&nbsp;<%=dto.getRoom_no() %></td>
 		</tr>
 		<tr height="200">
@@ -187,7 +187,7 @@
 						<th colspan="2" align="right" class="input-button" height="5px" class="input-button">
 							<form action="<%=request.getContextPath() %>/qa/qa_reply_delete.do" method="get">
 								<div style="float:right;">
-								<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>">삭제</a>
+								<a href="qa_reply_delete.do?qa_reply_no=<%=rdto.getQa_reply_no() %>">삭제</a>
 								</div>
 								<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
 									<div style="float:right;">
