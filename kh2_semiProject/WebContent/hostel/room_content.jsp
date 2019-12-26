@@ -29,7 +29,7 @@
 <jsp:include page="../template/nav.jsp"></jsp:include>
 </div>
 <div class="backimg w-90" align="center">
-	<img src="<%=request.getContextPath() %>/image/back101.png" />
+	<img src="<%=request.getContextPath() %>/image/back102.png" />
 </div>
 <div class="w-80">
 	<div class="row" ></div>
@@ -146,6 +146,8 @@
 		</form>
 	</div>
 </div>
+<div class="under">
 <jsp:include page="../template/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

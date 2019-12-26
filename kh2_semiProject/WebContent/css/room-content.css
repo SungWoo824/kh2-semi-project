@@ -121,4 +121,11 @@
 		height: 410px;
     	width: 90%;
     	margin-left: 6%;
+    	opacity: 0.5;
+	}
+	.under{
+		position: absolute; 
+		left: 0; 
+		bottom: 0;
+		width:100%;
 	}
