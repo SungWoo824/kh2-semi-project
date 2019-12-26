@@ -355,7 +355,19 @@ img {
 			<div class="tab__location js-location">
 				<div id="map" style="width: 400px; height: 400px;"></div>
 			</div>
-			<div class="tab__reivew js-review">리뷰창입니다.</div>
+			<div class="tab__reivew js-review">
+				<%for(ReviewDto rdto : list){ %>
+	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
+	리뷰넘버:<%=rdto.getReview_no() %>
+	예약넘버:<%=rdto.getReservation_no() %>
+	고객넘버:<%=rdto.getCustomer_no() %>
+	호텔넘버:<%=rdto.getHostel_no() %>
+	리뷰내용:<%=rdto.getReview_content() %>
+	별점:<%=rdto.getStar_point() %>
+	리뷰시간:<%=rdto.getReview_date() %>
+<br><br>
+	<%} %>
+			</div>
 		</article>
 	</section>
 

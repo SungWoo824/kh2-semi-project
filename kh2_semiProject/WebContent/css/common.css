@@ -1,5 +1,4 @@
-
-    @font-face{
+ @font-face{
     font-family:notosanskrmedium;
     src:url("../font/NotoSansCJKkr-Medium.otf");
     }
@@ -432,5 +431,4 @@
     .content-table a:hover{
         color: black;
         text-decoration: none;
-    }
-	
+    }	
