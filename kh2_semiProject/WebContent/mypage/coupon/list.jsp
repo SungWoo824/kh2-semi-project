@@ -122,10 +122,28 @@ height: 0.1px;
 .container{
 	height: 670px;
 	padding-top:40px;
+	
 	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+
+  min-height: 110vh;
+
+}
+.w-80{
+
+padding-bottom: 7rem;
+ 
+ 
 }
 
-
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	bottom:0;
+	
+	width: 100%;
+	height: 7rem;
+	}
 </style>
 </head>
 
@@ -143,13 +161,13 @@ height: 0.1px;
 	<div class="row" ></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
-	<div class="row-big"></div>
-
+		<div class="row-big"></div>
 	<div class="master-title w-100"><h2>마이쿠폰</h2></div>
     <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
 				<th>번호</th>
+					<th>쿠폰번호</th>
 				<th>이름</th>
 				<th>할인율</th>
 				<th>유효기간</th>
@@ -162,7 +180,7 @@ height: 0.1px;
 		<%if(count==0){ %>
 			<tr>
 			
-				<th colspan="6">쿠폰내역이 없습니다.</th>
+				<th colspan="7">쿠폰내역이 없습니다.</th>
 				
 				
 			</tr>
@@ -171,7 +189,7 @@ height: 0.1px;
 		
 			<%for(CouponDto dto:list){ %>
 			<tr>
-			
+			<th><%=dto.getHavecoupon_no()%></th>
 				<th><%=dto.getCoupon_no()%></th>
 				<th><%=dto.getCoupon_name()%></th>
 				<th><%=dto.getCoupon_rate()%> </th>
@@ -208,13 +226,14 @@ height: 0.1px;
 					<a href="list.jsp?pno=<%=finishBlock + 1%>">다음</a>
 			
 			<%} %>
+			
 		</h4>
 
 
 	</div>
-</section>
  
 	
+</section>
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>

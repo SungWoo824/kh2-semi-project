@@ -127,10 +127,24 @@ height: 0.1px;
 	height: 670px;
 	padding-top:40px;
 	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+ min-height: 110vh;
+
 }
 
+.w-80{
 
+padding-bottom: 7rem;
+}
 
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	bottom:0;
+		
+	width: 100%;
+	height: 7rem;
+	}
 </style>
 </head>
 <body>
@@ -149,8 +163,7 @@ height: 0.1px;
 	<div class="row" ></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
-	<div class="row-big"></div>
-
+		<div class="row-big"></div>
 	<div class="master-title w-100"><h2>나의 예약 내역</h2></div>
     <table class="w-100 couponmember-table">
 		<thead>
