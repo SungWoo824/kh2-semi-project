@@ -12,7 +12,6 @@
     font-family: binggrae;
     src:url("../font/NotoSansCJKkr-Medium.otf");
 	}
- 
 .block {
 	height: 10px;
 	margin: 0;
@@ -120,7 +119,6 @@
 			게스트를 맞이하기 전에 궁금한 점이 있으면 언제든 메시지로 물어볼 수 있습니다.
 		</p>
 	</div>
- 
 	</article>
 </div>
 	<div>

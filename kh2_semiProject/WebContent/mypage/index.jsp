@@ -49,7 +49,7 @@
             width: 460px;
             margin: 30px auto;
             text-align: left;
-          
+          padding-bottom: 7rem;
            
 		
         }
@@ -114,9 +114,19 @@
 .row-big{
 
 height: 0.1px;
+min-height: 8vh;
 }
 
 
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	bottom:0;
+	
+	width: 100%;
+	height: 7rem;
+	}
 
     </style>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">

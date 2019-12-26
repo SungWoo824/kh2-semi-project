@@ -187,7 +187,7 @@
 						<th colspan="2" align="right" class="input-button" height="5px" class="input-button">
 							<form action="<%=request.getContextPath() %>/qa/qa_reply_delete.do" method="get">
 								<div style="float:right;">
-								<a href="qa_reply_delete.do?no=<%=rdto.getQa_reply_no() %>">삭제</a>
+								<a href="qa_reply_delete.do?qa_reply_no=<%=rdto.getQa_reply_no() %>">삭제</a>
 								</div>
 								<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
 									<div style="float:right;">

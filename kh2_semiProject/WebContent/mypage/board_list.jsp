@@ -102,7 +102,25 @@ height: 0.1px;
 	height: 670px;
 	padding-top:40px;
 	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+ min-height: 110vh;
 }
+
+.w-80{
+
+padding-bottom: 7rem;
+}
+
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	
+	bottom:0;
+	width: 100%;
+	height: 7rem;
+	}
+
+
 </style>
 </head>
 
@@ -118,7 +136,7 @@ height: 0.1px;
 	<div class="row" ></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
-	<div class="row-big"></div>
+		<div class="row-big"></div>
 
 	<div class="master-title w-100"><h2>내가 쓴 글 </h2></div>
     <table class="w-100 couponmember-table">
@@ -151,7 +169,7 @@ height: 0.1px;
 		<td align="left"><a href="board_content.jsp?pno=&qa_no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_no() %></td>
 		<td><%=dto.getQa_wdate() %></td>
-		<td><input type="button" value="상세보기"></td>
+		<td><a href="board_content.jsp?pno=&qa_no=<%= dto.getQa_no() %>" ><input type="button" value="상세보기"></a></td>
 	</tr>
 	<% } %>
 		<% } %>
