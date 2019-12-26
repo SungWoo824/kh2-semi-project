@@ -95,8 +95,13 @@
 	}
 	
 /*ask-button*/
+	.ask-button{
+		margin-top: 300px;
+   		text-align: right;
+    	margin-right: 50px;
+	}
 	.ask-button a{
-		color: #666;
+		color: #2f628a;
     	text-decoration: none;
     	height:45px;
 		width:120px;
@@ -105,5 +110,15 @@
 		margin-left:1rem;
 	}
 	.ask-button a:hover{
-		
+		color:#292929;
+	}
+	.backimg{
+		align:center;
+		position:absolute;
+		z-index:-1;
+	}
+	.backimg img{
+		height: 410px;
+    	width: 90%;
+    	margin-left: 6%;
 	}

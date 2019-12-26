@@ -28,10 +28,12 @@
 <div>
 <jsp:include page="../template/nav.jsp"></jsp:include>
 </div>
+<div class="backimg w-90" align="center">
+	<img src="<%=request.getContextPath() %>/image/back101.png" />
+</div>
 <div class="w-80">
 	<div class="row" ></div>
-	<div class="row" ></div>
-	<div class="row" ></div>
+	<br>
 <div class="float-wrap">
 	<div class="room__image float-item">
 		<img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
@@ -129,7 +131,7 @@
 		</table>
 	</div>
 	<div class="ask-button">
-		<a href="<%=request.getContextPath() %>/qa/write.jsp?room_no="<%=Rdto.getRoom_no() %>>문의하기</a>
+		<a href="<%=request.getContextPath() %>/qa/write.jsp?room_no=<%=Rdto.getRoom_no() %>">문의하기</a>
 	</div>
 </div>
 </div>
