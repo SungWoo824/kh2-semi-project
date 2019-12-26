@@ -11,7 +11,8 @@
 	호텔번호
 	룸가격
 	방이름
-
+	체크인
+	체크아웃
 
 	<form action="room_reservation.do" method="post">
 		<input type="hidden" name="room_no" value="">
@@ -21,7 +22,7 @@
 		<input type="hidden" name="hostel_no" value="">
 			
 		숙박인원
-		<select>
+		<select name="customer_count">
 		<%for(int i=0 ; i<4; i++){ %><%--4는 최대 인원 파라메터 값으로 교체 --%>
 			<option value=<%=i+1%>><%=i+1%>명</option>
 		<%} %>
