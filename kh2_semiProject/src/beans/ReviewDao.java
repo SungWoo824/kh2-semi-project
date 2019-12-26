@@ -91,5 +91,26 @@ public class ReviewDao {
 		con.close();
 		return list;
 	}
+	
+	public ReviewDto hostel_review_get(int review_no) throws Exception{
+		ReviewDto dto = new ReviewDto();
+		Connection con = getConnection();
+		String sql = "select * from review where review_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, review_no);
+		ResultSet rs = ps.executeQuery();
+		if(rs.next()) {
+			dto.setReview_no(rs.getInt("review_no"));
+			dto.setReservation_no(rs.getInt("reservation_no"));
+			dto.setCustomer_no(rs.getInt("customer_no"));
+			dto.setHostel_no(rs.getInt("hostel_no"));
+			dto.setReview_content(rs.getString("review_content"));
+			dto.setStar_point(rs.getInt("star_point"));
+			dto.setReview_date(rs.getString("review_date"));
+		}
+		con.close();
+		return dto;
+	}
 
 }

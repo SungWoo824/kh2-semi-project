@@ -291,18 +291,17 @@
 	</section>
 	<%} %>
 	ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ리뷰자리ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ<br><br>
-<%-- 	<%for(ReviewDto rdto : list){ %> --%>
-<%-- 	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>"> --%>
-<%-- 	<a href="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">다운</a> --%>
-<%-- 	리뷰넘버<%=rdto.getReview_no() %> --%>
-<%-- 	예약넘버<%=rdto.getReservation_no() %> --%>
-<%-- 	고객넘버<%=rdto.getCustomer_no() %> --%>
-<%-- 	호텔넘버<%=rdto.getHostel_no() %> --%>
-<%-- 	리뷰내용<%=rdto.getReview_content() %> --%>
-<%-- 	별점<%=rdto.getStar_point() %> --%>
-<%-- 	리뷰시간<%=rdto.getReview_date() %> --%>
-<!-- 	<br><br> -->
-<%-- 	<%} %> --%>
+	<%for(ReviewDto rdto : list){ %>
+	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
+	리뷰넘버:<%=rdto.getReview_no() %>
+	예약넘버:<%=rdto.getReservation_no() %>
+	고객넘버:<%=rdto.getCustomer_no() %>
+	호텔넘버:<%=rdto.getHostel_no() %>
+	리뷰내용:<%=rdto.getReview_content() %>
+	별점:<%=rdto.getStar_point() %>
+	리뷰시간:<%=rdto.getReview_date() %>
+<br><br>
+	<%} %>
 </div>
 <jsp:include page="../template/footer.jsp"></jsp:include>
 </body>
