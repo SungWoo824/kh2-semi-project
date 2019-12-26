@@ -11,7 +11,6 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <title>리뷰 페이지</title>
 <style type="text/css">
 *{
@@ -210,14 +209,34 @@ a {
 }
 </style>
 <script>
+		var star_ex;
 		function star(){
 		$('#star_grade a').click(function(){
     	$(this).parent().children("a").removeClass("on");  /* 별점의 on 클래스 전부 제거 */ 
     	$(this).addClass("on").prevAll("a").addClass("on"); /* 클릭한 별과, 그 앞 까지 별점에 on 클래스 추가 */
-   		 return false;
+    	return false;
 		});
 		}
-	
+		function star1(){
+			document.getElementById('star').value=1;
+			star_ex='별로에요';
+		}
+		function star2(){
+			document.getElementById('star').value=2;
+			star_ex='그저그래요';
+		}
+		function star3(){
+			document.getElementById('star').value=3;
+			star_ex='좋아요';
+		}
+		function star4(){
+			document.getElementById('star').value=4;
+			star_ex='완전좋아요';
+		}
+		function star5(){
+			document.getElementById('star').value=5;
+			star_ex='최고에요!';
+		}
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
     <script type="text/javascript">
@@ -251,9 +270,9 @@ a {
 		<h1>REVIEW</h1>
 		<h2>
 			리뷰를 남겨주세요.
-		</h2>
+		</h2>	
 		<div id="wrap">
-	<form action="review_write.do" method="post" enctype="multipart/form-data">
+	<form name="review" action="review_write.do"  method="post" enctype="multipart/form-data">
 <!-- 		예약번호:<input type="text" name="reservation_no"><br>
 		호텔번호:<input type="text" name="hostel_no"><br> -->
 		<div id="reviewbox">
@@ -268,12 +287,16 @@ a {
 		<div class="reviewbox-menu-one">	
 		<label for="upoint" id="fUpoint">평점<input type="text" name="star_point"></label> 
 			<p id="star_grade">
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
-        		<a href="#" onclick="star()">★</a>
+        		<a href="#" onclick="star(); star1();">★</a>
+        		<a href="#" onclick="star(); star2();">★</a>
+        		<a href="#" onclick="star(); star3();">★</a>
+        		<a href="#" onclick="star(); star4();">★</a>
+        		<a href="#" onclick="star(); star5();">★</a>
+        		<input type="hidden" name="star_point" id="star" value="0">
 			</p>
+			<script>
+				document.write(star_ex);
+			</script>
 		</div>
 		
 		<div class="reviewbox-menu-two">	

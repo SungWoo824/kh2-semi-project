@@ -33,7 +33,8 @@ public class ReviewWriteServlet extends HttpServlet{
 			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
-			
+
+
 			
 			dto.setReview_no(review_no);
 			dto.setReservation_no(reservation_no);
