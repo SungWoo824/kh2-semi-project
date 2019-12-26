@@ -32,9 +32,8 @@ public class RoomReservationServlet extends HttpServlet{
 			resp.sendRedirect("room_reservation_finish.jsp");
 			
 		} catch (Exception e) {
-			e.printStackTrace();
-			resp.sendError(500);
+			
 		}
-		
 	}
+	
 }
