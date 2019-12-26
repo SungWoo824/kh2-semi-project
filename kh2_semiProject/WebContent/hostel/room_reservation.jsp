@@ -10,7 +10,7 @@
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 	String reservation_start_date = request.getParameter("reservation_start_date");
 	String reservation_finish_date = request.getParameter("reservation_finish_date");
-	int customer_count = Integer.parseInt(request.getParameter("people"));
+	int customer_count = Integer.parseInt(request.getParameter("customer_count"));
 	int room_price = Integer.parseInt(request.getParameter("room_price"));
 	
 	ReservationDao reservationDao = new ReservationDao();
@@ -41,7 +41,7 @@
 	체크인 <%=reservation_start_date%>
 	체크아웃 <%=reservation_finish_date%>
 	
-	<form action="room_reservation.do" method="post">
+	<form action="room_reservation_kakao.do" method="post">
 		<input type="hidden" name="room_no" value="<%=room_no%>">
 		<input type="hidden" name="customer_no" value="<%=customer_no%>">
 		<input type="hidden" name="reservation_start_date" value="<%=reservation_start_date%>">
