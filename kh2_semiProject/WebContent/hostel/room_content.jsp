@@ -80,8 +80,8 @@
 					<td><%=Rdto.getRoom_cool() %></td>
 				</tr>
 				<tr>
-					<th>난방</th>
-					<td><%=Rdto.getRoom_hot() %></td>
+					<th>방이름</th>
+					<td><%=Rdto.getRoom_name() %></td>
 				</tr>							
 			</tbody>
 		</table>
@@ -125,7 +125,7 @@
 				</tr>
 				<tr>
 					<th>난방</th>
-					<td><%=Rdto.getRoom_no() %></td>
+					<td><%=Rdto.getRoom_hot() %></td>
 				</tr>				
 			</tbody>
 		</table>
