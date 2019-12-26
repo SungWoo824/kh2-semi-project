@@ -15,6 +15,6 @@
 			<a href="<%=request.getContextPath() %>/qa/list.jsp">게시글 관리</a>
 		</div>
 		<div class="master-menu-item">
-			<a href="#">예약 관리</a>
+			<a href="<%=request.getContextPath() %>/grandmaster/master_reservation_list.jsp">예약 관리</a>
 		</div>
 </div>
