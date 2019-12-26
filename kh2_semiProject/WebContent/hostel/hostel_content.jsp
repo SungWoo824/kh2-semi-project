@@ -270,16 +270,18 @@
 					</li>
 					<li>
 						<input type="hidden" name="room_no" value="<%=Rdto.getRoom_no() %>">
-						<input type="hidden" name="check-in" value="<%=check_in %>">
-						<input type="hidden" name="check-out" value="<%=check_out %>">
-						<input type="hidden" name="people" value="<%=people %>">	
+						<input type="hidden" name="check_in" value="<%=check_in %>">
+						<input type="hidden" name="check_out" value="<%=check_out %>">
+						<input type="hidden" name="people" value="<%=people %>">
+						<input type="hidden" name="hostel_no" value="<%=hostel_no %>">
+						<input type="hidden" name="room_price" value="<%=Rdto.getRoom_price() %>">	
 					</li>
 					<li></li>
 				</ul>
 			</div>
 			<div class="details"><input type="submit"></div>
 			<div class="hostel__price">
-				<h3>1,000,000원</h3>
+				<h3><%=Rdto.getRoom_price() %>원</h3>
 			</div>
 		</div>
 		</form>
