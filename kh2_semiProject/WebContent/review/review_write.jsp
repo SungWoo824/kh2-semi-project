@@ -10,7 +10,12 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+<<<<<<< HEAD
 <meta charset="UTF-8">
+=======
+<meta charset="UTF-8">
+
+>>>>>>> refs/remotes/origin/master
 <title>리뷰 페이지</title>
 <style type="text/css">
 *{
@@ -266,7 +271,8 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 </head>
 <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
 <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
-<body  onload="loadEditor()">
+<body>
+
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
