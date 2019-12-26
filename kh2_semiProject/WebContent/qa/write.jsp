@@ -15,6 +15,8 @@
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
+
+
 <style type="text/css">
 	@font-face{
     font-family: binggrae;
@@ -70,10 +72,14 @@
 	color: #fff;
 }
 
-</style>	
+</style>
+
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">		
 </head>
 <body>
+
+
 <jsp:include page="../template/nav.jsp" ></jsp:include>
 	<form action="write.do" method="post" >
 	<div class="write" align="center">	
@@ -95,12 +101,15 @@
 			</select>		
 		</div>
 		<div class="text">
-			<textarea class="menu-item" name="qa_content"  rows="20" cols="120"></textarea>
+		<img src="<%=request.getContextPath() %>/image/캡처.jpg" style="width: 831px;">
+			<textarea class="menu-item" name="qa_content"  rows="20" cols="90"></textarea>
+			
 			<div class="block"></div>
 		<input id="login_bt" type="submit" value="등록">
 		</div>	
-	</div>		
+	</div>
 	</form>
+			
 	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
