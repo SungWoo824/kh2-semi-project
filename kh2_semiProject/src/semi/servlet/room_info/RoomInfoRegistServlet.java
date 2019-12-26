@@ -50,7 +50,7 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			
 			
 //			[3] 출력(이동)			
-			resp.sendRedirect("5regist_success.jsp");
+			resp.sendRedirect("login.jsp");
 			
 		}
 		
