@@ -10,13 +10,48 @@
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
-<<<<<<< HEAD
 <meta charset="UTF-8">
-=======
-<meta charset="UTF-8">
-
->>>>>>> refs/remotes/origin/master
 <title>리뷰 페이지</title>
+ <!-- naver toast ui editor를 쓰기 위해 필요한 준비물 -->
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/codemirror.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/github.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/css/tui-color-picker.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/dist/tui-editor.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/toast/dist/tui-editor-contents.min.css">
+
+    <script src="../lib/toast/dist/tui-editor-Editor-full.min.js"></script>
+    <!-- naver toast ui editor를 쓰기 위해 필요한 준비물 -->
+
+    <script>
+        //naver toast ui를 만들기 위한 코드
+        function createEditor(){
+            //editor 옵션
+            var options = {
+                //el(element) : 에디터가 될 영역
+                el:document.querySelector(".naver-editor"),
+                //previewStyle : 표시되는 방식(horizontal, vertical)
+                previewStyle:'vertical',
+                //height : 생성될 에디터의 높이
+                height:'300px',
+                //initialEditType : 생성될 에디터의 초기화면 형태(markdown, wysiwyg)
+                initialEditType:'markdown'
+            };
+            //editor 생성 코드
+            var editor = tui.Editor.factory(options);
+            //editor에 이벤트를 설정해서 입력하면 자동으로 input에 복사되게 구현
+            //- input이라는 상황이 발생하면 오른쪽 function을 실행하라
+            //- oninput이랑 동일한데 자바스크립트로만 구현
+            editor.on("change", function(){
+                //editor의 입력값을 가져와서 input에 설정
+                var text = editor.getValue();
+                var input = document.querySelector(".naver-editor + input");
+                input.value = text;
+            });
+        }
+        //body가 없는 경우에는 다음과 같이 작성
+        // - 예약 실행(callback)
+        window.onload = createEditor;
+    </script>
 <style type="text/css">
 *{
 		font-family: binggrae;
@@ -218,6 +253,9 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 	opacity: 0.5;
 }
 </style>
+<link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
+
+<script src="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.js"></script>
 <script>
 		var star_ex;
 		function star(){
@@ -269,8 +307,6 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
         }
     </script>
 </head>
-<script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
-<link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
 <body>
 
 	<div>
@@ -289,6 +325,8 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 		<div id="reviewbox">
 		<div>
 		<label for="ureview" id="fUreview">리뷰</label><br>
+		<div class="naver-editor"></div>    
+    <input type="hidden" name="content">
 		<textarea class="noresize" name="review_content" rows="10" cols="100" style="font-size: 1.5rem;"></textarea>
 			<div class="block"></div>
 			<div class="block"></div>
