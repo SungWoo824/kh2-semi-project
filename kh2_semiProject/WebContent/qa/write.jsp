@@ -3,6 +3,14 @@
 <!DOCTYPE html>
 
 <% request.setCharacterEncoding("UTF-8");%>
+<%
+	int room_no;
+	if(request.getParameter("room_no")!=null){
+		room_no = Integer.parseInt(request.getParameter("room_no"));
+	}else{
+		room_no=0;
+	}
+%>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
@@ -72,7 +80,11 @@
   		
 		<h1 class="board">Q&A BOARD</h1>
 		<div class="write1">
-		<input class="menu-item" type="text" name="room_no" placeholder="방 번호"><!--룸정보를 옵션으로 만듦  -->
+		<%if(request.getParameter("room_no")!=null){ %>
+			<input class="menu-item" type="text" name="room_no" value="<%=room_no%>" readonly><!--룸정보를 옵션으로 만듦  -->
+		<%}else{ %>
+			<input class="menu-item" type="text" name="room_no" placeholder="방 번호"><!--룸정보를 옵션으로 만듦  -->
+		<% }%>
 			<select class="menu-item" name="qa_head">
 				<option value="">선택하세요</option>
 				<option value="입금 관련">입금관련</option>	
