@@ -106,7 +106,7 @@
                     class="check-in"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-in"
+                    name="check_in"
                     required="required"
                   />
                   <span class="label">Check In</span>
@@ -123,7 +123,7 @@
                     class="check-out"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-out"
+                    name="check_out"
                     required="required"
                   />
                   <span class="label">Check Out</span>

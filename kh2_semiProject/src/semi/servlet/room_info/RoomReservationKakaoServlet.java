@@ -3,6 +3,7 @@ package semi.servlet.room_info;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,7 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import sun.net.www.protocol.http.HttpURLConnection;
 
 @WebServlet(urlPatterns = "/hostel/room_reservation_kakao.do")
 public class RoomReservationKakaoServlet extends HttpServlet{
@@ -29,7 +29,7 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
-			conn.setRequestProperty("Autorization", "KakaoAK 4f0ba4e9f70eafa42710fac2e2ec5692");
+			conn.setRequestProperty("Authorization", "KakaoAK 4f0ba4e9f70eafa42710fac2e2ec5692");
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
@@ -48,7 +48,7 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			
 			String string_params = new String();
 			for(Map.Entry<String, String> elem : params.entrySet()) {
-				string_params +=(elem.getKey() +"="+elem.getValue()+"%");
+				string_params +=(elem.getKey() +"="+elem.getValue()+"&");
 			}
 			
 			conn.getOutputStream().write(string_params.getBytes());
@@ -58,6 +58,8 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			JSONObject obj = (JSONObject)parser.parse(in);
 			
 			String successUrl = (String)obj.get("next_redirect_pc_url");
+			
+			resp.sendRedirect(successUrl);
 			
 			
 		} catch (Exception e) {

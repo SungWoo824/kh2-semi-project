@@ -15,10 +15,8 @@
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 	String check_in = request.getParameter("check_in");
 	String check_out = request.getParameter("check_out");
-	int people = 0;
-	if (request.getParameter("people") != null) {
-		people = Integer.parseInt(request.getParameter("people"));
-	}
+	int people = Integer.parseInt(request.getParameter("people"));
+
 	boolean isSearch = check_in != null && check_out != null && people != 0;
 	/* 	HostelDao dao = new HostelDao();
 		HostelDto dto = dao.hostelinfomation(hostel_no);
@@ -294,7 +292,7 @@ img {
 			%>
 			<section class="hostel">
 				<div class="tab__room-info js-list">
-					<form action="room_content.jsp">
+					<form action="room_content.jsp" method="post">
 						<div class="hostel-container">
 							<div class="hostel__image">
 								<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
@@ -332,18 +330,20 @@ img {
 													<%=Rdto.getRoom_breakfast()%></span></li>
 										</ul>
 									</li>
-									<li><input type="hidden" name="room_no"
-										value="<%=Rdto.getRoom_no()%>"> <input type="hidden"
-										name="check-in" value="<%=check_in%>"> <input
-										type="hidden" name="check-out" value="<%=check_out%>">
-										<input type="hidden" name="people" value="<%=people%>">
+									<li>
+									<input type="hidden" name="room_no"	value="<%=Rdto.getRoom_no()%>">
+									<input type="hidden" name="check_in" value="<%=check_in%>">
+									<input type="hidden" name="check_out" value="<%=check_out%>">
+									<input type="hidden" name="people" value="<%=people%>">
+									<input type="hidden" name="hostel_no" value="<%=hostel_no%>">
+									<input type="hidden" name="room_price" value="<%=Rdto.getRoom_price()%>">
 									</li>
 									<li></li>
 								</ul>
 							</div>
 							<div class="hostel__price">
 								<input value="상세 보기" class="submit" type="submit">
-								<h3>1,000,000원</h3>
+								<h3><%=Rdto.getRoom_price()%>원</h3>
 							</div>
 						</div>
 					</form>
