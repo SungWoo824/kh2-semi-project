@@ -12,14 +12,13 @@
     font-family: binggrae;
     src:url("../font/NotoSansCJKkr-Medium.otf");
 	}
-
 .block {
 	height: 10px;
 	margin: 0;
 	padding: 0;
 	font-size: 0;
 }	
-
+ 
 #date{
 	display: block;
     margin: 1em 0 2em;
@@ -36,11 +35,11 @@
 .info > .a > p+{
 	font-family: binggrae;
 }
-
+ 
 #head, #middle, #low, #low-foot{
 	font-family: binggrae;
 }
-
+ 
 #master1{
 	font-family: binggrae;
 	display: block;
@@ -50,7 +49,7 @@
     border: 1px solid #d6d6d6;
     box-sizing: border-box;
 }
-
+ 
 /* .backBody{
 	height: 1200px;
 	padding-top:40px;
@@ -62,7 +61,7 @@
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
-
+ 
 <div class="info" align="center">
 	<article class="a">
 	<div id="top" align="center">
@@ -120,7 +119,6 @@
 			게스트를 맞이하기 전에 궁금한 점이 있으면 언제든 메시지로 물어볼 수 있습니다.
 		</p>
 	</div>
-
 	</article>
 </div>
 	<div>

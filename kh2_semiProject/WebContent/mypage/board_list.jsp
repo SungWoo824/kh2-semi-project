@@ -121,6 +121,17 @@ padding-bottom: 7rem;
 	}
 
 
+#wrap {
+	width: 360px;
+	border: 1px solid #ddd;
+	background-color: #fff;
+	padding: 15px;
+	margin-bottom:10px;
+	height: 500px;
+	overflow: hidden
+padding-bottom: 8rem;
+}
+
 </style>
 </head>
 

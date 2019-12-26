@@ -131,6 +131,18 @@
 		border: 0;
 		background-color:transparent
 	}
+	
+	
+	#wrap {
+	
+	border: 1px solid #ddd;
+	background-color: #fff;
+	padding: 15px;
+	margin-bottom:10px;
+	height: 500px;
+	overflow: hidden
+padding-bottom: 8rem;
+}
 </style>
 </head>
 <body>
@@ -148,7 +160,7 @@
 	
 <div align="center"><h2 class="master-title w-100"><%=dto.getQa_title() %></h2></div>
 
-<table class="w-80 coupon-under-table">
+<table class="w-80 coupon-under-table" id="wrap">
 	<thead>
 		<tr>
 			<th width="150px">&nbsp;제목</th>
@@ -227,7 +239,7 @@
 	<%} %>
 	</tbody>
 </table>
-<table class="w-80 coupon-under-table margin">
+<table class="w-80 coupon-under-table margin" >
 	<form action="<%=request.getContextPath() %>/mypage/board_reply_insert.do?qa_no=<%=dto.getQa_no() %>" method="post" class="reply">
 		<tbody>
 			<%if(id!=null){ %>
