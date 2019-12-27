@@ -126,7 +126,8 @@ height: 0.1px;
 
 .w-80{
 
-padding-bottom: 8rem;
+padding-bottom: 7rem;
+ min-height: 100vh;
 }
 
 	footer{
@@ -136,7 +137,7 @@ padding-bottom: 8rem;
 	
 		bottom:0;
 	width: 100%;
-	height: 8rem;
+	height: 7rem;
 	}
 </style>
 
@@ -230,14 +231,14 @@ padding-bottom: 8rem;
 		</h4>
 		
 	</div>
-</section>
-
-
-    	
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
            
+</section>
+
+
+    	
 		
     
  
