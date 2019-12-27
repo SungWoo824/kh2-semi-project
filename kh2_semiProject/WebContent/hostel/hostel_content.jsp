@@ -1,3 +1,5 @@
+<%@page import="beans.MemberDto"%>
+<%@page import="beans.MemberDao"%>
 <%@page import="beans.FilesDto"%>
 <%@page import="beans.FilesDao"%>
 <%@page import="java.util.ArrayList"%>
@@ -21,7 +23,8 @@
 	/* 	HostelDao dao = new HostelDao();
 		HostelDto dto = dao.hostelinfomation(hostel_no);
 	======= */
-	HostelDao hdao = new HostelDao();
+
+	HostelDao hdao = new HostelDao()	;
 	HostelDto hdto = hdao.hostelinfomation(hostel_no);
 	ReviewDao rdao = new ReviewDao();
 	List<ReviewDto> list = rdao.hostel_review_list(hostel_no);
@@ -32,6 +35,7 @@
 	} else {
 		Rlist = Rdao.hostel_room_list(hostel_no);
 	}
+
 %>
 <html>
 <head>
@@ -47,11 +51,20 @@
 	href="<%=request.getContextPath()%>/css/swiper.min.css" />
 <script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
 <style>
- img { 
- 	width: 200px; 
- 	height: 150px; 
- } 
 
+img {
+	width: 100%;
+	height: 100%;
+}
+/* span{
+	border: 1px dotted black;
+}
+div{
+	border: 1px dotted black;
+}  */
+.review_star{
+	color: gray;
+}
 </style>
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script type="text/javascript"
@@ -351,21 +364,49 @@
 			<%
 				}
 			%>
+
 <!-- 			<div  class="tab__location js-location"> -->
 				
 <!-- 			</div> -->
+
+			<div class="tab__location js-location">
+				<div id="map" style="width: 400px; height: 400px;"></div>
+			</div>
+			
+
 			<div class="tab__reivew js-review">
+			
 				<%for(ReviewDto rdto : list){ %>
-	사진: <img src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
-	리뷰넘버:<%=rdto.getReview_no() %>
-	예약넘버:<%=rdto.getReservation_no() %>
-	고객넘버:<%=rdto.getCustomer_no() %>
-	호텔넘버:<%=rdto.getHostel_no() %>
-	리뷰내용:<%=rdto.getReview_content() %>
-	별점:<%=rdto.getStar_point() %>
-	리뷰시간:<%=rdto.getReview_date() %>
+				<% MemberDao mdao = new MemberDao();
+						MemberDto mdto = mdao.memberInfomation(rdto.getCustomer_no());
+						rdto.setMember_name(mdto.getName());
+					%>	
+				<div style="width: 50%; height: 300px; border: 1px dotted black;">
+				<span style="width: 60%; height: 100%; float: left">
+				<img src="<%=request.getContextPath() %>
+	/review/review_download.do?review_no=<%=rdto.getReview_no() %>">
+	</span>
+	<span class="review_star" style="width:40%; height:50px; float: left; text-align:center; font-size: 1.5rem; padding: 20px;">
+	<%int j=rdto.getStar_point(); %>
+	<%for(int i=0;i<5;i++){ %>
+		<%if(j>0){ %>
+				<font color="#FFEE4A">★</font>
+		<%}else{ %>
+		★
+		<%} %>
+		<%j--; %>
+	<%} %>
+	</span>
+	<span id="review" style="width:40%; height:30px; float: left; padding: 30px; font-size: 1.2rem;">
+		<span style="font-size: 0.7rem;"><%=rdto.getReview_wdateWithFormat()%></span> <%=rdto.getMember_name() %>
+	</span>
+	<span id="review" style="width:40%; height: 220px; float: left; font-size:1.2rem; padding: 30px; border-top: 1px dotted gray;">
+		<%=rdto.getReview_content() %>
+	</span>
+</div>
 <br><br>
 	<%} %>
+			
 			</div>
 		</article>
 	</section>

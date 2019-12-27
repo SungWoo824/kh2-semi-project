@@ -142,6 +142,27 @@
 	height: 500px;
 	overflow: hidden
 padding-bottom: 8rem;
+border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
+}
+
+* {
+	font-family: binggrae;
+}
+@font-face {
+	font-family: binggrae;
+	src: url("../font/NotoSansCJKkr-Medium.otf");
+}
+
+
+.w-80 content-table{
+border: 1px solid #ddd;
+border-top-right-radius: 5%; 
+ 	border-bottom-left-radius: 5%;
+ 	border-bottom-right-radius: 5%;
+ 	border-top-left-radius: 5%;
 }
 </style>
 </head>
@@ -261,7 +282,7 @@ padding-bottom: 8rem;
 			<td colspan="2" align="right" class="input-button">
 			
 				<% if(id.equals(qa_member_id)){%>
-				<a id="a" href="../qa/edit.jsp?no=<%=dto.getQa_no() %>">
+				<a id="a" href="../qa/edit.jsp?qa_edit_no=<%=dto.getQa_no() %>">
 					<input type="button" value="글수정">
 				</a>
 				<a id="a" href="board_delete.do?qa_delete_no=<%=dto.getQa_no() %>">

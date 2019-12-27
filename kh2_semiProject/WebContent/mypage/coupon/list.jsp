@@ -131,7 +131,7 @@ height: 0.1px;
 .w-80{
 
 padding-bottom: 7rem;
- 
+  min-height: 100vh;
  
 }
 
@@ -232,11 +232,11 @@ padding-bottom: 7rem;
 
 	</div>
  
-	
-</section>
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
+	
+</section>
            
 
  
