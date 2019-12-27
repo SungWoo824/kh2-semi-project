@@ -30,12 +30,9 @@ public class ReviewWriteServlet extends HttpServlet{
 			int review_no = dao.getSequence();
 			int reservation_no =1; /*Integer.parseInt(mRequest.getParameter("reservation_no"));*/
 			int customer_no = 1;//reservation_no로 가져옴
-			int hostel_no = 141;/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
+			int hostel_no = 161;/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
-
-			System.out.println("누오");
-			System.out.println(review_content);
 			
 			dto.setReview_no(review_no);
 			dto.setReservation_no(reservation_no);
