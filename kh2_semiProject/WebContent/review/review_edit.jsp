@@ -138,7 +138,7 @@ label#fUreview, label#fUpoint {
 	background-color: #000;
 	font-weight: bold;
 	color: #fff;
-	margin-left: 320px;
+	margin-left: 450px;
 	margin-top: 70px;
 }
 
@@ -309,7 +309,6 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 			<div id="star_ex" class="star_style"></div>
 		</div>
 		<input type="hidden" name="review_no" value="<%=dto.getReview_no()%>">
-		<div class="reviewbox-menu-two">	
 			<label for="uimage" id="fUimage">리뷰사진</label><br>
 			<img id="foo" src="<%=request.getContextPath() %>/review/review_download.do?review_no=<%=dto.getReview_no()%>">
 			<input type="file" name="review_file" class="dropzone" id="imgInp" accept=".jpg, .png, .gif">
