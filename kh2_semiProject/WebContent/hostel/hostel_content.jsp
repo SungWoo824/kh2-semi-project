@@ -49,10 +49,10 @@
 	href="<%=request.getContextPath()%>/css/swiper.min.css" />
 <script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
 <style>
-img {
-	width: 200px;
-	height: 150px;
-}
+ img { 
+ 	width: 200px; 
+ 	height: 150px; 
+ } 
 </style>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
@@ -294,7 +294,7 @@ img {
 			%>
 			<section class="hostel">
 				<div class="tab__room-info js-list">
-					<form action="room_content.jsp">
+					<form action="room_content.jsp" >
 						<div class="hostel-container">
 							<div class="hostel__image">
 								<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
