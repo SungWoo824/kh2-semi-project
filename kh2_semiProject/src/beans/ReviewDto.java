@@ -1,5 +1,9 @@
 package beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ReviewDto {
 	
 	private int review_no;
@@ -46,6 +50,19 @@ public class ReviewDto {
 	}
 	public void setStar_point(int star_point) {
 		this.star_point = star_point;
+	}
+	
+	public String getReview_wdateWithFormat() throws ParseException {
+		String time=null;
+		if (review_date!=null) {
+		SimpleDateFormat read = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		Date date = read.parse(review_date);
+		SimpleDateFormat write = new SimpleDateFormat("y년 M월 d일");
+		time = write.format(date);
+
+			return time;
+		}
+		return "";
 	}
 	
 	public String getReview_date() {
