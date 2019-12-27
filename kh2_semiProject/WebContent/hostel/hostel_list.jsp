@@ -11,8 +11,8 @@
 	HostelDto hdto = new HostelDto();
 	List<HostelDto> hlist = new ArrayList<>();
 
-	String start_day = request.getParameter("check-in");
-	String finish_day = request.getParameter("check-out");
+	String start_day = request.getParameter("check_in");
+	String finish_day = request.getParameter("check_out");
 	String city_name = request.getParameter("location");
 	int adult = 1;
 	int child = 0;
@@ -123,7 +123,7 @@
 	<%
 		for (HostelDto dto : hlist) {
 	%>
-	<form method="POST" action="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check-in=<%=start_day%>&check-out=<%=finish_day%>&people=<%=people%>">
+	<form method="POST" action="hostel_content.jsp?hostel_no=<%=dto.getHostel_no()%>&check_in=<%=start_day%>&check_out=<%=finish_day%>&people=<%=people%>">
 	<section class="hostel">
 		<div class="hostel-container">
 			<div class="hostel__image">

@@ -287,4 +287,23 @@ public class ReservationDao {
 		con.close();
 		return until;
 	}
+	
+/////////////////////////////////////////////////////////////////
+///							최신예약 시퀀스번호 받기					  //
+///////////////////////////////////////////////////////////////
+	public int searchSeq() throws Exception{
+		Connection con = this.getConnection();
+		String sql = "select reservation_no_seq.currval from dual";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ResultSet rs = ps.executeQuery();
+		
+		rs.next();
+		int seq = rs.getInt(1);
+		
+		con.close();
+		return seq;
+		
+	}
+
+	
 }
