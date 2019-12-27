@@ -206,21 +206,21 @@ p{
 			
 				<div id="hostelbox2">
 				<p>어떤 편의시설이 있나요?  ◀  </p>
-				<label>수영장  <input type="checkbox" value="o" name="room_spa"></label>
-				<label>주차장  <input type="checkbox" value="o" name="room_parking"></label>
+				<label>수영장  <input type="checkbox" value="O" name="room_spa"></label>
+				<label>주차장  <input type="checkbox" value="O" name="room_parking"></label>
 				<br>
-				<label>기본 용품(비누,샴푸,수건 등)  <input type="checkbox" value="o" name="room_basic"></label>
+				<label>기본 용품(비누,샴푸,수건 등)  <input type="checkbox" value="O" name="room_basic"></label>
 				<br>
-				<label>TV  <input type="checkbox" value="o" name="room_tv"></label>
-				<label>헤어 드라이어기  <input type="checkbox" value="o"name="room_dry"></label>
+				<label>TV  <input type="checkbox" value="O" name="room_tv"></label>
+				<label>헤어 드라이어기  <input type="checkbox" value="O"name="room_dry"></label>
 				<br>
-				<label>에어컨  <input type="checkbox" value="o" name="room_cool"></label>
-				<label>난방  <input type="checkbox" value="o" name="room_hot"></label>
-				<label>조식제공  <input type="checkbox" value="o" name="room_breakfast"></label>
+				<label>에어컨  <input type="checkbox" value="O" name="room_cool"></label>
+				<label>난방  <input type="checkbox" value="O" name="room_hot"></label>
+				<label>조식제공  <input type="checkbox" value="O" name="room_breakfast"></label>
 				<br>
-				<label>취사가 가능한가요?  <input type="checkbox" value="o" name="room_cook"></label>
+				<label>취사가 가능한가요?  <input type="checkbox" value="O" name="room_cook"></label>
 				<br>
-				<label>애완 동물과 동반 입실이 가능한가요?  <input type="checkbox" value="o" name="room_pet"></label>
+				<label>애완 동물과 동반 입실이 가능한가요?  <input type="checkbox" value="O" name="room_pet"></label>
 				<br>
 
 				<p>방을 소개해주세요!  ◀   </p>
