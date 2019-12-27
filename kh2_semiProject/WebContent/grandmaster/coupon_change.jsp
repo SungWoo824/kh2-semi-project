@@ -54,24 +54,17 @@
 	border: 1px solid #fff;
 }
 	body{
-		height: 1000px;
+		height:100%;
 		width: 100%;
 		margin: 0;
 		padding: 0;
+		background-attachment:fixed;
+		background-image:url("../image/master.jpg");
 		background-repeat: no-repeat;
 		background-size : cover;	
 	}
-	.background{
-		height:1000px;	
-		position:fixed;
-		width:100%;
-		z-index:100;
-		background-size: 100%;
-		min-height:1000px;
-	}
-	.background img{
-		width:100%;
-		height:1000px;
+	html{
+		height:100%;
 	}
 	
 	.container{
@@ -79,14 +72,24 @@
 		position:absolute;
 		z-index:101;
 	}
+	*{
+		box-sizing: border-box;
+	}
+	.wrap{
+		min-height: 100%;
+		position:relative;
+		padding-bottom: -300px;
+	}
+	footer{
+		position: absolute;
+		bottom:0;
+		
+	}
 </style>
 </head>
 <body>
-<div class="background">
-	<img src="../image/master.jpg">
-</div>
-<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
+<div class="wrap">
 <div class="w-80">
 <div class="row-big"></div>
 <div class="row-big"></div>
@@ -141,6 +144,6 @@
 </form>
 </div>
 <jsp:include page="../template/footer.jsp"></jsp:include>
-</section>
+</div>
 </body>
 </html>

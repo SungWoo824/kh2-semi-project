@@ -140,14 +140,14 @@
     <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
-				<th>숙소번호</th>
-				<th>숙소등록자 번호</th>
-				<th>지역 이름</th>
-				<th>숙소 종류</th>
-				<th>숙소이름</th>
-				<th>숙소 전화번호</th>
-				<th>숙소상세주소</th>
-				<th>숙소설명</th>
+				<th>번호</th>
+				<th>등록회원번호</th>
+				<th>지역</th>
+				<th>종류</th>
+				<th>이름</th>
+				<th>연락처</th>
+				<th width="30%">주소</th>
+				<th width="30%">설명</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -164,7 +164,7 @@
 				<th>(<%=hdto.getHostel_detail_addr().substring(0, 5) %>) <%=hdto.getHostel_detail_addr().substring(5) %></th>
 				<th><%=hdto.getHostel_content() %></th>
 				<th><a href="<%=context%>/grandmaster/master_hostel_delete.do?hostel_no=<%=hdto.getHostel_no()%>" onclick="hostel_remove_event();">
-					숙소 삭제하기</a></th>
+					삭제</a></th>
 			</tr>
 			<%} %>
 		</tbody>
