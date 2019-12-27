@@ -261,7 +261,7 @@ padding-bottom: 8rem;
 			<td colspan="2" align="right" class="input-button">
 			
 				<% if(id.equals(qa_member_id)){%>
-				<a id="a" href="../qa/edit.jsp?no=<%=dto.getQa_no() %>">
+				<a id="a" href="../qa/edit.jsp?qa_edit_no=<%=dto.getQa_no() %>">
 					<input type="button" value="글수정">
 				</a>
 				<a id="a" href="board_delete.do?qa_delete_no=<%=dto.getQa_no() %>">
