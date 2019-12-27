@@ -30,7 +30,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script>
 
+</script>
 </head>
 <body>
 <div>
@@ -41,7 +43,7 @@
 	체크인 <%=reservation_start_date%>
 	체크아웃 <%=reservation_finish_date%>
 	
-	<form action="room_reservation_kakao.do" method="post">
+	<form action="room_reservation_kakao.do" id="reservation" method="post">
 		<input type="hidden" name="room_no" value="<%=room_no%>">
 		<input type="hidden" name="customer_no" value="<%=customer_no%>">
 		<input type="hidden" name="reservation_start_date" value="<%=reservation_start_date%>">
@@ -52,8 +54,8 @@
 		<input type="hidden" name="total_price" value="<%=total_price %>">
 				요청사항
 		<input type="text" name="customer_request">
-			<textarea></textarea>
-		<input type="submit" value="예약하기">
+			
+		<input type="submit" value="예약하기" onclick="kakaopay();">
 	</form>
 
 </div>
