@@ -182,6 +182,7 @@ public class RoomDto {
 		this.finish_hosting = finish_hosting;
 	}
 	
-	
-	
+	public String getRoom_priceWithFormat() {
+		return String.format("%,d", this.room_price);
+	}
 }

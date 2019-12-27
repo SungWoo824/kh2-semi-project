@@ -19,6 +19,7 @@
 <!--  [ ] 정렬 기준 짜기 (평점순 오름내림) -->
 <!--  [ ] 달력 이전,다음 이미지 추가 -->
 <!--  [ ] input:date 초기값 지정, 현재날짜 전 선택 못하게하기, check_in < check_out 설정 -->
+<!--  [ ] 카카오지도 위치 이상한거 수정하기 -->
 <!-- ##############################################  -->
  
     
@@ -31,16 +32,20 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/header-style.css" />
     <link rel="stylesheet" href="css/homenav-style.css" />
-    <script src="js/datepicker/jquery-1.12.4.js"></script>
-    <script src="js/datepicker/jquery-ui.js"></script>
-    <link rel="stylesheet" href="js/datepicker/jquery-ui.css" />
+<!--     <script src="js/datepicker/jquery-1.12.4.js"></script> -->
+<!--     <script src="js/datepicker/jquery-ui.js"></script> -->
+<!--     <link rel="stylesheet" href="js/datepicker/jquery-ui.css" /> -->
     <script src="js/top-bar.js"></script>
     <link rel="stylesheet" href="css/index-style.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
     <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> -->
     <script src="js/home-slider.js"></script>
+    <link rel="stylesheet" type="text/css" href="hostel/datePicker.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="hostel/datePicker.js"></script>
   </head>
-  <body onscroll="scroll(); item3__slider();">
+  <body onload="loadPicker();" onscroll="scroll(); item3__slider();">
     <nav>
       <!-- 상단바 시작 -->
       <div class="top-bar">
@@ -51,9 +56,7 @@
         </div>
         <div class="top-bar__menu">
           <ul>
-          <%if(grade!=null && grade.equals("판매자")){ %>
             <li><a class="top-bar__menu-item" href="hostel/0regist_region.jsp">HOSTING</a></li>
-            <%} %>
             <%if(grade!=null && grade.equals("관리자")){ %>
             	<li><a class="top-bar__menu-item" href="grandmaster/master_index.jsp">ADMIN PAGE</a></li>
             <%} %>
@@ -93,6 +96,7 @@
                   placeholder="&nbsp;"
                   name="location"
                   required="required"
+                  autocomplete="off"
                 />
                 <span class="label">목적지</span>
                 <span class="border"></span>
@@ -105,11 +109,12 @@
                 <label for="inp-in" class="inp">
                   <input
                     id="inp-in"
-                    class="check-in"
+                    class="check-in sdate"
                     type="text"
                     placeholder="&nbsp;"
                     name="check_in"
                     required="required"
+                    autocomplete="off"
                   />
                   <span class="label">Check In</span>
                   <span class="border"></span>
@@ -122,11 +127,12 @@
                 <label for="inp-out" class="inp">
                   <input
                     id="inp-out"
-                    class="check-out"
+                    class="check-out fdate"
                     type="text"
                     placeholder="&nbsp;"
                     name="check_out"
                     required="required"
+                    autocomplete="off"
                   />
                   <span class="label">Check Out</span>
                   <span class="border"></span>
@@ -185,7 +191,7 @@
         </div>
         <div class="item1 popular-list">
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp">
+            <a href="hostel/hostel_list.jsp?popular=서울">
               <div class="popular-image image-left-top">
                 <img src="image/seoul.jpg" alt="" />
                 <span class="image-title">서울</span>
@@ -194,7 +200,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp">
+            <a href="hostel/hostel_list.jsp?popular=전주">
               <div class="popular-image image-right-top">
                 <img src="image/전주.jpg" alt="" />
                 <span class="image-title image-title-sub">전주</span>
@@ -203,7 +209,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp">
+            <a href="hostel/hostel_list.jsp?popular=부산">
               <div class="popular-image image-right-bottom">
                 <img src="image/부산.jpg" alt="" />
                 <span class="image-title image-title-sub">부산</span>

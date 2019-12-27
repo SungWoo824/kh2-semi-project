@@ -51,6 +51,7 @@
 	href="<%=request.getContextPath()%>/css/swiper.min.css" />
 <script src="<%=request.getContextPath()%>/js/swiper.min.js"></script>
 <style>
+
 img {
 	width: 100%;
 	height: 100%;
@@ -65,9 +66,9 @@ div{
 	color: gray;
 }
 </style>
+<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=534248faec0557257f5c7cc9e504a2da&libraries=services"></script>
-<script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 <script>
 	var db = {
 		//이름:마커객체
@@ -247,6 +248,11 @@ div{
 		}
 	}
 </script>
+<style>
+	#footer{
+		position:inherit;
+	}
+</style>
 </head>
 <body onload="loadMap();">
 	<div>
@@ -272,6 +278,12 @@ div{
 						<div class="swiper-slide">
 							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
 						</div>
+						<div class="swiper-slide">
+							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+						</div>
+						<div class="swiper-slide">
+							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+						</div>
 					</div>
 					<div class="swiper-button-prev"></div>
 					<div class="swiper-button-next"></div>
@@ -279,22 +291,23 @@ div{
 				</div>
 			</div>
 			<div class="top__content">
-				<h2 class="top__hostel-name">호스텔 이름</h2>
+				<h2 class="top__hostel-name"><%=hdto.getHostel_name() %></h2>
 				<div class="top__review">
-					<p class="top__review-star">평점 : 0 0 0 0 0</p>
+					<p class="top__review-star">평점 : ★★★★★</p>
 				</div>
-				<p class="top__hostel-addr">호스텔 주소</p>
-				<p class="top__hostel-tel"></p>
-				<div class="top__hostel-content">호스텔 내용</div>
+				<p class="top__hostel-addr">주소 : <%=hdto.getHostel_detail_addr() %></p>
+				<p class="top__hostel-tel">전화번호 : <%=hdto.getHostel_phone() %></p>
+				<div class="top__hostel-content"><%=hdto.getHostel_content() %></div>
+				<div id="map" style="width: 400px; height: 200px; margin-left:auto; margin-right:0; margin-top:15px"></div>
 			</div>
 		</div>
 		<div class="tab">
 			<button id="" class="btn tab__list-btn js-list-btn">
 				<span>객실정보/예약</span>
 			</button>
-			<button id="" class="btn tab__location-btn js-location-btn">
-				<span>위치</span>
-			</button>
+<!-- 			<button id="" class="btn tab__location-btn js-location-btn"> -->
+<!-- 				<span>위치</span> -->
+<!-- 			</button> -->
 			<button id="" class="btn tab__review-btn js-review-btn">
 				<span>리뷰</span>
 			</button>
@@ -316,31 +329,17 @@ div{
 									<li class="hostel__intro"><span><%=Rdto.getRoom_content()%></span></li>
 									<li class="hostel__info">
 										<ul class="hostel__info-list">
-											<li class="room-info hostel__max-people"><span>최대인원
-													<%=Rdto.getRoom_max_people()%>명 |
-											</span></li>
-											<li class="room-info hostel__bed"><span>침대 <%=Rdto.getRoom_bed()%>개
-													|
-											</span></li>
-											<li class="room-info hostel__bathroom"><span>화장실
-													<%=Rdto.getRoom_bath()%>개 |
-											</span></li>
-											<li class="room-info hostel__cook"><span>요리 <%=Rdto.getRoom_cook()%>
-													|
-											</span></li>
+											<li class="room-info hostel__max-people"><span>최대인원 <%=Rdto.getRoom_max_people()%>명 | </span></li>
+											<li class="room-info hostel__bed"><span>침대 <%=Rdto.getRoom_bed()%>개 | </span></li>
+											<li class="room-info hostel__bathroom"><span>화장실 <%=Rdto.getRoom_bath()%>개 | </span></li>
+											<li class="room-info hostel__cook"><span>요리 <%=Rdto.getRoom_cook()%> | </span></li>
 											<li class="room-info hostel__spa"><span>사우나 <%=Rdto.getRoom_spa()%></span></li>
 										</ul>
 										<ul class="hostel__info-list">
-											<li class="room-info hostel__parking"><span>주차장 <%=Rdto.getRoom_parking()%>
-													|
-											</span></li>
-											<li class="room-info hostel__pet"><span>애완동물 <%=Rdto.getRoom_pet()%>
-													|
-											</span></li>
-											<li class="room-info hostel__wifi"><span>WIFI O |
-											</span></li>
-											<li class="room-info hostel__breakfast"><span>조식
-													<%=Rdto.getRoom_breakfast()%></span></li>
+											<li class="room-info hostel__parking"><span>주차장 <%=Rdto.getRoom_parking()%> | </span></li>
+											<li class="room-info hostel__pet"><span>애완동물 <%=Rdto.getRoom_pet()%> | </span></li>
+											<li class="room-info hostel__wifi"><span>WIFI O | </span></li>
+											<li class="room-info hostel__breakfast"><span>조식 <%=Rdto.getRoom_breakfast()%></span></li>
 										</ul>
 									</li>
 									<li>
@@ -356,7 +355,7 @@ div{
 							</div>
 							<div class="hostel__price">
 								<input value="상세 보기" class="submit" type="submit">
-								<h3><%=Rdto.getRoom_price()%>원</h3>
+								<h3><%=Rdto.getRoom_priceWithFormat()%>원</h3>
 							</div>
 						</div>
 					</form>
@@ -365,10 +364,16 @@ div{
 			<%
 				}
 			%>
+
+<!-- 			<div  class="tab__location js-location"> -->
+				
+<!-- 			</div> -->
+
 			<div class="tab__location js-location">
 				<div id="map" style="width: 400px; height: 400px;"></div>
 			</div>
 			
+
 			<div class="tab__reivew js-review">
 			
 				<%for(ReviewDto rdto : list){ %>
