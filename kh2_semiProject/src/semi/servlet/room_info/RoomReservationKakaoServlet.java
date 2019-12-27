@@ -23,7 +23,8 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			
+			String partner_order_id = req.getParameter("hostel_no");
+			String partner_user_id = req.getParameter("customer_no");
 			
 			//카카오페이 api
 			URL url = new URL("https://kapi.kakao.com/v1/payment/ready");
@@ -36,8 +37,8 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			//보낼 값들 Map 형식으로 작성
 			Map<String, String> params = new HashMap<>();
 			params.put("cid", "TC0ONETIME");
-			params.put("partner_order_id", req.getParameter("hostel_no"));
-			params.put("partner_user_id", req.getParameter("cutomer_no"));
+			params.put("partner_order_id", partner_order_id);
+			params.put("partner_user_id", partner_user_id);
 			params.put("item_name", req.getParameter("room_no"));
 			params.put("quantity", req.getParameter("until"));
 			params.put("total_amount", req.getParameter("total_price"));
@@ -57,9 +58,11 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject)parser.parse(in);
 			
+			String tid = (String) obj.get("tid");
+			
 			String successUrl = (String)obj.get("next_redirect_pc_url");
 			
-			resp.sendRedirect(successUrl);
+			resp.sendRedirect(successUrl+"&tid="+tid+"&partner_order_id="+partner_order_id+"&partner_user_id="+partner_user_id);
 			
 			
 		} catch (Exception e) {
