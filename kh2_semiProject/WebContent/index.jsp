@@ -52,14 +52,16 @@
         </div>
         <div class="top-bar__menu">
           <ul>
+          <%if(grade!=null && grade.equals("판매자")){ %>
             <li><a class="top-bar__menu-item" href="hostel/0regist_region.jsp">HOSTING</a></li>
+            <%} %>
             <%if(grade!=null && grade.equals("관리자")){ %>
             	<li><a class="top-bar__menu-item" href="grandmaster/master_index.jsp">ADMIN PAGE</a></li>
             <%} %>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="mypage/index.jsp">MY PAGE</a></li>            	
             <%}%>
-            <li><a class="top-bar__menu-item" href="info/regist_info.jsp">HELP</a></li>
+            <li><a class="top-bar__menu-item" href="info/help.jsp">HELP</a></li>
             <%if(isLogin) {%>
             	<li><a class="top-bar__menu-item" href="member/logout.do">SIGN OUT</a></li>
             <%}else { %>
@@ -107,7 +109,7 @@
                     class="check-in"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-in"
+                    name="check_in"
                     required="required"
                   />
                   <span class="label">Check In</span>
@@ -124,7 +126,7 @@
                     class="check-out"
                     type="text"
                     placeholder="&nbsp;"
-                    name="check-out"
+                    name="check_out"
                     required="required"
                   />
                   <span class="label">Check Out</span>

@@ -12,14 +12,13 @@
     font-family: binggrae;
     src:url("../font/NotoSansCJKkr-Medium.otf");
 	}
-
 .block {
 	height: 10px;
 	margin: 0;
 	padding: 0;
 	font-size: 0;
 }	
-
+ 
 #date{
 	display: block;
     margin: 1em 0 2em;
@@ -36,11 +35,11 @@
 .info > .a > p+{
 	font-family: binggrae;
 }
-
+ 
 #head, #middle, #low, #low-foot{
 	font-family: binggrae;
 }
-
+ 
 #master1{
 	font-family: binggrae;
 	display: block;
@@ -50,7 +49,7 @@
     border: 1px solid #d6d6d6;
     box-sizing: border-box;
 }
-
+ 
 /* .backBody{
 	height: 1200px;
 	padding-top:40px;
@@ -62,7 +61,7 @@
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
-
+ 
 <div class="info" align="center">
 	<article class="a">
 	<div id="top" align="center">
@@ -104,7 +103,7 @@
 		<p id="low-foot">
 			<h3>◎숙소를 호스팅하시는분◎<br></h3>
 			<font color="red">※ 묵고 더블로가 호스팅을 추천하는 이유 ※<br></font>
-			에어비앤비는 호스트가 공유하는 숙소의 유형과 관계없이 <br>
+			묵고 더블로가는 호스트가 공유하는 숙소의 유형과 관계없이 <br>
 			게스트를 쉽고 안전하게 호스팅할 수 있도록 해줍니다.<br> 
 			예약 가능일, 요금, 숙소 이용규칙, 게스트와의 교류 방식은 전적으로 호스트가 결정합니다.
 		</p>
@@ -120,7 +119,6 @@
 			게스트를 맞이하기 전에 궁금한 점이 있으면 언제든 메시지로 물어볼 수 있습니다.
 		</p>
 	</div>
-
 	</article>
 </div>
 	<div>

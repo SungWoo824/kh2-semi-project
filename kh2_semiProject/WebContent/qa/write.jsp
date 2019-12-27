@@ -3,10 +3,20 @@
 <!DOCTYPE html>
 
 <% request.setCharacterEncoding("UTF-8");%>
+<%
+	int room_no;
+	if(request.getParameter("room_no")!=null){
+		room_no = Integer.parseInt(request.getParameter("room_no"));
+	}else{
+		room_no=0;
+	}
+%>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
+
+
 <style type="text/css">
 	@font-face{
     font-family: binggrae;
@@ -62,17 +72,25 @@
 	color: #fff;
 }
 
-</style>	
+</style>
+
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">		
 </head>
 <body>
+
+
 <jsp:include page="../template/nav.jsp" ></jsp:include>
 	<form action="write.do" method="post" >
 	<div class="write" align="center">	
   		
 		<h1 class="board">Q&A BOARD</h1>
 		<div class="write1">
-		<input class="menu-item" type="text" name="room_no" placeholder="방 번호"><!--룸정보를 옵션으로 만듦  -->
+		<%if(request.getParameter("room_no")!=null){ %>
+			<input class="menu-item" type="text" name="room_no" value="<%=room_no%>" readonly><!--룸정보를 옵션으로 만듦  -->
+		<%}else{ %>
+			<input class="menu-item" type="text" name="room_no" placeholder="방 번호"><!--룸정보를 옵션으로 만듦  -->
+		<% }%>
 			<select class="menu-item" name="qa_head">
 				<option value="">선택하세요</option>
 				<option value="입금 관련">입금관련</option>	
@@ -83,12 +101,15 @@
 			</select>		
 		</div>
 		<div class="text">
-			<textarea class="menu-item" name="qa_content"  rows="20" cols="120"></textarea>
+		<img src="<%=request.getContextPath() %>/image/캡처.jpg" style="width: 831px;">
+			<textarea class="menu-item" name="qa_content"  rows="20" cols="90"></textarea>
+			
 			<div class="block"></div>
 		<input id="login_bt" type="submit" value="등록">
 		</div>	
-	</div>		
+	</div>
 	</form>
+			
 	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
