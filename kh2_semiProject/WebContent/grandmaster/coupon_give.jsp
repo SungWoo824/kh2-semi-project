@@ -168,7 +168,9 @@ function number_check1(){
 		</table>
 	</form>
 </div>
-<jsp:include page="../template/footer.jsp"></jsp:include>
 </section>
+<div class="footer">
+<jsp:include page="../template/footer.jsp"></jsp:include>
+</div>
 </body>
 </html>

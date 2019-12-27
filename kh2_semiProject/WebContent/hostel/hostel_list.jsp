@@ -1,3 +1,4 @@
+<%@page import="beans.RoomDao"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="beans.RoomDto"%>
@@ -9,6 +10,7 @@
 <%
 	HostelDao hdao = new HostelDao();
 	HostelDto hdto = new HostelDto();
+	RoomDao rdao = new RoomDao();
 	List<HostelDto> hlist = new ArrayList<>();
 
 	String start_day = request.getParameter("check_in");
@@ -28,6 +30,8 @@
 	// 	System.out.println("hlist : " + hlist.size());
 	// 	System.out.println("start : " + start_day);
 	// 	System.out.println("start : " + finish_day);
+	String popular = request.getParameter("popular");
+	boolean isPopular = popular!=null;
 %>
 
 <!DOCTYPE html>
@@ -44,8 +48,46 @@
 	margin-top: 18px;
 }
 </style>
+<link rel="stylesheet" type="text/css" href="datePicker.css">
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="datePicker.js"></script>
+<script>
+	function loadPicker() {
+		var options = {
+			//날짜가 입력될 첫 번째 칸 설정
+			field : document.querySelector(".sdate"),
+
+			//날짜가 입력될 두 번째 칸 설정
+			secondField : document.querySelector(".fdate"),
+
+			//표시될 월의 개수를 설정
+			numberOfMonths : 2,
+
+			//날짜 선택이 아닌 범위 선택으로 설정
+			singleDate : false,
+
+			//최초 선택일 이후로만 종료일을 선택하도록 설정
+			selectForward : true,
+
+			//날짜 구분자 설정
+			seperator : '-',
+
+			//문서 내에 표시되도록 설정
+			// inline:true,
+
+			//선택 시작일 설정(현재일로 설정하거나 'YYYY-MM-DD' 형태로 설정)
+			minDate : moment(new Date()).add(1, 'days'),//내일부터 선택 가능
+			// minDate:new Date(),//오늘부터 선택가능
+
+			//날짜 형식 설정
+			format : 'YYYY-MM-DD',
+		};
+		var picker = new Lightpick(options);
+	}
+</script>
 </head>
-<body>
+<body onload="loadPicker();">
 	<jsp:include page="../template/nav.jsp"></jsp:include>
 	<div class="body">
 	<form
@@ -55,15 +97,20 @@
 			<div class="search-container">
 				<div class="search__inputbox search__location">
 					<h6>목적지</h6>
-					<input class="search__input" type="text" name="location" required="required"/>
+					<%if(isPopular){ %>
+					<input class="search__input" type="text" name="location" value="<%=popular %>" required="required" autocomplete="off"/>
+					<%} else{%>
+					<input class="search__input" type="text" name="location" required="required" autocomplete="off"/>
+					<%} %>
+					
 				</div>
 				<div class="search__inputbox search__check-in">
 					<h6>Check-In</h6>
-					<input class="search__input" type="date" name="check-in" required="required"/>
+					<input class="search__input sdate" type="text" name="check_in" required="required" autocomplete="off"/>
 				</div>
 				<div class="search__inputbox search__check-out">
 					<h6>Check-Out</h6>
-					<input class="search__input" type="date" name="check-out" required="required"/>
+					<input class="search__input fdate" type="text" name="check_out" required="required" autocomplete="off"/>
 				</div>
 				<div class="search__inputbox search__adult">
 					<h6>성인</h6>
@@ -101,7 +148,7 @@
 				</div>
 				<input type="hidden" value="<%=child+adult %>" name="people">
 				<div class="search__inputbox search__button">
-					<input class="search__input " type="submit" value="검색" />
+					<input class="search__input" type="submit" value="검색" />
 				</div>
 			</div>
 		</section>
@@ -135,21 +182,21 @@
 					<li class="hostel__type"><h5><%=dto.getHostel_kind_name() %></h5></li>
 					<li class="hostel__intro"><span><%=dto.getHostel_content() %></span></li>
 					<li class="hostel__info">
+					<%	
+						RoomDto rdto = rdao.minimumPrice(dto.getHostel_no());
+					%>
 						<ul class="hostel__info-list">
-							<li class="room-info hostel__max-people"><span>최대인원
-									0명 | </span></li>
-							<li class="room-info hostel__bed"><span>침대 0개 | </span></li>
-							<li class="room-info hostel__bathroom"><span>화장실 0개 |
-							</span></li>
-							<li class="room-info hostel__cook"><span>요리 O | </span></li>
-							<li class="room-info hostel__spa"><span>사우나 O</span></li>
+							<li class="room-info hostel__max-people"><span>최대인원 <%=rdto.getRoom_max_people() %>명 | </span></li>
+							<li class="room-info hostel__bed"><span>침대 <%=rdto.getRoom_bed() %>개 | </span></li>
+							<li class="room-info hostel__bathroom"><span>화장실 <%=rdto.getRoom_bath() %>개 |</span></li>
+							<li class="room-info hostel__cook"><span>요리 <%=rdto.getRoom_cook() %> | </span></li>
+							<li class="room-info hostel__spa"><span>사우나 <%=rdto.getRoom_spa() %></span></li>
 						</ul>
 						<ul class="hostel__info-list">
-							<li class="room-info hostel__parking"><span>주차장 O | </span>
-							</li>
-							<li class="room-info hostel__pet"><span>애완동물 O | </span></li>
+							<li class="room-info hostel__parking"><span>주차장 <%=rdto.getRoom_parking() %> | </span></li>
+							<li class="room-info hostel__pet"><span>애완동물 <%=rdto.getRoom_pet() %> | </span></li>
 							<li class="room-info hostel__wifi"><span>WIFI O | </span></li>
-							<li class="room-info hostel__breakfast"><span>조식 O</span></li>
+							<li class="room-info hostel__breakfast"><span>조식 <%=rdto.getRoom_breakfast() %></span></li>
 						</ul>
 					</li>
 					<li></li>
@@ -158,7 +205,7 @@
 			</div>
 			<div class="hostel__price">
 				<input value="상세 보기" class="submit" type="submit">
-				<h3>1,000,000원</h3>
+				<h3><%=rdto.getRoom_priceWithFormat() %>원</h3>
 			</div>
 		</div>
 	</section>
