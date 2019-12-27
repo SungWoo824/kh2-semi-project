@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
 
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -491,5 +494,53 @@ public class HostelDao {
 			con.close();
 			return list;
 		}
+		
+		public List<HostelDto> registHostellist(int member_no, int start, int finish) throws Exception{
+			Connection con = this.getConnection();
+			String sql = "select * from(select ROWNUM rn, A.* from ("
+							+ "select * from hostel where owner_no = ?"
+							+ ")A order by hostel_name desc) "
+							+ "where rn between ? and ?";
 
+			PreparedStatement ps = con.prepareStatement(sql);
+			ps.setInt(1,member_no);
+			ps.setInt(2, start);
+			ps.setInt(3, finish);
+			ResultSet rs = ps.executeQuery();
+			
+			List<HostelDto> list = new ArrayList<>();
+			
+			while(rs.next()) {
+				HostelDto hdto = new HostelDto();
+				hdto.setHostel_no(rs.getInt("hostel_no"));
+				hdto.setOwner_no(rs.getInt("owner_no"));
+				hdto.setHostel_name(rs.getString("hostel_name"));
+				hdto.setHostel_phone(rs.getString("hostel_phone"));
+				hdto.setHostel_detail_addr(rs.getString("hostel_detail_addr"));
+				hdto.setHostel_latitude(rs.getString("hostel_latitude"));
+				hdto.setHostel_longitude(rs.getString("hostel_longitude"));
+				hdto.setHostel_content(rs.getString("hostel_content"));
+				hdto.setHostel_kind_name(rs.getString("hostel_kind_name"));
+				
+				list.add(hdto);
+			}
+			con.close();
+			return list;			
+		}
+		
+		public int Count (int owner_no) throws Exception{
+			
+			Connection con = this.getConnection();
+			String sql = "select count(*) from hostel where owner_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, owner_no);
+			ResultSet rs = ps.executeQuery();
+			
+			rs.next();
+			int count = rs.getInt(1);
+			
+			con.close();
+			return count;
+		}
 }
