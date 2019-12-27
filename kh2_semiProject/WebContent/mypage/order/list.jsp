@@ -36,6 +36,8 @@
 	MemberDto mdto = mdao.get(id);
      
 	int member_no=mdto.getNo();
+	
+	
 	int startBlock = (pno - 1) / navsize * navsize + 1;
 	int finishBlock = startBlock + (navsize - 1);
   List<ReservationDto> list = rdao.list(member_no, start, finish);
@@ -124,16 +126,19 @@ height: 0.1px;
     }
 
 .container{
-	height: 670px;
+	height: 800px;
 	padding-top:40px;
-	background-image: url(""); background-position:center; background-repeat: no-repeat; 
- min-height: 110vh;
-
+	background-color:;
+  min-height: 90vh;
 }
 
 .w-80{
 
 padding-bottom: 7rem;
+ min-height: 100vh;
+ 
+ 
+ 
 }
 
 	footer{
@@ -195,7 +200,7 @@ padding-bottom: 7rem;
 				<th><img src="http://placehold.it/200x150"></th>
 				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%></th>
 				<th><%=roomdao.roomname(rdto2.getRoom_no()) %></th>
-				<th><%=rdto2.getReservation_start_date().substring(0, 10) %>~ 2019-12-25</th>
+				<th><%=rdto2.getReservation_start_date().substring(0, 10) %> ~ <%=rdto2.getReservation_finish_date().substring(0, 10) %></th>
 				<th><%=rdto2.getCustomer_count() %></th>
 				
 				<th><%=rdto2.getCustomer_request() %></th>
@@ -243,12 +248,12 @@ padding-bottom: 7rem;
  
  
 
-
-</section>
-		
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
+
+</section>
+		
            
 		
 		

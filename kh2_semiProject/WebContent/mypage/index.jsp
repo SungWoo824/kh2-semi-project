@@ -30,7 +30,7 @@
 }
         * {
             box-sizing: border-box;
-             font-family: melonabold;
+             font-family: binggrae;
              color: dimgray;
         
         }
@@ -73,6 +73,10 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 1%; 
+ 	border-bottom-left-radius: 1%;
+ 	border-bottom-right-radius: 1%;
+ 	border-top-left-radius: 1%;
         }
 
         .mypage>table[id=b] {
@@ -80,6 +84,10 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
         }
 
         .mypage>table[id=c] {
@@ -87,6 +95,10 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
         }
 
         .mypage>table[id=d] {
@@ -94,6 +106,10 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
         }
 
         .mypage>table[id=e] {
@@ -101,6 +117,10 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
         }
 
         .mypage>table[id=f] {
@@ -109,12 +129,16 @@
             background-repeat: no-repeat;
             background-size: 50px 50px;
             background-position: 400px 14px;
+            border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
         }
        
 .row-big{
 
 height: 0.1px;
-min-height: 8vh;
+min-height: 9.5vh;
 }
 
 
@@ -127,6 +151,14 @@ min-height: 8vh;
 	width: 100%;
 	height: 7rem;
 	}
+	.row-big{
+	
+	height: 800px;
+
+	padding-top:40px;
+	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+	}
+	
 
     </style>
   <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
@@ -140,7 +172,7 @@ min-height: 8vh;
 <jsp:include page="/template/nav.jsp"></jsp:include>
 </div>
   
-	<div class="row-big"></div>
+	<div class="row-big">
     <div class="mypage">
  <div class="master-title w-100"><h2>MYPAGE</h2></div>
 
@@ -225,28 +257,28 @@ min-height: 8vh;
         </table>
 
 
+<!--         <table class="mypage-class" id="f"> -->
+
+<!--             <tr> -->
+<!--                 <td> -->
+
+<!--                     <h4><a href="#">주소 관리</a></h4> -->
+
+<!--                 </td> -->
+<!--             </tr> -->
+
+
+<!--         </table> -->
 
 
 
-        <table class="mypage-class" id="f">
-
-            <tr>
-                <td>
-
-                    <h4><a href="#">주소 관리</a></h4>
-
-                </td>
-            </tr>
-
-
-        </table>
 
 
 
 
 
     </div>
-
+</div>
  	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
