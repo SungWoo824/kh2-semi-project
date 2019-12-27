@@ -17,12 +17,29 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import beans.KakaoPayDao;
+import beans.ReservationDto;
+
 
 @WebServlet(urlPatterns = "/hostel/room_reservation_kakao.do")
 public class RoomReservationKakaoServlet extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			
+			//reservationdto 세션에 저장
+			ReservationDto roomReservationDto = new ReservationDto();
+			roomReservationDto.setRoom_no(Integer.parseInt(req.getParameter("room_no")));
+			roomReservationDto.setCustomer_no(Integer.parseInt(req.getParameter("customer_no")));		
+			roomReservationDto.setReservation_start_date(req.getParameter("reservation_start_date"));
+			roomReservationDto.setReservation_finish_date(req.getParameter("reservation_finish_date"));
+			roomReservationDto.setCustomer_count(Integer.parseInt(req.getParameter("customer_count")));
+			roomReservationDto.setCustomer_request(req.getParameter("customer_request"));
+			roomReservationDto.setHostel_no(Integer.parseInt(req.getParameter("hostel_no")));
+			
+			////세션 dto 적용
+			req.getSession().setAttribute("roomReservationDto", roomReservationDto);
+			
 			String partner_order_id = req.getParameter("hostel_no");
 			String partner_user_id = req.getParameter("customer_no");
 			
@@ -34,6 +51,7 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
 			conn.setDoInput(true);
 			conn.setDoOutput(true);
+			
 			//보낼 값들 Map 형식으로 작성
 			Map<String, String> params = new HashMap<>();
 			params.put("cid", "TC0ONETIME");
@@ -43,9 +61,9 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			params.put("quantity", req.getParameter("until"));
 			params.put("total_amount", req.getParameter("total_price"));
 			params.put("tax_free_amount", "0");
-			params.put("approval_url", "http://localhost:8080/hostel/room_reservation.do");
-			params.put("cancel_url", "http://localhost:8080/hostel/room_reservation_cancel.do");
-			params.put("fail_url", "http://localhost:8080/hostel/room_reservation_error.do");
+			params.put("approval_url", "http://localhost:8080/kh2_semiProject/hostel/room_reservation_approved.do");
+			params.put("cancel_url", "http://localhost:8080/kh2_semiProject/hostel/room_reservation_cancel.do");
+			params.put("fail_url", "http://localhost:8080/kh2_semiProject/hostel/room_reservation_error.do");
 			
 			String string_params = new String();
 			for(Map.Entry<String, String> elem : params.entrySet()) {
@@ -59,11 +77,21 @@ public class RoomReservationKakaoServlet extends HttpServlet{
 			JSONObject obj = (JSONObject)parser.parse(in);
 			
 			String tid = (String) obj.get("tid");
+			String cid = "TC0ONETIME";
+			
+			int total_amount = Integer.parseInt(req.getParameter("total_price"));
+			int tax_free_amount = 0;
+			
+			
+			KakaoPayDao kakaoPayDao = new KakaoPayDao();
+			kakaoPayDao.kakaoPayProceed(tid, cid, total_amount, tax_free_amount);
+			req.getSession().setAttribute("tid", tid);
+			req.getSession().setAttribute("partner_order_id", partner_order_id);
+			req.getSession().setAttribute("partner_user_id", partner_user_id);
 			
 			String successUrl = (String)obj.get("next_redirect_pc_url");
-			
-			resp.sendRedirect(successUrl+"&tid="+tid+"&partner_order_id="+partner_order_id+"&partner_user_id="+partner_user_id);
-			
+			resp.sendRedirect(successUrl);
+//			+"&cid="+cid+"&tid="+tid+"&partner_order_id="+partner_order_id+"&partner_user_id="+partner_user_id+"&pg_token="+pg_token
 			
 		} catch (Exception e) {
 			e.printStackTrace();

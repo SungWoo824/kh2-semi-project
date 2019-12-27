@@ -17,23 +17,29 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import beans.KakaoPayDao;
+import beans.ReservationDao;
+import beans.ReservationDto;
 
 
-@WebServlet(urlPatterns = "/hostel/room_reservation_Approved.do")
+
+@WebServlet(urlPatterns = "/hostel/room_reservation_approved.do")
 public class RoomReservationApprovedServlet extends HttpServlet{
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
-			String tid = req.getParameter("tid");
+			String cid = "TC0ONETIME";
+			String tid = (String) req.getSession().getAttribute("tid");
 			String pg_token = req.getParameter("pg_token");
-			String partner_order_id = req.getParameter("partner_order_id");
-			String partner_user_id = req.getParameter("partner_user_id");
+			String partner_order_id = (String) req.getSession().getAttribute("partner_order_id");
+			String partner_user_id = (String) req.getSession().getAttribute("partner_user_id");
+			
 			
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 			con.setRequestMethod("POST");
 			con.setRequestProperty("Authorization", "KakaoAK 4f0ba4e9f70eafa42710fac2e2ec5692");
-			con.setRequestProperty("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+			con.setRequestProperty("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
 			con.setDoInput(true);
 			con.setDoOutput(true);
 			
@@ -55,6 +61,19 @@ public class RoomReservationApprovedServlet extends HttpServlet{
 			JSONParser parser = new JSONParser();
 			JSONObject obj = (JSONObject)parser.parse(in);
 			
+			//reservation_list 추가, 세션 삭제
+			ReservationDao rdao = new ReservationDao();
+			ReservationDto rdto = (ReservationDto) req.getSession().getAttribute("roomReservationDto");
+			rdao.roomReservation(rdto);
+			req.getSession().removeAttribute("roomReservationDto");
+			req.getSession().removeAttribute("partner_order_id");
+			req.getSession().removeAttribute("partner_user_id");
+			int seq = rdao.searchSeq();
+			
+			////카카오페이 테이블 예약번호 업데이트
+			
+			KakaoPayDao kdao = new KakaoPayDao();
+			kdao.kakaoPayFinish(seq, cid);
 			
 			
 //			cid	가맹점 코드. 10자.	O	String
@@ -65,9 +84,10 @@ public class RoomReservationApprovedServlet extends HttpServlet{
 //			pg_token	결제승인 요청을 인증하는 토큰. 사용자가 결제수단 선택 완료시 approval_url로 redirection해줄 때 pg_token을 query string으로 넘겨줌	O	String
 //			payload	해당 Request와 매핑해서 저장하고 싶은 값. 최대 200자	X	String
 //			total_amount	상품총액. 결제준비 API에서 요청한 total_amount 값과 일치해야 함	X	Integer
-			
+			resp.sendRedirect("room_reservation_finish.jsp");
 		} catch (Exception e) {
-			
+			e.printStackTrace();
+			resp.sendError(500);
 		}
 	}
 	
