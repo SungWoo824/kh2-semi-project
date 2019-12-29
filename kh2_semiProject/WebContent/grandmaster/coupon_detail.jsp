@@ -124,6 +124,8 @@ CouponDto dto = dao.get(coupon_no);
 </tbody>
 </table>
 </div>
+</div>
+<div class="footer">
 <jsp:include page="../template/footer.jsp"></jsp:include>
 </div>
 </body>

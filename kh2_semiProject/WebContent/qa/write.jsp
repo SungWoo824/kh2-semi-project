@@ -81,7 +81,7 @@
 
 
 <jsp:include page="../template/nav.jsp" ></jsp:include>
-	<form action="write.do" method="post" >
+	<form action="qa_write.do" method="post" >
 	<div class="write" align="center">	
   		
 		<h1 class="board">Q&A BOARD</h1>
