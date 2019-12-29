@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import beans.RoomDao;
 import beans.RoomDto;
 
-@WebServlet(urlPatterns = "/hostel/room_info_regist.do")
-public class RoomInfoRegistServlet extends HttpServlet{
+@WebServlet(urlPatterns = "/regist/only_room_info_regist.do")
+public class OnlyRoomInfoRegistServlet extends HttpServlet{
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
@@ -22,8 +23,8 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			RoomDto dto = new RoomDto();
 			RoomDao dao = new RoomDao();
 			
-			String member_id = (String) req.getSession().getAttribute("id");
-			int hostel_no = dao.getHostelNo();
+			
+			int hostel_no = Integer.parseInt(req.getParameter("hostel_no"));
 			
 			dto.setHostel_no(hostel_no);
 			dto.setRoom_price(Integer.parseInt(req.getParameter("room_price")));
@@ -50,7 +51,7 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			
 			
 //			[3] 출력(이동)			
-			resp.sendRedirect(req.getContextPath()+"/index.jsp");
+			resp.sendRedirect(req.getContextPath()+"/regist/list.jsp");
 			
 		}
 		
@@ -59,4 +60,5 @@ public class RoomInfoRegistServlet extends HttpServlet{
 			resp.sendError(500);
 		}
 	}
+
 }
