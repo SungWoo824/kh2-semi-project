@@ -2,6 +2,20 @@
 <%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    
+     <%
+	
+	
+	String grade = (String)session.getAttribute("grade");
+     System.out.println(grade);
+     String id=(String)session.getAttribute("id");
+     MemberDao mdao =new MemberDao();
+   
+MemberDto mdto =   mdao.get(id);
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +46,7 @@
             box-sizing: border-box;
              font-family: binggrae;
              color: dimgray;
+             align-content: center;
         
         }
     .all{
@@ -135,11 +150,7 @@
  	border-top-left-radius: 2%;
         }
        
-.row-big{
 
-height: 0.1px;
-min-height: 9.5vh;
-}
 
 
 	footer{
@@ -152,44 +163,80 @@ min-height: 9.5vh;
 	height: 7rem;
 	}
 	.row-big{
+	width:100%;
+height: 100%;
+	padding-top:50px;
 	
-	height: 800px;
 
-	padding-top:40px;
-	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+  min-height: 30vh;
+  background-image: url("../image/mypage6.jpg"); background-position: center;background-repeat: no-repeat;
+  background-size: 100%;
+  
 	}
-	
+	 .master-title{
+    	text-align: center;
+    	margin : 50px 0px;
+    }
 
     </style>
-  <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/common.css">
+
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/nav-menu.css">
    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
    
 </head>
 
-<body class="all">
+<body>
+  
+	<div class="row-big">
 <div>
 <jsp:include page="/template/nav.jsp"></jsp:include>
 </div>
-  
-	<div class="row-big">
+    
     <div class="mypage">
  <div class="master-title w-100"><h2>MYPAGE</h2></div>
 
 
 
+<%if(grade.equals("사용자")){ %>
+
+
+ <table class="mypage-class" id="a">
+ <tr>
+<td>
+                    <h4><a href="order/list.jsp">나의 예약 조회</a></h4>
+           
+           </td>
+            </tr>
+        </table>
+
+
+<%}else{%>
         <table class="mypage-class" id="a">
 
             <tr>
-                <td>
+ 
 
-                    <h4><a href="order/list.jsp">예약내역 조회</a></h4>
+<td>
 
-                </td>
+
+                    <h4>
+                   
+                    <a href="regist/list.jsp">등록 숙소 조회</a>
+                    
+                    
+                    </h4>
+           
+           </td>
             </tr>
-
-
         </table>
+
+
+<%} %>
+           
+           
+
+        
+
 
 
 
@@ -278,10 +325,10 @@ min-height: 9.5vh;
 
 
     </div>
-</div>
  	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
+</div>
            
 
 </body>
