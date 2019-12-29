@@ -14,7 +14,7 @@ import beans.QaDao;
 public class QaDeleteServlet extends HttpServlet{
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
 			int qa_no = Integer.parseInt(req.getParameter("qa_no"));

@@ -171,8 +171,7 @@ function number_check1(){
 		</table>
 	</form>
 </div>
-<<<<<<< HEAD
-</section>
+</div>
 <div class="footer">
 <jsp:include page="../template/footer.jsp"></jsp:include>
 </div>
