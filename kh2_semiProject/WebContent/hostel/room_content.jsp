@@ -29,7 +29,7 @@
 <jsp:include page="../template/nav.jsp"></jsp:include>
 </div>
 <div class="backimg w-90" align="center">
-	<img src="<%=request.getContextPath() %>/image/back102.png" />
+	<img src="<%=request.getContextPath() %>/image/back103.png" />
 </div>
 <div class="w-80">
 	<div class="row" ></div>
@@ -133,9 +133,7 @@
 	<div class="ask-button">
 		<a href="<%=request.getContextPath() %>/qa/write.jsp?room_no=<%=Rdto.getRoom_no() %>">문의하기</a>
 	</div>
-</div>
-</div>
-	<div>
+	<div class="reservation">
 		<form action = "room_reservation.jsp" method="post">
 			<input type="hidden" name="room_no" value="<%=room_no %>">
 			<input type="hidden" name="customer_count" value="<%=customer_count %>">
@@ -143,7 +141,7 @@
 			<input type="hidden" name="reservation_finish_date" value="<%=check_out %>">
 			<input type="hidden" name="hostel_no" value="<%=hostel_no %>">
 			<input type="hidden" name="room_price" value="<%=room_price %>">
-			<input type="submit" value="예약하기">
+			<input type="submit" value="예약하기" id="submit">
 		</form>
 	</div>
 </div>
