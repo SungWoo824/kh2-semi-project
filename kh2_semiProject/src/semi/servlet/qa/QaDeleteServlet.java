@@ -14,7 +14,7 @@ import beans.QaDao;
 public class QaDeleteServlet extends HttpServlet{
 	
 	@Override
-	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
 			int qa_delete_no = Integer.parseInt(req.getParameter("qa_delete_no"));
@@ -22,7 +22,7 @@ public class QaDeleteServlet extends HttpServlet{
 			dao.delete(qa_delete_no);
 			resp.sendRedirect(req.getContextPath()+"/qa/list.jsp");
 		} catch (Exception e) {
-			e.getStackTrace();
+			e.printStackTrace();
 			resp.sendError(500);
 		}
 	}

@@ -132,6 +132,8 @@
 		</table>
 	</form>
 </div>
+</div>
+<div class="footer">
 <jsp:include page="../template/footer.jsp"></jsp:include>
 </div>
 </body>
