@@ -18,6 +18,7 @@
 	}
 	String id = (String)request.getSession().getAttribute("id");
 	String grade = (String)request.getSession().getAttribute("grade");
+	boolean isSearch = id!=null && grade!=null;
 	int qa_no;
 	try{
 		qa_no = Integer.parseInt(request.getParameter("qa_no"));
@@ -29,7 +30,6 @@
 	MemberDao mdao = new MemberDao();
 	MemberDto mdto = mdao.memberInfomation(dto.getMember_no());
 	String qa_member_id = mdto.getId();
-	System.out.println(qa_member_id);
 	QaReplyDao QRDao = new QaReplyDao();
 	List<QaReplyDto> list = QRDao.select(qa_no);
 %>
@@ -233,14 +233,14 @@
 						<input type="button" value="글쓰기">
 					</a>
 				<%} %>
-				<% if(id.equals(qa_member_id)||grade.equals("관리자")){%>
-				<a id="a" href="edit.jsp?no=<%=dto.getQa_no() %>">
+				<% if(isSearch){%> 
+				<a id="a" href="qa_edit.jsp?qa_no=<%=dto.getQa_no() %>">
 					<input type="button" value="글수정">
 				</a>
-				<a id="a" href="delete.do?no=<%=dto.getQa_no() %>">
+				<a id="a" href="qa_delete.do?qa_no=<%=dto.getQa_no() %>">
 					<input type="button" value="글삭제">
 				</a>
-				<%} %>
+				<%} %> 
 				<a id="a" href="list.jsp">
 					<input type="button" value="글목록">
 				</a>

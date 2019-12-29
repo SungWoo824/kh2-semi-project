@@ -16,7 +16,7 @@
 <%
 	int qa_edit_no;
 	try{
-		qa_edit_no = Integer.parseInt(request.getParameter("qa_edit_no"));
+		qa_edit_no = Integer.parseInt(request.getParameter("qa_no"));
 	}catch(Exception e){
 		qa_edit_no=0;
 	}
@@ -306,24 +306,6 @@ border-top-right-radius: 5%;
 </style>
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
 					<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row" ></div>
@@ -335,7 +317,7 @@ border-top-right-radius: 5%;
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
-<form action="edit.do" method="post" >
+<form action="qa_edit.do" method="post" >
 <jsp:include page="/template/nav.jsp" ></jsp:include>
 
 
