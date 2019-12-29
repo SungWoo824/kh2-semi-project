@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.QaDao;
 
-@WebServlet(urlPatterns = "/qa/delete.do")
+@WebServlet(urlPatterns = "/qa/qa_delete.do")
 public class QaDeleteServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			int qa_delete_no = Integer.parseInt(req.getParameter("qa_delete_no"));
+			int qa_no = Integer.parseInt(req.getParameter("qa_no"));
 			QaDao dao = new QaDao();
-			dao.delete(qa_delete_no);
+			dao.delete(qa_no);
 			resp.sendRedirect(req.getContextPath()+"/qa/list.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
