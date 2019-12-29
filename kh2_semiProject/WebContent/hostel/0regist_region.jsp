@@ -12,7 +12,7 @@
 	href="<%=request.getContextPath()%>/css/nav-menu.css">
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>묵고 더블로가 숙소 등록</title>
 
 <style>
 * {
@@ -238,7 +238,7 @@ h1 {
 	<%if(login){ %>
 
 	<div class="backBody">
-		<h1>숙소를 등록할 지역을 설정해주세요</h1>
+		<h1>1단계 : 숙소를 등록할 지역을 설정하세요!</h1>
 		
 		<div id="wrap">
 			<form action="1regist_hostel.jsp" method="post">
@@ -297,11 +297,7 @@ h1 {
 	</form>
 		</div>
 	</div>
-	<div>
-		<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div>
-	
-	s <%} %>
+	<%} %>
 </body>
 
 </html>

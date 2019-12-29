@@ -231,8 +231,18 @@ if(rs.next()) {
 		return hostel_no;
 	}
 	
-	
-	// room_info에 날짜 등록하기
+	//room_info 삭제
+	public void room_infoDelete(int hostel_no) throws Exception{
+		
+		Connection con = this.getConnection();
+		String sql = "delete room_info where hostel_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, hostel_no);
+		ps.execute();
+		con.close();
+		
+	}
 	
 	
 	
