@@ -204,7 +204,7 @@ public class ReservationDao {
 			rdto.setCustomer_count(rs.getInt("customer_count"));
 			rdto.setCustomer_request(rs.getString("customer_request"));
 			rdto.setReservation_start_date(rs.getString("reservation_start_date"));
-			rdto.setReservation_until(rs.getInt("reservation_until"));
+			rdto.setReservation_finish_date(rs.getString("reservation_finish_date"));
 
 			list.add(rdto);
 		}
