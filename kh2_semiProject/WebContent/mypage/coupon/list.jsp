@@ -123,7 +123,7 @@ height: 0.1px;
 	height: 670px;
 	padding-top:40px;
 	
-	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+	background-image: url("/kh2_semiProjectimage/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
 
   min-height: 110vh;
 
@@ -131,7 +131,7 @@ height: 0.1px;
 .w-80{
 
 padding-bottom: 7rem;
- 
+  min-height: 100vh;
  
 }
 
@@ -232,11 +232,11 @@ padding-bottom: 7rem;
 
 	</div>
  
-	
-</section>
 			<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
+	
+</section>
            
 
  

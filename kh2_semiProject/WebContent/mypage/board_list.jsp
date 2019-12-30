@@ -99,15 +99,19 @@ height: 0.1px;
 
 
 .container{
-	height: 670px;
+width:100%;
+	height: 100%;
 	padding-top:40px;
-	background-image: url(""); background-position:center; background-repeat: no-repeat; 
+	background-image: url("../image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
  min-height: 110vh;
+ 
+ 
 }
 
 .w-80{
 
 padding-bottom: 7rem;
+ min-height: 100vh;
 }
 
 	footer{
@@ -213,15 +217,15 @@ padding-bottom: 8rem;
 
 
 	</div>
+		<div>
+		<jsp:include page="/template/footer.jsp"></jsp:include>
+	</div>
+           
 </section>
  
 
 
 
-		<div>
-		<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div>
-           
 
 
 

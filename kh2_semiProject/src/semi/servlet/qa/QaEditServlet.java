@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.QaDao;
 import beans.QaDto;
 
-@WebServlet(urlPatterns = "/qa/edit.do")
+@WebServlet(urlPatterns = "/qa/qa_edit.do")
 public class QaEditServlet extends HttpServlet{
 	
 	@Override
@@ -31,9 +31,11 @@ public class QaEditServlet extends HttpServlet{
 			dto.setQa_title(qa_title);
 			dto.setQa_content(qa_content);
 			dao.Edit(dto);
-			resp.sendRedirect(req.getContextPath()+"/mypage/board_content.jsp?qa_no="+dto.getQa_no());
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?qa_no="+dto.getQa_no());
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+			resp.sendError(500);
 		}
 		
 	}

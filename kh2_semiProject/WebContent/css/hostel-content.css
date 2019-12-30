@@ -198,8 +198,9 @@ table {
 }
 
 .top__hostel-name {
-  font-size: 2rem;
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 900;
 }
 
 .top__hostel-addr {
@@ -207,17 +208,33 @@ table {
   margin-bottom: 15px;
 }
 
+.top__hostel-tel {
+	margin-bottom:15px;
+}
+
 .top__content {
+  font-size:1.5rem;
   padding: 20px;
 }
 
+.top__hostel-content{
+	margin-bottom:20px;
+}
+
 .top__review-star {
-  margin-bottom: 15px;
+  color: coral;
+  font-size:1.5rem;
+  margin-bottom: 20px;
 }
 
 .tab {
   margin: 20px 0;
 }
+
+/* .tab__location { */
+/* 	height: auto; */
+/* 	padding:15px; */
+/* } */
 
 /*****************************/
 /* slide */
@@ -263,7 +280,7 @@ table {
 }
 
 .swiper-slide img {
-  width: 165px;
+  width: 180px;
   height: 100%;
 }
 

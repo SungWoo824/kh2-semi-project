@@ -231,8 +231,18 @@ if(rs.next()) {
 		return hostel_no;
 	}
 	
-	
-	// room_info에 날짜 등록하기
+	//room_info 삭제
+	public void room_infoDelete(int hostel_no) throws Exception{
+		
+		Connection con = this.getConnection();
+		String sql = "delete room_info where hostel_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		
+		ps.setInt(1, hostel_no);
+		ps.execute();
+		con.close();
+		
+	}
 	
 	
 	
@@ -400,5 +410,22 @@ public int roomprice(int room_no) throws Exception {
 }
 
 
+
+// 호텔번호로 최저가 방정보 구하기
+public RoomDto minimumPrice(int hostel_no) throws Exception{
+	Connection con = this.getConnection();
+	String sql = "select room_no, min(room_price) from room_info where hostel_no = ? group by room_no";
+	
+	PreparedStatement ps = con.prepareStatement(sql);
+	ps.setInt(1, hostel_no);
+	ResultSet rs = ps.executeQuery();
+	rs.next();
+	int room_no = rs.getInt("room_no");
+	
+	RoomDto rdto = this.roomInfomation1(room_no);
+	
+	con.close();
+	return rdto;
+}
 
 }

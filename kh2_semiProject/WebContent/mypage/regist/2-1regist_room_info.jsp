@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%
-	
+	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,10 +46,7 @@ body {
 	font-family: binggrae;
 	src: url("../font/NotoSansCJKkr-Medium.otf");
 }
-p{
-	font-size: 22px;
-	margin: 150px opx;
-}
+
 h1 {
 	margin-top: 100px;
 	margin-bottom: 50px;
@@ -164,7 +161,6 @@ p{
 }
 
 .btn:hover {
-	font-size: 22px;
 	background-color: #EFEFEF;
 	color: #565960;
 	cursor: pointer;
@@ -178,10 +174,12 @@ p{
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>3단계 : 방의 정보를 등록하세요!</h1>
-			<form action="4regist_date.jsp" method="post">
+		<h1>무엇을 적을까요?????????????</h1>
+			<form action="4-1regist_date.jsp" method="post">
 		<div id="wrap-left">
 				<div id="hostelbox1">
+				
+				<input type="hidden" name="hostel_no" value="<%=hostel_no%>">
 				
 				<p>  ▶ 방 호수(이름)을 적어주세요.</p>
 				<input type="text" name="room_name" placeholder="방 호수(이름)">
@@ -236,6 +234,7 @@ p{
 				<input class="btn" type="submit" value="다음">
 			</form>
 	</div>
+
 </body>
 
 </html>

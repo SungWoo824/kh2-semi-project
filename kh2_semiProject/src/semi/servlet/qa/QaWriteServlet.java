@@ -13,7 +13,7 @@ import beans.MemberDto;
 import beans.QaDao;
 import beans.QaDto;
 
-@WebServlet(urlPatterns = "/qa/write.do")
+@WebServlet(urlPatterns = "/qa/qa_write.do")
 public class QaWriteServlet extends HttpServlet{
 
 	@Override
@@ -42,7 +42,8 @@ public class QaWriteServlet extends HttpServlet{
 			dto.setMember_no(member_no);
 			dto.setQa_content(qa_content);
 			dao.write(dto);
-			resp.sendRedirect(req.getContextPath()+"/mypage/board_content.jsp?qa_no="+qa_no);
+			resp.sendRedirect(req.getContextPath()+"/qa/content.jsp?qa_no="+qa_no);	
+			
 		} catch (Exception e) {
 			e.getStackTrace();
 			resp.sendError(500);
