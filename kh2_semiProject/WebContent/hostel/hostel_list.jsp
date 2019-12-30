@@ -198,7 +198,7 @@
 							<li class="room-info hostel__wifi"><span>WIFI O | </span></li>
 							<li class="room-info hostel__breakfast"><span>조식 <%=rdto.getRoom_breakfast() %></span></li>
 						</ul>
-					</li>
+					</li>	
 					<li></li>
 					<li></li>
 				</ul>
@@ -214,8 +214,14 @@
 		}
 	%>
 	<%
-		}
+		}else {
 	%>
+	<br><br><br>
+		<p class="tip" style="color: coral;">Tip</p>
+		<p class="tip">- 목적지, 체크인/아웃, 인원은 필수 입력 항목입니다.</p>
+		<p class="tip">- 아래와 같은 조합으로 검색을 하시면 더욱 정확한 결과가 검색됩니다.</p>
+		<p class="tip">"서울 강남"</p>
+	<%} %>
 	<div class="border-bottom"></div>
 	</div>
 	<jsp:include page="/template/footer.jsp"></jsp:include>

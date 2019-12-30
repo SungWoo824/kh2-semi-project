@@ -44,7 +44,7 @@
 		<%if(id != null){ %>
 			<a class="menu-item" href = "../info/reserve_info.jsp">예약설명 보러가기</a>
 		<%} else {%>	
-			<a class="menu-item" href = "../info/regist_info.jsp">등록설명 보러가기</a>
+			<a class="menu-item" href = "../info/help.jsp">등록설명 보러가기</a>
 		<%} %>	
 	</div>
 </div>
