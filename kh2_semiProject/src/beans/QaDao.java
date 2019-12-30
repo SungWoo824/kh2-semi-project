@@ -213,7 +213,7 @@ public class QaDao {
 		String sql = "select count(*) from qa where member_no=? ";
 
 		PreparedStatement ps = con.prepareStatement(sql);
-	ps.setInt(1, member_no);
+		ps.setInt(1, member_no);
 		ResultSet rs = ps.executeQuery();
 		rs.next();
 		int count = rs.getInt(1);

@@ -1,7 +1,3 @@
-
-
-<%@page import="beans.MemberDto"%>
-<%@page import="beans.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -14,15 +10,7 @@
 		grade = (String)session.getAttribute("grade");
 	}
 %>    
- 
-<!-- ########### TO DO ############################ -->
-<!--  [ ] 정렬 기준 짜기 (평점순 오름내림) -->
-<!--  [ ] 달력 이전,다음 이미지 추가 -->
-<!--  [ ] input:date 초기값 지정, 현재날짜 전 선택 못하게하기, check_in < check_out 설정 -->
-<!--  [ ] 카카오지도 위치 이상한거 수정하기 -->
-<!-- ##############################################  -->
- 
-    
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

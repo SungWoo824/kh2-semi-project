@@ -32,7 +32,7 @@
 	
 	MemberDto mdto = mdao.memberInfomation(dto.getMember_no());
 	String qa_member_id = mdto.getId();
-	System.out.println(qa_member_id);
+// 	System.out.println(qa_member_id);
 	QaReplyDao QRDao = new QaReplyDao();
 	List<QaReplyDto> list = QRDao.select(qa_no);
 	
