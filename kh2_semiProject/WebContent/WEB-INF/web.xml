@@ -47,6 +47,8 @@
 	<filter-mapping>
 		<filter-name>adminFilter</filter-name>
 		<url-pattern>/grandmaster/*</url-pattern>
+		<url-pattern>/qa/list.jsp</url-pattern>
+		<url-pattern>/qa/content.jsp</url-pattern>
 	</filter-mapping>
 	
 	

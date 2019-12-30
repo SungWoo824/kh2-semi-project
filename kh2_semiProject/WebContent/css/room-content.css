@@ -83,12 +83,14 @@
     }
     .float-item > .float-item2{
     	float:left;
-    	width:35%;
+    	width:40%;
+    	
     }
     
 /*room-table*/
 	.room-table{
 		font-size: 1.2rem;
+		align-content: center;
 	}
 	.room-table th
 	.room-table td{
@@ -100,7 +102,7 @@
 	
 /*ask-button*/
 	.ask-button{
-		margin-top: 380px;
+		margin-top: 340px;
    		text-align: right;
 	}
 	.ask-button a{
@@ -109,10 +111,18 @@
     	height:45px;
 		width:120px;
 		font-size: 1.5rem;
-		margin-right:86px;
+		margin-right:80px;
 		margin-left:1rem;
 	}
 	.ask-button a:hover{
+		color:#292929;
+	}
+	.ask-button button{
+		color: #694b15;
+		border: 0;
+		font-size:1.5rem;	
+	}
+	.ask-button button:hover{
 		color:#292929;
 	}
 	.backimg{
