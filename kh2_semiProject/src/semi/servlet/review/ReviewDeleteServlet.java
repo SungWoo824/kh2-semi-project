@@ -25,7 +25,7 @@ public class ReviewDeleteServlet extends HttpServlet{
 				int hostel_no = Integer.parseInt(req.getParameter("hostel_no"));
 				FilesDao fdao = new FilesDao();
 				FilesDto fdto = fdao.ReviewGet(review_no);
-				File file = new File("D:/upload/review/"+fdto.getSavename());
+				File file = new File("D:/upload/kh24/review/"+fdto.getSavename());
 				if(file.exists()) {
 					file.delete();
 				}
