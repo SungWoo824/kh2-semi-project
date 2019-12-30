@@ -101,7 +101,7 @@
 			</select>		
 		</div>
 		<div class="text">
-		<img src="<%=request.getContextPath() %>/image/캡처.jpg" style="width: 831px;">
+		<img src="<%=request.getContextPath() %>/image/캡처.jpg" style="width: 881px;">
 			<textarea class="menu-item" name="qa_content"  rows="20" cols="90"></textarea>
 			
 			<div class="block"></div>
