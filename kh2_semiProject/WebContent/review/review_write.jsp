@@ -3,8 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/* 	int reservation_no = Integer.parseInt(request.getParameter("reservation_no"));
-	int hostel_no = Integer.parseInt(request.getParameter("hostel_no")); */
+ 	int reservation_no = Integer.parseInt(request.getParameter("reservation_no"));
+System.out.println(reservation_no);
+	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
+	String context = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -33,9 +35,12 @@ body, h1,h2,h3,#wrap, #reviewbox, input,label {margin:0 auto; padding:0; border:
 body {background-color:#efefef; color:#333; font-size:0.8em; font-family:"돋음",dotum,"굴림",gulim,'Apple SD Gothic Neo',Helvetica,sans-serif}
 
 .backBody{
-	height: 1200px;
+	height: 100%;
+	width:100%;
 	padding-top:40px;
-	background-image: url("../image/pay1.jpg"); background-position:center; background-repeat: no-repeat; 
+	
+ background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+ border: 0.8px solid gray;
 }
 
 @font-face{
@@ -47,7 +52,7 @@ h1 {
 	margin-top: 120px;
 	text-align: center;
 	font-size: 40px;
-	letter-spacing: -1px
+	letter-spacing: -1px;
 }
 
 h2 {
@@ -79,6 +84,7 @@ h3 {
 	overflow: hidden;
 	margin-top: 30px;
 	font-size: 18px;
+	 min-height: 90vh;
 }
 
 #reviewbox {
@@ -117,7 +123,7 @@ label#fUreview, label#fUpoint {
 	margin-top: 10px;
 	text-align: center;
 	font-size: 0.85em;
-	background-color: #efefef
+	background-color: #efefef;
 }
 
 .bt2 {
@@ -127,7 +133,7 @@ label#fUreview, label#fUpoint {
 	margin-top: 10px;
 	text-align: center;
 	font-size: 0.85em;
-	background-color: #efefef
+	background-color: #efefef;
 }
 
 #reviewbox hr {
@@ -224,6 +230,16 @@ a {
 img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 	opacity: 0.5;
 }
+
+	footer{
+		background-color: #f6f6f6;
+		border-top: 1px solid rgba(34, 50, 84, 0.2);
+		font-family: binggrae;
+	bottom:0;
+		
+	width: 100%;
+	height: 8rem;
+	}
 </style>
 <link rel="stylesheet" href="https://uicdn.toast.com/tui.chart/latest/tui-chart.min.css">
 
@@ -279,21 +295,21 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
         }
     </script>
 </head>
-<body>
+<body >
 
+	
+	<div class="backBody">
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
-	
-	<div class="backBody">
 		<h1>REVIEW</h1>
 		<h2>
 			리뷰를 남겨주세요.
 		</h2>	
 		<div id="wrap">
 	<form name="review" action="review_write.do"  method="post" enctype="multipart/form-data">
-<!-- 		예약번호:<input type="text" name="reservation_no"><br>
-		호텔번호:<input type="text" name="hostel_no"><br> -->
+		<input type="text" name="reservation_no" value="<%=reservation_no%>">
+		<input type="text" name="hostel_no" value="<%=hostel_no%>">
 		<div id="reviewbox">
 		<div>
 		<label for="ureview" id="fUreview">리뷰</label><br>
@@ -320,7 +336,7 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 		
 		<div class="reviewbox-menu-two">	
 			<label for="uimage" id="fUimage">리뷰사진</label><br>
-			<img id="foo" src="<%=request.getContextPath() %>/image/리뷰사진.png">
+			
 			<input type="file" name="review_file" class="dropzone" id="imgInp" accept=".jpg, .png, .gif">
 		<input type="text" name="image_point">
 			
@@ -335,10 +351,10 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 		</div>
 	</form>
 		</div>
-	</div>
-	
 	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
+	</div>
+	
 </body>
 </html>

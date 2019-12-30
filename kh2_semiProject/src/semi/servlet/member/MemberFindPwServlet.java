@@ -24,7 +24,7 @@ public class MemberFindPwServlet extends HttpServlet{
 			boolean result_pw = dao.find_pw(id, name, phone);
 			
 			if(result_pw) {
-				resp.sendRedirect("change_info.jsp?id=" +id+ "&tryYn=Y");
+				resp.sendRedirect("change_info.jsp?id=" +id);
 			}
 			else {
 				resp.sendRedirect("find_pw.jsp?tryYn=Y");

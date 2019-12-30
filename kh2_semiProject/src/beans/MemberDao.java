@@ -474,17 +474,26 @@ public class MemberDao {
 		
 	}
 ////////////////////////////////////////////////////////////////
-//						관리자 -	 회원 등급 변경					  //
+//관리자 -	 회원 등급 변경					  //
 ////////////////////////////////////////////////////////////////
-	public void memberGradeChange(String member_id,String member_grade) throws Exception{
+public void memberGradeChange(String member_id,String member_grade) throws Exception{
+Connection con = getConnection();
+String sql = "update member set member_grade = ? where member_id=?";
+
+PreparedStatement ps = con.prepareStatement(sql);
+ps.setString(1, member_grade);
+ps.setString(2, member_id);
+ps.execute();
+
+con.close();
+}
+	//// 멤버 탈퇴 기능 /////
+	public void exit(String id) throws Exception{
 		Connection con = getConnection();
-		String sql = "update member set member_grade = ? where member_id=?";
-		
+		String sql = "delete from member where member_id = ?";
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, member_grade);
-		ps.setString(2, member_id);
+		ps.setString(1, id);
 		ps.execute();
-		
 		con.close();
 	}
 }

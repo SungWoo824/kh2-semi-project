@@ -37,7 +37,7 @@ body {
 .backBody {
 	height: 1180px;
 	padding-top: 40px;
-	background-image: url("../image/pay.jpg");
+	background-image: url("<%=request.getContextPath()%>/image/pay.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 }
@@ -66,7 +66,7 @@ h1 {
 	margin-bottom: 20px;
 	height: 760px;
 	overflow: hidden;
-	margin-left: 450px;
+	margin-left: 800px;
 	margin-top: 10px;
 	padding-top: 0px;
 	background-color: #DDDDDB;

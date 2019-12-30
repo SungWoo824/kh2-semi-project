@@ -216,16 +216,24 @@ if(rs.next()) {
 	}
 
 	// hostel_no 받아오는 메소드
-	public int getHostelNo() throws Exception{
+	public int getHostelNo(String member_id) throws Exception{
 		
 		Connection con = getConnection();
-		String sql = "select hostel_no_seq.currval from dual";
+		String sql = "select * from ("
+				+ "select rownum as rn, E.* from ("
+				+ "select hostel_no from hostel where owner_no = ("
+				+ "select member_no from member where member_id = ?"
+				+ ") order by regist_date desc"
+				+ ") E"
+				+ ") where rn =1";
 		PreparedStatement ps = con.prepareStatement(sql);
-				
+		
+		ps.setString(1, member_id);
 		ResultSet rs = ps.executeQuery();
 			
 		rs.next();
-		int hostel_no = rs.getInt(1);
+		int hostel_no = rs.getInt(2);
+		
 				
 		con.close();
 		return hostel_no;

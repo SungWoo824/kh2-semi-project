@@ -89,7 +89,7 @@ body {
 .backBody {
 	height: 800px;
 	padding-top: 40px;
-	background-image: url("../image/login5.jpg");
+	background-image: url("<%=request.getContextPath()%>/image/login5.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 }

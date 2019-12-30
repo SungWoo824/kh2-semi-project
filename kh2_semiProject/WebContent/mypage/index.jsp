@@ -27,7 +27,10 @@ MemberDto mdto =   mdao.get(id);
     font-family: binggrae;
     src: url("./font/Binggrae.ttf");
 }
-
+@font-face{
+    font-family:notosanskrmedium;
+    src:url("../font/NotoSansCJKkr-Medium.otf");
+    }
 @font-face {
     font-family: binggrae2;
     src: url("./font/BinggraeⅡ-Bold.ttf");
@@ -44,7 +47,7 @@ MemberDto mdto =   mdao.get(id);
 }
         * {
             box-sizing: border-box;
-             font-family: binggrae;
+             font-family: notosanskrmedium;
              color: dimgray;
              align-content: center;
         
@@ -62,10 +65,10 @@ MemberDto mdto =   mdao.get(id);
     .mypage {
             /*            border: 1px dotted black;*/
             width: 460px;
-            margin: 30px auto;
+            margin: 20px auto;
             text-align: left;
           padding-bottom: 7rem;
-           
+            min-height: 75vh;
 		
         }
 
@@ -80,7 +83,7 @@ MemberDto mdto =   mdao.get(id);
         }
 
         .mypage>.mypage-class {
-            border: 1px solid gray;
+            border: 0.8px solid gray;
         }
 
         .mypage>table[id=a] {
@@ -92,6 +95,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 1%;
  	border-bottom-right-radius: 1%;
  	border-top-left-radius: 1%;
+ 	background-color: #FDFDFD;
         }
 
         .mypage>table[id=b] {
@@ -103,6 +107,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 2%;
  	border-bottom-right-radius: 2%;
  	border-top-left-radius: 2%;
+ 			background-color: #FDFDFD;
         }
 
         .mypage>table[id=c] {
@@ -114,6 +119,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 2%;
  	border-bottom-right-radius: 2%;
  	border-top-left-radius: 2%;
+	background-color: #FDFDFD;
         }
 
         .mypage>table[id=d] {
@@ -125,6 +131,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 2%;
  	border-bottom-right-radius: 2%;
  	border-top-left-radius: 2%;
+ 			background-color: #FDFDFD;
         }
 
         .mypage>table[id=e] {
@@ -136,6 +143,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 2%;
  	border-bottom-right-radius: 2%;
  	border-top-left-radius: 2%;
+ 			background-color: #FDFDFD;
         }
 
         .mypage>table[id=f] {
@@ -148,6 +156,7 @@ MemberDto mdto =   mdao.get(id);
  	border-bottom-left-radius: 2%;
  	border-bottom-right-radius: 2%;
  	border-top-left-radius: 2%;
+ 		background-color: #FDFDFD;
         }
        
 
@@ -162,6 +171,7 @@ MemberDto mdto =   mdao.get(id);
 	width: 100%;
 	height: 7rem;
 	}
+	
 	.row-big{
 	width:100%;
 height: 100%;
@@ -173,6 +183,7 @@ height: 100%;
   background-size: 100%;
   
 	}
+	
 	 .master-title{
     	text-align: center;
     	margin : 50px 0px;
@@ -185,7 +196,7 @@ height: 100%;
    
 </head>
 
-<body>
+<body >
   
 	<div class="row-big">
 <div>
@@ -197,20 +208,10 @@ height: 100%;
 
 
 
-<%if(grade.equals("사용자")){ %>
+<%if(grade.equals("판매자")){ %>
 
 
- <table class="mypage-class" id="a">
- <tr>
-<td>
-                    <h4><a href="order/list.jsp">나의 예약 조회</a></h4>
-           
-           </td>
-            </tr>
-        </table>
 
-
-<%}else{%>
         <table class="mypage-class" id="a">
 
             <tr>
@@ -225,6 +226,16 @@ height: 100%;
                     
                     
                     </h4>
+           
+           </td>
+            </tr>
+        </table>
+
+<%}else{%>
+ <table class="mypage-class" id="a">
+ <tr>
+<td>
+                    <h4><a href="order/list.jsp">나의 예약 조회</a></h4>
            
            </td>
             </tr>

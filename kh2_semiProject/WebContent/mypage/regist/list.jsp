@@ -182,9 +182,11 @@ footer{
 					<%
 						if (count == 0) {
 					%>
-					<tr>
-
-						<td rowspan="5">숙소내역이 없습니다.</td>
+					<tr align="center">
+						
+						<td></td>
+						<td></td>
+						<td rowspan="4">숙소내역이 없습니다.</td>
 
 
 					</tr>
