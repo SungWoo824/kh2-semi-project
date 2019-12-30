@@ -12,21 +12,18 @@
 		background-color: #f6f6f6;
 		border-top: 1px solid rgba(34, 50, 84, 0.2);
 		font-family: binggrae;
-
 		width: 100%;
-		
-
 	}
 	.foot{
 		font-family: binggrae;
-		background-color: rgba(229, 231, 235, 0.2);
+		background-color: rgba(229, 231, 235, 0);
 		display: inline-block;
 	}
 	.foot-menu{
 		font-family: binggrae;
 		margin-bottom: 1rem;
 		margin-left: 10px;
-		background-color: rgba(229, 231, 235, 0);
+		background-color: rgba(229, 231, 235, 0.2);
 		display: inline-block;
 	}
 	.foot-logo > img{
@@ -54,4 +51,7 @@
     border: 1px solid black;
     text-align: center;
 }
+		
+
+
 

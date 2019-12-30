@@ -1,5 +1,9 @@
 package beans;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MemberDto {
 	private int no;
 	private String id;
@@ -84,6 +88,18 @@ public class MemberDto {
 
 	public void setJoindate(String joindate) {
 		this.joindate = joindate;
+	}
+	public String getMember_birthDayWithFormat() throws ParseException {
+		String time=null;
+		if (birthday!=null) {
+		SimpleDateFormat read = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+		Date date = read.parse(birthday);
+		SimpleDateFormat write = new SimpleDateFormat("y년 M월 d일");
+		time = write.format(date);
+
+			return time;
+		}
+		return "";
 	}
 	
 }

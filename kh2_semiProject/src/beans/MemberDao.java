@@ -473,4 +473,13 @@ public class MemberDao {
 		return member_no;
 		
 	}
+	//// 멤버 탈퇴 기능 /////
+	public void exit(String id) throws Exception{
+		Connection con = getConnection();
+		String sql = "delete from member where member_id = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, id);
+		ps.execute();
+		con.close();
+	}
 }
