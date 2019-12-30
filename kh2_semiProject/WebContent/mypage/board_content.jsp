@@ -32,7 +32,7 @@
 	
 	MemberDto mdto = mdao.memberInfomation(dto.getMember_no());
 	String qa_member_id = mdto.getId();
-	System.out.println(qa_member_id);
+// 	System.out.println(qa_member_id);
 	QaReplyDao QRDao = new QaReplyDao();
 	List<QaReplyDto> list = QRDao.select(qa_no);
 %>
@@ -142,6 +142,27 @@
 	height: 500px;
 	overflow: hidden
 padding-bottom: 8rem;
+border-top-right-radius: 2%; 
+ 	border-bottom-left-radius: 2%;
+ 	border-bottom-right-radius: 2%;
+ 	border-top-left-radius: 2%;
+}
+
+* {
+	font-family: binggrae;
+}
+@font-face {
+	font-family: binggrae;
+	src: url("../font/NotoSansCJKkr-Medium.otf");
+}
+
+
+.w-80 content-table{
+border: 1px solid #ddd;
+border-top-right-radius: 5%; 
+ 	border-bottom-left-radius: 5%;
+ 	border-bottom-right-radius: 5%;
+ 	border-top-left-radius: 5%;
 }
 </style>
 </head>
@@ -276,7 +297,10 @@ padding-bottom: 8rem;
 	</tfoot>	
 </table>
 </div>
+
+<div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
+</div>
 </section>
 </body>
 </html>

@@ -112,5 +112,14 @@ public class ReviewDao {
 		con.close();
 		return dto;
 	}
-
+	
+	public void review_delete(int review_no) throws Exception{
+		
+		Connection con = getConnection();
+		String sql = "delete from review where review_no = ?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, review_no);
+		ps.execute();
+		con.close();
+	}
 }

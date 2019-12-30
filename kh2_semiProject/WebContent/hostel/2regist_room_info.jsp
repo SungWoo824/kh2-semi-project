@@ -12,7 +12,7 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/footer.css">
 <meta charset="UTF-8">
-<title>방 정보를 등록해봅시다!</title>
+<title>묵고 더블로가 숙소 등록</title>
 
 <style>
 * {
@@ -46,7 +46,10 @@ body {
 	font-family: binggrae;
 	src: url("../font/NotoSansCJKkr-Medium.otf");
 }
-
+p{
+	font-size: 22px;
+	margin: 150px opx;
+}
 h1 {
 	margin-top: 100px;
 	margin-bottom: 50px;
@@ -161,6 +164,7 @@ p{
 }
 
 .btn:hover {
+	font-size: 22px;
 	background-color: #EFEFEF;
 	color: #565960;
 	cursor: pointer;
@@ -174,8 +178,8 @@ p{
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>무엇을 적을까요?????????????</h1>
-			<form action="4regist_date.jsp" method="get">
+		<h1>3단계 : 방의 정보를 등록하세요!</h1>
+			<form action="4regist_date.jsp" method="post">
 		<div id="wrap-left">
 				<div id="hostelbox1">
 				
@@ -231,9 +235,6 @@ p{
 		</div>
 				<input class="btn" type="submit" value="다음">
 			</form>
-	</div>
-<div>
-		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
 </body>
 

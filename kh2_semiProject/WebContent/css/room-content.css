@@ -59,7 +59,7 @@
 /*이미지*/
 	.room__image img{
 	  width: 100%;
-	  height:auto;
+	  height:100%;
 	  border-radius: 5px;
 	  border: 3px solid white;
 	}
@@ -79,6 +79,7 @@
     .float-wrap > .float-item{
         float:left;
         width:50%;
+        height:500px;
     }
     .float-item > .float-item2{
     	float:left;
@@ -86,6 +87,9 @@
     }
     
 /*room-table*/
+	.room-table{
+		font-size: 1.2rem;
+	}
 	.room-table th
 	.room-table td{
 		width:50%;
@@ -96,17 +100,16 @@
 	
 /*ask-button*/
 	.ask-button{
-		margin-top: 300px;
+		margin-top: 380px;
    		text-align: right;
-    	margin-right: 50px;
 	}
 	.ask-button a{
-		color: #2f628a;
+		color: #694b15;
     	text-decoration: none;
     	height:45px;
 		width:120px;
 		font-size: 1.5rem;
-		margin-right:1rem;
+		margin-right:86px;
 		margin-left:1rem;
 	}
 	.ask-button a:hover{
@@ -118,14 +121,27 @@
 		z-index:-1;
 	}
 	.backimg img{
-		height: 410px;
+		height: 550px;
     	width: 90%;
     	margin-left: 6%;
     	opacity: 0.5;
+    	border-radius: 40px;
 	}
 	.under{
 		position: absolute; 
 		left: 0; 
 		bottom: 0;
 		width:100%;
+	}
+	.reservation{
+		text-align:right;
+		margin-right:80px;
+	}
+	.reservation #submit{
+		border:0;
+		font-size:1.5rem;
+		color: #694b15;
+	}
+	.reservation #submit:hover{
+		color:#292929;
 	}

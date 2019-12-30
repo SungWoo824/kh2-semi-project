@@ -2,7 +2,10 @@
 <%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%
+/* 	int reservation_no = Integer.parseInt(request.getParameter("reservation_no"));
+	int hostel_no = Integer.parseInt(request.getParameter("hostel_no")); */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,37 +24,6 @@
 
     <script src="../lib/toast/dist/tui-editor-Editor-full.min.js"></script>
     <!-- naver toast ui editor를 쓰기 위해 필요한 준비물 -->
-
-    <script>
-        //naver toast ui를 만들기 위한 코드
-        function createEditor(){
-            //editor 옵션
-            var options = {
-                //el(element) : 에디터가 될 영역
-                el:document.querySelector(".naver-editor"),
-                //previewStyle : 표시되는 방식(horizontal, vertical)
-                previewStyle:'vertical',
-                //height : 생성될 에디터의 높이
-                height:'300px',
-                //initialEditType : 생성될 에디터의 초기화면 형태(markdown, wysiwyg)
-                initialEditType:'markdown'
-            };
-            //editor 생성 코드
-            var editor = tui.Editor.factory(options);
-            //editor에 이벤트를 설정해서 입력하면 자동으로 input에 복사되게 구현
-            //- input이라는 상황이 발생하면 오른쪽 function을 실행하라
-            //- oninput이랑 동일한데 자바스크립트로만 구현
-            editor.on("change", function(){
-                //editor의 입력값을 가져와서 input에 설정
-                var text = editor.getValue();
-                var input = document.querySelector(".naver-editor + input");
-                input.value = text;
-            });
-        }
-        //body가 없는 경우에는 다음과 같이 작성
-        // - 예약 실행(callback)
-        window.onload = createEditor;
-    </script>
 <style type="text/css">
 *{
 		font-family: binggrae;

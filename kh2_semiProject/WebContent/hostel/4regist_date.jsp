@@ -54,14 +54,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Document</title>
+<title>묵고 더블로가 숙소 등록</title>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/nav-menu.css">
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/css/footer.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Document</title>
 <link rel="stylesheet" type="text/css" href="datePicker.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -145,6 +144,7 @@ a {
 }
 
 .btn:hover {
+	border-bottom: 2px solid lightsalmon;
 	background-color: white;
 	color: lightsalmon;
 	cursor: pointer;
@@ -190,7 +190,7 @@ a {
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>날짜를 적을까?????</h1>
+		<h1>4단계 : 호스팅 기간을 등록하세요!</h1>
 			<form action="room_info_regist.do" method="post">
 		<div id="wrap">
 				        <input type="hidden" name="room_price" value="<%=room_price %>">
@@ -218,8 +218,6 @@ a {
 			</form>
 	</div>
 	
-	<div>
-		<jsp:include page="/template/footer.jsp"></jsp:include>
-	</div>
+	
 </body>
 </html>
