@@ -83,7 +83,9 @@
 		z-index:101;
 		height: 670px;
 	padding-top:40px;
-	background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+	background-image: url( "<%=context %>/image/mypage6.jpg "); 
+	background-position:center; 
+	background-repeat: no-repeat; 
 	min-height: 105vh;
 	}
 	.content-table #replycontent{
