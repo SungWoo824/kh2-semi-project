@@ -10,7 +10,7 @@
 		grade = (String)session.getAttribute("grade");
 	}
 %>    
-    
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
