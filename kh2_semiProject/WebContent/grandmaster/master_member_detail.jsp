@@ -166,15 +166,12 @@
 		<%} %>
 		</div>
 		<br><br>
-		<div align="right" class="coupon-choice-template w-80">
+		<div align="right" class="coupon-choice-template w-80" style="padding-bottom: 300px;">
 			<a href="#"><button>회원탈퇴</button></a>
 			<a href="#"><button>등급변경</button></a>
 			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>"><button>쿠폰추가</button></a>
 		</div>
 	</div>
-	</div>
-	<div>
-		<h2>Footer 위치</h2>
 	</div>
 	<jsp:include page="../template/footer.jsp"></jsp:include>
 	</section>

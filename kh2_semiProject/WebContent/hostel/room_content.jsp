@@ -39,14 +39,11 @@
 		<img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
 	</div>
 <div class="float-item">
+<div class="w-40"><h1>&emsp;룸번호 <%=Rdto.getRoom_no() %></h1></div>
 	<div class="float-item2">
 	<div class="row-small"></div>
 		<table class="room-table">
 			<tbody>
-				<tr>
-					<th>룸번호</th>
-					<td><%=Rdto.getRoom_no() %></td>
-				</tr>
 				<tr>
 					<th>룸가격</th>
 					<td><%=Rdto.getRoom_price() %></td>
@@ -131,7 +128,7 @@
 		</table>
 	</div>
 	<div class="ask-button">
-		<a href="<%=request.getContextPath() %>/qa/write.jsp?room_no=<%=Rdto.getRoom_no() %>">문의하기</a>
+		<a href="<%=request.getContextPath() %>/qa/write.jsp?room_no=<%=Rdto.getRoom_no() %>"><button>문의하기</button></a>
 	</div>
 	<div class="reservation">
 		<form action = "room_reservation.jsp" method="post">

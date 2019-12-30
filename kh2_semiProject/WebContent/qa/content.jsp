@@ -189,17 +189,17 @@
 								<div style="float:right;">
 								<a href="qa_reply_delete.do?qa_reply_no=<%=rdto.getQa_reply_no() %>">삭제</a>
 								</div>
-							<%if(qa_reply_no!=rdto.getQa_reply_no()){ %>
-									<div style="float:right;">
-									<a href="content.jsp?pno=&qa_no=<%=rdto.getQa_no()%>&qa_reply_no=<%=rdto.getQa_reply_no() %>">수정</a>
-								</div>
-								<%}else{ %>						
-								<div style="float:right;">
-										<input type="hidden" name="qa_reply_no" value="<%=rdto.getQa_reply_no()%>">
-										<input id="c" type="submit" value="수정 완료"> 
-									</form> 
-									</div>	
-								<%} %> 
+<%-- 							<%if(qa_reply_no!=rdto.getQa_reply_no()){ %> --%>
+<!-- 									<div style="float:right;"> -->
+<%-- 									<a href="content.jsp?pno=&qa_no=<%=rdto.getQa_no()%>&qa_reply_no=<%=rdto.getQa_reply_no() %>">수정</a> --%>
+<!-- 								</div> -->
+<%-- 								<%}else{ %>						 --%>
+<!-- 								<div style="float:right;"> -->
+<%-- 										<input type="hidden" name="qa_reply_no" value="<%=rdto.getQa_reply_no()%>"> --%>
+<!-- 										<input id="c" type="submit" value="수정 완료">  -->
+<!-- 									</form>  -->
+<!-- 									</div>	 -->
+<%-- 								<%} %>  --%>
 							</form>
 						</th>
 					</tr>
@@ -234,9 +234,9 @@
 					</a>
 				<%} %>
 		<% if(isSearch){%> 
-				<a id="a" href="qa_edit.jsp?qa_no=<%=dto.getQa_no() %>">
-					<input type="button" value="글수정">
-				</a>
+<%-- 				<a id="a" href="qa_edit.jsp?qa_no=<%=dto.getQa_no() %>"> --%>
+<!-- 					<input type="button" value="글수정"> -->
+<!-- 				</a> -->
 				<a id="a" href="qa_delete.do?qa_no=<%=dto.getQa_no() %>">
 
 					<input type="button" value="글삭제">
