@@ -37,14 +37,14 @@ body {
 .backBody {
 	height: 1180px;
 	padding-top: 40px;
-	background-image: url("../image/pay.jpg");
+	background-image: url("<%=request.getContextPath()%>/image/pay.jpg");
 	background-position: center;
 	background-repeat: no-repeat;
 }
 
 @font-face {
 	font-family: binggrae;
-	src: url("../font/NotoSansCJKkr-Medium.otf");
+	src: url("<%=request.getContextPath()%>/font/NotoSansCJKkr-Medium.otf");
 }
 
 h1 {
@@ -63,7 +63,7 @@ h1 {
 	margin-bottom: 20px;
 	height: 760px;
 	overflow: hidden;
-	margin-left: 450px;
+	margin-left: 800px;
 	margin-top: 10px;
 	padding-top: 0px;
 	background-color: #DDDDDB;
@@ -174,7 +174,7 @@ p{
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>무엇을 적을까요?????????????</h1>
+		<h1>방의 정보를 등록하세요!</h1>
 			<form action="4-1regist_date.jsp" method="post">
 		<div id="wrap-left">
 				<div id="hostelbox1">
