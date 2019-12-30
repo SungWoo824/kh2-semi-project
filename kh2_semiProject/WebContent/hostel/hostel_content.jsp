@@ -262,7 +262,7 @@ div{
 		<div class="top">
 			<div class="top__gallery">
 				<div class="top__image">
-					<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
+					<img src="<%=request.getContextPath()%>/hostel/hostel_download.do?hostel_no=<%=hdto.getHostel_no() %>">
 				</div>
 				<div class="swiper-container top__slider ">
 					<div class="swiper-wrapper">
