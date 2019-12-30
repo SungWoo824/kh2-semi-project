@@ -123,18 +123,17 @@
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	<jsp:include page="../template/master_menu_template.jsp"></jsp:include>
-	<div class="master-title w-100"><h2>회원 목록</h2></div>
+	<div class="master-title w-100"><h2>예약 목록</h2></div>
     <table class="w-100 couponmember-table">
 		<thead>
 			<tr>
-				<th>회원번호</th>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>등급</th>
-				<th>생일</th>
-				<th>전화번호</th>
-				<th>이메일</th>
-				<th>보유쿠폰수</th>
+				<th>예약 번호</th>
+				<th>숙소 번호</th>
+				<th>방 번호</th>
+				<th>회원 번호</th>
+				<th>체크인</th>
+				<th>체크아웃</th>
+				<th>상세보기</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -145,8 +144,8 @@
 				<th><%=rdto.getHostel_no() %></th>
 				<th><%=rdto.getRoom_no() %></th>
 				<th><%=rdto.getCustomer_no() %></th>
-				<th><%=rdto.getReservation_start_date() %></th>
-				<th><%=rdto.getReservation_finish_date() %></th>
+				<th><%=rdto.getReservation_start_date().substring(0,10) %></th>
+				<th><%=rdto.getReservation_finish_date().substring(0,10) %></th>
 				<th><a href="#">
 				상세보기</a></th>
 			

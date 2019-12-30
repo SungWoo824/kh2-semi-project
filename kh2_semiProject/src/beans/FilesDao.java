@@ -99,4 +99,25 @@ public class FilesDao {
 		con.close();
 		return fdto;
 	}
+	
+	public FilesDto HostelGet(int hostel_no) throws Exception {
+		Connection con = getConnection();
+		
+		String sql = "select * from files where hostel_no=?";
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setInt(1, hostel_no);
+		ResultSet rs = ps.executeQuery();
+		FilesDto fdto = new FilesDto();
+		if(rs.next()) {
+			
+			fdto.setFlie_no(rs.getInt("File_no"));
+			fdto.setHostel_no(rs.getInt("hostel_no"));
+			fdto.setUploadname(rs.getString("uploadname"));
+			fdto.setSavename(rs.getString("savename"));
+			fdto.setFiletype(rs.getString("filetype"));
+			fdto.setFilesize(rs.getLong("filesize"));		
+		}
+		con.close();
+		return fdto;
+	}
 }
