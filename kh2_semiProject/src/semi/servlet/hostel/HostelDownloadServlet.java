@@ -1,4 +1,4 @@
-package semi.servlet.review;
+package semi.servlet.hostel;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,18 +15,20 @@ import org.apache.commons.io.FileUtils;
 import beans.FilesDao;
 import beans.FilesDto;
 
-@WebServlet(urlPatterns = "/review/review_download.do")
-public class ReviewDownloadServlet extends HttpServlet{
+@WebServlet(urlPatterns = "/hostel/hostel_download.do")
+public class HostelDownloadServlet extends HttpServlet{
 	
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			int no = Integer.parseInt(req.getParameter("review_no"));
+			int no = Integer.parseInt(req.getParameter("hostel_no"));
 			FilesDao fdao = new FilesDao();
-			FilesDto fdto = (FilesDto) fdao.ReviewGet(no);
-			File target = new File("D:/upload/kh24/review",fdto.getSavename());
-			byte[] data = FileUtils.readFileToByteArray(target);
+			FilesDto fdto = (FilesDto) fdao.HostelGet(no);
+			File target = new File("D:/upload/kh24/hostel",fdto.getSavename());
+			byte[] data = FileUtils.readFileToByteArray(target);  
+			System.out.println(fdto);
+			System.out.println(target);
 //			application/octet-stream
 //			resp.setContentType("application/octet=stream; charset=UTF-8"); 
 			resp.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");

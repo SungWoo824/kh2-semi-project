@@ -33,7 +33,9 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>loginFilter</filter-name>
-		<url-pattern></url-pattern>
+		<url-pattern>/hostel/0regist_region.jsp</url-pattern>
+		<url-pattern>/qa/*</url-pattern>
+		<url-pattern>/hostel/room_reservation.jsp</url-pattern>
 	</filter-mapping>
 
 <!-- 	관리자여야만 접근할 수 있게 설정할 페이지 추가하세요-->
@@ -45,6 +47,8 @@
 	<filter-mapping>
 		<filter-name>adminFilter</filter-name>
 		<url-pattern>/grandmaster/*</url-pattern>
+		<url-pattern>/qa/list.jsp</url-pattern>
+		<url-pattern>/qa/content.jsp</url-pattern>
 	</filter-mapping>
 	
 	

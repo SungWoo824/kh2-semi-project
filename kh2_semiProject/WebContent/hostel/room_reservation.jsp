@@ -190,6 +190,7 @@ a {
 	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
+	<form action="room_reservation_kakao.do" method="post">
 <div class="backBody">
 	<div id="wrap-left">
 <%-- 	호텔번호<%=room_no%>
@@ -202,7 +203,7 @@ a {
 			<h2>예약정보입니다. <br>
 				예약 내역 확인부탁드립니다.
 			</h2>
-	<form action="room_reservation_kakao.do" method="post">
+	
 		<div id="paybox">
 			<label for="uroom_no" id="fUroom_no">방번호: &nbsp; <%=room_no%>번</label>
 			<input id="uroom_no" type="hidden" name="room_no" value="<%=room_no%>">
@@ -237,7 +238,7 @@ a {
 			<input type="hidden" name="total_price" value="<%=total_price%>">
 			<div class="block"></div>
 		</div>
-	</form>
+	
 </div>
 		<div id="wrap-right">
 			<h1>Requirements</h1>
@@ -252,7 +253,7 @@ a {
 			</span>	
 </div>
 	
-	
+	</form>
 	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>	

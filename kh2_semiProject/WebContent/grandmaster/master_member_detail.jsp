@@ -10,6 +10,12 @@
 	MemberDto mdto = mdao.memberInfomation(Integer.parseInt(request.getParameter("member_no")));
 	CouponDao cdao = new CouponDao();
 	List<CouponDto> list = cdao.memberHasCoupon(Integer.parseInt(request.getParameter("member_no")));
+	String member_grade;
+	if(mdto.getGrade().equals("판매자")){
+		member_grade = "사용자";
+	}else{
+		member_grade = "판매자";
+	}
 %>
 
 <!DOCTYPE html>
@@ -166,15 +172,12 @@
 		<%} %>
 		</div>
 		<br><br>
-		<div align="right" class="coupon-choice-template w-80">
+		<div align="right" class="coupon-choice-template w-80" style="padding-bottom: 300px;">
 			<a href="#"><button>회원탈퇴</button></a>
-			<a href="#"><button>등급변경</button></a>
+			<a href="<%=request.getContextPath() %>/grandmaster/master_member_grade_change.do?member_id=<%=mdto.getId()%>&member_grade=<%=member_grade %>"><button>등급변경</button></a>
 			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>"><button>쿠폰추가</button></a>
 		</div>
 	</div>
-	</div>
-	<div>
-		<h2>Footer 위치</h2>
 	</div>
 	<jsp:include page="../template/footer.jsp"></jsp:include>
 	</section>

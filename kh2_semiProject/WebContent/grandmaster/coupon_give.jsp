@@ -24,6 +24,7 @@
 <script>
 function number_check1(){
 	
+}
 	//기본 전송을 막고
 	event.preventDefault();
 	
@@ -39,7 +40,7 @@ function number_check1(){
 	
 	//만약에 회원번호가 아니라 회원아이디가 선택됐다면 memberCheck는 필요가 없다(true로 변경)
 	var select = document.querySelector("select[name=type1]");
-	if(select.value == "member_id"){
+	if(select != null && select.value == "member_id"){
 		memberCheck = true;	
 	}
 	
@@ -137,7 +138,7 @@ function number_check1(){
 		<table class="w-100 coupon-under-table">
 		<%if(request.getParameter("member_no")==null){ %>
 			<tr>
-				<th>
+				<th width="40%">
 					<select name="type1" class="select-icon custom-select" required>
 						<option value="member_no">회원 번호</option>
 						<option value="member_id">회원 아이디</option>
@@ -153,7 +154,7 @@ function number_check1(){
 					<%String type1 = "member_no";%>회원 번호
 				</th>
 				<td>
-					<input type="text" name="keyword1" value="<%=member_no %>" readonly>
+					<input type="text" name="keyword1" value="<%=request.getParameter("member_no") %>" readonly class="number_check1">
 				</td>
 			</tr>
 		<%} %>
@@ -165,6 +166,7 @@ function number_check1(){
 			</tr>
 			<tr>
 				<td colspan="2" align="right" class="input-button">
+					<input type="hidden" value = "member_no" name="type1">
 					<input type="submit" value="수여">
 				</td>
 			</tr>

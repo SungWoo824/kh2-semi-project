@@ -153,7 +153,8 @@ a {
 			<div id="findIdbox">
 				<label for="uname" id="fUname">이름</label> <input id="uname" type="text" title="이름" name="member_name" required>
 				<div class="block"></div>
-				<label for="ubirth" id="fUbirth">생년월일</label> <input id="ubirth" title="생년월일" name="member_birthday" required>
+				<label for="ubirth" id="fUbirth">생년월일</label> 
+				<input id="ubirth" title="생년월일" name="member_birthday" required placeholder="ex) 19XX/XX/XX">
 				<div class="block"></div>
 				<label for="uphone" id="fUphone">휴대폰번호</label> <input id="uphone" title="휴대폰번호" name="member_phone" required>
 				<div class="block"></div>

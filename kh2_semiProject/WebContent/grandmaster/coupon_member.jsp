@@ -80,26 +80,19 @@
 	}
 	/* 항목 글자색을 바꾸고 싶다면 */
 	body{
-		height: 1000px;
+		height:100%;
 		width: 100%;
 		margin: 0;
 		padding: 0;
+		background-attachment:fixed;
+		background-image:url("../image/master.jpg");
 		background-repeat: no-repeat;
 		background-size : cover;	
 	}
-	.background{
-		height:1000px;	
-		position:fixed;
-		width:100%;
-		z-index:100;
-		background-size: 100%;
-		min-height:1000px;
+	html{
+		height:100%;
 	}
-	.background img{
-		width:100%;
-		height:1000px;
-	}
-	
+
 	.container{
 		width:100%;
 		position:absolute;
@@ -109,15 +102,25 @@
 		border:none;
 		margin-bottom:200px;
 	}
+	*{
+		box-sizing: border-box;
+	}
+	.wrap{
+		min-height: 100%;
+		position:relative;
+		padding-bottom: -300px;
+	}
+	footer{
+		position: absolute;
+		bottom:0;
+		
+	}
 </style>
 <script src="<%=request.getContextPath()%>/js/custom_select.js"></script>
 </head>
 <body>
-<div class="background">
-	<img src="../image/master.jpg">
-</div>
-<section class="container">
 <jsp:include page="../template/nav.jsp"></jsp:include>
+<div class="wrap">
 <div class="w-80">
 <div class="row-big"></div>
 <div class="row-big"></div>
@@ -126,7 +129,7 @@
 <jsp:include page="../template/coupon_choice_template.jsp"></jsp:include>
 <div align="center"><h2>보유 쿠폰 목록</h2></div>
 	<%if(isSearch&&list.size()==0){%>
-		<h3>검색결과가 없습니다</h3>
+		<div align="center"><h3>검색결과가 없습니다</h3></div>
 	<%}else{ %>
 		<table class="w-100 couponmember-table">
 				<thead>
@@ -214,7 +217,9 @@
 	</form>
 	</div>
 </div>
+</div>
+<div class="footer">
 <jsp:include page="../template/footer.jsp"></jsp:include>
-</section>
+</div>
 </body>
 </html>
