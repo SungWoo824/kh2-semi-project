@@ -173,7 +173,7 @@
 		</div>
 		<br><br>
 		<div align="right" class="coupon-choice-template w-80" style="padding-bottom: 300px;">
-			<a href="#"><button>회원탈퇴</button></a>
+			<a href="<%=request.getContextPath() %>/member/exit.do"><button>회원탈퇴</button></a>
 			<a href="<%=request.getContextPath() %>/grandmaster/master_member_grade_change.do?member_id=<%=mdto.getId()%>&member_grade=<%=member_grade %>"><button>등급변경</button></a>
 			<a href="<%=request.getContextPath() %>/grandmaster/coupon_give.jsp?member_no=<%=mdto.getNo() %>"><button>쿠폰추가</button></a>
 		</div>
