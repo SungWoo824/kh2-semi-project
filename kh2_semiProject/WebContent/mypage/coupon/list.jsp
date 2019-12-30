@@ -123,7 +123,7 @@ height: 0.1px;
 	height: 670px;
 	padding-top:40px;
 	
-	background-image: url("/kh2_semiProjectimage/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+	 background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
 
   min-height: 110vh;
 
@@ -172,7 +172,7 @@ padding-bottom: 7rem;
 				<th>할인율</th>
 				<th>유효기간</th>
 				<th>쿠폰설명</th>
-				<th></th>
+				
 				
 			</tr>
 		</thead>
@@ -180,7 +180,7 @@ padding-bottom: 7rem;
 		<%if(count==0){ %>
 			<tr>
 			
-				<th colspan="7">쿠폰내역이 없습니다.</th>
+				<th colspan="6">쿠폰내역이 없습니다.</th>
 				
 				
 			</tr>
@@ -195,7 +195,7 @@ padding-bottom: 7rem;
 				<th><%=dto.getCoupon_rate()%> </th>
 				<th><%=dto.getCoupon_date()%></th>
 				<th><%=dto.getCoupon_explain()%></th>
-				<th><input type="submit" value="쿠폰사용하기"></th>
+				
 				
 				
 				

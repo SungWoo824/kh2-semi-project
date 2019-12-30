@@ -120,7 +120,7 @@ height: 0.1px;
 .container{
 	height: 670px;
 	padding-top:40px;
-	background-image: url("kh2_semiProject/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+	background-image: url("../image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
  min-height: 110vh;
  
 }

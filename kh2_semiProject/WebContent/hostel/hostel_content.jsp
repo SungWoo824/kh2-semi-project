@@ -17,7 +17,12 @@
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 	String check_in = request.getParameter("check_in");
 	String check_out = request.getParameter("check_out");
-	int people = Integer.parseInt(request.getParameter("people"));
+	int people;
+	try{
+		people = Integer.parseInt(request.getParameter("people"));
+	}catch(Exception e){
+		people = 0;
+	}
 
 	boolean isSearch = check_in != null && check_out != null && people != 0;
 	/* 	HostelDao dao = new HostelDao();
@@ -368,11 +373,6 @@ div{
 <!-- 			<div  class="tab__location js-location"> -->
 				
 <!-- 			</div> -->
-
-			<div class="tab__location js-location">
-				<div id="map" style="width: 400px; height: 400px;"></div>
-			</div>
-			
 
 			<div class="tab__reivew js-review">
 			
