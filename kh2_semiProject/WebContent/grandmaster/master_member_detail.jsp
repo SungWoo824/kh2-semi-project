@@ -174,7 +174,7 @@
 	</div>
 	</div>
 	<div>
-		<h2>Footer 위치</h2>
+		
 	</div>
 	<jsp:include page="../template/footer.jsp"></jsp:include>
 	</section>
