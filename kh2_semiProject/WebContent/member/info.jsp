@@ -81,7 +81,7 @@ h3 {
 	background-color: #fff;
 	padding: 15px;
 	margin-bottom:10px;
-	height: 500px;
+	height: 550px;
 	overflow: hidden
 padding-bottom: 8rem;
 }
@@ -139,7 +139,7 @@ label#fUid, label#fUpass ,label#fUnewpass,label#fUname,label#fUphone,#fUemail{
 	background-color: #5B6D5E;
 }
 
-#login_bt {
+#login_bt ,#member_bt{
 	width: 285px;
 	height: 35px;
 	background-color: #5B6D5E;
@@ -230,10 +230,10 @@ a {
 
 				
 				<div class="block"></div>
-				<span class="bt">
-					<input id="login_bt" type="submit" value="회원정보수정">
-				
 			
+					<input id="login_bt" type="submit" value="회원정보수정">
+				<div class="block"></div>
+				<input id="member_bt" type="button" value="회원탈퇴">
 			</div>
 			</form>
 		</div>

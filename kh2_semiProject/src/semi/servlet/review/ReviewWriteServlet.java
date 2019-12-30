@@ -14,6 +14,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import beans.FilesDao;
 import beans.FilesDto;
+import beans.MemberDao;
+import beans.MemberDto;
 import beans.ReviewDao;
 import beans.ReviewDto;
 
@@ -24,13 +26,16 @@ public class ReviewWriteServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/review",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/kh24/review/",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
 			ReviewDao dao = new ReviewDao();
 			ReviewDto dto = new ReviewDto();
+			MemberDao mdao = new MemberDao();
 			int review_no = dao.getSequence();
-			int reservation_no =1; /*Integer.parseInt(mRequest.getParameter("reservation_no"));*/
-			int customer_no = 1;//reservation_no로 가져옴
-			int hostel_no = 161;/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
+			int reservation_no =Integer.parseInt(mRequest.getParameter("reservation_no")); /*Integer.parseInt(mRequest.getParameter("reservation_no"));*/
+			String member_id = (String) req.getSession().getAttribute("id");
+			MemberDto mdto = mdao.get(member_id);
+			int customer_no = mdto.getNo();//reservation_no로 가져옴
+			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
 			

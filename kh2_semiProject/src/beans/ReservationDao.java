@@ -136,8 +136,9 @@ public class ReservationDao {
 			dto.setCustomer_request(rs.getString("customer_request"));
 			dto.setReservation_start_date(rs.getString("reservation_start_date"));
 			dto.setReservation_finish_date(rs.getString("reservation_finish_date"));
-
+dto.setHostel_no(rs.getInt("hostel_no"));
 			list.add(dto);
+			
 		}
 		con.close();
 		return list;

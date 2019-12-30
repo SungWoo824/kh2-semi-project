@@ -35,6 +35,8 @@
 	System.out.println(qa_member_id);
 	QaReplyDao QRDao = new QaReplyDao();
 	List<QaReplyDto> list = QRDao.select(qa_no);
+	
+	String context = request.getContextPath();
 %>
 <!DOCTYPE html>
 <html>
@@ -52,7 +54,7 @@
 		font-family:inherit;
 		outline:none;
 		border: 0;
-		background-color:transparent
+		background-color:transparent;
 	}
 	body{
 		height: 1000px;
@@ -77,10 +79,12 @@
 	
 	.container{
 		width:100%;
-		position:;
+	height:100%;
 		z-index:101;
 		height: 670px;
 	padding-top:40px;
+	background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+	min-height: 105vh;
 	}
 	.content-table #replycontent{
 		overflow:hidden;
@@ -129,7 +133,7 @@
 		font-family:inherit;
 		outline:none;
 		border: 0;
-		background-color:transparent
+		background-color:transparent;
 	}
 	
 	
@@ -168,13 +172,13 @@ border-top-right-radius: 5%;
 </head>
 <body>
 
+<section class="container">
 		<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	<div class="row-big"></div>
-<section class="container">
 <jsp:include page="/template/nav.jsp" ></jsp:include>
 
 <div class="w-60" align="center">
@@ -298,9 +302,9 @@ border-top-right-radius: 5%;
 </table>
 </div>
 
+</section>
 <div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
 </div>
-</section>
 </body>
 </html>

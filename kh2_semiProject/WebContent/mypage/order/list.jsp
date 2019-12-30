@@ -66,11 +66,8 @@ RoomDao roomdao = new RoomDao();
   
   
   
-  
-  
-  
-  
-  
+
+
   
   
   
@@ -126,10 +123,13 @@ height: 0.1px;
     }
 
 .container{
-	height: 800px;
+	width:100%;
+	height: 100%;
 	padding-top:40px;
-	background-color:;
+background-color: #FDFDFD;
   min-height: 90vh;
+  background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
+ 
 }
 
 .w-80{
@@ -138,8 +138,8 @@ padding-bottom: 7rem;
  min-height: 100vh;
  
  padding-top:40px;
-	background-image: url("kh2_semiProject/image/login5.jpg"); background-position:center; background-repeat: no-repeat; 
- 
+
+	
 }
 
 	footer{
@@ -176,10 +176,11 @@ padding-bottom: 7rem;
 			<tr>
 				<th>예약번호</th>
 				<th>이미지</th>
-				<th>호텔이름</th>
-				<th>방이름</th>
+				<th>예약정보</th>
+				
 				<th>숙박기간</th>
 				<th>인원수</th>
+				
 				<th>고객요구사항</th>
 				<th></th>
 			</tr>
@@ -188,7 +189,7 @@ padding-bottom: 7rem;
 			<%if(count==0){ %>
 			<tr>
 			
-				<th colspan="8">예약내역이 없습니다.</th>
+				<th colspan="7">예약내역이 없습니다.</th>
 				
 				
 			</tr>
@@ -199,15 +200,28 @@ padding-bottom: 7rem;
 			
 				<th><%=rdto2.getReservation_no() %></th>
 				<th><img src="http://placehold.it/200x150"></th>
-				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%></th>
-				<th><%=roomdao.roomname(rdto2.getRoom_no()) %></th>
+				
+				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%> / <%=roomdao.roomname(rdto2.getRoom_no()) %></th>
+		
 				<th><%=rdto2.getReservation_start_date().substring(0, 10) %> ~ <%=rdto2.getReservation_finish_date().substring(0, 10) %></th>
 				<th><%=rdto2.getCustomer_count() %></th>
 				
+				
+				
+			
+			<%if(rdto2.getCustomer_request()==null){ %>
+		<th>X</th>	
+			<%} else{ %>
 				<th><%=rdto2.getCustomer_request() %></th>
-				<th><input type="button" value="리뷰쓰러가기"></th>
+			
+			<%} %>
+				
+	
+				<th><a href="<%=context %>/review/review_write.jsp?reservation_no=<%=rdto2.getReservation_no() %>&hostel_no=<%=rdto2.getHostel_no()%>"><input type="button" value="리뷰쓰러가기"></a></th>
+			
 				
 			</tr>
+			
 			<%} %>
 			<%} %>
 			
