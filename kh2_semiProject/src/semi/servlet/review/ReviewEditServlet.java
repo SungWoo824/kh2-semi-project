@@ -23,7 +23,7 @@ public class ReviewEditServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		try {
-			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/review",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
+			MultipartRequest mRequest = new MultipartRequest(req,"D:/upload/kh24/review",10*1024*1024,"UTF-8",new DefaultFileRenamePolicy());
 			
 			int review_no = Integer.parseInt(mRequest.getParameter("review_no"));
 			String review_content=mRequest.getParameter("review_content");

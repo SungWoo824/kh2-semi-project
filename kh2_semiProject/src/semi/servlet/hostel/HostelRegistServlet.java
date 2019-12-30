@@ -26,7 +26,7 @@ public class HostelRegistServlet extends HttpServlet {
 		try {
 
 			MultipartRequest mRequest = new MultipartRequest(
-						req, "C:/Users/blue2/Desktop/이가영/프로젝트", 10*1024*1024, "UTF-8", 
+						req, "D:/upload/kh24/hostel", 10*1024*1024, "UTF-8", 
 						new DefaultFileRenamePolicy());			
 
 			req.setCharacterEncoding("UTF-8");
