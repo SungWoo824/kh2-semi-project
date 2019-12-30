@@ -16,7 +16,7 @@
 <%
 	int qa_edit_no;
 	try{
-		qa_edit_no = Integer.parseInt(request.getParameter("qa_edit_no"));
+		qa_edit_no = Integer.parseInt(request.getParameter("qa_no"));
 	}catch(Exception e){
 		qa_edit_no=0;
 	}
@@ -74,10 +74,41 @@ body {
 
 
 
+#wrap-left {
+	display: inline-block;
+	width: 800px;
+	padding: 15px;
+	margin-bottom: 10px;
+	height: 750px;
+	overflow: hidden;
+	margin-left: 80px;
+	margin-top: 10px;
+	padding-top: 0px;
+	background-color: #efefef;
+	align-content: center;
+
+}
 
 
-
-
+#wrap-right {
+	display: inline-block;
+	width: 440px;
+/* 	border: 1px solid #ddd;
+/* 	background-color: rgba(255,255,255,0.3); */
+	padding: 10px;
+	margin-bottom:10px;
+	height: 750px;
+	overflow: hidden;
+	margin-left: 20px;
+	margin-right: 50px;
+	margin-top: 10px;
+	padding-top: 0px;
+	border-left-width: 2px;
+	background-color: #efefef;
+	border-top-right-radius: 10%; 
+ 	border-bottom-left-radius: 10%;
+ 	border: 1px solid #ddd;
+}
 p{
 	margin: 150px opx;
 }
@@ -204,15 +235,12 @@ height: 0.1px;
 	margin-bottom:10px;
 	height: 500px;
 	overflow: hidden
-
+padding-bottom: 8rem;
 border-top-right-radius: 5%; 
  	border-bottom-left-radius: 5%;
  	border-bottom-right-radius: 5%;
  	border-top-left-radius: 5%;
  	min-height: 110vh;
- 	width: 100%;
- 	text-align: center;
- 	
 }
 	
 	
@@ -221,7 +249,6 @@ border-top-right-radius: 5%;
 	.w-50{
 	padding-bottom: 5rem;
 	text-align: center;
-	align-content: center;
 		
 	}
 	
@@ -276,40 +303,9 @@ border-top-right-radius: 5%;
 	color: #fff;
 }
 	
-	
-	.container{
-		width:100%;
-		position:;
-		z-index:101;
-		height: 670px;
-	padding-top:40px;
-	}
-	
-	.w-80 coupon-under-table{
-	 text-align:center;
-	width: 60%;
-	}
 </style>
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			
 					<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row" ></div>
@@ -318,11 +314,11 @@ border-top-right-radius: 5%;
 	<div class="row-big"></div>
 	
 <section class="container">
-	
+	<div>
 		<jsp:include page="/template/nav.jsp"></jsp:include>
-
-<form action="edit.do" method="post" >
-
+	</div>
+<form action="qa_edit.do" method="post" >
+<jsp:include page="/template/nav.jsp" ></jsp:include>
 
 
 
@@ -330,7 +326,7 @@ border-top-right-radius: 5%;
 	
 <div align="center"><h2 class="master-title w-100">Q&A 수정</h2></div>
 
-			<table class="w-80 coupon-under-table" id="wrap" >
+			<table class="w-80 coupon-under-table" id="wrap">
 	<thead>
 		<tr class="title-item" >
 			<th width="150px">&nbsp;제목</th>

@@ -543,4 +543,16 @@ public class HostelDao {
 			con.close();
 			return count;
 		}
+		
+		public void hostel_delete(int hostel_no) throws Exception{
+			
+			Connection con = this.getConnection();
+			String sql = "delete hostel where hostel_no = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setInt(1, hostel_no);
+			ps.execute();
+			con.close();
+			
+		}
 }

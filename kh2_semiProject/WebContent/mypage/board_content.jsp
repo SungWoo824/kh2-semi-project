@@ -297,7 +297,10 @@ border-top-right-radius: 5%;
 	</tfoot>	
 </table>
 </div>
+
+<div>
 <jsp:include page="/template/footer.jsp"></jsp:include>
+</div>
 </section>
 </body>
 </html>

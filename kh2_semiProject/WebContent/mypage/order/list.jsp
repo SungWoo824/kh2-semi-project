@@ -137,7 +137,8 @@ height: 0.1px;
 padding-bottom: 7rem;
  min-height: 100vh;
  
- 
+ padding-top:40px;
+	background-image: url("kh2_semiProject/image/login5.jpg"); background-position:center; background-repeat: no-repeat; 
  
 }
 

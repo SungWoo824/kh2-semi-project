@@ -57,7 +57,7 @@ body {
 h1 {
 	margin-top: 50px;
 	margin-bottom: 50px;
-	margin-left: 150px;
+	margin-left: 100px;
 	text-align: left;
 	font-size: 40px;
 	letter-spacing: -1px
@@ -96,6 +96,7 @@ h1 {
  	border-bottom-left-radius: 10%;
 }
 p{
+	font-size: 22px;
 	margin: 150px opx;
 }
 #hostelbox1 {
@@ -158,7 +159,7 @@ a {
 	display: block;
 	margin-top: 30px;
 	margin-bottom: 30px;
-	margin-right: 160px;
+	margin-right: 380px;
 	padding: 6px 8px 10px 10px;;
 	background-color: #565960;
 	height: 40px;
@@ -268,7 +269,7 @@ a {
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>무엇을 적을까요?????</h1>
+		<h1>2단계 : 숙소의 정보를 등록하세요!</h1>
 	
 		<form name="addr" action="hostel_regist.do" method="post" enctype="multipart/form-data">
 		<div id="wrap-left">
@@ -347,8 +348,5 @@ a {
 		
 	</div>
 
-<div>
-	<jsp:include page="/template/footer.jsp"></jsp:include>
-</div>
 </body>
 </html>

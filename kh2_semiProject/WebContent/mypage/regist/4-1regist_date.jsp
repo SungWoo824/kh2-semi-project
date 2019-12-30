@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*"%>
 <%
+		int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 		int room_price = Integer.parseInt(request.getParameter("room_price"));
 		int room_standard_people = Integer.parseInt(request.getParameter("room_standard_people"));
 		int room_max_people = Integer.parseInt(request.getParameter("room_max_people"));
@@ -61,10 +62,10 @@
 	href="<%=request.getContextPath()%>/css/footer.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<link rel="stylesheet" type="text/css" href="datePicker.css">
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/hostel/datePicker.css">
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script src="datePicker.js"></script>
+<script src="<%=request.getContextPath()%>/hostel/datePicker.js"></script>
 
 <style>
 * {
@@ -144,7 +145,6 @@ a {
 }
 
 .btn:hover {
-	border-bottom: 2px solid lightsalmon;
 	background-color: white;
 	color: lightsalmon;
 	cursor: pointer;
@@ -190,9 +190,10 @@ a {
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 	</div>
 	<div class="backBody">
-		<h1>4단계 : 호스팅 기간을 등록하세요!</h1>
-			<form action="room_info_regist.do" method="post">
+		<h1>호스팅 기간을 설정해주세요</h1>
+			<form action="only_room_info_regist.do" method="post">
 		<div id="wrap">
+						<input type="hidden" name="hostel_no" value="<%=hostel_no%>">
 				        <input type="hidden" name="room_price" value="<%=room_price %>">
 				        <input type="hidden" name="room_standard_people" value="<%=room_standard_people %>">
 				        <input type="hidden" name="room_max_people" value="<%=room_max_people %>">
@@ -217,7 +218,6 @@ a {
 				<input class="btn" type="submit" value="등록하기">
 			</form>
 	</div>
-	
 	
 </body>
 </html>
