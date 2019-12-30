@@ -366,7 +366,7 @@ public class MemberDao {
 ////////////////////////////////////////////////////////////////
 	public List<MemberDto> memberSearch(String type,String keyword,int start,int finish) throws Exception{
 		Connection con = getConnection();
-		String sql = "select * from(select rownum rn, M.* from(select * from member where "+type+" like '%'||?||'%' order by member_no)M ) where rs between ? and ?";
+		String sql = "select * from(select rownum rn, M.* from(select * from member where "+type+" like '%'||?||'%' order by member_no) M ) where rn between ? and ?";
 		
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1,keyword);
@@ -472,5 +472,19 @@ public class MemberDao {
 		con.close();
 		return member_no;
 		
+	}
+////////////////////////////////////////////////////////////////
+//						관리자 -	 회원 등급 변경					  //
+////////////////////////////////////////////////////////////////
+	public void memberGradeChange(String member_id,String member_grade) throws Exception{
+		Connection con = getConnection();
+		String sql = "update member set member_grade = ? where member_id=?";
+		
+		PreparedStatement ps = con.prepareStatement(sql);
+		ps.setString(1, member_grade);
+		ps.setString(2, member_id);
+		ps.execute();
+		
+		con.close();
 	}
 }
