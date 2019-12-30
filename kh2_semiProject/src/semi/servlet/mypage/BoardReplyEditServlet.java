@@ -20,9 +20,9 @@ public class BoardReplyEditServlet extends HttpServlet{
 			int qa_reply_no = Integer.parseInt(req.getParameter("qa_reply_no"));
 			QaReplyDao dao = new QaReplyDao();
 			QaReplyDto dto = dao.get(qa_reply_no);
-			System.out.println("안녕1");
+//			System.out.println("안녕1");
 			dao.update(qa_reply_no, qa_reply_content);
-			System.out.println("안녕2");
+//			System.out.println("안녕2");
 			resp.sendRedirect(req.getContextPath()+"/mypage/board_content.jsp?pno=&qa_no="+dto.getQa_no());
 		} catch (Exception e) {
 			e.printStackTrace();
