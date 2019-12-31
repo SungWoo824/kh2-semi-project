@@ -220,8 +220,8 @@ dto.setHostel_no(rs.getInt("hostel_no"));
 	public List<ReservationDto> masterReservationSearch(String type, String keyword, int start, int finish)
 			throws Exception {
 		Connection con = getConnection();
-		String sql = "select * from(select rownum rn, RS.* form(select * from reservation_list where " + type
-				+ " like '%'||?||'%' order by reservation_no desc)RL) where rn between ? and ?";
+		String sql = "select * from(select rownum rn, RL.* from(select * from reservation_list where " + type
+				+ " like '%'||?||'%' order by reservation_no desc)RL ) where rn between ? and ?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 		ps.setString(1, keyword);
@@ -240,7 +240,7 @@ dto.setHostel_no(rs.getInt("hostel_no"));
 			rdto.setCustomer_count(rs.getInt("customer_count"));
 			rdto.setCustomer_request(rs.getString("customer_request"));
 			rdto.setReservation_start_date(rs.getString("reservation_start_date"));
-			rdto.setReservation_until(rs.getInt("reservation_until"));
+			rdto.setReservation_finish_date(rs.getString("reservation_finish_date"));
 
 			list.add(rdto);
 		}
@@ -255,7 +255,7 @@ dto.setHostel_no(rs.getInt("hostel_no"));
 		boolean isSearch = type != null && keyword != null;
 
 		if (isSearch) {
-			sql += "where " + type + " like '%'||?||'%'";
+			sql += " where " + type + " like '%'||?||'%'";
 		}
 		PreparedStatement ps = con.prepareStatement(sql);
 		if (isSearch) {
