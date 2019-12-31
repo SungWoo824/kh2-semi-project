@@ -13,7 +13,6 @@ public class SessionListener implements HttpSessionListener {
 		if (arg0.getSession().isNew()) {
 			execute(arg0);
 		}
-		System.out.println("세션 생성");
 	}
 
 	private void execute(HttpSessionEvent arg0) {
@@ -39,6 +38,5 @@ public class SessionListener implements HttpSessionListener {
 	}
 
 	public void sessionDestroyed(HttpSessionEvent arg0) {
-		System.out.println("세션 제거");
 	}
 }
