@@ -321,7 +321,7 @@ border-top-right-radius: 5%;
 	
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 
-<form action="edit.do" method="post" >
+<form action="qa_edit.do" method="post" >
 
 
 

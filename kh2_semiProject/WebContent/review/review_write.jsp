@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/* 	int reservation_no = Integer.parseInt(request.getParameter("reservation_no"));
-	int hostel_no = Integer.parseInt(request.getParameter("hostel_no")); */
+ 	int reservation_no = Integer.parseInt(request.getParameter("reservation_no"));
+	int hostel_no = Integer.parseInt(request.getParameter("hostel_no")); 
 %>
 <!DOCTYPE html>
 <html>
@@ -292,8 +292,8 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 		</h2>	
 		<div id="wrap">
 	<form name="review" action="review_write.do"  method="post" enctype="multipart/form-data">
-<!-- 		예약번호:<input type="text" name="reservation_no"><br>
-		호텔번호:<input type="text" name="hostel_no"><br> -->
+	<input type="hidden" name="reservation_no">
+		<input type="hidden" name="hostel_no">
 		<div id="reviewbox">
 		<div>
 		<label for="ureview" id="fUreview">리뷰</label><br>

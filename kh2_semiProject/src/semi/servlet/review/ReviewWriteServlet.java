@@ -14,6 +14,8 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import beans.FilesDao;
 import beans.FilesDto;
+import beans.MemberDao;
+import beans.MemberDto;
 import beans.ReviewDao;
 import beans.ReviewDto;
 
@@ -28,9 +30,12 @@ public class ReviewWriteServlet extends HttpServlet{
 			ReviewDao dao = new ReviewDao();
 			ReviewDto dto = new ReviewDto();
 			int review_no = dao.getSequence();
-			int reservation_no =1; /*Integer.parseInt(mRequest.getParameter("reservation_no"));*/
-			int customer_no = 1;//reservation_no로 가져옴
-			int hostel_no = 161;/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
+			int reservation_no =Integer.parseInt(mRequest.getParameter("reservation_no"));
+			String member_id = (String) req.getSession().getAttribute("id");
+			MemberDao mdao = new MemberDao();
+			MemberDto mdto = mdao.get(member_id);
+			int customer_no = mdto.getNo();
+			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
 			

@@ -369,11 +369,6 @@ div{
 				
 <!-- 			</div> -->
 
-			<div class="tab__location js-location">
-				<div id="map" style="width: 400px; height: 400px;"></div>
-			</div>
-			
-
 			<div class="tab__reivew js-review">
 			
 				<%for(ReviewDto rdto : list){ %>
