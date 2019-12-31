@@ -30,7 +30,7 @@
 	int start = finish - (pagesize - 1);
 	
 	
-	
+	String context = request.getContextPath();
 	
 	String id = (String)session.getAttribute("id");
      
@@ -40,6 +40,8 @@
 	int member_no=mdto.getNo();
 	
 	InterestDao idao = new InterestDao();
+InterestDto idto= idao.interestinfo(id);
+  int room_no=    idto.getRoom_no();
 	
 List<InterestDto> list =  idao.interestinfolist(member_no);
  
@@ -48,7 +50,7 @@ List<InterestDto> list =  idao.interestinfolist(member_no);
 
 
  RoomDao rdao = new RoomDao();
- RoomDto rdto = rdao.get(id);
+ RoomDto rdto = rdao.get(room_no);
 
 
 
@@ -159,7 +161,7 @@ padding-bottom: 7rem;
 	<div class="row-big"></div>
 
 	<div class="master-title w-100"><h2>나의 위시리스트</h2></div>
-   <form action="/kh2_semiProject/mypage/wish_list.do" method="post">
+
     <table class="w-100 couponmember-table">
 		
 	
@@ -170,7 +172,7 @@ padding-bottom: 7rem;
 				<th>상품정보</th>
 				<th>가격</th>
 				<th></th>
-				<th></th>
+<!-- 				<th></th> -->
 				
 			</tr>
 		</thead>
@@ -183,28 +185,27 @@ padding-bottom: 7rem;
 				
 			</tr>
 			<%} else{%>
-			<%for(InterestDto idto:list){ %>
+			<%for(InterestDto idto2:list){ %>
 			<tr>
 			
 				<th><%=rdto.getRoom_no()%></th>
 				<th><img src="http://placehold.it/200x150"></th>
-				<th><%=rdao.roomname( idto.getRoom_no()) %>//<%= hdao.hostelname( rdao.hostelNumber( idto.getRoom_no()))   %></th>
+				<th><%=rdao.roomname( idto.getRoom_no()) %>//<%= hdao.hostelname( rdao.hostelNumber( idto2.getRoom_no()))   %></th>
 				<th><%=rdao.roomprice(idto.getRoom_no())%></th>
-				<th><input type="button" value="예약하기"></th>
-				<th>
-				<span class="bt">
-					<input id="login_bt" type="submit" value="삭제">
-				</span>
+				<th><a href="<%=context %>/hostel/hostel_content.jsp?hostel_no=<%=rdto.getHostel_no() %>"><input type="button" value="예약하기"></a></th>
+<!-- 				<th> -->
+<!-- 				<span class="bt"> -->
+<%-- 					<a href="<%=context %>/mypage/wish_list.do?room_no=<%=rdto.getRoom_no()%>"><input id="login_bt" type="button" value="삭제"></a> --%>
+<!-- 				</span> -->
 				
-				</th>
-				
+<!-- 				</th> -->
 				
 			</tr>
 			<%} %>
 				<%} %>
 		</tbody>
 	</table>
-	</form>
+	
 
 
 		

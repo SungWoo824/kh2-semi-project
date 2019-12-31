@@ -1,3 +1,6 @@
+<%@page import="java.util.Calendar"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -9,6 +12,15 @@
 		id = (String)session.getAttribute("id");
 		grade = (String)session.getAttribute("grade");
 	}
+	Calendar cal = Calendar.getInstance();
+	cal.setTime(new Date());
+	SimpleDateFormat format = new SimpleDateFormat ("yyyy/MM/dd");
+	
+	cal.add(Calendar.DATE, 1);
+	String currentDate = format.format(cal.getTime());
+	cal.add(Calendar.DATE, 1);
+	String nextDate = format.format(cal.getTime());
+	
 %>    
 
 <!DOCTYPE html>
@@ -181,7 +193,7 @@
         </div>
         <div class="item1 popular-list">
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp?popular=서울">
+            <a href="hostel/hostel_list.jsp?location=서울&check_in=<%=currentDate%>&check_out=<%=nextDate%>&adult=1&child=0">
               <div class="popular-image image-left-top">
                 <img src="image/seoul.jpg" alt="" />
                 <span class="image-title">서울</span>
@@ -190,7 +202,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp?popular=전주">
+            <a href="hostel/hostel_list.jsp?location=전주&check_in=<%=currentDate%>&check_out=<%=nextDate%>&adult=1&child=0">
               <div class="popular-image image-right-top">
                 <img src="image/전주.jpg" alt="" />
                 <span class="image-title image-title-sub">전주</span>
@@ -199,7 +211,7 @@
             </a>
           </div>
           <div class="popular-image__background">
-            <a href="hostel/hostel_list.jsp?popular=부산">
+            <a href="hostel/hostel_list.jsp?location=부산&check_in=<%=currentDate%>&check_out=<%=nextDate%>&adult=1&child=0">
               <div class="popular-image image-right-bottom">
                 <img src="image/부산.jpg" alt="" />
                 <span class="image-title image-title-sub">부산</span>
