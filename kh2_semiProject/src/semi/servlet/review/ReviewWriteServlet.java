@@ -31,16 +31,15 @@ public class ReviewWriteServlet extends HttpServlet{
 
 			ReviewDao dao = new ReviewDao();
 			ReviewDto dto = new ReviewDto();
-			MemberDao mdao = new MemberDao();
 			int review_no = dao.getSequence();
-			int reservation_no =Integer.parseInt(mRequest.getParameter("reservation_no")); /*Integer.parseInt(mRequest.getParameter("reservation_no"));*/
+			int reservation_no =Integer.parseInt(mRequest.getParameter("reservation_no"));
 			String member_id = (String) req.getSession().getAttribute("id");
+			MemberDao mdao = new MemberDao();
 			MemberDto mdto = mdao.get(member_id);
-			int customer_no = mdto.getNo();//reservation_no로 가져옴
-			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));/*Integer.parseInt(mRequest.getParameter("hostel_no"));*/
+			int customer_no = mdto.getNo();
+			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
-			
 			dto.setReview_no(review_no);
 			dto.setReservation_no(reservation_no);
 			dto.setCustomer_no(customer_no);
@@ -48,7 +47,6 @@ public class ReviewWriteServlet extends HttpServlet{
 			dto.setReview_content(review_content);
 			dto.setStar_point(star_point);;
 			dao.write(dto);
-			
 			File file = mRequest.getFile("review_file");
 			if(file != null) {
 				FilesDto fdto = new FilesDto();

@@ -187,7 +187,7 @@
 			<option value="reservation_start_date">시작일</option>
 			<option value="hostel_no">숙소 번호</option>
 		</select>
-		<input type="search" name="keyword" placeholder="검색어" required class="search-input">
+		<input type="search" name="keyword" placeholder="ex) xx/xx/xx" required class="search-input">
 		<input type="submit" value="검색" class="button-design">
 	</form>
 	</div>
