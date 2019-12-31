@@ -28,14 +28,16 @@ public class MemberDeletewishlistServlet extends HttpServlet{
 			
 			
 			
-			
 			InterestDao idao = new InterestDao();
 			
 
 			InterestDto idto = idao.interestinfo(id);
 int room_no=idto.getRoom_no();
 
-idao.delete(room_no);
+int room_no2=Integer.parseInt(req.getParameter("room_no"));
+
+idao.delete(room_no2);
+
 resp.sendRedirect("../mypage/wish_list.jsp");
 			
 		} catch (Exception e) {
