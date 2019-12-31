@@ -183,7 +183,11 @@ function formChange(obj){
 	<tr>
 		<td><%=dto.getRn()%></td><!-- member get으로 아이디를 가져와야함 -->
 		<td><%=dto.getRoom_no()%></td><!-- room_info get으로 방이름을 가져와야함 -->
+		<%if(dto.getQa_head()!=null){ %>
 		<td><%=dto.getQa_head() %></td>
+		<%}else{ %>
+			<td>없음</td>
+		<%} %>
 		<td align="left"><a href="content.jsp?pno=&qa_no=<%= dto.getQa_no() %>" ><%=dto.getQa_title() %></a></td>
 		<td><%=dto.getMember_name() %></td>
 		<td><%=dto.getQa_wdate().substring(0,10) %></td>

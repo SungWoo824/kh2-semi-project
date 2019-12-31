@@ -80,6 +80,14 @@
 					<th>방이름</th>
 					<td><%=Rdto.getRoom_name() %></td>
 				</tr>							
+													<tr>
+					<th>펫</th>
+					<td><%=Rdto.getRoom_pet() %></td>
+				</tr>
+				<tr>
+					<th>룸베이직</th>
+					<td><%=Rdto.getRoom_basic() %></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -109,21 +117,18 @@
 					<td><%=Rdto.getRoom_content() %></td>
 				</tr>	
 				<tr>
-					<th>펫</th>
-					<td><%=Rdto.getRoom_pet() %></td>
-				</tr>
-				<tr>
-					<th>룸베이직</th>
-					<td><%=Rdto.getRoom_basic() %></td>
-				</tr>
-				<tr>
-					<th>헤어드라이기</th>
-					<td><%=Rdto.getRoom_dry() %></td>
-				</tr>
-				<tr>
 					<th>난방</th>
 					<td><%=Rdto.getRoom_hot() %></td>
-				</tr>				
+				</tr>		
+			</tbody>
+		</table>
+	</div>
+		<div class="float-item2">
+	<div class="row-small"></div>
+		<table class="room-table">
+			<tbody>
+
+
 			</tbody>
 		</table>
 	</div>

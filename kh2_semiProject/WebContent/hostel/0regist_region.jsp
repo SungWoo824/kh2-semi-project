@@ -246,7 +246,7 @@ h1 {
 				<div id="selectbox">
 				
 					<select id="region" onchange="categoryChange(this)"
-						name="region_name">
+						name="region_name" required="required">
 
 						<option>--도/광역시/특별시--</option>
 
@@ -286,7 +286,7 @@ h1 {
 
 					</select> 
 					
-					<select id="sigu" name="city_name">
+					<select id="sigu" name="city_name" required="required">
 
 						<option>--시/군/구--</option>
 

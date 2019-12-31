@@ -154,17 +154,17 @@ a {
 	<div id="wrap">
 		<form action="regist.do" method = "post">
 		<div id="registbox">
-			<label for="uid" id="fUid">아이디</label> <input id="uid" type="text" title="아이디" name="member_id" placeholder="ID" >
+			<label for="uid" id="fUid">아이디</label> <input id="uid" type="text" title="아이디" name="member_id" placeholder="ID" required="required">
 				<div class="block"></div>
-			<label for="upass" id="fUpass">암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password">
+			<label for="upass" id="fUpass">암호</label> <input id="upass" title="암호" type="password" name="member_pw" placeholder="Password" required="required">
 				<div class="block"></div>
-			<label for="uname" id="fUname">이름</label> <input id="upname" title="이름" type="text" name="member_name" placeholder="Name">
+			<label for="uname" id="fUname">이름</label> <input id="upname" title="이름" type="text" name="member_name" placeholder="Name" required="required">
 				<div class="block"></div>
-			<label for="ubirth" id="fUbirth">생일</label> <input id="ubirth" title="생일" type="text" name="member_birthday" placeholder="Birth">
+			<label for="ubirth" id="fUbirth">생일</label> <input id="ubirth" title="생일" type="text" name="member_birthday" placeholder="Birth" required="required">
 				<div class="block"></div>
-			<label for="uphone" id="fUphone">휴대폰번호</label> <input id="uphone" title="휴대폰번호" type="text" name="member_phone" placeholder="Phone">
+			<label for="uphone" id="fUphone">휴대폰번호</label> <input id="uphone" title="휴대폰번호" type="text" name="member_phone" placeholder="Phone" required="required">
 				<div class="block"></div>
-			<label for="uemail" id="fUemail">이메일</label> <input id="uemail" title="이메일" type="text" name="member_email" placeholder="e-mail">
+			<label for="uemail" id="fUemail">이메일</label> <input id="uemail" title="이메일" type="text" name="member_email" placeholder="e-mail" required="required">
 				<div class="block"></div>
 			<label></label>사용자<input id="ugrade" title="등급" type="radio" name="member_grade" value="사용자">
 				<div class="block"></div>

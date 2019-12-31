@@ -30,18 +30,18 @@ public class HostelRegistServlet extends HttpServlet {
 						new DefaultFileRenamePolicy());			
 
 			req.setCharacterEncoding("UTF-8");
-
+			System.out.println("aㅁㄴㅇ");
 			String region_name = mRequest.getParameter("region_name");
 			String city_name = mRequest.getParameter("city_name");
 
 			HostelDto dto = new HostelDto();
 			HostelDao dao = new HostelDao();
-
+			System.out.println("aㅁㄴㅇ");
 			int region_no = dao.getRegionNo(region_name, city_name);
 			
 			String member_id = (String) req.getSession().getAttribute("id");
 			int owner_no = dao.getOwnerNo(member_id);
-
+			System.out.println("aㅁㄴㅇ");
 			dto.setOwner_no(owner_no);
 			dto.setRegion_no(region_no);
 			dto.setHostel_name(mRequest.getParameter("hostel_name"));
@@ -51,11 +51,11 @@ public class HostelRegistServlet extends HttpServlet {
 			dto.setHostel_longitude(mRequest.getParameter("hostel_longitude"));
 			dto.setHostel_content(mRequest.getParameter("hostel_content"));
 			dto.setHostel_kind_name(mRequest.getParameter("hostel_kind_name"));
-
+			System.out.println("aㅁㄴㅇ");
 			int hostel_no = dao.getHostelNo();
 			dto.setHostel_no(hostel_no);
 			dao.regist(dto);
-			
+			System.out.println("aㅁㄴㅇ");
 			File file = mRequest.getFile("file");
 			if(file != null) {
 				FilesDto fdto = new FilesDto();

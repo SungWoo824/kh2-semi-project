@@ -199,7 +199,7 @@ padding-bottom: 7rem;
 			<tr>
 			
 				<th><%=rdto2.getReservation_no() %></th>
-				<th><img src="http://placehold.it/200x150"></th>
+				<th><img src="<%=request.getContextPath()%>/hostel/hostel_download.do?hostel_no=<%=rdto2.getHostel_no()%>" style="width: 200px; height: 150px;"></th>
 				
 				<th><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%> / <%=roomdao.roomname(rdto2.getRoom_no()) %></th>
 		
