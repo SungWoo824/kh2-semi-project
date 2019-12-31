@@ -134,13 +134,13 @@ if(rs.next()) {
 	
 	
 	///////id로 dto 뽑기
-	public RoomDto get(String member_id) throws Exception {
+	public RoomDto get(int room_no) throws Exception {
 
 		Connection con = this.getConnection();
-		String sql = "select * from room_info where room_no=(select room_no from interest_room where member_no=(select member_no from member where member_id=?))";
+		String sql = "select * from room_info where room_no=?";
 
 		PreparedStatement ps = con.prepareStatement(sql);
-		ps.setString(1, member_id);
+		ps.setInt(1, room_no);
 		ResultSet rs = ps.executeQuery();
 
 
