@@ -9,7 +9,7 @@
 	
 	
 	String grade = (String)session.getAttribute("grade");
-     System.out.println(grade);
+  
      String id=(String)session.getAttribute("id");
      MemberDao mdao =new MemberDao();
    

@@ -43,7 +43,7 @@ resp.sendRedirect("../mypage/wish_list.jsp");
 		} catch (Exception e) {
 			
 			
-			e.printStackTrace();
+//			e.printStackTrace();
 		resp.sendError(500);
 	
 			
