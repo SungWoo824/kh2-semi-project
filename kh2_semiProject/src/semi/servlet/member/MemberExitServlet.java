@@ -30,8 +30,12 @@ public class MemberExitServlet extends HttpServlet{
 			session.removeAttribute("grade");
 			
 			dao.exit(id);
-			resp.sendRedirect(req.getContextPath()+ "index.jsp");
+
+			resp.sendRedirect(req.getContextPath()+ "/index.jsp");
+
+			
 			}
+
 			
 		} catch (Exception e) {
 			e.printStackTrace();

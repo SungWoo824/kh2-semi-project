@@ -31,7 +31,8 @@ public class QaEditServlet extends HttpServlet{
 			dto.setQa_title(qa_title);
 			dto.setQa_content(qa_content);
 			dao.Edit(dto);
-			resp.sendRedirect(req.getContextPath()+"/qa/edit.jsp?qa_edit_no="+dto.getQa_no());
+			resp.sendRedirect(req.getContextPath()+"/mypage/board_content.jsp?qa_no="+dto.getQa_no());
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

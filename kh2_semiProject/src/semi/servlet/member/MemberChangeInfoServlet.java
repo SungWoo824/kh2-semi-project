@@ -43,7 +43,7 @@ public class MemberChangeInfoServlet extends HttpServlet{
 int result=			dao.ci(dto,newpw);
 			
 			if(result>=1) {
-				resp.sendRedirect("../mypage/index.jsp");
+				resp.sendRedirect("info.jsp?success");
 				
 			}
 			else {

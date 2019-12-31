@@ -87,7 +87,7 @@
 		<h1 class="board">Q&A BOARD</h1>
 		<div class="write1">
 		<%if(request.getParameter("room_no")!=null){ %>
-			<input class="menu-item" type="text" name="room_no" value="<%=room_no%>" readonly><!--룸정보를 옵션으로 만듦  -->
+			<input class="menu-item" type="hidden" name="room_no" value="<%=room_no%>" readonly><!--룸정보를 옵션으로 만듦  -->
 		<%}else{ %>
 			<input class="menu-item" type="text" name="room_no" placeholder="방 번호"><!--룸정보를 옵션으로 만듦  -->
 		<% }%>

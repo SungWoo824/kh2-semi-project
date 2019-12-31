@@ -20,7 +20,7 @@ public class QaDeleteServlet extends HttpServlet{
 			int qa_no = Integer.parseInt(req.getParameter("qa_no"));
 			QaDao dao = new QaDao();
 			dao.delete(qa_no);
-			resp.sendRedirect(req.getContextPath()+"/qa/list.jsp");
+			resp.sendRedirect(req.getContextPath()+"/mypage/board_list.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
 			resp.sendError(500);
