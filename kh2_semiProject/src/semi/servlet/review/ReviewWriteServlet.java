@@ -40,7 +40,6 @@ public class ReviewWriteServlet extends HttpServlet{
 			int hostel_no = Integer.parseInt(mRequest.getParameter("hostel_no"));
 			String review_content = mRequest.getParameter("review_content");
 			int star_point = Integer.parseInt(mRequest.getParameter("star_point"));
-			
 			dto.setReview_no(review_no);
 			dto.setReservation_no(reservation_no);
 			dto.setCustomer_no(customer_no);
@@ -48,7 +47,6 @@ public class ReviewWriteServlet extends HttpServlet{
 			dto.setReview_content(review_content);
 			dto.setStar_point(star_point);;
 			dao.write(dto);
-			
 			File file = mRequest.getFile("review_file");
 			if(file != null) {
 				FilesDto fdto = new FilesDto();
