@@ -201,7 +201,23 @@ padding-bottom: 7rem;
 				<th><%=rdto2.getReservation_no() %></th>
 				<th><img src="<%=request.getContextPath()%>/hostel/hostel_download.do?hostel_no=<%=rdto2.getHostel_no()%>" style="width: 200px; height: 150px;"></th>
 				
-				<th><a href="<%=context %>/hostel/hostel_content.jsp?hostel_no=<%=rdto2.getHostel_no() %>"><%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%> / <%=roomdao.roomname(rdto2.getRoom_no()) %></a></th>
+				<th><a href="<%=context %>/hostel/hostel_content.jsp?hostel_no=<%=rdto2.getHostel_no() %>">
+				<%if( hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))==null){ %>
+				
+				<%} else{%>
+				<%= hosteldao.hostelname(roomdao.hostelNumber(rdto2.getRoom_no()))%>
+				<%} %>
+				 / 
+				 <%if(roomdao.roomname(rdto2.getRoom_no())==null){ %>
+				
+				<%} else{%>
+			<%=roomdao.roomname(rdto2.getRoom_no()) %>
+				<%} %>
+				 
+			
+				
+				
+				</a></th>
 		
 				<th><%=rdto2.getReservation_start_date().substring(0, 10) %> ~ <%=rdto2.getReservation_finish_date().substring(0, 10) %></th>
 				<th><%=rdto2.getCustomer_count() %></th>
