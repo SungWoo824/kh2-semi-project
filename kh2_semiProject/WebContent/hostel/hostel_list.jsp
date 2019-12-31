@@ -97,8 +97,8 @@
 			<div class="search-container">
 				<div class="search__inputbox search__location">
 					<h6>목적지</h6>
-					<%if(isPopular){ %>
-					<input class="search__input" type="text" name="location" value="<%=popular %>" required="required" autocomplete="off"/>
+					<%if(isSearch){ %>
+					<input class="search__input" type="text" name="location" value="<%=city_name %>" required="required" autocomplete="off"/>
 					<%} else{%>
 					<input class="search__input" type="text" name="location" required="required" autocomplete="off"/>
 					<%} %>
@@ -106,11 +106,13 @@
 				</div>
 				<div class="search__inputbox search__check-in">
 					<h6>Check-In</h6>
-					<input class="search__input sdate" type="text" name="check_in" required="required" autocomplete="off"/>
+					<input class="search__input sdate" value="<%=start_day %>"
+					 type="text" name="check_in" required="required" autocomplete="off"/>
 				</div>
 				<div class="search__inputbox search__check-out">
 					<h6>Check-Out</h6>
-					<input class="search__input fdate" type="text" name="check_out" required="required" autocomplete="off"/>
+					<input class="search__input fdate" value="<%=finish_day %>"
+					 type="text" name="check_out" required="required" autocomplete="off"/>
 				</div>
 				<div class="search__inputbox search__adult">
 					<h6>성인</h6>
