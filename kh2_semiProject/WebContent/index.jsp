@@ -56,7 +56,9 @@
         </div>
         <div class="top-bar__menu">
           <ul>
+
             <li><a class="top-bar__menu-item" href="hostel/0regist_region.jsp">HOSTING</a></li>
+
             <%if(grade!=null && grade.equals("관리자")){ %>
             	<li><a class="top-bar__menu-item" href="grandmaster/master_index.jsp">ADMIN PAGE</a></li>
             <%} %>

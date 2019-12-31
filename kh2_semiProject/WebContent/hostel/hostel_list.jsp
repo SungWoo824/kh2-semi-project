@@ -176,7 +176,7 @@
 	<section class="hostel">
 		<div class="hostel-container">
 			<div class="hostel__image">
-				<img src="<%=request.getContextPath() %>/image/item3__list-1.jpg" />
+				<img src="<%=request.getContextPath()%>/hostel/hostel_download.do?hostel_no=<%=dto.getHostel_no()%>">
 			</div>
 			<div class="hostel__content">
 				<ul>
