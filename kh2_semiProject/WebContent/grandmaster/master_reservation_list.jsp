@@ -1,3 +1,5 @@
+
+<%@page import="beans.RoomDao"%>
 <%@page import="beans.ReservationDto"%>
 <%@page import="java.util.List"%>
 <%@page import="beans.ReservationDao"%>
@@ -21,7 +23,9 @@
 	String keyword = request.getParameter("keyword");
 	boolean isSearch = type != null && keyword != null;
 	ReservationDao rdao = new ReservationDao();
+	RoomDao roomDao = new RoomDao();
 	List<ReservationDto> list;
+	
 
 	if(isSearch){
 		list = rdao.masterReservationSearch(type, keyword, start, finish); 
@@ -139,9 +143,11 @@
 		<tbody>
 			<%for(ReservationDto rdto : list){ %>
 			<tr>
-			
+			<%
+				int hostel_no = roomDao.hostelNumber(rdto.getRoom_no());
+			%>
 				<th><%=rdto.getReservation_no() %></th>
-				<th><%=rdto.getHostel_no() %></th>
+				<th><%=hostel_no %></th>
 				<th><%=rdto.getRoom_no() %></th>
 				<th><%=rdto.getCustomer_no() %></th>
 				<th><%=rdto.getReservation_start_date().substring(0,10) %></th>

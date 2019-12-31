@@ -242,9 +242,8 @@ a {
 </div>
 		<div id="wrap-right">
 			<h1>Requirements</h1>
-				<h2>요구사항이 있으시면 작성부탁드립니다.</h2>	
-			<input type="text" name="customer_request">
-				<textarea rows="13.5" cols="45" style="resize: none;"></textarea>
+				<h2>요구사항이 있으시면 작성부탁드립니다.</h2>
+				<textarea name="customer_request" rows="13.5" cols="45" style="resize: none;"></textarea>
 		</div>
 			<span class="bt" style="text-align: center;">
 
