@@ -28,7 +28,7 @@
 	
 	
 	MemberDto mdto=    mdao.memberInfomation(dto.getMember_no());
-
+	String context = request.getContextPath();
 %>
 
 
@@ -203,9 +203,8 @@ height: 0.1px;
 	padding: 15px;
 	margin-bottom:10px;
 	height: 500px;
-	overflow: hidden
-
-border-top-right-radius: 5%; 
+	overflow: hidden;
+     border-top-right-radius : 5%; 
  	border-bottom-left-radius: 5%;
  	border-bottom-right-radius: 5%;
  	border-top-left-radius: 5%;
@@ -281,8 +280,10 @@ border-top-right-radius: 5%;
 		width:100%;
 		position:;
 		z-index:101;
-		height: 670px;
+		height: 100%;
 	padding-top:40px;
+	
+	 background-image: url("<%=context %>/image/mypage6.jpg"); background-position:center; background-repeat: no-repeat; 
 	}
 	
 	.w-80 coupon-under-table{
@@ -310,6 +311,7 @@ border-top-right-radius: 5%;
 
 
 			
+<section class="container">
 					<div class="row" ></div>
 	<div class="row" ></div>
 	<div class="row" ></div>
@@ -317,7 +319,6 @@ border-top-right-radius: 5%;
 	<div class="row-big"></div>
 	<div class="row-big"></div>
 	
-<section class="container">
 	
 		<jsp:include page="/template/nav.jsp"></jsp:include>
 

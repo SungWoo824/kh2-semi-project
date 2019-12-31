@@ -26,7 +26,7 @@ public class LoginFilter implements Filter{
 			chain.doFilter(request, response);
 		}else {
 			HttpServletResponse resp = (HttpServletResponse) response;
-			resp.sendRedirect(req.getContextPath()+"/kh2_semiProject/member/login.jsp");
+			resp.sendRedirect(req.getContextPath()+"/member/login.jsp");
 		}
 
 	}

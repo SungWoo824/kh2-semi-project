@@ -17,7 +17,12 @@
 	int hostel_no = Integer.parseInt(request.getParameter("hostel_no"));
 	String check_in = request.getParameter("check_in");
 	String check_out = request.getParameter("check_out");
-	int people = Integer.parseInt(request.getParameter("people"));
+	int people;
+	try{
+		people = Integer.parseInt(request.getParameter("people"));
+	}catch(Exception e){
+		people = 0;
+	}
 
 	boolean isSearch = check_in != null && check_out != null && people != 0;
 	/* 	HostelDao dao = new HostelDao();
@@ -262,24 +267,24 @@ div{
 		<div class="top">
 			<div class="top__gallery">
 				<div class="top__image">
-					<img src="<%=request.getContextPath()%>/hostel/hostel_download.do?hostel_no=<%=hdto.getHostel_no() %>">
+					<img src="<%=request.getContextPath()%>/image/hostel-1.jpg">
 				</div>
 				<div class="swiper-container top__slider ">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+							<img src="<%=request.getContextPath()%>/image/hostel-1.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+							<img src="<%=request.getContextPath()%>/image/hostel-2.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+							<img src="<%=request.getContextPath()%>/image/hostel-3.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+							<img src="<%=request.getContextPath()%>/image/hostel-4.jpg" />
 						</div>
 						<div class="swiper-slide">
-							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
+							<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
 						</div>
 						<div class="swiper-slide">
 							<img src="<%=request.getContextPath()%>/image/item3__list-2.jpg" />
@@ -321,7 +326,7 @@ div{
 					<form action="room_content.jsp" method="post">
 						<div class="hostel-container">
 							<div class="hostel__image">
-								<img src="<%=request.getContextPath()%>/image/item3__list-1.jpg" />
+								<img src="<%=request.getContextPath()%>/image/hostel-4.jpg" />
 							</div>
 							<div class="hostel__content">
 								<ul>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import beans.RoomDao;
 import beans.RoomDto;
 
-@WebServlet(urlPatterns = "/regist/only_room_info_regist.do")
+@WebServlet(urlPatterns = "/mypage/regist/only_room_info_regist.do")
 public class OnlyRoomInfoRegistServlet extends HttpServlet{
 	
 	@Override
@@ -51,7 +51,7 @@ public class OnlyRoomInfoRegistServlet extends HttpServlet{
 			
 			
 //			[3] 출력(이동)			
-			resp.sendRedirect(req.getContextPath()+"/regist/list.jsp");
+			resp.sendRedirect(req.getContextPath()+"/mypage/regist/list.jsp");
 			
 		}
 		
