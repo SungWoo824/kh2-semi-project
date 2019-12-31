@@ -292,7 +292,9 @@ img:[src="<%=request.getContextPath() %>/image/리뷰사진.png"]{
 		</h2>	
 		<div id="wrap">
 	<form name="review" action="review_write.do"  method="post" enctype="multipart/form-data">
-	<input type="hidden" name="reservation_no" value="<%=reservation_no%>">
+
+		<input type="hidden" name="reservation_no" value="<%=reservation_no%>">
+
 		<input type="hidden" name="hostel_no" value="<%=hostel_no%>">
 		<div id="reviewbox">
 		<div>
