@@ -16,7 +16,9 @@
 
 
 	String error = request.getParameter("error");
-
+	
+	String success=request.getParameter("success");
+	String context = request.getContextPath();
 %>
     
     
@@ -233,12 +235,17 @@ a {
 			
 					<input id="login_bt" type="submit" value="회원정보수정">
 				<div class="block"></div>
-				<input id="member_bt" type="button" value="회원탈퇴">
+				<a href="<%=context %>/member/exit.do"><input id="member_bt" type="button" value="회원탈퇴"></a>
 			</div>
 			</form>
 		</div>
+		
+		
 		<%if(error != null){%>
 			<font color="red"><h3>비밀번호가 일치하지 않습니다.</h3></font>
+		<%} %>
+		<% if(success!=null){%>
+		<font color="blue"><h3>회원정보수정이 완료되었습니다.</h3></font>
 		<%} %>
 	</div>
 	<div>
