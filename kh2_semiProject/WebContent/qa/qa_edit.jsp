@@ -354,11 +354,11 @@ border-top-right-radius: 5%;
 				
 				</span>
 		</div>
-
+</form>
 	<div>
 		<jsp:include page="/template/footer.jsp"></jsp:include>
 	</div>
-</form>
+
 </section>
 	
 

@@ -27,8 +27,6 @@ public class HostelDownloadServlet extends HttpServlet{
 			FilesDto fdto = (FilesDto) fdao.HostelGet(no);
 			File target = new File("D:/upload/kh24/hostel",fdto.getSavename());
 			byte[] data = FileUtils.readFileToByteArray(target);  
-			System.out.println(fdto);
-			System.out.println(target);
 //			application/octet-stream
 //			resp.setContentType("application/octet=stream; charset=UTF-8"); 
 			resp.setHeader("Content-Type", "application/octet-stream; charset=UTF-8");
