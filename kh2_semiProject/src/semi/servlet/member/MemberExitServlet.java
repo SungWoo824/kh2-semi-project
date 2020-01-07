@@ -17,7 +17,7 @@ public class MemberExitServlet extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
 			HttpSession session = req.getSession();
-			String id = (String) req.getAttribute("id");
+			String id = (String) session.getAttribute("id");
 			
 			MemberDao dao = new MemberDao();
 			
